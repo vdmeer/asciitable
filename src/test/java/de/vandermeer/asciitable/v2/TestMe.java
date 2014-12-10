@@ -1,11 +1,13 @@
-package de.vandermeer.skb.asciitable.v2;
+package de.vandermeer.asciitable.v2;
 
 import java.util.List;
 
 import org.apache.commons.lang3.text.StrBuilder;
 import org.junit.Test;
 
-import de.vandermeer.skb.asciitable.v2.themes.SimpleThemes;
+import de.vandermeer.asciitable.v2.Table;
+import de.vandermeer.asciitable.v2.TableRowRenderer;
+import de.vandermeer.asciitable.v2.themes.SimpleThemes;
 
 public class TestMe {
 

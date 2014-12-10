@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.vandermeer.skb.asciitable.v1;
+package de.vandermeer.asciitable.v1;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -22,7 +22,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import de.vandermeer.skb.asciitable.v1.AsciiTable;
+import de.vandermeer.asciitable.v1.AsciiTable;
 
 /**
  * Tests for ASCII table.

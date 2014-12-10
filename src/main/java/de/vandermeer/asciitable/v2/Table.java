@@ -1,4 +1,4 @@
-package de.vandermeer.skb.asciitable.v2;
+package de.vandermeer.asciitable.v2;
 
 import java.util.LinkedList;
 import java.util.List;

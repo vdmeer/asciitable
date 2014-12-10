@@ -1,4 +1,4 @@
-package de.vandermeer.skb.asciitable.v2.themes;
+package de.vandermeer.asciitable.v2.themes;
 
 
 public enum TBThemes implements ThemeTB {

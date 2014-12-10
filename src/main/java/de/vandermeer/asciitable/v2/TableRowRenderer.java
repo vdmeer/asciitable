@@ -1,4 +1,4 @@
-package de.vandermeer.skb.asciitable.v2;
+package de.vandermeer.asciitable.v2;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -9,10 +9,10 @@ import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciitable.commons.ArrayTransformations;
 import de.vandermeer.asciitable.commons.TableException;
-import de.vandermeer.skb.asciitable.v2.themes.SimpleThemes;
-import de.vandermeer.skb.asciitable.v2.themes.ThemeRow;
-import de.vandermeer.skb.asciitable.v2.themes.ThemeSimple;
-import de.vandermeer.skb.asciitable.v2.themes.ThemeTB;
+import de.vandermeer.asciitable.v2.themes.SimpleThemes;
+import de.vandermeer.asciitable.v2.themes.ThemeRow;
+import de.vandermeer.asciitable.v2.themes.ThemeSimple;
+import de.vandermeer.asciitable.v2.themes.ThemeTB;
 
 public class TableRowRenderer {
 
