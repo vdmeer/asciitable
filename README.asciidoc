@@ -1,0 +1,139 @@
+ASCII Table
+-----------
+
+An ASCII table with flexible column number, column width, wrapping, spanning and themes.
+
+Using the ASCII Table
+~~~~~~~~~~~~~~~~~~~~~
+Using this class is quite simple. First get a new instance of the ASCII Table using one of the two static factory methods:
+
+.	+newTable(Integer, Integer)+ for evenly distributed columns,
+	for instance +AsciiTable at=AsciiTable.newTable(3, 76);+ will create a new table with 3 columns with 24 characters width each.
+	The remaining 4 characters (to table width of 76) are used to vertical lines.
+.	+newTable(Integer[])+ for preset column width,
+	for instance +AsciiTable at=AsciiTable.newTable(new Integer[]{10, 20, 30});+ will create a new table with 3 columns, where 
+	column 1 has a width of 10 characters, column 2 has a width of 20 characters and column 3 has a width of 30 characters. The overall table
+	has then a width of 64 characters (60 characters for the columns plus 4 characters for vertical lines).
+
+Once the table is created +addRow(Object...)+ can be used to add rows to it. Finally, call +render()+ render the table into a string.
+To change the appearance of the rendered table use +render(Options)+. One can create options manually or simply use +TableOptions+ to do the job.
++TableOptions+ provides methods to change the padding character for the table rows and the table theme. The theme needs to implement +TableTheme+.
+A number of standard themes are defined in +StandardTableThemes+, including light, double and heavy UTF-8 character boxes and LaTeX style table themes.
+Themes and padding characters are applied per render call, enabling a table to be rendered multiple times with different options.
+
+
+A simple example creating a table with 3 rows and three columns. The first row spans 3 columns, each column of the second row fits
+into a single line, and the second and third column of the third row are broken into two lines:
+
+----------------------------------------------------------------------------------------
+AsciiTable at=AsciiTable.newTable(3, 76);
+at.addRow(null, null, "Table Heading");
+at.addRow("first row (col1)", "with some information", "and more information");
+at.addRow("second row (col1)", "with some information (col2)", "and more information (col3)");
+System.out.println(at.render());
+----------------------------------------------------------------------------------------
+
+The output of this example will be:
+
+----------------------------------------------------------------------------------------
++--------------------------------------------------------------------------+
+|                              Table Heading                               |
++------------------------+------------------------+------------------------+
+|first row (col1)        |with some information   |and more information    |
++------------------------+------------------------+------------------------+
+|second row (col1)       |with some information   |and more information    |
+|                        |(col2)                  |(col3)                  |
++------------------------+------------------------+------------------------+
+----------------------------------------------------------------------------------------
+
+Another example, this time using an +Integer[]+ to initialise the table. The table again has 3 rows and 3 columns, but this time
+column 1 is set to 10 characters, column 2 is set to 15 characters and column 3 is set to 20 characters. We now also set the theme to "light":
+--------------------------------------------------------------------------------------------
+Integer[] columns=new Integer[]{10, 15, 20};
+AsciiTable at=AsciiTable.newTable(columns);
+at.addRow(null, null, "Table Heading");
+at.addRow("row 1", "this is col 2", "and this is column 3");
+at.addRow("row 2", "some text for column 2", "and some text for column 3");
+System.err.println(at.render(new TableOptions().setRenderTheme(StandardTableThemes.LIGHT)));
+--------------------------------------------------------------------------------------------
+
+The output of this example will be:
+--------------------------------------------------
+┌───────────────────────────────────────────────┐
+│                 Table Heading                 │
+├──────────┬───────────────┬────────────────────┤
+│row 1     │this is col 2  │and this is column 3│
+├──────────┼───────────────┼────────────────────┤
+│row 2     │some text for  │and some text for   │
+│          │column 2       │column 3            │
+└──────────┴───────────────┴────────────────────┘
+--------------------------------------------------
+
+If you use the theme +StandardTableThemes.DOUBLE+, the output should look like this:
+--------------------------------------------------
+╔═══════════════════════════════════════════════╗
+║                 Table Heading                 ║
+╠══════════╦═══════════════╦════════════════════╣
+║row 1     ║this is col 2  ║and this is column 3║
+╠══════════╬═══════════════╬════════════════════╣
+║row 2     ║some text for  ║and some text for   ║
+║          ║column 2       ║column 3            ║
+╚══════════╩═══════════════╩════════════════════╝
+--------------------------------------------------
+
+If you use the theme +StandardTableThemes.LIGHT_DOUBLE+, the output should look like this:
+--------------------------------------------------
+╒═══════════════════════════════════════════════╕
+│                 Table Heading                 │
+╞══════════╤═══════════════╤════════════════════╡
+│row 1     │this is col 2  │and this is column 3│
+╞══════════╪═══════════════╪════════════════════╡
+│row 2     │some text for  │and some text for   │
+│          │column 2       │column 3            │
+╘══════════╧═══════════════╧════════════════════╛
+--------------------------------------------------
+
+If you use the theme +StandardTableThemes.DOUBLE_LIGHT+, the output should look like this:
+--------------------------------------------------
+╓───────────────────────────────────────────────╖
+║                 Table Heading                 ║
+╟──────────╥───────────────╥────────────────────╢
+║row 1     ║this is col 2  ║and this is column 3║
+╟──────────╫───────────────╫────────────────────╢
+║row 2     ║some text for  ║and some text for   ║
+║          ║column 2       ║column 3            ║
+╙──────────╨───────────────╨────────────────────╜
+--------------------------------------------------
+
+The look and feel of themes with heavy characters can differ, depending on the font that is being used. Many console
+fonts on windows do not show heavy box drawing characters as monotype or have varying width for whitespaces when using
+heavy character. The following shows a table using the standard heavy theme (+StandardTableThemes.HEAVY+):
+----------------------------------------------------------------------------------------
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                 Table Heading                 ┃
+┣━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┫
+┃row 1     ┃this is col 2  ┃and this is column 3┃
+┣━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━┫
+┃row 2     ┃some text for  ┃and some text for   ┃
+┃          ┃column 2       ┃column 3            ┃
+┗━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━┛
+----------------------------------------------------------------------------------------
+
+There are also a number of LaTeX style themes pre-defined. For instance +StandardTableThemes.LATEX_LIGHT_TRIPLE_DASH+:
+----------------------------------------------------------------------------------------
+┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
+                  Table Heading                  
+┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
+ row 1      this is col 2   and this is column 3 
+┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
+ row 2      some text for   and some text for    
+            column 2        column 3             
+┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
+----------------------------------------------------------------------------------------
+
+
+UTF-8 Support in various environments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This blog post explains how to get UTF-8 support in the whole tool chain http://vdmeer-sven.blogspot.ie/2014/06/utf-8-support-w-java-and-console.html[blog on UTF-8].
+Updates will be at here https://github.com/vdmeer/skb/wiki/HowTo-UTF-8-Support-in-Java-and-Console[SKB Wiki on UTF-8].

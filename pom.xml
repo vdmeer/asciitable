@@ -1,0 +1,102 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.vandermeer</groupId>
+	<artifactId>asciitable</artifactId>
+	<version>0.0.3-SNAPSHOT</version>
+
+	<name>Ascii Table</name>
+	<url>https://github.com/vdmeer/asciitable</url>
+	<description>###</description>
+	<inceptionYear>2010</inceptionYear>
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
+		<encoding>UTF-8</encoding>
+		<file.encoding>UTF-8</file.encoding>
+
+	</properties>
+
+	<licenses>
+		<license>
+			<name>Apache 2</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>A business-friendly OSS license</comments>
+		</license>
+	</licenses>
+
+	<prerequisites>
+		<maven>3.0.0</maven>
+	</prerequisites>
+
+	<scm>
+		<developerConnection>scm:git:git@github.com:vdmeer/asciitable.git</developerConnection>
+		<connection>scm:git:git://github.com/vdmeer/asciitable.git</connection>
+		<tag>asciitable-0.0.3</tag>
+		<url>https://github.com/vdmeer/asciitable</url>
+	</scm>
+
+	<issueManagement>
+		<url>https://github.com/vdmeer/asciitable/issues</url>
+		<system>github</system>
+	</issueManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.2</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<optimize>true</optimize>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.2</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<optimize>true</optimize>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.10.1</version>
+				<configuration>
+					<encoding>${project.resources.sourceEncoding}</encoding>
+					<docencoding>${project.resources.sourceEncoding}</docencoding>
+					<charset>${project.resources.sourceEncoding}</charset>
+					<aggregate>true</aggregate>
+					<overview>overview.html</overview>
+					<nohelp>true</nohelp>
+					<header>${project.name}: ${project.version}</header>
+					<footer>${project.name}: ${project.version}</footer>
+					<doctitle>${project.name}: ${project.version}</doctitle>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
