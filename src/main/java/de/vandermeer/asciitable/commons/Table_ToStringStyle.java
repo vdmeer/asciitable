@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package de.vandermeer.asciitable.commons;
 
 import org.apache.commons.lang3.SystemUtils;

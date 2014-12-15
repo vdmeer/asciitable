@@ -1,4 +1,4 @@
-	/* Copyright 2014 Sven van der Meer <vdmeer.sven@mykolab.com>
+/* Copyright 2014 Sven van der Meer <vdmeer.sven@mykolab.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,8 +45,9 @@ import de.vandermeer.asciitable.commons.Table_ToStringStyle;
  * 
  * <p>
  * Once the table is created {@link #addRow(Object...)} can be used to add rows to it. Finally, call {@link #render()} render the table into a string.
- * To change the appearance of the rendered table use {@link #render(OptionList)}. One can create options manually or simply use {@link TableOptions} to do the job.
- * {@link TableOptions} provides methods to change the padding character for the table rows and the table theme. The theme needs to implement {@link TableTheme}.
+ * The table renders using two options: a padding character (default is ' ') and a theme (default is {@link StandardTableThemes#PLAIN_7BIT}.
+ * Both options can be changed using {@link AsciiTable#setPaddingCharacter(char)} and {@link AsciiTable#setTheme(StandardTableThemes)}, respectively.
+ * The theme needs to implement {@link TableTheme}.
  * A number of standard themes are defined in {@link StandardTableThemes}, including light, double and heavy UTF-8 character boxes and LaTeX style table themes.
  * Themes and padding characters are applied per render call, enabling a table to be rendered multiple times with different options.
  * </p>
