@@ -1,0 +1,24 @@
+v0.0.3 - feature add - 2014-##-##
+---------------------------------
+* changed all private to protected final
+* moved flip transformer init to declaration
+* moved to maven build
+* moved into own Github repo
+* removed SKB dependencies
+** removed OptionList and added setters for padding character and theme
+** moved all other skb.base classes into this package
+
+
+v0.0.2 - feature add - 2014-06-25
+---------------------------------
+* changed theme and option handling
+	** options now provided by +TableOptions+
+	** all standard themes are enumerated in +StandardTableThemes+
+	** custom themes can be created implementing +TableTheme+
+* all drawing characters are enumerated in +CharactersBoxDrawing+
+* changed javadoc accordingly
+* added LaTeX style table themes for 7-Bit, light, heavy, double, and some mutli-dash characters
+
+
+v0.0.1 - initial release - 2014-06-10
+-------------------------------------

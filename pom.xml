@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.vandermeer</groupId>
+	<groupId>sahara</groupId>
 	<artifactId>asciitable</artifactId>
 	<version>0.0.3-SNAPSHOT</version>
 
@@ -60,6 +60,43 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.asciidoctor</groupId>
+				<artifactId>asciidoctor-maven-plugin</artifactId>
+				<version>1.5.0</version>
+				<executions>
+					<execution>
+						<id>package-asciidoc</id><phase>generate-resources</phase>
+						<configuration>
+							<sourceDirectory>src/package/doc</sourceDirectory>
+							<outputDirectory>./</outputDirectory>
+							<backend>html</backend>
+						</configuration>
+						<goals><goal>process-asciidoc</goal> </goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.4.3</version>
+				<executions>
+					<execution>
+						<id>copy-docs</id>
+						<phase>package</phase>
+						<goals><goal>copy-resources</goal></goals>
+						<configuration>
+							<outputDirectory>./</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/package/doc</directory>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.2</version>
