@@ -236,6 +236,7 @@ public final class AsciiTable {
 		}
 		return this;
 	}
+
 	/**
 	 * Adds a new row to the table.
 	 * For each column of the set column size an object must be provided. This object can be &lt;null&gt;.
