@@ -19,11 +19,12 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.text.WordUtils;
 
+
 /**
  * Collections of methods to transform arrays.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.3-SNAPSHOT build 141210 (10-Dec-14) for Java 1.8
+ * @version    v0.0.3 build 150618 (18-Jun-15) for Java 1.8
  */
 public abstract class ArrayTransformations {
 
@@ -69,7 +70,7 @@ public abstract class ArrayTransformations {
 	 */
 	public static final String[][] NORMALISE_ARRAY(final int length, String[][] ar){
 		int width = 0;
-		//get the length of the longest array, use that as width in normalisation
+		//get the length of the longest array, use that as width in normalization
 		for(int row=0; row<ar.length; row++){ //TODO not null safe
 			width = Math.max(width, ArrayUtils.getLength(ar[row]));
 		}
