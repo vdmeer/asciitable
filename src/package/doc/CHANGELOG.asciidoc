@@ -1,4 +1,4 @@
-v0.0.3 - feature add - 2014-##-##
+v0.0.3 - feature add - 2015-06-18
 ---------------------------------
 * changed all private to protected final
 * moved flip transformer init to declaration
