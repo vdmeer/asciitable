@@ -30,7 +30,7 @@ import de.vandermeer.asciitable.v1.AsciiTable;
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.4-SNAPSHOT build 150618 (18-Jun-15) for Java 1.8
  */
-public class AsciiTable_Tests {
+public class Test_AsciiTable {
 	@Test public void testAPIDocInts(){
 		AsciiTable at=AsciiTable.newTable(3, 76);
 		at.addRow(null, null, "Table Heading");
