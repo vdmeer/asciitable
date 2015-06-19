@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.vandermeer</groupId>
 	<artifactId>asciitable</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>0.0.4</version>
 
 	<name>Ascii Table</name>
 	<url>https://github.com/vdmeer/asciitable</url>
@@ -62,7 +62,7 @@
 			<id>vdmeer.sven</id>
 			<name>Sven van der Meer</name>
 			<email>vdmeer.sven@mykolab.com</email>
-				<url>http://www.example.com/jdoe</url>
+				<url>http://www.vandermeer.de</url>
 <!--
 				<organization>ACME</organization>
 				<organizationUrl>http://www.example.com</organizationUrl>
@@ -99,13 +99,15 @@
 
 	<build>
 		<plugins>
+			<!-- Copy Changelog/Readme and then include in jar with License -->
 			<plugin>
 				<groupId>org.asciidoctor</groupId>
 				<artifactId>asciidoctor-maven-plugin</artifactId>
 				<version>1.5.0</version>
 				<executions>
 					<execution>
-						<id>package-asciidoc</id><phase>package</phase>
+						<id>package-asciidoc</id>
+						<phase>process-resources</phase>
 						<configuration>
 							<sourceDirectory>src/package/doc</sourceDirectory>
 							<outputDirectory>./</outputDirectory>
@@ -115,14 +117,13 @@
 					</execution>
 				</executions>
 			</plugin>
-
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>2.4.3</version>
 				<executions>
 					<execution>
 						<id>copy-docs</id>
-						<phase>package</phase>
+						<phase>generate-resources</phase>
 						<goals><goal>copy-resources</goal></goals>
 						<configuration>
 							<outputDirectory>./</outputDirectory>
@@ -134,8 +135,27 @@
 							</resources>
 						</configuration>
 					</execution>
+					<execution>
+						<id>copy-to-jar</id>
+						<phase>prepare-package</phase>
+						<goals><goal>copy-resources</goal></goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/classes</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}</directory>
+									<includes>
+										<include>LICENSE</include>
+										<include>CHANGELOG*</include>
+										<include>README*</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
+
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -297,4 +317,5 @@
 			</build>
 		</profile>
 
-	</profiles></project>
+	</profiles>
+</project>

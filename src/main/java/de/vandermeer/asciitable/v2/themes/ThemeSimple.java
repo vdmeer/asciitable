@@ -20,7 +20,7 @@ import org.apache.commons.lang3.text.StrBuilder;
  * Simple theme.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.4-SNAPSHOT build 150618 (18-Jun-15) for Java 1.8
+ * @version    v0.0.4 build 150619 (19-Jun-15) for Java 1.8
  */
 public interface ThemeSimple {
 

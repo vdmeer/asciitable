@@ -1,3 +1,8 @@
+v0.0.4 - maintenance - 2015-06-19
+---------------------------------
+* clean up, test file rename
+
+
 v0.0.3 - feature add - 2015-06-18
 ---------------------------------
 * changed all private to protected final
