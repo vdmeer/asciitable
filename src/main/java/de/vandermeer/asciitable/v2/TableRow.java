@@ -12,84 +12,121 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package de.vandermeer.asciitable.v2;
 
+import de.vandermeer.asciitable.commons.TableException;
+
 /**
- * New table row interface.
+ * A table row, either a rule or a row with content for columns.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.4 build 150619 (19-Jun-15) for Java 1.8
  */
-public interface TableRow {
+public class TableRow {
 
-	TableRowType getType();
+	/** Array with content if the row is a content row, null otherwise. */
+	Object[] columns;
 
-	void setBorder(boolean ... borders);
+	/** Array with indicators if the row has to set borders or not. */
+	boolean[] borders;
 
-	boolean[] getBorders();
+	/** Type of a rule row, will be null for a content row. */
+	E_RuleType ruleType;
 
-	void setAdjustedBorders(AdjustedBorderType ... borders);
+	/** Style of a rule row, will be null for a content row. */
+	E_RuleStyle ruleStyle;
 
-	AdjustedBorderType[] getAdjustedBorders();
-
-	Object[] getColumns();
-
-	void setAdjustedColumns(String[][] columns);
-
-	String[][] getAdjustedColumns();
-
-	static TableRow create(final TableRowType type){
-		return TableRow.create(type, null);
+	/**
+	 * Returns a new table row of a particular rule type without content.
+	 * The rule style is set to normal.
+	 * @param type rule type of the row
+	 * @param columnCount number of columns for the row
+	 */
+	public TableRow(E_RuleType type, int columnCount){
+		this(type, E_RuleStyle.NORMAL, columnCount);
 	}
 
-	static TableRow create(final TableRowType type, final Object[] cols){
-		return new TableRow(){
-			Object[] columns = (cols==null)?new Object[0]:cols;
-			boolean[] borders;
-			AdjustedBorderType[] adjustedBorders;
-			String[][] adjustedColumns;
+	/**
+	 * Returns a new table row of a particular rule type and style without content.
+	 * @param type rule type of the row
+	 * @param style rule style
+	 * @param columnCount number of columns for the row
+	 */
+	public TableRow(E_RuleType type, E_RuleStyle style, int columnCount){
+		this.ruleType = type;
+		this.ruleStyle = style;
+		this.columns = null;
 
-			@Override
-			public TableRowType getType() {
-				return type;
-			}
+		this.borders = new boolean[columnCount+1];
+		for(int i=0; i<columnCount+1; i++){
+			this.borders[i] = true;
+		}
 
-			@Override
-			public void setBorder(boolean... borders) {
-				if(borders!=null){
-					this.borders = borders;
-				}
-			}
+		if(type==null){
+			throw new IllegalArgumentException("row type for rule cannot be null");
+		}
+		if(style==null){
+			throw new IllegalArgumentException("row style for rule cannot be null");
+		}
+	}
 
-			@Override
-			public boolean[] getBorders() {
-				return this.borders;
-			}
+	/**
+	 * Returns a new content table row
+	 * @param cols content in form of columns
+	 * @param columnCount column count
+	 * @throws TableException if columns and count do not add up
+	 */
+	public TableRow(Object[] cols, int columnCount) throws TableException {
+		if(cols==null){
+			throw new TableException("wrong columns argument", "empty column array");
+		}
+		if(cols.length!=columnCount){
+			throw new TableException("wrong columns argument", "tried to add " + cols.length + " columns, expected " + columns + " columns");
+		}
 
-			@Override
-			public Object[] getColumns() {
-				return this.columns;
-			}
+		this.ruleType = null;
+		this.ruleStyle = null;
+		this.columns = cols;
 
-			@Override
-			public void setAdjustedBorders(AdjustedBorderType... borders) {
-				this.adjustedBorders = borders;
-			}
+		this.borders = new boolean[cols.length+1];
+		for(int i=0; i<columnCount+1; i++){
+			this.borders[i] = true;
+		}
+	}
 
-			@Override
-			public AdjustedBorderType[] getAdjustedBorders() {
-				return this.adjustedBorders;
-			}
+	/**
+	 * Tests if the row is a rule.
+	 * @return true if it is a rule, false otherwise
+	 */
+	public boolean isRule(){
+		if(this.ruleType!=null){
+			return true;
+		}
+		return false;
+	}
 
-			@Override
-			public void setAdjustedColumns(String[][] columns) {
-				this.adjustedColumns = columns;
-			}
+	/**
+	 * Tests if the row has content meaning it is not a rule.
+	 * @return true if it has content, false otherwise
+	 */
+	public boolean isContent(){
+		return !this.isRule();
+	}
 
-			@Override
-			public String[][] getAdjustedColumns() {
-				return this.adjustedColumns;
-			}
-		};
+	/**
+	 * Returns the rule type of the row.
+	 * @return rule type, null if not set, i.e. for content rows
+	 */
+	public E_RuleType getRuleType(){
+		return this.ruleType;
+	}
+
+	/**
+	 * Returns the rule style of the row.
+	 * @return rule style, null if not set, i.e. for content rows
+	 */
+	public E_RuleStyle getRuleStyle(){
+		return this.ruleStyle;
 	}
 }

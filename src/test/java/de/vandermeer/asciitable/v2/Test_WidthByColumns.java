@@ -12,18 +12,47 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package de.vandermeer.asciitable.v2;
 
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
 /**
- * Adjust border enum.
+ * Tests for column width class.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.4 build 150619 (19-Jun-15) for Java 1.8
  */
-public enum AdjustedBorderType {
-	NONE,
-	UP,
-	ALL,
-	DOWN,
-	CONTENT
+public class Test_WidthByColumns {
+
+	@Test
+	public void testConstructor(){
+		WidthByColumns cw = new WidthByColumns();
+		assertEquals(1, cw.ar.length);
+		assertEquals(0, cw.ar[0]);
+	}
+
+	@Test
+	public void testAdd(){
+		WidthByColumns cw = new WidthByColumns();
+
+		cw.add(5);
+		assertEquals(2, cw.ar.length);
+		assertEquals(5, cw.ar[0]);
+		assertEquals(5, cw.ar[1]);
+
+		cw.add(3);
+		assertEquals(3, cw.ar.length);
+		assertEquals(8, cw.ar[0]);
+		assertEquals(5, cw.ar[1]);
+		assertEquals(3, cw.ar[2]);
+
+		cw.add(1);//do not add anything smaller than 3
+		assertEquals(3, cw.ar.length);
+		assertEquals(8, cw.ar[0]);
+		assertEquals(5, cw.ar[1]);
+		assertEquals(3, cw.ar[2]);
+	}
 }

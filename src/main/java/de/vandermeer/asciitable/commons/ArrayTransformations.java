@@ -63,10 +63,10 @@ public abstract class ArrayTransformations {
 
 
 	/**
-	 * Normalises an array of strings.
+	 * Normalizes an array of strings.
 	 * @param length number of columns in the transformed string array
-	 * @param ar input array which will be normalised
-	 * @return a normalised array
+	 * @param ar input array which will be normalized
+	 * @return a normalized array
 	 */
 	public static final String[][] NORMALISE_ARRAY(final int length, String[][] ar){
 		int width = 0;

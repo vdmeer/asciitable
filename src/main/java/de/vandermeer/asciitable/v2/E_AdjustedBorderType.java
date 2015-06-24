@@ -12,25 +12,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package de.vandermeer.asciitable.v2;
 
 /**
- * Table row types.
+ * Adjust border enum.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.4 build 150619 (19-Jun-15) for Java 1.8
  */
-public enum TableRowType {
+public enum E_AdjustedBorderType {
 
-	TOP,
-	TOP_EMPH,
+	/** A none-border. */
+	NONE,
 
-	MID,
-	MID_EMPH,
+	/** An up border. */
+	UP,
 
-	BOTTOM,
-	BOTTOM_EMPH,
+	/** An all border (up and down). */
+	ALL,
 
-	CONTENT,
-	;
+	/** A down border. */
+	DOWN,
+
+	/** A content border. */
+	CONTENT
 }
