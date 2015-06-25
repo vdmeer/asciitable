@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2;
+package de.vandermeer.asciitable.v2.core;
+
 
 /**
  * Utility to define the width a table for a table renderer using an absolute table width.
@@ -47,25 +48,20 @@ public class WidthByAbsolute implements Width {
 	}
 
 	@Override
-	public int[] calculateWidth(AsctiiTable table) {
-		if(table!=null){
-			table.validate();
-		}
+	public int[] calculateWidth(int columnCount) {
+		int[] ret = new int[columnCount+1];
 
-		int count = table.getColumnCount();
-		int[] ret = new int[count+1];
-
-		if(this.width<(count*3 + count + 1)){
+		if(this.width<(columnCount*3 + columnCount + 1)){
 			throw new IllegalArgumentException("wrong width argument: width must allow for borders");
 		}
 
 		ret[0] = this.width;
 
-		int distribute = this.width-1-count;			//this is to be distributed over columns
-		int colmin = distribute/count;					//this is minimum width of each column
-		int leftover = distribute-colmin*count;			//leftover
+		int distribute = this.width-1-columnCount;			//this is to be distributed over columns
+		int colmin = distribute/columnCount;					//this is minimum width of each column
+		int leftover = distribute-colmin*columnCount;			//leftover
 
-		for(int i=0; i<count; i++){
+		for(int i=0; i<columnCount; i++){
 			ret[i+1] = colmin;
 			if(leftover!=0){
 				ret[i+1] += 1;

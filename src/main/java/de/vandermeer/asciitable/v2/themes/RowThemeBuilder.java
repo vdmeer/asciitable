@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2;
+package de.vandermeer.asciitable.v2.themes;
+
+import org.apache.commons.lang3.text.StrBuilder;
 
 /**
  * Builder for a row themes.
@@ -133,7 +135,7 @@ public class RowThemeBuilder {
 	 * @param description row theme description
 	 * @return
 	 */
-	private RowTheme create(char right, char left, char mid, char midAll, char midUp, char midDown, String description){
+	private RowTheme create(final char right, final char left, final char mid, final char midAll, final char midUp, final char midDown, final String description){
 		return new RowTheme() {
 			@Override public char getRightBorder() {return right;}
 			@Override public char getMidBorderUp() {return midUp;}
@@ -142,6 +144,21 @@ public class RowThemeBuilder {
 			@Override public char getMid() {return mid;}
 			@Override public char getLeftBorder() {return left;}
 			@Override public Object getDescription() {return description;}
+			@Override public StrBuilder toDoc(){
+				StrBuilder ret = new StrBuilder(10);
+				ret
+					.append(getLeftBorder())
+					.append(getMid())
+					.append(getMidBorderUp())
+					.append(getMid())
+					.append(getMidBorderAll())
+					.append(getMid())
+					.append(getMidBorderDown())
+					.append(getMid())
+					.append(getRightBorder())
+				;
+				return ret;
+			}
 		};
 	}
 }

@@ -13,21 +13,10 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2;
-
 /**
- * Position of a border element.
- *
+ * Common artifacts for the ascii tables.
+ * 
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.4 build 150619 (19-Jun-15) for Java 1.8
  */
-public enum E_BorderPosition {
-	/** Left border. */
-	LEFT,
-
-	/** Middle border. */
-	MIDDLE,
-
-	/** Right border. */
-	RIGHT;
-}
+package de.vandermeer.asciitable.commons;

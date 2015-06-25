@@ -13,11 +13,13 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2;
+package de.vandermeer.asciitable.v2.core;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+
+import de.vandermeer.asciitable.v2.core.WidthByColumns;
 
 /**
  * Tests for column width class.

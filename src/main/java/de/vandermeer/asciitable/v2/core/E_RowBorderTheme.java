@@ -13,43 +13,25 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.commons;
+package de.vandermeer.asciitable.v2.core;
 
 /**
- * A pair of things, with a left and a right hand side (or left and right).
+ * Theme for borders of content rows.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.4 build 150619 (19-Jun-15) for Java 1.8
  */
-public interface TablePair<LHS, RHS> {
+public enum E_RowBorderTheme {
 
-	/**
-	 * Returns the value of the right hand side of the pair
-	 * @return right hand side value
-	 */
-	RHS rhs();
+	/** Borders everywhere (inside, outside). */
+	ALL,
 
-	/**
-	 * Returns the value of the right hand side of the pair
-	 * @return right hand side value
-	 */
-	RHS right();
+	/** Borders only inside the row, for instance not most left and most right. */
+	INNER,
 
-	/**
-	 * Returns the value of the left hand side of the pair
-	 * @return left had side value
-	 */
-	LHS lhs();
+	/** Borders only outside the row, for instance only most left and most right. */
+	OUTER,
 
-	/**
-	 * Returns the value of the left hand side of the pair
-	 * @return left had side value
-	 */
-	LHS left();
-
-	/**
-	 * Returns the description of an object
-	 * @return description
-	 */
-	String getDescription();
+	/** No borders at all. */
+	NONE
 }

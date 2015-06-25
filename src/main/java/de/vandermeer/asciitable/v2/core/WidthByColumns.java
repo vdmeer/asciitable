@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2;
+package de.vandermeer.asciitable.v2.core;
 
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -72,14 +72,8 @@ public class WidthByColumns implements Width {
 	}
 
 	@Override
-	public int[] calculateWidth(AsctiiTable table) {
-		if(table!=null){
-			table.validate();
-		}
-
-		int count = table.getColumnCount();
-
-		if(count != (this.ar.length+1)){
+	public int[] calculateWidth(int columnCount) {
+		if(columnCount != (this.ar.length+1)){
 			throw new IllegalArgumentException("wrong columns array length: columns array length must be the same as the columns used to initialise the table");
 		}
 

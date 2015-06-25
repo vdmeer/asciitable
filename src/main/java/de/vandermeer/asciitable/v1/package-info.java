@@ -14,7 +14,7 @@
  */
 
 /**
- * An implementation of an ASCII Table with several box character templates.
+ * Version 1 of an implementation of an ASCII Table with several box character templates.
  * 
  * <p>
  * To see the UTF box drawing characters one will need to have a console (our output window) with UTF-8 support.

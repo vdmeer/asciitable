@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2;
+package de.vandermeer.asciitable.v2.themes;
 
 import org.apache.commons.lang3.text.StrBuilder;
 
@@ -77,49 +77,5 @@ public interface TableTheme {
 	 * Returns a representation of the table theme useful for documentation.
 	 * @return documentation representation of the table theme
 	 */
-	default StrBuilder toDoc(){
-		StrBuilder ret = new StrBuilder(50);
-		ret
-			.append(getTop().toDoc())    .append("        ").append(getTopStrong().toDoc())        .appendNewLine()
-			.append(getContent().toDoc()).append("        ").append(getContent().toDoc())          .appendNewLine()
-			.append(getMid().toDoc())    .append("        ").append(getMidStrong().toDoc())        .appendNewLine()
-			.append(getContent().toDoc()).append("        ").append(getContent().toDoc())          .appendNewLine()
-			.append(getBottom().toDoc()) .append("        ").append(getBottomStrong().toDoc())     .appendNewLine()
-		;
-		return ret;
-	}
-
-	/**
-	 * Tests a table theme.
-	 * @param theme theme to be tested
-	 * @throws IllegalArgumentException if any of the theme methods returns 0 or null
-	 */
-	static void testTheme(TableTheme theme){
-		if(theme.getTop()==null){
-			throw new IllegalArgumentException("table theme incomplete: no top row defined");
-		}
-		if(theme.getTopStrong()==null){
-			throw new IllegalArgumentException("table theme incomplete: no top row strong defined");
-		}
-		if(theme.getMid()==null){
-			throw new IllegalArgumentException("table theme incomplete: no mid row strong defined");
-		}
-		if(theme.getMidStrong()==null){
-			throw new IllegalArgumentException("table theme incomplete: no mid row strong defined");
-		}
-		if(theme.getBottom()==null){
-			throw new IllegalArgumentException("table theme incomplete: no bottom row strong defined");
-		}
-		if(theme.getBottomStrong()==null){
-			throw new IllegalArgumentException("table theme incomplete: no bottom row strong defined");
-		}
-
-		if(theme.getContent()==null){
-			throw new IllegalArgumentException("table theme incomplete: no content row defined");
-		}
-
-		if(theme.getDescription()==null){
-			throw new IllegalArgumentException("table theme incomplete: no description defined");
-		}
-	}
+	StrBuilder toDoc();
 }

@@ -22,6 +22,9 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import de.vandermeer.asciitable.commons.Table_ToStringStyle;
 import de.vandermeer.asciitable.commons.TableException;
+import de.vandermeer.asciitable.v2.core.E_RuleStyle;
+import de.vandermeer.asciitable.v2.core.E_RuleType;
+import de.vandermeer.asciitable.v2.core.TableRow;
 
 /**
  * An ASCII table with flexible column number, column width, wrapping, spanning and renderer with themes.
@@ -102,10 +105,10 @@ public class AsctiiTable {
 	 */
 	public void fixRules(){
 		if(this.table.get(0).getRuleType()!=null && !E_RuleType.TOP.equals(this.table.get(0).getRuleType())){
-			this.table.get(0).ruleType = E_RuleType.TOP;
+			this.table.get(0).setRuleType(E_RuleType.TOP);
 		}
 		if(E_RuleType.MID.equals(this.table.get(this.table.size()-1).getRuleType())){
-			this.table.get(this.table.size()-1).ruleType = E_RuleType.BOTTOM;
+			this.table.get(this.table.size()-1).setRuleType(E_RuleType.BOTTOM);
 		}
 	}
 

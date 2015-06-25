@@ -13,43 +13,24 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.commons;
+package de.vandermeer.asciitable.v2.core;
+
 
 /**
- * A pair of things, with a left and a right hand side (or left and right).
+ * Calculator for table width.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.4 build 150619 (19-Jun-15) for Java 1.8
  */
-public interface TablePair<LHS, RHS> {
+public interface Width {
 
 	/**
-	 * Returns the value of the right hand side of the pair
-	 * @return right hand side value
+	 * Returns an array with calculated width of columns.
+	 * The array length is the number of columns + 1.
+	 * The first entry in the array is the overall table width.
+	 * Each following entry is the width of the respective column.
+	 * @param columnCount number of columns to calculate width for
+	 * @return array with overall width and width of individual columns
 	 */
-	RHS rhs();
-
-	/**
-	 * Returns the value of the right hand side of the pair
-	 * @return right hand side value
-	 */
-	RHS right();
-
-	/**
-	 * Returns the value of the left hand side of the pair
-	 * @return left had side value
-	 */
-	LHS lhs();
-
-	/**
-	 * Returns the value of the left hand side of the pair
-	 * @return left had side value
-	 */
-	LHS left();
-
-	/**
-	 * Returns the description of an object
-	 * @return description
-	 */
-	String getDescription();
+	public int[] calculateWidth(int columnCount);
 }

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2;
+package de.vandermeer.asciitable.v2.themes;
 
 import org.apache.commons.lang3.text.StrBuilder;
 
@@ -71,48 +71,5 @@ public interface RowTheme {
 	 * Returns a representation of the row theme useful for documentation
 	 * @return documentation representation of the row theme
 	 */
-	default StrBuilder toDoc(){
-		StrBuilder ret = new StrBuilder(10);
-		ret
-			.append(getLeftBorder())
-			.append(getMid())
-			.append(getMidBorderUp())
-			.append(getMid())
-			.append(getMidBorderAll())
-			.append(getMid())
-			.append(getMidBorderDown())
-			.append(getMid())
-			.append(getRightBorder())
-		;
-		return ret;
-	}
-
-	/**
-	 * Tests a row theme.
-	 * @param theme theme to be tested
-	 * @throws IllegalArgumentException if any of the theme methods returns 0 or null
-	 */
-	static void testTheme(RowTheme theme){
-		if(theme.getLeftBorder()==0){
-			throw new IllegalArgumentException("row theme incomplete: no left border defined");
-		}
-		if(theme.getRightBorder()==0){
-			throw new IllegalArgumentException("row theme incomplete: no right border defined");
-		}
-		if(theme.getMid()==0){
-			throw new IllegalArgumentException("row theme incomplete: no mid character defined");
-		}
-		if(theme.getMidBorderAll()==0){
-			throw new IllegalArgumentException("row theme incomplete: no mid all character defined");
-		}
-		if(theme.getMidBorderDown()==0){
-			throw new IllegalArgumentException("row theme incomplete: no mid down character defined");
-		}
-		if(theme.getMidBorderUp()==0){
-			throw new IllegalArgumentException("row theme incomplete: no mid up character defined");
-		}
-		if(theme.getDescription()==null){
-			throw new IllegalArgumentException("row theme incomplete: no description defined");
-		}
-	}
+	StrBuilder toDoc();
 }

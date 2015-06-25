@@ -22,6 +22,16 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.text.StrBuilder;
 
+import de.vandermeer.asciitable.v2.core.E_AdjustedBorderType;
+import de.vandermeer.asciitable.v2.core.E_BorderPosition;
+import de.vandermeer.asciitable.v2.core.ProcessedRow;
+import de.vandermeer.asciitable.v2.core.TableRow;
+import de.vandermeer.asciitable.v2.core.Width;
+import de.vandermeer.asciitable.v2.themes.E_TableThemes;
+import de.vandermeer.asciitable.v2.themes.RowTheme;
+import de.vandermeer.asciitable.v2.themes.TableTheme;
+import de.vandermeer.asciitable.v2.themes.V2Validator;
+
 
 /**
  * Renders a table.
@@ -37,7 +47,7 @@ public class AsciiTableRenderer {
 	/** The theme for the table. */
 	TableTheme theme;
 
-	/** width of the table. */
+	/** Width of the table. */
 	Width width;
 
 	/** List of rows processed and ready to b rendered. */
@@ -58,6 +68,11 @@ public class AsciiTableRenderer {
 		this.rows = new LinkedList<>();
 	}
 
+	/**
+	 * Sets the width for the rendered.
+	 * @param width new width
+	 * @return
+	 */
 	public AsciiTableRenderer setWidth(Width width){
 		if(width!=null){
 			this.width = width;
@@ -81,7 +96,7 @@ public class AsciiTableRenderer {
 			throw new IllegalArgumentException("wrong table width argument: no width set");
 		}
 
-		int[] cols = this.width.calculateWidth(table);
+		int[] cols = this.width.calculateWidth(table.getColumnCount());
 
 		boolean[] borders = new boolean[cols.length];
 		for(int i=0; i<borders.length; i++){
@@ -123,66 +138,52 @@ public class AsciiTableRenderer {
 	 * @return a string builder with the rendered strings (if lines are wrapped) of the rendered row
 	 */
 	protected final StrBuilder renderRow(ProcessedRow row, int[] cols){
+		if(row.getOriginalRow().isContent()){
+			return this.renderContentRow(row, cols);
+		}
+		else{
+			return this.renderRuleRow(row, cols);
+		}
+	}
+
+	/**
+	 * Renders a content row.
+	 * @param row processed row to render
+	 * @param cols columns calculated by {@link Width}
+	 * @return a string builder with the rendered strings (if lines are wrapped) of the rendered row
+	 */
+	protected final StrBuilder renderContentRow(ProcessedRow row, int[] cols){
 		StrBuilder ret = new StrBuilder(100);
 
 		RowTheme rt = null;
-		String[][] columns = row.procColumns;
+		String[][] columns = row.getProcessedColumns();
 
-		E_AdjustedBorderType[] borders = row.adjustedBorders;
-		if(row.original.isContent()){
-			//it's a content row
-			for(int i=0; i<columns.length; i++){
-				rt = this.theme.getContent();
-				if(i!=0){
-					ret.appendNewLine();
-				}
-				int span = 0;
-				for(int k=0; k<borders.length; k++){
-					if(borders[k]!=E_AdjustedBorderType.NONE){
-						if(k==0){
-							ret.append(this.getChar(E_BorderPosition.LEFT, borders[k], rt));
-						}
-						else if(k==borders.length-1){
-							ret.append(this.getChar(E_BorderPosition.RIGHT, borders[k], rt));
-						}
-						else{
-							ret.append(this.getChar(E_BorderPosition.MIDDLE, borders[k], rt));
-						}
+		E_AdjustedBorderType[] borders = row.getAdjustedBorders();
+
+		for(int i=0; i<columns.length; i++){
+			rt = this.theme.getContent();
+			if(i!=0){
+				ret.appendNewLine();
+			}
+			int span = 0;
+			for(int k=0; k<borders.length; k++){
+				if(borders[k]!=E_AdjustedBorderType.NONE){
+					if(k==0){
+						ret.append(this.getChar(E_BorderPosition.LEFT, borders[k], rt));
 					}
+					else if(k==borders.length-1){
+						ret.append(this.getChar(E_BorderPosition.RIGHT, borders[k], rt));
+					}
+					else{
+						ret.append(this.getChar(E_BorderPosition.MIDDLE, borders[k], rt));
+					}
+				}
 
-					if(k<columns[i].length){
-						if(ArrayUtils.contains(columns[i], null)){
-							if(columns[i][k]==null){
-								if(k==columns[i].length-1){
-									//a null in last column, so calculate the span)
-									int width = 0;
-									//add the span column width
-									for(int s=0; s<span; s++){
-										width += cols[s+1];
-									}
-									//add the separator characters (span) plus the one for this column
-									width += span;
-									//add the current column width
-									width += cols[i+1];
-									//Center content in the new column
-									ret.appendFixedWidthPadRight("", width, this.paddingChar);
-								}
-								else{
-									span += 1;
-								}
-							}
-							else if("".equals(columns[i][k])){
-								//we have an empty column, so
-								//first finish the spans
-								for(int s=0; s<span; s++){
-									ret.appendFixedWidthPadRight("", cols[s+1], this.paddingChar);
-								}
-								ret.appendFixedWidthPadRight("", span, this.paddingChar);
-								span = 0;
-								//now add the empty column
-								ret.appendFixedWidthPadRight(columns[i][k], cols[i+1], this.paddingChar);
-							}
-							else{
+				if(k<columns[i].length){
+					if(ArrayUtils.contains(columns[i], null)){
+						if(columns[i][k]==null){
+							if(k==columns[i].length-1){
+								//a null in last column, so calculate the span)
 								int width = 0;
 								//add the span column width
 								for(int s=0; s<span; s++){
@@ -192,69 +193,109 @@ public class AsciiTableRenderer {
 								width += span;
 								//add the current column width
 								width += cols[i+1];
-								//center content in the new column
-								ret.append(StringUtils.center(columns[i][k], width, this.paddingChar));
-								span = 0;
-//								ret.appendFixedWidthPadRight(columns[i][k], cols[i+1], this.paddingChar);
+								//Center content in the new column
+								ret.appendFixedWidthPadRight("", width, this.paddingChar);
+							}
+							else{
+								span += 1;
 							}
 						}
-						else{
+						else if("".equals(columns[i][k])){
+							//we have an empty column, so
+							//first finish the spans
+							for(int s=0; s<span; s++){
+								ret.appendFixedWidthPadRight("", cols[s+1], this.paddingChar);
+							}
+							ret.appendFixedWidthPadRight("", span, this.paddingChar);
+							span = 0;
+							//now add the empty column
 							ret.appendFixedWidthPadRight(columns[i][k], cols[i+1], this.paddingChar);
 						}
+						else{
+							int width = 0;
+							//add the span column width
+							for(int s=0; s<span; s++){
+								width += cols[s+1];
+							}
+							//add the separator characters (span) plus the one for this column
+							width += span;
+							//add the current column width
+							width += cols[i+1];
+							//center content in the new column
+							ret.append(StringUtils.center(columns[i][k], width, this.paddingChar));
+							span = 0;
+//							ret.appendFixedWidthPadRight(columns[i][k], cols[i+1], this.paddingChar);
+						}
+					}
+					else{
+						ret.appendFixedWidthPadRight(columns[i][k], cols[i+1], this.paddingChar);
 					}
 				}
 			}
 		}
-		else{
-			switch(row.original.getRuleType()){
-				case BOTTOM:
-					switch(row.original.getRuleStyle()){
-						case NORMAL:
-							rt = this.theme.getBottom();
-							break;
-						case STRONG:
-							rt = this.theme.getBottomStrong();
-							break;
-					}
-					break;
-				case MID:
-					switch(row.original.getRuleStyle()){
-						case NORMAL:
-							rt = this.theme.getMid();
-							break;
-						case STRONG:
-							rt = this.theme.getMidStrong();
-							break;
-					}
-					break;
-				case TOP:
-					switch(row.original.getRuleStyle()){
-						case NORMAL:
-							rt = this.theme.getTop();
-							break;
-						case STRONG:
-							rt = this.theme.getTopStrong();
-							break;
-					}
-					break;
+		return ret;
+	}
+
+	/**
+	 * Renders a rule row.
+	 * @param row processed row to render
+	 * @param cols columns calculated by {@link Width}
+	 * @return a string builder with the rendered string of the rendered row
+	 */
+	protected final StrBuilder renderRuleRow(ProcessedRow row, int[] cols){
+		StrBuilder ret = new StrBuilder(100);
+		RowTheme rt = null;
+		E_AdjustedBorderType[] borders = row.getAdjustedBorders();
+
+		switch(row.getOriginalRow().getRuleType()){
+			case BOTTOM:
+				switch(row.getOriginalRow().getRuleStyle()){
+					case NORMAL:
+						rt = this.theme.getBottom();
+						break;
+					case STRONG:
+						rt = this.theme.getBottomStrong();
+						break;
+				}
+				break;
+			case MID:
+				switch(row.getOriginalRow().getRuleStyle()){
+					case NORMAL:
+						rt = this.theme.getMid();
+						break;
+					case STRONG:
+						rt = this.theme.getMidStrong();
+						break;
+				}
+				break;
+			case TOP:
+				switch(row.getOriginalRow().getRuleStyle()){
+					case NORMAL:
+						rt = this.theme.getTop();
+						break;
+					case STRONG:
+						rt = this.theme.getTopStrong();
+						break;
+				}
+				break;
+		}
+
+		for(int k=0; k<borders.length; k++){
+			if(k==0){
+				ret.append(this.getChar(E_BorderPosition.LEFT, borders[k], rt));
+			}
+			else if(k==borders.length-1){
+				ret.append(this.getChar(E_BorderPosition.RIGHT, borders[k], rt));
+			}
+			else{
+				ret.append(this.getChar(E_BorderPosition.MIDDLE, borders[k], rt));
 			}
 
-			for(int k=0; k<borders.length; k++){
-				if(k==0){
-					ret.append(this.getChar(E_BorderPosition.LEFT, borders[k], rt));
-				}
-				else if(k==borders.length-1){
-					ret.append(this.getChar(E_BorderPosition.RIGHT, borders[k], rt));
-				}
-				else{
-					ret.append(this.getChar(E_BorderPosition.MIDDLE, borders[k], rt));
-				}
-
-				if(k+1<cols.length){
-					ret.appendPadding(cols[k+1], rt.getMid());
-				}
+			if(k+1<cols.length){
+				ret.appendPadding(cols[k+1], rt.getMid());
 			}
 		}
+
 		return ret;
 	}
 
@@ -316,7 +357,7 @@ public class AsciiTableRenderer {
 	 */
 	public AsciiTableRenderer setTheme(TableTheme theme){
 		if(theme!=null){
-			TableTheme.testTheme(theme);
+			V2Validator.testTableTheme(theme);
 			this.theme = theme;
 		}
 		return this;

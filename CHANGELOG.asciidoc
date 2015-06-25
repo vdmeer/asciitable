@@ -1,6 +1,10 @@
 v0.0.5 - feature add - 2015-##-##
 ---------------------------------
 * complete re-write of v2
+* moved back to Java 7 on request
+* added Factory and Validator to move create/validate methods out of interfaces
+* moved toDoc() methods into builder to remove default in interfaces
+* separated out v2 into multiple packages leaving only the table on the top level
 
 
 v0.0.4 - maintenance - 2015-06-19

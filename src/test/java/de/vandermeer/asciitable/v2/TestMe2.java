@@ -2,11 +2,14 @@ package de.vandermeer.asciitable.v2;
 
 import org.junit.Test;
 
+import de.vandermeer.asciitable.v2.core.WidthByAbsolute;
+import de.vandermeer.asciitable.v2.themes.E_TableThemes;
+
 public class TestMe2 {
 
 	@Test
 	public void testMe(){
-		System.out.println(E_TableThemes.UTF_HEAVY.get().toDoc());
+		System.out.println(E_TableThemes.UTF_LIGHT.get().toDoc());
 //		System.out.println(E_RowThemes.UTF_HEAVY_CONTENT.get().toDoc());
 
 		AsctiiTable at = new AsctiiTable(3);
@@ -19,7 +22,7 @@ public class TestMe2 {
 		at.addRule();
 
 		AsciiTableRenderer rend = new AsciiTableRenderer();
-		rend.setTheme(E_TableThemes.UTF_HEAVY.get());
+		rend.setTheme(E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new WidthByAbsolute().setWidth(76));
 		AsciiTableRendered rat = rend.render(at);
 

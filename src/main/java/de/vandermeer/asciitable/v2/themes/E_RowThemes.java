@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2;
+package de.vandermeer.asciitable.v2.themes;
+
+
 
 /**
  * Standard row themes for tables.
@@ -525,7 +527,7 @@ public enum E_RowThemes {
 			.setMidBorderDown(midBorderDown)
 			.setMidBorderUp(midBorderUp)
 		;
-		RowTheme.testTheme(this.builder.build());
+		V2Validator.testRowTheme(this.builder.build());
 	}
 
 	public RowTheme get(){

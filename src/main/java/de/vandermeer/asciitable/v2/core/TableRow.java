@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2;
+package de.vandermeer.asciitable.v2.core;
 
 import de.vandermeer.asciitable.commons.TableException;
 
@@ -128,5 +128,25 @@ public class TableRow {
 	 */
 	public E_RuleStyle getRuleStyle(){
 		return this.ruleStyle;
+	}
+
+	/**
+	 * Sets the rule type if the row is a rule row and the new type is not null.
+	 * @param type new rule type
+	 */
+	public void setRuleType(E_RuleType type){
+		if(this.isRule() && type!=null){
+			this.ruleType = type;
+		}
+	}
+
+	/**
+	 * Sets the rule style if the row is a rule row and the new style is not null.
+	 * @param style new rule style
+	 */
+	public void setRuleStyle(E_RuleStyle style){
+		if(this.isRule() && style!=null){
+			this.ruleStyle = style;
+		}
 	}
 }

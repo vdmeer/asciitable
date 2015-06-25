@@ -13,23 +13,23 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2;
+package de.vandermeer.asciitable.v2.core;
 
 /**
- * Calculator for table width.
+ * Types of table rule: top, mid, bottom.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.4 build 150619 (19-Jun-15) for Java 1.8
  */
-public interface Width {
+public enum E_RuleType {
 
-	/**
-	 * Returns an array with calculated width of table columns.
-	 * The array length is the number of table columns + 1.
-	 * The first entry in the table is the overall table width.
-	 * Each following entry is the width of the respective column.
-	 * @param table incoming table for calculations
-	 * @return array with overall table width and width of individual columns
-	 */
-	public int[] calculateWidth(AsctiiTable table);
+	/** A top rule of a table. */
+	TOP,
+
+	/** A mid rule of a table. */
+	MID,
+
+	/** A bottom rule of a table. */
+	BOTTOM,
+	;
 }

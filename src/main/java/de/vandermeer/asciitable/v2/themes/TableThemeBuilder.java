@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2;
+package de.vandermeer.asciitable.v2.themes;
+
+import org.apache.commons.lang3.text.StrBuilder;
 
 /**
  * Builder for a table themes.
@@ -134,7 +136,7 @@ public class TableThemeBuilder {
 	 */
 	public TableTheme build(){
 		TableTheme ret = this.build(this.top, this.topStrong, this.mid, this.midStrong, this.bottom, this.bottomStrong, this.content, this.description);
-		TableTheme.testTheme(ret);
+		V2Validator.testTableTheme(ret);
 		return ret;
 	}
 
@@ -150,7 +152,7 @@ public class TableThemeBuilder {
 	 * @param description descriptive text for the theme
 	 * @return
 	 */
-	private TableTheme build(RowTheme top, RowTheme topStrong, RowTheme mid, RowTheme midStrong, RowTheme bottom, RowTheme bottomStrong, RowTheme content, String description){
+	private TableTheme build(final RowTheme top, final RowTheme topStrong, final RowTheme mid, final RowTheme midStrong, final RowTheme bottom, final RowTheme bottomStrong, final RowTheme content, final String description){
 		return new TableTheme() {
 			@Override public RowTheme getTopStrong() {return topStrong;}
 			@Override public RowTheme getTop() {return top;}
@@ -160,6 +162,17 @@ public class TableThemeBuilder {
 			@Override public RowTheme getContent() {return content;}
 			@Override public RowTheme getBottomStrong() {return bottomStrong;}
 			@Override public RowTheme getBottom() {return bottom;}
+			@Override public StrBuilder toDoc(){
+				StrBuilder ret = new StrBuilder(50);
+				ret
+					.append(getTop().toDoc())    .append("        ").append(getTopStrong().toDoc())        .appendNewLine()
+					.append(getContent().toDoc()).append("        ").append(getContent().toDoc())          .appendNewLine()
+					.append(getMid().toDoc())    .append("        ").append(getMidStrong().toDoc())        .appendNewLine()
+					.append(getContent().toDoc()).append("        ").append(getContent().toDoc())          .appendNewLine()
+					.append(getBottom().toDoc()) .append("        ").append(getBottomStrong().toDoc())     .appendNewLine()
+				;
+				return ret;
+			}
 		};
 	}
 }

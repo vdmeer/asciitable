@@ -13,23 +13,11 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2;
-
 /**
- * Types of table rule: top, mid, bottom.
+ * Version 2 of an implementation of an ASCII Table with flexible renderes and themes for rows and tables.
+ *
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.4 build 150619 (19-Jun-15) for Java 1.8
  */
-public enum E_RuleType {
-
-	/** A top rule of a table. */
-	TOP,
-
-	/** A mid rule of a table. */
-	MID,
-
-	/** A bottom rule of a table. */
-	BOTTOM,
-	;
-}
+package de.vandermeer.asciitable.v2;

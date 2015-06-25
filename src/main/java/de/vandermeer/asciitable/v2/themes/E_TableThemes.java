@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2;
+package de.vandermeer.asciitable.v2.themes;
+
+
 
 /**
  * Standard table themes.
@@ -170,7 +172,7 @@ public enum E_TableThemes {
 			.setBottom(bottom.get())
 			.setBottomStrong(bottom.get())
 		;
-		TableTheme.testTheme(this.builder.build());
+		V2Validator.testTableTheme(this.builder.build());
 	}
 
 	private E_TableThemes(E_RowThemes top, E_RowThemes topStrong, E_RowThemes mid, E_RowThemes midStrong, E_RowThemes bottom, E_RowThemes bottomStrong, E_RowThemes content, String description){
@@ -184,7 +186,7 @@ public enum E_TableThemes {
 			.setBottom(bottom.get())
 			.setBottomStrong(bottomStrong.get())
 		;
-		TableTheme.testTheme(this.builder.build());
+		V2Validator.testTableTheme(this.builder.build());
 	}
 
 	public TableTheme get(){

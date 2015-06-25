@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2;
+package de.vandermeer.asciitable.v2.core;
 
 import de.vandermeer.asciitable.commons.ArrayTransformations;
 
@@ -23,7 +23,7 @@ import de.vandermeer.asciitable.commons.ArrayTransformations;
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.4 build 150619 (19-Jun-15) for Java 1.8
  */
-class ProcessedRow {
+public class ProcessedRow {
 
 	/** The original table row with the original content. */
 	TableRow original;
@@ -47,6 +47,30 @@ class ProcessedRow {
 
 		this._createContentArray(width);
 		this._adjustBordersContentRow();
+	}
+
+	/**
+	 * Returns the processed columns of this row.
+	 * @return processed columns
+	 */
+	public final String[][] getProcessedColumns(){
+		return this.procColumns;
+	}
+
+	/**
+	 * Returns the adjusted orders array of this row
+	 * @return adjusted border array
+	 */
+	public E_AdjustedBorderType[] getAdjustedBorders(){
+		return this.adjustedBorders;
+	}
+
+	/**
+	 * Returns the original row with the orginal definitions and content
+	 * @return original row
+	 */
+	public TableRow getOriginalRow(){
+		return this.original;
 	}
 
 	/**
@@ -126,7 +150,7 @@ class ProcessedRow {
 	 * If the row is a rule and of type {@link E_RuleType#TOP} an adjusted border array will be created
 	 * @param next the row following the top row
 	 */
-	final void adjustTopRuleBorder(ProcessedRow next){
+	public final void adjustTopRuleBorder(ProcessedRow next){
 		if(this.original.isRule()){
 			switch(this.original.ruleType){
 				case TOP:
@@ -170,10 +194,10 @@ class ProcessedRow {
 	/**
 	 * Adjusts the a row considered to be a bottom row.
 	 * Use this only for the bottom row of a table.
-	 * If the row is a rule and of type {@link E_RuleType#Bottom} an adjusted border array will be created
+	 * If the row is a rule and of type {@link E_RuleType#BOTTOM} an adjusted border array will be created
 	 * @param prev the row previous the bottom row
 	 */
-	final void adjustBottomRuleBorder(ProcessedRow prev){
+	public final void adjustBottomRuleBorder(ProcessedRow prev){
 		if(this.original.isRule()){
 			switch(this.original.ruleType){
 				case BOTTOM:
@@ -218,7 +242,7 @@ class ProcessedRow {
 	 * @param prev the row previous to the rule row (null if not applicable)
 	 * @param next the row next to the rule row (null if not applicable)
 	 */
-	final void adjustMidRuleBorder(ProcessedRow prev, ProcessedRow next){
+	public final void adjustMidRuleBorder(ProcessedRow prev, ProcessedRow next){
 		if(this.original.isRule()){
 			switch(this.original.ruleType){
 				case MID:
