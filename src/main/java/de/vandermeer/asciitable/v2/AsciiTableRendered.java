@@ -23,7 +23,7 @@ import org.apache.commons.lang3.text.StrBuilder;
  * A fully rendered table ready to be printed or written to files.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.4 build 150619 (19-Jun-15) for Java 1.8
+ * @version    v0.0.5 build 150625 (25-Jun-15) for Java 1.7
  */
 public class AsciiTableRendered {
 

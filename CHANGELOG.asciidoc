@@ -1,4 +1,4 @@
-v0.0.5 - feature add - 2015-##-##
+v0.0.5 - feature add - 2015-05-25
 ---------------------------------
 * complete re-write of v2
 * moved back to Java 7 on request

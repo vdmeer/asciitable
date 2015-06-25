@@ -30,9 +30,9 @@ import de.vandermeer.asciitable.v2.core.TableRow;
  * An ASCII table with flexible column number, column width, wrapping, spanning and renderer with themes.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.4 build 150619 (19-Jun-15) for Java 1.8
+ * @version    v0.0.5 build 150625 (25-Jun-15) for Java 1.7
  */
-public class AsctiiTable {
+public class AsciiTable {
 
 	/** List of rows of the table. */
 	List<TableRow> table;
@@ -44,7 +44,7 @@ public class AsctiiTable {
 	 * Creates a new table.
 	 * @param columns number of columns for the table, cannot be 0
 	 */
-	public AsctiiTable(int columns){
+	public AsciiTable(int columns){
 		this.table = new LinkedList<TableRow>();
 		this.columns = columns;
 	}

@@ -37,7 +37,7 @@ import de.vandermeer.asciitable.v2.themes.V2Validator;
  * Renders a table.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.4 build 150619 (19-Jun-15) for Java 1.8
+ * @version    v0.0.5 build 150625 (25-Jun-15) for Java 1.7
  */
 public class AsciiTableRenderer {
 
@@ -85,7 +85,7 @@ public class AsciiTableRenderer {
 	 * @param table table to be rendered
 	 * @return linked list of string builders with rendered rows
 	 */
-	public AsciiTableRendered render(AsctiiTable table){
+	public AsciiTableRendered render(AsciiTable table){
 		//nothing to do
 		if(table==null || table.getColumnCount()==0){
 			throw new IllegalArgumentException("wrong table argument: table is null or has no columns");

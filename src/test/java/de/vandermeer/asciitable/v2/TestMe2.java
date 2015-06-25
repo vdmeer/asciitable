@@ -12,7 +12,7 @@ public class TestMe2 {
 		System.out.println(E_TableThemes.UTF_LIGHT.get().toDoc());
 //		System.out.println(E_RowThemes.UTF_HEAVY_CONTENT.get().toDoc());
 
-		AsctiiTable at = new AsctiiTable(3);
+		AsciiTable at = new AsciiTable(3);
 		at.addRuleStrong();
 		at.addRow(null, null, "Table Heading");
 		at.addRule();
