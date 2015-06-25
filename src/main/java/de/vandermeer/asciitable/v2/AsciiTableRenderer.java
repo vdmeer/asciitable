@@ -71,7 +71,7 @@ public class AsciiTableRenderer {
 	/**
 	 * Sets the width for the rendered.
 	 * @param width new width
-	 * @return
+	 * @return self to allow for chaining
 	 */
 	public AsciiTableRenderer setWidth(Width width){
 		if(width!=null){
@@ -85,7 +85,7 @@ public class AsciiTableRenderer {
 	 * @param table table to be rendered
 	 * @return linked list of string builders with rendered rows
 	 */
-	public AsciiTableRendered render(AsciiTable table){
+	public RenderedAsciiTable render(AsciiTable table){
 		//nothing to do
 		if(table==null || table.getColumnCount()==0){
 			throw new IllegalArgumentException("wrong table argument: table is null or has no columns");
@@ -128,7 +128,7 @@ public class AsciiTableRenderer {
 		for(ProcessedRow row : this.rows){
 			ret.add(this.renderRow(row, cols));
 		}
-		return new AsciiTableRendered(ret);
+		return new RenderedAsciiTable(ret);
 	}
 
 	/**

@@ -25,7 +25,7 @@ import org.apache.commons.lang3.text.StrBuilder;
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.5 build 150625 (25-Jun-15) for Java 1.7
  */
-public class AsciiTableRendered {
+public class RenderedAsciiTable {
 
 	/** List of rendered rows. */
 	List<StrBuilder> rows;
@@ -34,7 +34,7 @@ public class AsciiTableRendered {
 	 * Returns a new rendered table initialized with a list of rendered rows.
 	 * @param rows rendered rows
 	 */
-	public AsciiTableRendered(List<StrBuilder> rows){
+	public RenderedAsciiTable(List<StrBuilder> rows){
 		this.rows = rows;
 	}
 

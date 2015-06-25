@@ -24,7 +24,7 @@ public class TestMe2 {
 		AsciiTableRenderer rend = new AsciiTableRenderer();
 		rend.setTheme(E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new WidthByAbsolute().setWidth(76));
-		AsciiTableRendered rat = rend.render(at);
+		RenderedAsciiTable rat = rend.render(at);
 
 		System.out.println(rat);
 	}
