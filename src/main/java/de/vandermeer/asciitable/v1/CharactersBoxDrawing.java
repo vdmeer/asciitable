@@ -21,7 +21,8 @@ import de.vandermeer.asciitable.commons.TablePair;
  * ASCII and UTF-8 box drawing characters.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.5 build 150625 (25-Jun-15) for Java 1.7
+ * @version    v0.0.6 build 150721 (21-Jul-15) for Java 1.7
+ * @since      v0.0.1
  */
 public enum CharactersBoxDrawing implements TablePair<Character, Character> {
 
@@ -198,7 +199,7 @@ public enum CharactersBoxDrawing implements TablePair<Character, Character> {
 	/** UTF-8 Light for horizontal double dash = ╌ */
 	LIGHT_HORIZONTAL_DOUBLE_DASH		('\u254C', '╌', "UTF-8 Light for horizontal double dash"),
 	/** UTF-8 Light for horizontal double dash = ┈ */
-	LIGHT_HORIZONTAL_TQUADRUPLE_DASH	('\u2508', '┈', "UTF-8 Light for horizontal double dash"),
+	LIGHT_HORIZONTAL_QUADRUPLE_DASH		('\u2508', '┈', "UTF-8 Light for horizontal double dash"),
 	/** UTF-8 Light for horizontal double dash = ┄ */
 	LIGHT_HORIZONTAL_TRIPLE_DASH		('\u2504', '┄', "UTF-8 Light for horizontal double dash"),
 	/** UTF-8 Light for vertical double dash = ╎ */

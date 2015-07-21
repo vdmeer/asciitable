@@ -21,7 +21,8 @@ import de.vandermeer.asciitable.commons.TableException;
  * A table row, either a rule or a row with content for columns.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.5 build 150625 (25-Jun-15) for Java 1.7
+ * @version    v0.0.6 build 150721 (21-Jul-15) for Java 1.7
+ * @since      v0.0.3
  */
 public class TableRow {
 

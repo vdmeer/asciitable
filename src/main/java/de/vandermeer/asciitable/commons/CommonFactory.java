@@ -19,7 +19,7 @@ package de.vandermeer.asciitable.commons;
  * Factory for common table artifacts.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.5 build 150625 (25-Jun-15) for Java 1.7
+ * @version    v0.0.6 build 150721 (21-Jul-15) for Java 1.7
  */
 public abstract class CommonFactory {
 

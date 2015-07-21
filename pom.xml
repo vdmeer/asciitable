@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.vandermeer</groupId>
 	<artifactId>asciitable</artifactId>
-	<version>0.0.5</version>
+	<version>0.0.6</version>
 
 	<name>Ascii Table</name>
 	<url>https://github.com/vdmeer/asciitable</url>
@@ -87,7 +87,7 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-			<version>3.1</version>
+			<version>3.4</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -106,10 +106,10 @@
 				<version>1.5.0</version>
 				<executions>
 					<execution>
-						<id>package-asciidoc</id>
+						<id>bundle-asciidoc</id>
 						<phase>process-resources</phase>
 						<configuration>
-							<sourceDirectory>src/package/doc</sourceDirectory>
+							<sourceDirectory>src/main/bundle/doc</sourceDirectory>
 							<outputDirectory>./</outputDirectory>
 							<backend>html</backend>
 						</configuration>
@@ -122,14 +122,14 @@
 				<version>2.4.3</version>
 				<executions>
 					<execution>
-						<id>copy-docs</id>
+						<id>copy-bundle-docs</id>
 						<phase>generate-resources</phase>
 						<goals><goal>copy-resources</goal></goals>
 						<configuration>
 							<outputDirectory>./</outputDirectory>
 							<resources>
 								<resource>
-									<directory>src/package/doc</directory>
+									<directory>src/main/bundle/doc</directory>
 									<filtering>true</filtering>
 								</resource>
 							</resources>
@@ -216,20 +216,6 @@
 							<header>${project.name}: ${project.version}</header>
 							<footer>${project.name}: ${project.version}</footer>
 							<doctitle>${project.name}: ${project.version}</doctitle>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>install</phase>
-						<goals>
-							<goal>copy-dependencies</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${project.build.directory}/lib</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>

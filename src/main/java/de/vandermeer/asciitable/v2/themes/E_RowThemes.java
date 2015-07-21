@@ -21,7 +21,8 @@ package de.vandermeer.asciitable.v2.themes;
  * Standard row themes for tables.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.5 build 150625 (25-Jun-15) for Java 1.7
+ * @version    v0.0.6 build 150721 (21-Jul-15) for Java 1.7
+ * @since      v0.0.3
  */
 public enum E_RowThemes {
 
@@ -363,6 +364,86 @@ public enum E_RowThemes {
 	ASC7_LINE_LT					('≤', '≤', '≤', '≤', '≤', '≤', "character '≤' line"),
 
 	/**
+	 * Character ' ' line.
+	 * <pre>
+	 *            
+	 * </pre>
+	 */
+	ASC7_LINE_BLANK					(' ', ' ', ' ', ' ', ' ', ' ', "character ' ' line"),
+
+	/**
+	 * Character '═' line.
+	 * <pre>
+	 * ═══════════
+	 * </pre>
+	 */
+	UTF_LINE_DOUBLE					('═', '═', '═', '═', '═', '═', "character '═' line"),
+
+	/**
+	 * Character '─' line.
+	 * <pre>
+	 * ───────────
+	 * </pre>
+	 */
+	UTF_LINE_LIGHT					('─', '─', '─', '─', '─', '─', "character '─' line"),
+
+	/**
+	 * Character '━' line.
+	 * <pre>
+	 * ━━━━━━━━━━━
+	 * </pre>
+	 */
+	UTF_LINE_HEAVY					('━', '━', '━', '━', '━', '━', "character '━' line"),
+
+	/**
+	 * Character '╌' line.
+	 * <pre>
+	 * ╌╌╌╌╌╌╌╌╌╌╌
+	 * </pre>
+	 */
+	UTF_LINE_DOUBLE_DASH			('╌', '╌', '╌', '╌', '╌', '╌', "character '╌' line"),
+
+	/**
+	 * Character '\u2508' line.
+	 * <pre>
+	 * ┈┈┈┈┈┈┈┈┈┈┈
+	 * </pre>
+	 */
+	UTF_LINE_QUADRUPLE_DASH			('\u2508', '\u2508', '\u2508', '\u2508', '\u2508', '\u2508', "character '\u2508' line"),
+
+	/**
+	 * Character '┄' line.
+	 * <pre>
+	 * ┄┄┄┄┄┄┄┄┄┄┄
+	 * </pre>
+	 */
+	UTF_LINE_TRIPLE_DASH			('┄', '┄', '┄', '┄', '┄', '┄', "character '┄' line"),
+
+	/**
+	 * Character '╎' line.
+	 * <pre>
+	 * ╎╎╎╎╎╎╎╎╎╎╎
+	 * </pre>
+	 */
+	UTF_LINE_VERTICAL_DOUBLE_DASH	('╎', '╎', '╎', '╎', '╎', '╎', "character '╎' line"),
+
+	/**
+	 * Character '┊' line.
+	 * <pre>
+	 * ┊┊┊┊┊┊┊┊┊┊┊
+	 * </pre>
+	 */
+	UTF_LINE_VERTICAL_QUADRUPLE_DASH('┊', '┊', '┊', '┊', '┊', '┊', "character '┊' line"),
+
+	/**
+	 * Character '┆' line.
+	 * <pre>
+	 * ┆┆┆┆┆┆┆┆┆┆┆ 
+	 * </pre>
+	 */
+	UTF_LINE_VERTICAL_TRIPLE_DASH	('┆', '┆', '┆', '┆', '┆', '┆', "character '┆' line"),
+
+	/**
 	 * UTF-8 double characters for a top rule.
 	 * <pre>
 	 * ╔═════╦═╗
@@ -508,8 +589,6 @@ public enum E_RowThemes {
 	 * </pre>
 	 */
 	UTF_HEAVY_CONTENT				('┃', '┃', '┃', '┃', '┃', '\u2003', "UTF-8 with heavy (thick) lines vertically and horizontally for content row"),
-
-
 	;
 
 

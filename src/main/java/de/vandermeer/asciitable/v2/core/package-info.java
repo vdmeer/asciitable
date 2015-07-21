@@ -13,21 +13,11 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.core;
-
 /**
- * Style of a table rule: normal or strong.
+ * V2 core artifacts.
+ *
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.6 build 150721 (21-Jul-15) for Java 1.7
- * @since      v0.0.3
  */
-public enum E_RuleStyle {
-
-	/** A normal, standard rule, exact type (top, mid, bottom) needs to be calculated. */
-	NORMAL,
-
-	/** A strong, emphasized rule, exact type (top, mid, bottom) needs to be calculated. */
-	STRONG,
-	;
-}
+package de.vandermeer.asciitable.v2.core;

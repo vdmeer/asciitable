@@ -1,3 +1,8 @@
+v0.0.6 - maintenance - 2015-07-21
+---------------------------------
+* added more row themes
+
+
 v0.0.5 - feature add - 2015-05-25
 ---------------------------------
 * complete re-write of v2
@@ -21,6 +26,7 @@ v0.0.3 - feature add - 2015-06-18
 * removed SKB dependencies
 ** removed OptionList and added setters for padding character and theme
 ** moved all other skb.base classes into this package
+* added an experimental V2
 
 
 v0.0.2 - feature add - 2014-06-25
