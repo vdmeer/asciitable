@@ -423,8 +423,21 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_using_the_ascii_table_v1">Using the ASCII Table V1</a></li>
 <li><a href="#_a_simple_example_with_overall_width">A simple example with overall width</a></li>
-<li><a href="#_an_example_with_fixed_columns_and_a_different_table_theme">An example with fixed columns and a different table theme</a></li>
+<li><a href="#_an_example_with_fixed_columns">An example with fixed columns</a></li>
 <li><a href="#_examples_with_different_table_themes">Examples with different table themes</a></li>
+</ul>
+</li>
+<li><a href="#_ascii_table_version_2">ASCII Table Version 2</a>
+<ul class="sectlevel2">
+<li><a href="#_using_the_ascii_table_v2">Using the ASCII Table V2</a></li>
+<li><a href="#_a_table_with_1_column">A table with 1 column</a></li>
+<li><a href="#_a_table_with_2_columns">A table with 2 columns</a></li>
+<li><a href="#_a_table_with_3_columns">A table with 3 columns</a></li>
+<li><a href="#_a_table_with_4_columns">A table with 4 columns</a></li>
+<li><a href="#_a_table_with_5_columns">A table with 5 columns</a></li>
+<li><a href="#_column_spanning">Column spanning</a></li>
+<li><a href="#_padding_character">Padding Character</a></li>
+<li><a href="#_table_theme">Table Theme</a></li>
 </ul>
 </li>
 </ul>
@@ -446,7 +459,10 @@ Updates will be at here <a href="https://github.com/vdmeer/skb/wiki/HowTo-UTF-8-
 <h2 id="_ascii_table_version_1">ASCII Table Version 1</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This is the original table. It allows to define a table with <code>n</code> columns.
+<p>This is the original table. The code is now frozen, the only changes will be bug fixes.</p>
+</div>
+<div class="paragraph">
+<p>The class allows to define a table with <code>n</code> columns.
 Width set either as overall table width with equally distributed column widths or as fixed width per column.
 A table can be rendered using a table theme. A set of themes is pre-defined, additional themes can be defined as needed.</p>
 </div>
@@ -527,7 +543,7 @@ System.out.println(at.render());</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_an_example_with_fixed_columns_and_a_different_table_theme">An example with fixed columns and a different table theme</h3>
+<h3 id="_an_example_with_fixed_columns">An example with fixed columns</h3>
 <div class="paragraph">
 <p>Another example, this time using an <code>Integer[]</code> to initialize the table.
 The table again has 3 rows and 3 columns, but this time column 1 is set to 10 characters, column 2 is set to 15 characters and column 3 is set to 20 characters:</p>
@@ -665,10 +681,428 @@ heavy character. The following shows a table using the standard heavy theme (<co
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_ascii_table_version_2">ASCII Table Version 2</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is the 2nd generation table.</p>
+</div>
+<div class="paragraph">
+<p>The class allows to define a table with <code>n</code> columns.
+Once a table is defined, rules and rows can be added.
+A rule is a special row with border formatting characters (similar to a rule in a LaTeX table).
+A row is a content row with content (in form of strings or objects with <code>toString()</code> method).
+A row should have content for each of the columns defined for the table, e.g. if the table is set fo 3 columns each row should define content for 3 columns.</p>
+</div>
+<div class="paragraph">
+<p>Once a table is defined and filled, a renderer is used to render the table.
+This render object is initialized with the table width and themes.
+It will produce a rendered table, which can then be printed to the screen or other output that accept a string (such as a file).</p>
+</div>
+<div class="paragraph">
+<p>A set of row themes and table themes are pre-defined. Additional themes can be easily defined and validated.</p>
+</div>
+<div class="sect2">
+<h3 id="_using_the_ascii_table_v2">Using the ASCII Table V2</h3>
+<div class="paragraph">
+<p>The standard usage is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>create a table for <code>n</code> columns</p>
+</li>
+<li>
+<p>add rules and rows</p>
+<div class="ulist">
+<ul>
+<li>
+<p>a rule is a separator of rows usin a normal row theme</p>
+</li>
+<li>
+<p>a strong rule is a separator of rows using a strong row theme</p>
+</li>
+<li>
+<p>a row is the actual content with objects per column (or spanning columns, as explained below)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>create a renderer and configure it</p>
+</li>
+<li>
+<p>render the table and print it</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A table, once created, can be rendered using any renderer.
+Any renderer can render any created table multiple (any) times.
+Furthermore, a renderer can re-render a table (if it has been changed) anytime.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_a_table_with_1_column">A table with 1 column</h3>
+<div class="paragraph">
+<p>First get a new instance of the ASCII Table using the public constructor set for 1 column:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>V2_AsciiTable at = new V2_AsciiTable(1);</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next, fill the table.
+The example here adds a strong rule followed by a content row, a rule, a content row, a rule, a content row, and a final rule.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>at.addRuleStrong();
+at.addRow("Table Heading");
+at.addRule();
+at.addRow("first row (col1)");
+at.addRule();
+at.addRow("second row (col1)");
+at.addRule();</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Last, create a renderer object, configure it, render the table, and print it.
+The example here uses a theme <code>V2_E_TableThemes.UTF_LIGHT</code> to render the table for an absolute width of 76 characters:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
+System.out.println(rend.render(at));</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output of this example will be:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>┌──────────────────────────────────────────────────────────────────────────┐
+│Table Heading                                                             │
+├──────────────────────────────────────────────────────────────────────────┤
+│first row (col1)                                                          │
+├──────────────────────────────────────────────────────────────────────────┤
+│second row (col1)                                                         │
+└──────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_a_table_with_2_columns">A table with 2 columns</h3>
+<div class="paragraph">
+<p>The following example creates a table with 2 columns:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>V2_AsciiTable at = new V2_AsciiTable(2);
+at.addRuleStrong();
+at.addRow(null,"Table Heading");
+at.addRule();
+at.addRow("first row (col1)", "with some information");
+at.addRule();
+at.addRow("second row (col1)", "with some information (col2)");
+at.addRule();
+
+V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
+System.out.println(rend.render(at));</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output of this example will be:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>┌──────────────────────────────────────────────────────────────────────────┐
+│                              Table Heading                               │
+├─────────────────────────────────────┬────────────────────────────────────┤
+│first row (col1)                     │with some information               │
+├─────────────────────────────────────┼────────────────────────────────────┤
+│second row (col1)                    │with some information (col2)        │
+└─────────────────────────────────────┴────────────────────────────────────┘</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_a_table_with_3_columns">A table with 3 columns</h3>
+<div class="paragraph">
+<p>The following example creates a table with 3 columns:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>V2_AsciiTable at = new V2_AsciiTable(3);
+at.addRuleStrong();
+at.addRow(null, null, "Table Heading");
+at.addRule();
+at.addRow("first row (col1)", "with some information", "and more information");
+at.addRule();
+at.addRow("second row (col1)", "with some information (col2)", "and more information (col3)");
+at.addRule();
+
+V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
+System.out.println(rend.render(at));</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output of this example will be:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>┌──────────────────────────────────────────────────────────────────────────┐
+│                              Table Heading                               │
+├────────────────────────┬────────────────────────┬────────────────────────┤
+│first row (col1)        │with some information   │and more information    │
+├────────────────────────┼────────────────────────┼────────────────────────┤
+│second row (col1)       │with some information   │and more information    │
+│                        │(col2)                  │(col3)                  │
+└────────────────────────┴────────────────────────┴────────────────────────┘</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_a_table_with_4_columns">A table with 4 columns</h3>
+<div class="paragraph">
+<p>The following example creates a table with 4 columns:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>V2_AsciiTable at = new V2_AsciiTable(4);
+at.addRuleStrong();
+at.addRow(null, null, null, "Table Heading");
+at.addRule();
+at.addRow("first row (col1)", "with some information", "and more information", "even more");
+at.addRule();
+at.addRow("second row (col1)", "with some information (col2)", "and more information (col3)", "even more");
+at.addRule();
+
+V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
+System.out.println(rend.render(at));</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output of this example will be:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>┌──────────────────────────────────────────────────────────────────────────┐
+│                              Table Heading                               │
+├──────────────────┬──────────────────┬──────────────────┬─────────────────┤
+│first row (col1)  │with some         │and more          │even more        │
+│                  │information       │information       │                 │
+├──────────────────┼──────────────────┼──────────────────┼─────────────────┤
+│second row (col1) │with some         │and more          │even more        │
+│                  │information (col2)│information (col3)│                 │
+└──────────────────┴──────────────────┴──────────────────┴─────────────────┘</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_a_table_with_5_columns">A table with 5 columns</h3>
+<div class="paragraph">
+<p>The following example creates a table with 5 columns:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>new V2_AsciiTable(5);
+at.addRuleStrong();
+at.addRow(null, null, null, null, "Table Heading");
+at.addRule();
+at.addRow("first row (col1)", "with some information", "and more information", "even more", "more");
+at.addRule();
+at.addRow("second row (col1)", "with some information (col2)", "and more information (col3)", "even more", "more");
+at.addRule();
+
+V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
+System.out.println(rend.render(at));</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output of this example will be:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>┌──────────────────────────────────────────────────────────────────────────┐
+│                              Table Heading                               │
+├──────────────┬──────────────┬──────────────┬──────────────┬──────────────┤
+│first row     │with some     │and more      │even more     │more          │
+│(col1)        │information   │information   │              │              │
+├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
+│second row    │with some     │and more      │even more     │more          │
+│(col1)        │information   │information   │              │              │
+│              │(col2)        │(col3)        │              │              │
+└──────────────┴──────────────┴──────────────┴──────────────┴──────────────┘</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_column_spanning">Column spanning</h3>
+<div class="paragraph">
+<p>Rows can span columns.
+This is done by adding columns of <code>null</code> content to a row followd by a column with content.
+The column with content will span all previous rows with content <code>null</code>.
+The followign example creates a table with 5 columns and different column spanning (all to none columns):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>V2_AsciiTable at = new V2_AsciiTable(5);
+at.addRuleStrong();
+at.addRow(null, null, null, null, "span all 5 columns");
+at.addRule();
+at.addRow(null, null, null, "span 4 columns", "just 1 column");
+at.addRule();
+at.addRow(null, null, "span 3 columns", null, "span 2 columns");
+at.addRule();
+at.addRow(null, "span 2 columns", null, null, "span 3 columns");
+at.addRule();
+at.addRow("just 1 column", null, null, null, "span 4 columns");
+at.addRule();
+at.addRow("just 1 column", "just 1 column", "just 1 column", "just 1 column", "just 1 column");
+at.addRule();
+
+V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
+System.out.println(rend.render(at));</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output of this example will be:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>┌──────────────────────────────────────────────────────────────────────────┐
+│                            span all 5 columns                            │
+├───────────────────────────────────────────────────────────┬──────────────┤
+│                      span 4 columns                       │just 1 column │
+├────────────────────────────────────────────┬──────────────┴──────────────┤
+│               span 3 columns               │       span 2 columns        │
+├─────────────────────────────┬──────────────┴─────────────────────────────┤
+│       span 2 columns        │               span 3 columns               │
+├──────────────┬──────────────┴────────────────────────────────────────────┤
+│just 1 column │                      span 4 columns                       │
+├──────────────┼──────────────┬──────────────┬──────────────┬──────────────┤
+│just 1 column │just 1 column │just 1 column │just 1 column │just 1 column │
+└──────────────┴──────────────┴──────────────┴──────────────┴──────────────┘</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_padding_character">Padding Character</h3>
+<div class="paragraph">
+<p>The table renderer can be set to use different padding characters.
+A padding character is the character used to fill content rows (all their columns) upto the next border.
+Using UTF-8 characters might not be result in te anticipated result.
+The followign example creates a table with 1 table rendered with the same renderer set for different padding characters:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>V2_AsciiTable at = new V2_AsciiTable(1);
+at.addRule();
+at.addRow("some text with padding");
+at.addRule();
+
+V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
+System.out.println(rend.render(at));
+rend.setPaddingChar('*');
+System.out.println(rend.render(at));
+rend.setPaddingChar('-');
+System.out.println(rend.render(at));
+rend.setPaddingChar('␣');
+System.out.println(rend.render(at));</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output of this example will be:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>+--------------------------------------------------------------------------+
+|some text with padding                                                    |
++--------------------------------------------------------------------------+
+
++--------------------------------------------------------------------------+
+|some text with padding****************************************************|
++--------------------------------------------------------------------------+
+
++--------------------------------------------------------------------------+
+|some text with padding----------------------------------------------------|
++--------------------------------------------------------------------------+
+
++--------------------------------------------------------------------------+
+|some text with padding␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣|
++--------------------------------------------------------------------------+</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_table_theme">Table Theme</h3>
+<div class="paragraph">
+<p>The table renderer can be set to use different table themes.
+A table theme defines all border characters for rules, strong rules and content rows.
+The followign example creates a table with 1 table rendered with the same renderer set for different table themes (using pre-defined themes):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>V2_AsciiTable at = new V2_AsciiTable(1);
+at.addRule();
+at.addRow("some text with padding");
+at.addRule();
+
+V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
+System.out.println(rend.render(at));
+rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+System.out.println(rend.render(at));
+rend.setTheme(V2_E_TableThemes.UTF_DOUBLE_LIGHT.get());
+System.out.println(rend.render(at));
+rend.setTheme(V2_E_TableThemes.UTF_DOUBLE.get());
+System.out.println(rend.render(at));</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output of this example will be:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>+--------------------------------------------------------------------------+
+|some text with padding                                                    |
++--------------------------------------------------------------------------+
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│some text with padding                                                    │
+└──────────────────────────────────────────────────────────────────────────┘
+
+╓──────────────────────────────────────────────────────────────────────────╖
+║some text with padding                                                    ║
+╙──────────────────────────────────────────────────────────────────────────╜
+
+╔══════════════════════════════════════════════════════════════════════════╗
+║some text with padding                                                    ║
+╚══════════════════════════════════════════════════════════════════════════╝</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-08-11 21:16:52 IST
+Last updated 2015-08-12 00:14:02 IST
 </div>
 </div>
 </body>

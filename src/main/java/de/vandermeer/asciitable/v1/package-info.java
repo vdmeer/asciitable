@@ -14,7 +14,7 @@
  */
 
 /**
- * Version 1 of an implementation of an ASCII Table with several box character templates.
+ * Original version of an ASCII (and UTF-8) Table, code is frozen (only bug fixes).
  * 
  * <p>
  * This blog post explains how to get UTF-8 support in the whole tool chain http://vdmeer-sven.blogspot.ie/2014/06/utf-8-support-w-java-and-console.html[blog on UTF-8].

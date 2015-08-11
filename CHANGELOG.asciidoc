@@ -13,6 +13,7 @@ v0.1.0 - version change - 2015-08-12
 	** added AbstractTableTheme and changed E_TableThemes and TableThemeBuilder implementations
 	** added AbstractRowTheme and changed E_RowThemes and RowThemeBuilder implementations
 	** changed exceptions on V2_Validator to TableException
+* fixed wrap lines bug in V2_ProcessedRow (did not consider span for line wrapping)
 
 
 v0.0.7 - maintenance - 2015-08-11

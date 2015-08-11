@@ -364,12 +364,12 @@ public enum V2_E_RowThemes {
 	ASC7_LINE_LT					('≤', '≤', '≤', '≤', '≤', '≤', "character '≤' line"),
 
 	/**
-	 * Character ' ' line.
+	 * Character '␣' line.
 	 * <pre>
 	␣␣␣␣␣␣␣␣␣
 	 * </pre>
 	 */
-	ASC7_LINE_BLANK					(' ', ' ', ' ', ' ', ' ', ' ', "character ' ' line"),
+	UTF8_LINE_VISIBLE_SPACE			('␣', '␣', '␣', '␣', '␣', '␣', "character '␣' line"),
 
 	/**
 	 * Character '═' line.

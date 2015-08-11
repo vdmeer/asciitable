@@ -29,10 +29,14 @@ import de.vandermeer.asciitable.commons.ArrayTransformations;
 import de.vandermeer.asciitable.commons.Table_ToStringStyle;
 
 /**
- * An ASCII table with flexible column number, column width, wrapping, spanning and themes.
+ * Original ASCII table with flexible column number, column width, wrapping, spanning and themes.
  * 
  * <p>
- * 		This is the original table. It allows to define a table with {@code n} columns.
+ * 		This is the original table. The code is now frozen, the only changes will be bug fixes.
+ * </p>
+ * 
+ * <p>
+ * 		The class allows to define a table with {@code n} columns.
  * 		Width set either as overall table width with equally distributed column widths or as fixed width per column.
  * 		A table can be rendered using a table theme. A set of themes is pre-defined, additional themes can be defined as needed.
  * </p>

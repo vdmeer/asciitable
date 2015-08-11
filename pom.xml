@@ -217,6 +217,9 @@
 							<header>${project.name}: ${project.version}</header>
 							<footer>${project.name}: ${project.version}</footer>
 							<doctitle>${project.name}: ${project.version}</doctitle>
+							<noqualifier>all</noqualifier>
+							<detectLinks>true</detectLinks>
+							<detectJavaApiLink>true</detectJavaApiLink>
 						</configuration>
 					</execution>
 				</executions>

@@ -81,9 +81,19 @@ public class V2_ProcessedRow {
 	private final void _createContentArray(int[] width){
 		if(this.original.isContent()){
 			this.procColumns = new String[width.length-1][];
+
+			int length = 0;
 			for(int i=0; i<this.original.columns.length; i++){
 				Object o = this.original.columns[i];
-				this.procColumns[i] = ArrayTransformations.WRAP_LINES(width[i+1], o);
+				if(o==null){
+					length += width[i+1];
+					continue;
+				}
+				else{
+					length += width[i+1];
+				}
+				this.procColumns[i] = ArrayTransformations.WRAP_LINES(length, o);
+				length = 0;
 			}
 			//equal number of strings per column
 			this.procColumns = ArrayTransformations.NORMALISE_ARRAY(width.length-1, this.procColumns);
