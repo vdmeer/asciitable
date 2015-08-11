@@ -67,7 +67,7 @@ public class ProcessedRow {
 	}
 
 	/**
-	 * Returns the original row with the orginal definitions and content
+	 * Returns the original row with the original definitions and content
 	 * @return original row
 	 */
 	public TableRow getOriginalRow(){
@@ -85,13 +85,10 @@ public class ProcessedRow {
 				Object o = this.original.columns[i];
 				this.procColumns[i] = ArrayTransformations.WRAP_LINES(width[i+1], o);
 			}
-
 			//equal number of strings per column
 			this.procColumns = ArrayTransformations.NORMALISE_ARRAY(width.length-1, this.procColumns);
-
 			//flip so that each normalized array row is a table column
 			this.procColumns = ArrayTransformations.FLIP_ARRAY(this.procColumns);
-
 		}
 		else{
 			this.procColumns = null;
