@@ -24,7 +24,7 @@ import org.apache.commons.lang3.text.StrBuilder;
  * ToString style for the AsciiTable.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.1.0 build 150812 (12-Aug-15) for Java 1.7
+ * @version    v0.1.1-SNAPSHOT build 150812 (12-Aug-15) for Java 1.7
  */
 public abstract class Table_ToStringStyle {
 

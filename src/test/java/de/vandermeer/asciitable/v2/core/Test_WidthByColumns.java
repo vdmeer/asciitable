@@ -25,7 +25,7 @@ import de.vandermeer.asciitable.v2.core.V2_WidthByColumns;
  * Tests for column width class.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.1.0 build 150812 (12-Aug-15) for Java 1.7
+ * @version    v0.1.1-SNAPSHOT build 150812 (12-Aug-15) for Java 1.7
  */
 public class Test_WidthByColumns {
 
