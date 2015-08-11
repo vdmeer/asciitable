@@ -87,6 +87,7 @@ public class AsciiTableRenderer {
 	 * @return linked list of string builders with rendered rows
 	 */
 	public RenderedAsciiTable render(AsciiTable table){
+		this.rows.clear();
 		//nothing to do
 		if(table==null || table.getColumnCount()==0){
 			throw new IllegalArgumentException("wrong table argument: table is null or has no columns");
@@ -193,7 +194,7 @@ public class AsciiTableRenderer {
 								//add the separator characters (span) plus the one for this column
 								width += span;
 								//add the current column width
-								width += cols[i+1];
+								width += cols[k+1];
 								//Center content in the new column
 								ret.appendFixedWidthPadRight("", width, this.paddingChar);
 							}
@@ -210,7 +211,7 @@ public class AsciiTableRenderer {
 							ret.appendFixedWidthPadRight("", span, this.paddingChar);
 							span = 0;
 							//now add the empty column
-							ret.appendFixedWidthPadRight(columns[i][k], cols[i+1], this.paddingChar);
+							ret.appendFixedWidthPadRight(columns[i][k], cols[k+1], this.paddingChar);
 						}
 						else{
 							int width = 0;
@@ -221,15 +222,15 @@ public class AsciiTableRenderer {
 							//add the separator characters (span) plus the one for this column
 							width += span;
 							//add the current column width
-							width += cols[i+1];
+							width += cols[k+1];
 							//center content in the new column
 							ret.append(StringUtils.center(columns[i][k], width, this.paddingChar));
 							span = 0;
-//							ret.appendFixedWidthPadRight(columns[i][k], cols[i+1], this.paddingChar);
+//							ret.appendFixedWidthPadRight(columns[i][k], cols[k+1], this.paddingChar);
 						}
 					}
 					else{
-						ret.appendFixedWidthPadRight(columns[i][k], cols[i+1], this.paddingChar);
+						ret.appendFixedWidthPadRight(columns[i][k], cols[k+1], this.paddingChar);
 					}
 				}
 			}
