@@ -29,11 +29,16 @@ public enum E_TableThemes {
 	/**
 	 * A theme for plain ASCII-7 boxes (basically the characters '-', '|' and '+').
 	 * <pre>
-	 * +-+-+-+-+
-	 * | | | | |
-	 * +-+-+-+-+
-	 * | | | | |
-	 * +-+-+-+-+
+	 * Normal           Example
+	 * +-+-+-+-+        +----+----+----+
+	 * | | | | |        |h1  |h2  |h3  |
+	 * +-+-+-+-+        +----+----+----+
+	 * | | | | |        |c1  |c2  |c3  |
+	 * +-+-+-+-+        +----+----+----+
+	 *                  |c1  |c2  |c3  |
+	 *                  +----+----+----+
+	 *                  |c1  |c2  |c3  |
+	 *                  +----+----+----+
 	 * </pre>
 	 */
 	PLAIN_7BIT(
@@ -45,13 +50,44 @@ public enum E_TableThemes {
 	),
 
 	/**
-	 * UTF-8 characters with double lines vertically and horizontally.
+	 * A theme for plain ASCII-7 boxes (basically the characters '-', '|' and '+') for normal rules and '=' lines for strong rules.
 	 * <pre>
-	 * ╔═════╦═╗
-	 * ║ ║ ║ ║ ║
-	 * ╠═╩═╬═╦═╣
-	 * ║ ║ ║ ║ ║
-	 * ╚═╩═════╝
+	 * Normal           Strong           Example
+	 * +-+-+-+-+        =========        ================
+	 * | | | | |        | | | | |        |h1  |h2  |h3  |
+	 * +-+-+-+-+        =========        ================
+	 * | | | | |        | | | | |        |c1  |c2  |c3  |
+	 * +-+-+-+-+        =========        +----+----+----+
+	 *                                   |c1  |c2  |c3  |
+	 *                                   +----+----+----+
+	 *                                   |c1  |c2  |c3  |
+	 *                                   ================
+	 * </pre>
+	 */
+	PLAIN_7BIT_STRONG (
+			E_RowThemes.ASC7_SIMPLE,
+			E_RowThemes.ASC7_LINE_EQUAL,
+			E_RowThemes.ASC7_SIMPLE,
+			E_RowThemes.ASC7_LINE_EQUAL,
+			E_RowThemes.ASC7_SIMPLE,
+			E_RowThemes.ASC7_LINE_EQUAL,
+			E_RowThemes.ASC7_SIMPLE_CONTENT,
+			"plain ASCII-7 boxes (basically the characters '-', '|' and '+') for normal rules and '=' lines for strong rules"
+	),
+
+	/**
+	 * A them with UTF-8 characters with double lines vertically and horizontally.
+	 * <pre>
+	* Normal           Example
+	* ╔═════╦═╗        ╔════╦════╦════╗
+	* ║ ║ ║ ║ ║        ║h1  ║h2  ║h3  ║
+	* ╠═╩═╬═╦═╣        ╠════╬════╬════╣
+	* ║ ║ ║ ║ ║        ║c1  ║c2  ║c3  ║
+	* ╚═╩═════╝        ╠════╬════╬════╣
+	*                  ║c1  ║c2  ║c3  ║
+	*                  ╠════╬════╬════╣
+	*                  ║c1  ║c2  ║c3  ║
+	*                  ╚════╩════╩════╝
 	 * </pre>
 	 */
 	UTF_DOUBLE(
@@ -63,13 +99,18 @@ public enum E_TableThemes {
 	),
 
 	/**
-	 * UTF-8 double lines vertically and light (single) lines horizontally.
+	 * A them with UTF-8 double lines vertically and light (single) lines horizontally.
 	 * <pre>
-	 * ╓─────╥─╖
-	 * ║ ║ ║ ║ ║
-	 * ╟─╨─╫─╥─╢
-	 * ║ ║ ║ ║ ║
-	 * ╙─╨─────╜
+	* Normal           Example
+	* ╓─────╥─╖        ╓────╥────╥────╖
+	* ║ ║ ║ ║ ║        ║h1  ║h2  ║h3  ║
+	* ╟─╨─╫─╥─╢        ╟────╫────╫────╢
+	* ║ ║ ║ ║ ║        ║c1  ║c2  ║c3  ║
+	* ╙─╨─────╜        ╟────╫────╫────╢
+	*                  ║c1  ║c2  ║c3  ║
+	*                  ╟────╫────╫────╢
+	*                  ║c1  ║c2  ║c3  ║
+	*                  ╙────╨────╨────╜
 	 * </pre>
 	 */
 	UTF_DOUBLE_LIGHT(
@@ -81,13 +122,18 @@ public enum E_TableThemes {
 	),
 
 	/**
-	 * UTF-8 light (single) lines vertically and horizontally.
+	 * A them with UTF-8 light (single) lines vertically and horizontally.
 	 * <pre>
-	 * ┌─────┬─┐
-	 * │ │ │ │ │
-	 * ├─┴─┼─┬─┤
-	 * │ │ │ │ │
-	 * └─┴─────┘
+	 * Normal           Example
+	 * ┌─────┬─┐        ┌────┬────┬────┐
+	 * │ │ │ │ │        │h1  │h2  │h3  │
+	 * ├─┴─┼─┬─┤        ├────┼────┼────┤
+	 * │ │ │ │ │        │c1  │c2  │c3  │
+	 * └─┴─────┘        ├────┼────┼────┤
+	 *                  │c1  │c2  │c3  │
+	 *                  ├────┼────┼────┤
+	 *                  │c1  │c2  │c3  │
+	 *                  └────┴────┴────┘
 	 * </pre>
 	 */
 	UTF_LIGHT(
@@ -99,13 +145,18 @@ public enum E_TableThemes {
 	),
 
 	/**
-	 * UTF-8 light (single) lines vertically and double lines horizontally.
+	 * A them with UTF-8 light (single) lines vertically and double lines horizontally.
 	 * <pre>
-	 * ╒═════╤═╕
-	 * │ │ │ │ │
-	 * ╞═╧═╪═╤═╡
-	 * │ │ │ │ │
-	 * ╘═╧═════╛
+	* Normal           Example
+	* ╒═════╤═╕        ╒════╤════╤════╕
+	* │ │ │ │ │        │h1  │h2  │h3  │
+	* ╞═╧═╪═╤═╡        ╞════╪════╪════╡
+	* │ │ │ │ │        │c1  │c2  │c3  │
+	* ╘═╧═════╛        ╞════╪════╪════╡
+	*                  │c1  │c2  │c3  │
+	*                  ╞════╪════╪════╡
+	*                  │c1  │c2  │c3  │
+	*                  ╘════╧════╧════╛
 	 * </pre>
 	 */
 	UTF_LIGHT_DOUBLE(
@@ -117,13 +168,44 @@ public enum E_TableThemes {
 	),
 
 	/**
-	 * UTF-8 with heavy (thick) lines vertically and horizontally.
+	 * A them with UTF-8 light (single) lines for normal rules and UTF-8 double lines for strong rules.
 	 * <pre>
-	 * ┏━━━━━┳━┓
-	 * ┃ ┃ ┃ ┃ ┃
-	 * ┣━┻━╋━┳━┫
-	 * ┃ ┃ ┃ ┃ ┃
-	 * ┗━┻━━━━━┛
+	 * Normal           Strong           Example
+	 * ┌─────┬─┐        ╒═════╤═╕        ╒════╤════╤════╕
+	 * │ │ │ │ │        │ │ │ │ │        │h1  │h2  │h3  │
+	 * ├─┴─┼─┬─┤        ╞═╧═╪═╤═╡        ╞════╪════╪════╡
+	 * │ │ │ │ │        │ │ │ │ │        │c1  │c2  │c3  │
+	 * └─┴─────┘        ╘═╧═════╛        ├────┼────┼────┤
+	 *                                   │c1  │c2  │c3  │
+	 *                                   ├────┼────┼────┤
+	 *                                   │c1  │c2  │c3  │
+	 *                                   ╘════╧════╧════╛
+	 * </pre>
+	 */
+	UTF_STRONG_DOUBLE(
+			E_RowThemes.UTF_LIGHT_TOP,
+			E_RowThemes.UTF_LIGHT_DOUBLE_TOP,
+			E_RowThemes.UTF_LIGHT_MID,
+			E_RowThemes.UTF_LIGHT_DOUBLE_MID,
+			E_RowThemes.UTF_LIGHT_BOTTOM,
+			E_RowThemes.UTF_LIGHT_DOUBLE_BOTTOM,
+			E_RowThemes.UTF_LIGHT_CONTENT,
+			"UTF-8 light (single) lines for normal rules and UTF-8 double lines for strong rules"
+	),
+
+	/**
+	 * A them with UTF-8 with heavy (thick) lines vertically and horizontally.
+	 * <pre>
+	* Normal           Example
+	* ┏━━━━━┳━┓        ┏━━━━┳━━━━┳━━━━┓
+	* ┃ ┃ ┃ ┃ ┃        ┃h1  ┃h2  ┃h3  ┃
+	* ┣━┻━╋━┳━┫        ┣━━━━╋━━━━╋━━━━┫
+	* ┃ ┃ ┃ ┃ ┃        ┃c1  ┃c2  ┃c3  ┃
+	* ┗━┻━━━━━┛        ┣━━━━╋━━━━╋━━━━┫
+	*               ┃c1  ┃c2  ┃c3  ┃
+	*               ┣━━━━╋━━━━╋━━━━┫
+	*               ┃c1  ┃c2  ┃c3  ┃
+	*               ┗━━━━┻━━━━┻━━━━┛
 	 * </pre>
 	 */
 	UTF_HEAVY(
@@ -134,63 +216,22 @@ public enum E_TableThemes {
 			"UTF-8 with heavy (thick) lines vertically and horizontally"
 	),
 
-	/**
-	 * LaTeX style ASCII-7 theme with top and mid rules.
-	 * <pre>
-	 * ================        ================
-	 * |    |    |    |                        
-	 * ================        ================
-	 * |    |    |    |                        
-	 * +----+----+----+        ----------------
-	 * |    |    |    |                        
-	 * +----+----+----+        ----------------
-	 * </pre>
-	 */
-	LATEX_7BIT_STRONG (
-			E_RowThemes.ASC7_SIMPLE,
-			E_RowThemes.ASC7_LINE_EQUAL,
-			E_RowThemes.ASC7_SIMPLE,
-			E_RowThemes.ASC7_LINE_EQUAL,
-			E_RowThemes.ASC7_SIMPLE,
-			E_RowThemes.ASC7_LINE_EQUAL,
-			E_RowThemes.ASC7_SIMPLE_CONTENT,
-			"LaTeX style ASCII-7 theme with top and mid rules"
-	),
-
 	;
 
-	/** Local builder. */
-	TableThemeBuilder builder = new TableThemeBuilder();
+	/** Local theme. */
+	TableTheme theme;
 
-	private E_TableThemes(E_RowThemes top, E_RowThemes mid, E_RowThemes bottom, E_RowThemes content, String description){
-		this.builder
-			.setDescription(description)
-			.setContent(content.get())
-			.setTop(top.get())
-			.setTopStrong(top.get())
-			.setMid(mid.get())
-			.setMidStrong(mid.get())
-			.setBottom(bottom.get())
-			.setBottomStrong(bottom.get())
-		;
-		V2Validator.testTableTheme(this.builder.build());
+	E_TableThemes(E_RowThemes top, E_RowThemes mid, E_RowThemes bottom, E_RowThemes content, String description){
+		this.theme = new AbstractTableTheme(top.get(), mid.get(), bottom.get(), content.get(), description);
+		V2Validator.testTableTheme(this.theme);
 	}
 
-	private E_TableThemes(E_RowThemes top, E_RowThemes topStrong, E_RowThemes mid, E_RowThemes midStrong, E_RowThemes bottom, E_RowThemes bottomStrong, E_RowThemes content, String description){
-		this.builder
-			.setDescription(description)
-			.setContent(content.get())
-			.setTop(top.get())
-			.setTopStrong(topStrong.get())
-			.setMid(mid.get())
-			.setMidStrong(midStrong.get())
-			.setBottom(bottom.get())
-			.setBottomStrong(bottomStrong.get())
-		;
-		V2Validator.testTableTheme(this.builder.build());
+	E_TableThemes(E_RowThemes top, E_RowThemes topStrong, E_RowThemes mid, E_RowThemes midStrong, E_RowThemes bottom, E_RowThemes bottomStrong, E_RowThemes content, String description){
+		this.theme = new AbstractTableTheme(top.get(), topStrong.get(), mid.get(), midStrong.get(), bottom.get(), bottomStrong.get(), content.get(), description);
+		V2Validator.testTableTheme(this.theme);
 	}
 
 	public TableTheme get(){
-		return this.builder.build();
+		return this.theme;
 	}
 }

@@ -2,7 +2,7 @@
 			<plugin>
 				<groupId>org.asciidoctor</groupId>
 				<artifactId>asciidoctor-maven-plugin</artifactId>
-				<version>1.5.0</version>
+				<version>1.5.2</version>
 				<executions>
 					<execution>
 						<id>bundle-asciidoc</id>
@@ -11,8 +11,13 @@
 							<sourceDirectory>src/main/bundle/doc</sourceDirectory>
 							<outputDirectory>./</outputDirectory>
 							<backend>html</backend>
+							<attributes>
+								<toc>true</toc>
+							</attributes>
 						</configuration>
-						<goals><goal>process-asciidoc</goal> </goals>
+						<goals>
+							<goal>process-asciidoc</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>

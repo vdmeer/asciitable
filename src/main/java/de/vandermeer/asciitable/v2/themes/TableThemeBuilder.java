@@ -15,7 +15,6 @@
 
 package de.vandermeer.asciitable.v2.themes;
 
-import org.apache.commons.lang3.text.StrBuilder;
 
 /**
  * Builder for a table themes.
@@ -142,7 +141,7 @@ public class TableThemeBuilder {
 	}
 
 	/**
-	 * Returns a new table theme with the set row themes
+	 * Returns a new table theme with the set row themes.
 	 * @param top theme for top row
 	 * @param topStrong theme for top row for strong style
 	 * @param mid theme for mid row
@@ -151,29 +150,10 @@ public class TableThemeBuilder {
 	 * @param bottomStrong theme for bottom row for strong style
 	 * @param content theme for content row
 	 * @param description descriptive text for the theme
-	 * @return
+	 * @return a new table theme
 	 */
 	private TableTheme build(final RowTheme top, final RowTheme topStrong, final RowTheme mid, final RowTheme midStrong, final RowTheme bottom, final RowTheme bottomStrong, final RowTheme content, final String description){
-		return new TableTheme() {
-			@Override public RowTheme getTopStrong() {return topStrong;}
-			@Override public RowTheme getTop() {return top;}
-			@Override public RowTheme getMidStrong() {return midStrong;}
-			@Override public RowTheme getMid() {return mid;}
-			@Override public Object getDescription() {return description;}
-			@Override public RowTheme getContent() {return content;}
-			@Override public RowTheme getBottomStrong() {return bottomStrong;}
-			@Override public RowTheme getBottom() {return bottom;}
-			@Override public StrBuilder toDoc(){
-				StrBuilder ret = new StrBuilder(50);
-				ret
-					.append(getTop().toDoc())    .append("        ").append(getTopStrong().toDoc())        .appendNewLine()
-					.append(getContent().toDoc()).append("        ").append(getContent().toDoc())          .appendNewLine()
-					.append(getMid().toDoc())    .append("        ").append(getMidStrong().toDoc())        .appendNewLine()
-					.append(getContent().toDoc()).append("        ").append(getContent().toDoc())          .appendNewLine()
-					.append(getBottom().toDoc()) .append("        ").append(getBottomStrong().toDoc())     .appendNewLine()
-				;
-				return ret;
-			}
-		};
+		return new AbstractTableTheme(top, topStrong, mid, midStrong, bottom, bottomStrong, content, description);
 	}
+
 }

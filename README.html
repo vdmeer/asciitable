@@ -5,6 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.0">
+<meta name="author" content="Several implementations of an text table, originally using ASCII characters for borders but now also supporting UTF-8 characters.">
 <title>ASCII Table</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic|Noto+Serif:400,400italic,700,700italic|Droid+Sans+Mono:400">
 <style>
@@ -411,52 +412,101 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article">
 <div id="header">
+<h1>ASCII Table</h1>
+<div class="details">
+<span id="author" class="author">Several implementations of an text table, originally using ASCII characters for borders but now also supporting UTF-8 characters.</span><br>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_ascii_table_version_1">ASCII Table Version 1</a>
+<ul class="sectlevel2">
+<li><a href="#_using_the_ascii_table_v1">Using the ASCII Table V1</a></li>
+<li><a href="#_a_simple_example_with_overall_width">A simple example with overall width</a></li>
+<li><a href="#_an_example_with_fixed_columns_and_a_different_table_theme">An example with fixed columns and a different table theme</a></li>
+<li><a href="#_examples_with_different_table_themes">Examples with different table themes</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="_ascii_table">ASCII Table</h2>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>An ASCII table with flexible column number, column width, wrapping, spanning and themes.</p>
+<p>Several implementations of an text table, originally using ASCII characters for borders but now also supporting UTF-8 characters.
+The tables allows for various degrees of flexibility for number of columns, column width, automated line wrapping, column spanning and themes for tables and table rows.</p>
+</div>
+<div class="paragraph">
+<p>lorem ipsum lorem ipsum</p>
+</div>
+<div class="paragraph">
+<p>This blog post explains how to get UTF-8 support in the whole tool chain <a href="http://vdmeer-sven.blogspot.ie/2014/06/utf-8-support-w-java-and-console.html">blog on UTF-8</a>.
+Updates will be at here <a href="https://github.com/vdmeer/skb/wiki/HowTo-UTF-8-Support-in-Java-and-Console">SKB Wiki on UTF-8</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ascii_table_version_1">ASCII Table Version 1</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is the original table. It allows to define a table with <code>n</code> colums.
+Width set either as overall table width with equally distributed column widths or as fixed width per column.
+A table can be rendered using a table theme. A set of themes is pre-defined, additional themes can be defined as needed.</p>
 </div>
 <div class="sect2">
-<h3 id="_using_the_ascii_table">Using the ASCII Table</h3>
+<h3 id="_using_the_ascii_table_v1">Using the ASCII Table V1</h3>
 <div class="paragraph">
-<p>Using this class is quite simple. First get a new instance of the ASCII Table using one of the two static factory methods:</p>
+<p>First get a new instance of the ASCII Table using one of the two static factory methods:</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p>newTable(Integer, Integer) for evenly distributed columns,
-for instance AsciiTable at=AsciiTable.newTable(3, 76); will create a new table with 3 columns with 24 characters width each.
-The remaining 4 characters (to table width of 76) are used to vertical lines.</p>
+<p>A table with an overall table width and evenly distrubuted column widths: <code>newTable(Integer, Integer)</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>for instance <code>AsciiTable at = AsciiTable.newTable(3, 76);</code> will create a new table with 3 columns with 24 characters width each.
+The remaining 4 characters (to table width of 76) are used for vertical lines.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>newTable(Integer[]) for preset column width,
-for instance AsciiTable at=AsciiTable.newTable(new Integer[]{10, 20, 30}); will create a new table with 3 columns, where
+<p>A table with <code>n</code> columns and a fixed width set per columns: <code>newTable(Integer[])</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>for instance <code>AsciiTable at = AsciiTable.newTable(new Integer[]{10, 20, 30});</code> will create a new table with 3 columns, where
 column 1 has a width of 10 characters, column 2 has a width of 20 characters and column 3 has a width of 30 characters. The overall table
 has then a width of 64 characters (60 characters for the columns plus 4 characters for vertical lines).</p>
 </li>
-</ol>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Once the table is created addRow(Object...) can be used to add rows to it. Finally, call render() render the table into a string.
-To change the appearance of the rendered table use render(Options). One can create options manually or simply use TableOptions to do the job.
-TableOptions provides methods to change the padding character for the table rows and the table theme. The theme needs to implement TableTheme.
-A number of standard themes are defined in StandardTableThemes, including light, double and heavy UTF-8 character boxes and LaTeX style table themes.
+<p>Once the table is created <code>addRow(Object&#8230;&#8203;)</code> can be used to add rows to it. Finally, call <code>render()</code> render the table into a string.
+To change the appearance of the rendered table use <code>render(Options)</code>. One can create options manually or simply use <code>TableOptions</code> to do the job.
+<code>TableOptions</code> provides methods to change the padding character for the table rows and the table theme. The theme needs to implement <code>TableTheme</code>.
+A number of standard themes are defined in <code>StandardTableThemes</code>, including light, double and heavy UTF-8 character boxes and LaTeX style table themes.
 Themes and padding characters are applied per render call, enabling a table to be rendered multiple times with different options.</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_a_simple_example_with_overall_width">A simple example with overall width</h3>
 <div class="paragraph">
 <p>A simple example creating a table with 3 rows and three columns. The first row spans 3 columns, each column of the second row fits
 into a single line, and the second and third column of the third row are broken into two lines:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>AsciiTable at=AsciiTable.newTable(3, 76);
+<pre>AsciiTable at = AsciiTable.newTable(3, 76);
 at.addRow(null, null, "Table Heading");
 at.addRow("first row (col1)", "with some information", "and more information");
 at.addRow("second row (col1)", "with some information (col2)", "and more information (col3)");
-System.out.println(at.render());</pre>
+System.err.println(at.render());</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -474,22 +524,53 @@ System.out.println(at.render());</pre>
 +------------------------+------------------------+------------------------+</pre>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_an_example_with_fixed_columns_and_a_different_table_theme">An example with fixed columns and a different table theme</h3>
 <div class="paragraph">
-<p>Another example, this time using an Integer[] to initialise the table. The table again has 3 rows and 3 columns, but this time
-column 1 is set to 10 characters, column 2 is set to 15 characters and column 3 is set to 20 characters. We now also set the theme to "light":</p>
+<p>Another example, this time using an <code>Integer[]</code> to initialise the table. The table again has 3 rows and 3 columns, but this time
+column 1 is set to 10 characters, column 2 is set to 15 characters and column 3 is set to 20 characters:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>Integer[] columns=new Integer[]{10, 15, 20};
-AsciiTable at=AsciiTable.newTable(columns);
+<pre>Integer[] columns = new Integer[]{10, 15, 20};
+AsciiTable at = AsciiTable.newTable(columns);
 at.addRow(null, null, "Table Heading");
 at.addRow("row 1", "this is col 2", "and this is column 3");
 at.addRow("row 2", "some text for column 2", "and some text for column 3");
-System.err.println(at.render(new TableOptions().setRenderTheme(StandardTableThemes.LIGHT)));</pre>
+System.err.println(at.render());</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The output of this example will be:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>+-----------------------------------------------+
+|                 Table Heading                 |
++----------+---------------+--------------------+
+|row 1     |this is col 2  |and this is column 3|
++----------+---------------+--------------------+
+|row 2     |some text for  |and some text for   |
+|          |column 2       |column 3            |
++----------+---------------+--------------------+</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_examples_with_different_table_themes">Examples with different table themes</h3>
+<div class="paragraph">
+<p>The table theme can be changed any time before rendering the table.
+Take the example above, we can change the theme to <code>StandardTableThemes.LIGHT</code> and then render the table:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>at.setTheme(StandardTableThemes.LIGHT);
+System.err.println(at.render());</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output will now be:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -504,7 +585,7 @@ System.err.println(at.render(new TableOptions().setRenderTheme(StandardTableThem
 </div>
 </div>
 <div class="paragraph">
-<p>If you use the theme StandardTableThemes.DOUBLE, the output should look like this:</p>
+<p>If we use the theme <code>StandardTableThemes.DOUBLE</code>, the output should look like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -519,7 +600,7 @@ System.err.println(at.render(new TableOptions().setRenderTheme(StandardTableThem
 </div>
 </div>
 <div class="paragraph">
-<p>If you use the theme StandardTableThemes.LIGHT_DOUBLE, the output should look like this:</p>
+<p>If we use the theme <code>StandardTableThemes.LIGHT_DOUBLE</code>, the output should look like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -534,7 +615,7 @@ System.err.println(at.render(new TableOptions().setRenderTheme(StandardTableThem
 </div>
 </div>
 <div class="paragraph">
-<p>If you use the theme StandardTableThemes.DOUBLE_LIGHT, the output should look like this:</p>
+<p>If we use the theme <code>StandardTableThemes.DOUBLE_LIGHT</code>, the output should look like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -551,7 +632,7 @@ System.err.println(at.render(new TableOptions().setRenderTheme(StandardTableThem
 <div class="paragraph">
 <p>The look and feel of themes with heavy characters can differ, depending on the font that is being used. Many console
 fonts on windows do not show heavy box drawing characters as monotype or have varying width for whitespaces when using
-heavy character. The following shows a table using the standard heavy theme (StandardTableThemes.HEAVY):</p>
+heavy character. The following shows a table using the standard heavy theme (<code>StandardTableThemes.HEAVY</code>):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -566,7 +647,7 @@ heavy character. The following shows a table using the standard heavy theme (Sta
 </div>
 </div>
 <div class="paragraph">
-<p>There are also a number of LaTeX style themes pre-defined. For instance StandardTableThemes.LATEX_LIGHT_TRIPLE_DASH:</p>
+<p>There are also a number of LaTeX style themes pre-defined. For instance <code>StandardTableThemes.LATEX_LIGHT_TRIPLE_DASH</code>, which unfortunatelly does not render easily to HTML:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -581,19 +662,12 @@ heavy character. The following shows a table using the standard heavy theme (Sta
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_utf_8_support_in_various_environments">UTF-8 Support in various environments</h3>
-<div class="paragraph">
-<p>This blog post explains how to get UTF-8 support in the whole tool chain <a href="http://vdmeer-sven.blogspot.ie/2014/06/utf-8-support-w-java-and-console.html">blog on UTF-8</a>.
-Updates will be at here <a href="https://github.com/vdmeer/skb/wiki/HowTo-UTF-8-Support-in-Java-and-Console">SKB Wiki on UTF-8</a>.</p>
-</div>
-</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-12-10 19:47:11 GMT
+Last updated 2015-08-11 18:48:11 IST
 </div>
 </div>
 </body>

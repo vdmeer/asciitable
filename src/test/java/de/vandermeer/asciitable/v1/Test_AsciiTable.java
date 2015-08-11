@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package de.vandermeer.asciitable.v1;
 
 import static org.junit.Assert.assertEquals;
@@ -31,40 +32,9 @@ import de.vandermeer.asciitable.v1.AsciiTable;
  * @version    v0.0.7 build 150811 (11-Aug-15) for Java 1.7
  */
 public class Test_AsciiTable {
-	@Test public void testAPIDocInts(){
-		AsciiTable at=AsciiTable.newTable(3, 76);
-		at.addRow(null, null, "Table Heading");
-		at.addRow("first row (col1)", "with some information", "and more information");
-		at.addRow("second row (col1)", "with some information (col2)", "and more information (col3)");
-		//System.err.println(at.render());
-	}
 
-//	@Test
-//	public void test2Rows(){
-//		AsciiTable at=AsciiTable.newTable(2, 76);
-//		at.setTheme(StandardTableThemes.LIGHT);
-//		at.addRow(null, null, "Table Heading");
-//		at.addRow("first row (col1)", "with some information");
-//		at.addRow("second row (col1)", "with some information (col2)");
-//		System.err.println(at.render());
-//	}
-
-	@Test public void testAPIDocArray(){
-		Integer[] columns=new Integer[]{10, 15, 20};
-		AsciiTable at=AsciiTable.newTable(columns);
-
-		at.addRow(null, null, "Table Heading");
-		at.addRow("row 1", "this is col 2", "and this is column 3");
-		at.addRow("row 2", "some text for column 2", "and some text for column 3");
-
-//System.err.println(at.render(new TableOptions().setRenderTheme(StandardTableThemes.LATEX_LIGHT_TRIPLE_DASH)));
-//System.err.println(at.render(new TableOptions().setPaddingCharacter(' ').setRenderTheme(StandardTableThemes.LATEX_7BIT)));
-//System.err.println(at.render(new TableOptions().setPaddingCharacter('?').setRenderTheme(StandardTableThemes.HEAVY)));
-//System.err.println(at.render(new TableOptions().setPaddingCharacter('#').setRenderTheme(StandardTableThemes.LIGHT)));
-//System.err.println(at);
-	}
-
-	@Test public void testInitColumns(){
+	@Test
+	public void testInitColumns(){
 		AsciiTable at=new AsciiTable();
 
 		assertFalse(at._init(null));
@@ -120,7 +90,8 @@ public class Test_AsciiTable {
 		assertEquals(10, at.getColumnAr()[3].intValue());
 	}
 
-	@Test public void testInitColAndWidth(){
+	@Test
+	public void testInitColAndWidth(){
 		AsciiTable at=new AsciiTable();
 
 		assertFalse(at._init(null, null));
@@ -186,7 +157,8 @@ public class Test_AsciiTable {
 		assertEquals( 4, at.getColumnAr()[3].intValue());
 	}
 
-	@Test public void testAddRow(){
+	@Test
+	public void testAddRow(){
 		AsciiTable at;
 
 		at=new AsciiTable();
@@ -213,7 +185,8 @@ public class Test_AsciiTable {
 		assertEquals(3, at.table.size());
 	}
 
-//	@Test public void testSetRowFormat(){
+//	@Test
+//	public void testSetRowFormat(){
 //		AsciiTable at;
 //
 //		at=new AsciiTable();
