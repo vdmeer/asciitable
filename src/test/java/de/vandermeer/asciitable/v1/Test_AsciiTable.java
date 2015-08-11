@@ -39,6 +39,16 @@ public class Test_AsciiTable {
 		//System.err.println(at.render());
 	}
 
+//	@Test
+//	public void test2Rows(){
+//		AsciiTable at=AsciiTable.newTable(2, 76);
+//		at.setTheme(StandardTableThemes.LIGHT);
+//		at.addRow(null, null, "Table Heading");
+//		at.addRow("first row (col1)", "with some information");
+//		at.addRow("second row (col1)", "with some information (col2)");
+//		System.err.println(at.render());
+//	}
+
 	@Test public void testAPIDocArray(){
 		Integer[] columns=new Integer[]{10, 15, 20};
 		AsciiTable at=AsciiTable.newTable(columns);

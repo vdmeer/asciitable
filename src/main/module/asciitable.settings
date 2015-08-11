@@ -1,4 +1,4 @@
-skb.module.version=0.0.6
+skb.module.version=0.0.7
 skb.module.alias=
 skb.module.name=Ascii Table
 skb.module.url=https://github.com/vdmeer/asciitable
@@ -7,10 +7,10 @@ skb.module.inceptionYear=2010
 skb.module.properties.compiler.source=1.7
 skb.module.properties.compiler.target=1.7
 skb.module.properties.encoding=UTF-8
-skb.module.default_goal=package
 skb.module.scm.developerConnection=scm:git:git@github.com:vdmeer/asciitable.git
 skb.module.scm.connection=scm:git:git://github.com/vdmeer/asciitable.git
 skb.module.scm.url=https://github.com/vdmeer/asciitable
 skb.module.issueManagement.url=https://github.com/vdmeer/asciitable/issues
 skb.module.issueManagement.system=github
+skb.module.internalDependencies=
 skb.module.packaging=

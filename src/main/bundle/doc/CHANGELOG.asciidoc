@@ -1,3 +1,8 @@
+v0.0.7 - maintenance - 2015-08-11
+---------------------------------
+* added more row themes
+
+
 v0.0.6 - maintenance - 2015-07-21
 ---------------------------------
 * added more row themes

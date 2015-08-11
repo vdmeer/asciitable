@@ -16,6 +16,7 @@
 package de.vandermeer.asciitable.v2.core;
 
 
+
 /**
  * Utility to define the width a table for a table renderer using an absolute table width.
  *
@@ -59,8 +60,8 @@ public class WidthByAbsolute implements Width {
 		ret[0] = this.width;
 
 		int distribute = this.width-1-columnCount;			//this is to be distributed over columns
-		int colmin = distribute/columnCount;					//this is minimum width of each column
-		int leftover = distribute-colmin*columnCount;			//leftover
+		int colmin = distribute/columnCount;				//this is minimum width of each column
+		int leftover = distribute-colmin*columnCount;		//leftover
 
 		for(int i=0; i<columnCount; i++){
 			ret[i+1] = colmin;

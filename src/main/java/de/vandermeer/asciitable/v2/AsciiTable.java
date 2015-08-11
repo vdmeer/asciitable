@@ -102,7 +102,7 @@ public class AsciiTable {
 
 	/**
 	 * Fixes rules for top and bottom rules.
-	 * Call this method before rendering a table to make sure a rule in the first row is a top rule and a rule in the last row is a bottom rule.
+	 * A renderer should call this method before rendering a table to make sure a rule in the first row is a top rule and a rule in the last row is a bottom rule.
 	 */
 	public void fixRules(){
 		if(this.table.get(0).getRuleType()!=null && !E_RuleType.TOP.equals(this.table.get(0).getRuleType())){

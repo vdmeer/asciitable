@@ -1,6 +1,7 @@
 v0.0.6 - maintenance - 2015-07-21
 ---------------------------------
 * added more row themes
+* fixed bug in v2 renderer which lead to wrong column width (used [i] instead of [k] on several places)
 
 
 v0.0.5 - feature add - 2015-05-25
