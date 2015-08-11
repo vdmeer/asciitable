@@ -19,7 +19,7 @@ package de.vandermeer.asciitable.v1;
  * Predefined render themes for the ASCII table.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.6 build 150721 (21-Jul-15) for Java 1.7
+ * @version    v0.0.7 build 150811 (11-Aug-15) for Java 1.7
  * @since      v0.0.1
  */
 public enum StandardTableThemes implements TableTheme {

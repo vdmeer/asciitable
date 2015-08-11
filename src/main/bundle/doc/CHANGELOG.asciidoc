@@ -1,6 +1,11 @@
+v0.0.8 - maintenance - 2015-##-##
+---------------------------------
+* ###
+
+
 v0.0.7 - maintenance - 2015-08-11
 ---------------------------------
-* added more row themes
+* fixed a bug in v2 renderer (used [i] instead of [k])
 
 
 v0.0.6 - maintenance - 2015-07-21

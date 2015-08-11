@@ -28,7 +28,7 @@ import de.vandermeer.asciitable.v1.AsciiTable;
  * Tests for ASCII table.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.6 build 150721 (21-Jul-15) for Java 1.7
+ * @version    v0.0.7 build 150811 (11-Aug-15) for Java 1.7
  */
 public class Test_AsciiTable {
 	@Test public void testAPIDocInts(){

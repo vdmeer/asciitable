@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.vandermeer</groupId>
 	<artifactId>asciitable</artifactId>
-	<version>0.0.6</version>
+	<version>0.0.7</version>
 	<packaging>jar</packaging>
 
 	<name>Ascii Table</name>
@@ -48,7 +48,7 @@
 	<scm>
 		<developerConnection>scm:git:git@github.com:vdmeer/asciitable.git</developerConnection>
 		<connection>scm:git:git://github.com/vdmeer/asciitable.git</connection>
-		<tag>asciitable-0.0.6</tag>
+		<tag>asciitable-0.0.7</tag>
 		<url>https://github.com/vdmeer/asciitable</url>
 	</scm>
 
