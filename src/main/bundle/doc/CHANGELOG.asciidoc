@@ -1,5 +1,5 @@
-v0.1.0 - version change - 2015-08-12
-------------------------------------
+v0.1.0 - minor version change - 2015-08-12
+------------------------------------------
 * bug fix in WidthByColumn
 * edit of documentation (javadoc and readme)
 * minor changes in v2 theme handling

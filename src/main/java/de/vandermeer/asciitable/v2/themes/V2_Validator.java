@@ -21,7 +21,7 @@ import de.vandermeer.asciitable.commons.TableException;
  * Validator for ASCII Table v2 artifacts.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.7 build 150811 (11-Aug-15) for Java 1.7
+ * @version    v0.0.8 build 150812 (12-Aug-15) for Java 1.7
  * @since      v0.0.5
  */
 public abstract class V2_Validator {

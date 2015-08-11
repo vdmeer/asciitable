@@ -24,7 +24,7 @@ import org.apache.commons.lang3.text.WordUtils;
  * Collections of methods to transform arrays.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.7 build 150811 (11-Aug-15) for Java 1.7
+ * @version    v0.0.8 build 150812 (12-Aug-15) for Java 1.7
  */
 public abstract class ArrayTransformations {
 

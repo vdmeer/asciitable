@@ -18,7 +18,7 @@ package de.vandermeer.asciitable.v1;
  * Interface for themes of table borders.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.7 build 150811 (11-Aug-15) for Java 1.7
+ * @version    v0.0.8 build 150812 (12-Aug-15) for Java 1.7
  * @since      v0.0.1
  */
 public interface V1_TableTheme {

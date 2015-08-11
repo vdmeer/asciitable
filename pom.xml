@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.vandermeer</groupId>
 	<artifactId>asciitable</artifactId>
-	<version>0.0.7</version>
+	<version>0.0.8</version>
 	<packaging>jar</packaging>
 
 	<name>Ascii Table</name>
@@ -48,7 +48,7 @@
 	<scm>
 		<developerConnection>scm:git:git@github.com:vdmeer/asciitable.git</developerConnection>
 		<connection>scm:git:git://github.com/vdmeer/asciitable.git</connection>
-		<tag>asciitable-0.0.7</tag>
+		<tag>asciitable-0.0.8</tag>
 		<url>https://github.com/vdmeer/asciitable</url>
 	</scm>
 
@@ -104,7 +104,7 @@
 			<plugin>
 				<groupId>org.asciidoctor</groupId>
 				<artifactId>asciidoctor-maven-plugin</artifactId>
-				<version>1.5.0</version>
+				<version>1.5.2</version>
 				<executions>
 					<execution>
 						<id>bundle-asciidoc</id>
@@ -113,11 +113,17 @@
 							<sourceDirectory>src/main/bundle/doc</sourceDirectory>
 							<outputDirectory>./</outputDirectory>
 							<backend>html</backend>
+							<attributes>
+								<toc>true</toc>
+							</attributes>
 						</configuration>
-						<goals><goal>process-asciidoc</goal> </goals>
+						<goals>
+							<goal>process-asciidoc</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>
+
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>2.4.3</version>
@@ -156,7 +162,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -200,7 +205,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.10.1</version>
+				<version>2.10.3</version>
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>
