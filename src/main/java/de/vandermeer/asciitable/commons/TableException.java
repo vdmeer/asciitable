@@ -19,7 +19,7 @@ package de.vandermeer.asciitable.commons;
  * Standard exception for ASCII tables.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.8 build 150812 (12-Aug-15) for Java 1.7
+ * @version    v0.1.0 build 150812 (12-Aug-15) for Java 1.7
  */
 public class TableException extends RuntimeException {
 	/** UUID */

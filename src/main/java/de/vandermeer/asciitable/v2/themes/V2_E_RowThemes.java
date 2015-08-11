@@ -21,7 +21,7 @@ package de.vandermeer.asciitable.v2.themes;
  * Standard row themes for tables.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.8 build 150812 (12-Aug-15) for Java 1.7
+ * @version    v0.1.0 build 150812 (12-Aug-15) for Java 1.7
  * @since      v0.0.3
  */
 public enum V2_E_RowThemes {
