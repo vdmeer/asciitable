@@ -3,10 +3,7 @@ ASCII Table
 Several implementations of an text table, originally using ASCII characters for borders but now also supporting UTF-8 characters.
 :toc:
 
-Several implementations of an text table, originally using ASCII characters for borders but now also supporting UTF-8 characters.
 The tables allows for various degrees of flexibility for number of columns, column width, automated line wrapping, column spanning and themes for tables and table rows.
-
-lorem ipsum lorem ipsum
 
 This blog post explains how to get UTF-8 support in the whole tool chain http://vdmeer-sven.blogspot.ie/2014/06/utf-8-support-w-java-and-console.html[blog on UTF-8].
 Updates will be at here https://github.com/vdmeer/skb/wiki/HowTo-UTF-8-Support-in-Java-and-Console[SKB Wiki on UTF-8].

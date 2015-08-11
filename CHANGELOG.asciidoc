@@ -1,6 +1,8 @@
 v0.0.8 - maintenance - 2015-##-##
 ---------------------------------
-* ###
+* bug fix in WidthByColumn
+* edit of documentation (javadoc and readme)
+* minor changes in v2 theme handling
 
 
 v0.0.7 - maintenance - 2015-08-11
