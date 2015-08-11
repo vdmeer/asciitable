@@ -19,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import de.vandermeer.asciitable.v2.core.WidthByColumns;
+import de.vandermeer.asciitable.v2.core.V2_WidthByColumns;
 
 /**
  * Tests for column width class.
@@ -31,14 +31,14 @@ public class Test_WidthByColumns {
 
 	@Test
 	public void testConstructor(){
-		WidthByColumns cw = new WidthByColumns();
+		V2_WidthByColumns cw = new V2_WidthByColumns();
 		assertEquals(1, cw.ar.length);
 		assertEquals(0, cw.ar[0]);
 	}
 
 	@Test
 	public void testAdd(){
-		WidthByColumns cw = new WidthByColumns();
+		V2_WidthByColumns cw = new V2_WidthByColumns();
 
 		cw.add(5);
 		assertEquals(2, cw.ar.length);

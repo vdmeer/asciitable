@@ -23,7 +23,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import de.vandermeer.asciitable.v1.AsciiTable;
+import de.vandermeer.asciitable.v1.V1_AsciiTable;
 
 /**
  * Tests for ASCII table.
@@ -35,7 +35,7 @@ public class Test_AsciiTable {
 
 	@Test
 	public void testInitColumns(){
-		AsciiTable at=new AsciiTable();
+		V1_AsciiTable at=new V1_AsciiTable();
 
 		assertFalse(at._init(null));
 		assertNull(at.getColumnAr());
@@ -92,7 +92,7 @@ public class Test_AsciiTable {
 
 	@Test
 	public void testInitColAndWidth(){
-		AsciiTable at=new AsciiTable();
+		V1_AsciiTable at=new V1_AsciiTable();
 
 		assertFalse(at._init(null, null));
 		assertNull(at.getColumnAr());
@@ -159,12 +159,12 @@ public class Test_AsciiTable {
 
 	@Test
 	public void testAddRow(){
-		AsciiTable at;
+		V1_AsciiTable at;
 
-		at=new AsciiTable();
+		at=new V1_AsciiTable();
 		assertEquals(-1, at.addRow((Object)null));			//no columns set, always -1
 
-		at=AsciiTable.newTable(3, 76);
+		at=V1_AsciiTable.newTable(3, 76);
 		assertNotNull(at);
 
 		assertEquals(0, at.addRow((Object)null));			//null not good

@@ -2,9 +2,8 @@ package de.vandermeer.asciitable.v2;
 
 import org.junit.Test;
 
-import de.vandermeer.asciitable.v2.core.WidthByAbsolute;
-import de.vandermeer.asciitable.v2.themes.E_RowThemes;
-import de.vandermeer.asciitable.v2.themes.E_TableThemes;
+import de.vandermeer.asciitable.v2.core.V2_WidthByAbsolute;
+import de.vandermeer.asciitable.v2.themes.V2_E_TableThemes;
 
 public class TestMe2 {
 
@@ -14,13 +13,13 @@ public class TestMe2 {
 //		System.out.println(E_TableThemes.UTF_DOUBLE_LIGHT.get().toDoc());
 //		System.out.println(E_RowThemes.UTF_HEAVY_CONTENT.get().toDoc());
 
-		AsciiTableRenderer rend = new AsciiTableRenderer();
-		rend.setTheme(E_TableThemes.UTF_LIGHT.get());
-		rend.setWidth(new WidthByAbsolute().setWidth(73));
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new V2_WidthByAbsolute().setWidth(73));
 
-		AsciiTable at = null;
+		V2_AsciiTable at = null;
 
-		at = new AsciiTable(1);
+		at = new V2_AsciiTable(1);
 		at.addRuleStrong();
 		at.addRow("Table Heading");
 		at.addRule();
@@ -30,7 +29,7 @@ public class TestMe2 {
 		at.addRule();
 //		System.out.println(rend.render(at));
 
-		at = new AsciiTable(2);
+		at = new V2_AsciiTable(2);
 		at.addRuleStrong();
 		at.addRow(null,"Table Heading");
 		at.addRule();
@@ -40,7 +39,7 @@ public class TestMe2 {
 		at.addRule();
 //		System.out.println(rend.render(at));
 
-		at = new AsciiTable(3);
+		at = new V2_AsciiTable(3);
 		at.addRuleStrong();
 		at.addRow(null, null, "Table Heading");
 		at.addRule();
@@ -50,7 +49,7 @@ public class TestMe2 {
 		at.addRule();
 //		System.out.println(rend.render(at));
 
-		at = new AsciiTable(4);
+		at = new V2_AsciiTable(4);
 		at.addRuleStrong();
 		at.addRow(null, null, null, "Table Heading");
 		at.addRule();
@@ -60,7 +59,7 @@ public class TestMe2 {
 		at.addRule();
 //		System.out.println(rend.render(at));
 
-		at = new AsciiTable(5);
+		at = new V2_AsciiTable(5);
 		at.addRuleStrong();
 		at.addRow(null, null, null, null, "Table Heading");
 		at.addRule();

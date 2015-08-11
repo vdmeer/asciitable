@@ -1,8 +1,18 @@
-v0.0.8 - maintenance - 2015-##-##
----------------------------------
+v0.1.0 - version change - 2015-08-12
+------------------------------------
 * bug fix in WidthByColumn
 * edit of documentation (javadoc and readme)
 * minor changes in v2 theme handling
+* v1 and v2 changes
+	** renamed all v1 classes to "V1_"
+	** renamed all v2 classes to "V2_"
+* v1 changes
+	** moved TablePair from commons to v1 (only used in v1)
+	** refactored CommonFactory from commons to v1/V1_Factory (only used in v1)
+* v2 changes
+	** added AbstractTableTheme and changed E_TableThemes and TableThemeBuilder implementations
+	** added AbstractRowTheme and changed E_RowThemes and RowThemeBuilder implementations
+	** changed exceptions on V2_Validator to TableException
 
 
 v0.0.7 - maintenance - 2015-08-11

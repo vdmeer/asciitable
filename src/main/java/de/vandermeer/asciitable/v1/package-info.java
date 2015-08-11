@@ -17,31 +17,10 @@
  * Version 1 of an implementation of an ASCII Table with several box character templates.
  * 
  * <p>
- * To see the UTF box drawing characters one will need to have a console (our output window) with UTF-8 support.
- * In a Windows shell (cmd) that should work using a supporting the code page (chcp 65001).
- * On Cygwin, terminal programs such as mintty have UTF support.
- * For both, Lucida Console supports all characters.
- * Apple and Unix systems are usually better in UTF support, please refer to your documentation.
- * In any case, the JVM needs to be set to UTF encoding before the main method is called, "-Dfile.encoding=UTF-8" should do the trick.
+ * This blog post explains how to get UTF-8 support in the whole tool chain http://vdmeer-sven.blogspot.ie/2014/06/utf-8-support-w-java-and-console.html[blog on UTF-8].
+ * Updates will be at here https://github.com/vdmeer/skb/wiki/HowTo-UTF-8-Support-in-Java-and-Console[SKB Wiki on UTF-8].
  * </p>
  * 
- * <p>
- * When editing the source file, please note that the encoding should be UTF-8, otherwise characters might get lost.
- * In Eclipse set either the properties of the file, the project or the whole workspace to UTF-8 encoding. This will also
- * set the Eclipse console (in Juno and Keppler at least) to print proper UTF characters via <code>System.out</code>,
- * so no special <code>PrintWriter</code> is required here.
- * </p>
- * 
- * <p>
- * When compiling the source file, <code>javac</code> might need a reminder to use UTF encoding.
- * The option "-encoding UTF-8" should do the trick here.
- * </p>
- * 
- * <p>
- * Finally, <code>Javadoc</code> needs to be set to UTF-8 encoding when generating API documentation. The ANT task for <code>Javadoc</code> has three
- * encoding options ("encoding" for source, "docencoding" for output and "charset" for output). Set them all to UTF-8.
- * </p>
- *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.7 build 150811 (11-Aug-15) for Java 1.7
  */
