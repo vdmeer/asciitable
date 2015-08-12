@@ -24,7 +24,7 @@ import de.vandermeer.asciitable.commons.ObjectToStringStyle;
  * A table row, either a rule or a row with content for columns.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.1.1-SNAPSHOT build 150812 (12-Aug-15) for Java 1.7
+ * @version    v0.1.1 build 150812 (12-Aug-15) for Java 1.7
  * @since      v0.0.3
  */
 public class V2_TableRow {
