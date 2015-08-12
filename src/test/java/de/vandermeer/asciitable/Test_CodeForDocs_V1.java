@@ -34,7 +34,7 @@ public class Test_CodeForDocs_V1 {
 		at.addRow(null, null, "Table Heading");
 		at.addRow("first row (col1)", "with some information", "and more information");
 		at.addRow("second row (col1)", "with some information (col2)", "and more information (col3)");
-		System.err.println(at.render());
+//		System.err.println(at.render());
 	}
 
 	@Test

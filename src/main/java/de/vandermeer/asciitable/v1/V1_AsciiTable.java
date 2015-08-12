@@ -79,7 +79,7 @@ import de.vandermeer.asciitable.commons.Table_ToStringStyle;
  * }</pre>
  * 
  * The output of this example will be:
- * <pre>
+ * <pre style="line-height:17px">
 	+--------------------------------------------------------------------------+
 	|                              Table Heading                               |
 	+------------------------+------------------------+------------------------+
@@ -102,7 +102,7 @@ import de.vandermeer.asciitable.commons.Table_ToStringStyle;
  * }</pre>
  * 
  * The output of this example will be:
- * <pre>
+ * <pre style="line-height:17px">
 	+-----------------------------------------------+
 	|                 Table Heading                 |
 	+----------+---------------+--------------------+
@@ -121,7 +121,7 @@ import de.vandermeer.asciitable.commons.Table_ToStringStyle;
  * }</pre>
  * 
  * The output will now be:
- * <pre>
+ * <pre style="line-height:17px">
 	┌───────────────────────────────────────────────┐
 	│                 Table Heading                 │
 	├──────────┬───────────────┬────────────────────┤
@@ -133,7 +133,7 @@ import de.vandermeer.asciitable.commons.Table_ToStringStyle;
  * </pre>
  * 
  * If you use the theme {@link V1_StandardTableThemes#DOUBLE}, the output should look like this:
- * <pre>
+ * <pre style="line-height:17px">
 	╔═══════════════════════════════════════════════╗
 	║                 Table Heading                 ║
 	╠══════════╦═══════════════╦════════════════════╣
@@ -145,7 +145,7 @@ import de.vandermeer.asciitable.commons.Table_ToStringStyle;
  * </pre>
  * 
  * If we use the theme {@link V1_StandardTableThemes#LIGHT_DOUBLE}, the output should look like this:
- * <pre>
+ * <pre style="line-height:17px">
 	╒═══════════════════════════════════════════════╕
 	│                 Table Heading                 │
 	╞══════════╤═══════════════╤════════════════════╡
@@ -157,7 +157,7 @@ import de.vandermeer.asciitable.commons.Table_ToStringStyle;
  * </pre>
  * 
  * If we use the theme {@link V1_StandardTableThemes#DOUBLE_LIGHT}, the output should look like this:
- * <pre>
+ * <pre style="line-height:17px">
 	╓───────────────────────────────────────────────╖
 	║                 Table Heading                 ║
 	╟──────────╥───────────────╥────────────────────╢
@@ -172,18 +172,18 @@ import de.vandermeer.asciitable.commons.Table_ToStringStyle;
  * fonts on windows do not show heavy box drawing characters as monotype or have varying width for whitespaces when using
  * heavy character. The following shows a table using the standard heavy theme ({@link V1_StandardTableThemes#HEAVY}):
  * <pre>
-	┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-	┃                 Table Heading                 ┃
-	┣━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┫
-	┃row 1     ┃this is col 2  ┃and this is column 3┃
-	┣━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━┫
-	┃row 2     ┃some text for  ┃and some text for   ┃
-	┃          ┃column 2       ┃column 3            ┃
-	┗━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━┛
+ * ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+ * ┃                 Table Heading                 ┃
+ * ┣━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┫
+ * ┃row 1     ┃this is col 2  ┃and this is column 3┃
+ * ┣━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━┫
+ * ┃row 2     ┃some text for  ┃and some text for   ┃
+ * ┃          ┃column 2       ┃column 3            ┃
+ * ┗━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━┛
  * </pre>
  * 
  * There are also a number of LaTeX style themes pre-defined. For instance {@link V1_StandardTableThemes#LATEX_LIGHT_TRIPLE_DASH}, which unfortunately does not render easily to HTML:
- * <pre>
+ * <pre style="line-height:17px">
 	┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
 	                  Table Heading                  
 	┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄

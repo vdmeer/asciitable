@@ -43,6 +43,11 @@ public enum V2_E_RowThemes {
 	ASC7_SIMPLE_CONTENT				('|', '|', '|', '|', '|', ' ', "simple borders for content"),
 
 	/**
+	 * No borders for content using ' '.
+	 */
+	ASC7_SIMPLE_CONTENT_BLANK		(' ', ' ', ' ', ' ', ' ', ' ', "no (blank) borders for content"),
+
+	/**
 	 * Character '=' line.
 	 * <pre>
 	=========

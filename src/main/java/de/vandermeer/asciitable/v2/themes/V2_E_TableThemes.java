@@ -29,16 +29,16 @@ public enum V2_E_TableThemes {
 	/**
 	 * A theme for plain ASCII-7 boxes (basically the characters '-', '|' and '+').
 	 * <pre>
-	 * Normal           Example
-	 * +-+-+-+-+        +----+----+----+
-	 * | | | | |        |h1  |h2  |h3  |
-	 * +-+-+-+-+        +----+----+----+
-	 * | | | | |        |c1  |c2  |c3  |
-	 * +-+-+-+-+        +----+----+----+
-	 *                  |c1  |c2  |c3  |
-	 *                  +----+----+----+
-	 *                  |c1  |c2  |c3  |
-	 *                  +----+----+----+
+Normal           Example
++-+-+-+-+        +----+----+----+
+| | | | |        |h1  |h2  |h3  |
++-+-+-+-+        +----+----+----+
+| | | | |        |c1  |c2  |c3  |
++-+-+-+-+        +----+----+----+
+                 |c1  |c2  |c3  |
+                 +----+----+----+
+                 |c1  |c2  |c3  |
+                 +----+----+----+
 	 * </pre>
 	 */
 	PLAIN_7BIT(
@@ -52,19 +52,19 @@ public enum V2_E_TableThemes {
 	/**
 	 * A theme for plain ASCII-7 boxes (basically the characters '-', '|' and '+') for normal rules and '=' lines for strong rules.
 	 * <pre>
-	 * Normal           Strong           Example
-	 * +-+-+-+-+        =========        ================
-	 * | | | | |        | | | | |        |h1  |h2  |h3  |
-	 * +-+-+-+-+        =========        ================
-	 * | | | | |        | | | | |        |c1  |c2  |c3  |
-	 * +-+-+-+-+        =========        +----+----+----+
-	 *                                   |c1  |c2  |c3  |
-	 *                                   +----+----+----+
-	 *                                   |c1  |c2  |c3  |
-	 *                                   ================
+Normal           Strong           Example
++-+-+-+-+        =========        ================
+| | | | |        | | | | |        |h1  |h2  |h3  |
++-+-+-+-+        =========        ================
+| | | | |        | | | | |        |c1  |c2  |c3  |
++-+-+-+-+        =========        +----+----+----+
+                                  |c1  |c2  |c3  |
+                                  +----+----+----+
+                                  |c1  |c2  |c3  |
+                                  ================
 	 * </pre>
 	 */
-	PLAIN_7BIT_STRONG (
+	PLAIN_7BIT_STRONG(
 			V2_E_RowThemes.ASC7_SIMPLE,
 			V2_E_RowThemes.ASC7_LINE_EQUAL,
 			V2_E_RowThemes.ASC7_SIMPLE,
@@ -76,18 +76,44 @@ public enum V2_E_TableThemes {
 	),
 
 	/**
+	 * A theme for ASCII-7 based LaTeX-style table theme without borders.
+	 * <pre>
+Normal           Strong           Example
+─────────        ≡≡≡≡≡≡≡≡≡        ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+                                   h1   h2   h3   
+─────────        ═════════        ════════════════
+                                   c1   c2   c3   
+─────────        ≡≡≡≡≡≡≡≡≡        ────────────────
+                                   c1   c2   c3   
+                                  ────────────────
+                                   c1   c2   c3   
+                                  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+	 * </pre>
+	 */
+	ASC7_LATEX_STYLE_STRONG(
+			V2_E_RowThemes.UTF_LINE_LIGHT,
+			V2_E_RowThemes.ASC7_LINE_CONGRUENCE,
+			V2_E_RowThemes.UTF_LINE_LIGHT,
+			V2_E_RowThemes.UTF_LINE_DOUBLE,
+			V2_E_RowThemes.UTF_LINE_LIGHT,
+			V2_E_RowThemes.ASC7_LINE_CONGRUENCE,
+			V2_E_RowThemes.ASC7_SIMPLE_CONTENT_BLANK,
+			"ASCII-7 based LaTeX-style table theme without borders"
+	),
+
+	/**
 	 * A them with UTF-8 characters with double lines vertically and horizontally.
 	 * <pre>
-	* Normal           Example
-	* ╔═════╦═╗        ╔════╦════╦════╗
-	* ║ ║ ║ ║ ║        ║h1  ║h2  ║h3  ║
-	* ╠═╩═╬═╦═╣        ╠════╬════╬════╣
-	* ║ ║ ║ ║ ║        ║c1  ║c2  ║c3  ║
-	* ╚═╩═════╝        ╠════╬════╬════╣
-	*                  ║c1  ║c2  ║c3  ║
-	*                  ╠════╬════╬════╣
-	*                  ║c1  ║c2  ║c3  ║
-	*                  ╚════╩════╩════╝
+Normal           Example
+╔═════╦═╗        ╔════╦════╦════╗
+║ ║ ║ ║ ║        ║h1  ║h2  ║h3  ║
+╠═╩═╬═╦═╣        ╠════╬════╬════╣
+║ ║ ║ ║ ║        ║c1  ║c2  ║c3  ║
+╚═╩═════╝        ╠════╬════╬════╣
+                 ║c1  ║c2  ║c3  ║
+                 ╠════╬════╬════╣
+                 ║c1  ║c2  ║c3  ║
+                 ╚════╩════╩════╝
 	 * </pre>
 	 */
 	UTF_DOUBLE(
@@ -101,16 +127,16 @@ public enum V2_E_TableThemes {
 	/**
 	 * A them with UTF-8 double lines vertically and light (single) lines horizontally.
 	 * <pre>
-	* Normal           Example
-	* ╓─────╥─╖        ╓────╥────╥────╖
-	* ║ ║ ║ ║ ║        ║h1  ║h2  ║h3  ║
-	* ╟─╨─╫─╥─╢        ╟────╫────╫────╢
-	* ║ ║ ║ ║ ║        ║c1  ║c2  ║c3  ║
-	* ╙─╨─────╜        ╟────╫────╫────╢
-	*                  ║c1  ║c2  ║c3  ║
-	*                  ╟────╫────╫────╢
-	*                  ║c1  ║c2  ║c3  ║
-	*                  ╙────╨────╨────╜
+Normal           Example
+╓─────╥─╖        ╓────╥────╥────╖
+║ ║ ║ ║ ║        ║h1  ║h2  ║h3  ║
+╟─╨─╫─╥─╢        ╟────╫────╫────╢
+║ ║ ║ ║ ║        ║c1  ║c2  ║c3  ║
+╙─╨─────╜        ╟────╫────╫────╢
+                 ║c1  ║c2  ║c3  ║
+                 ╟────╫────╫────╢
+                 ║c1  ║c2  ║c3  ║
+                 ╙────╨────╨────╜
 	 * </pre>
 	 */
 	UTF_DOUBLE_LIGHT(
@@ -124,16 +150,16 @@ public enum V2_E_TableThemes {
 	/**
 	 * A them with UTF-8 light (single) lines vertically and horizontally.
 	 * <pre>
-	 * Normal           Example
-	 * ┌─────┬─┐        ┌────┬────┬────┐
-	 * │ │ │ │ │        │h1  │h2  │h3  │
-	 * ├─┴─┼─┬─┤        ├────┼────┼────┤
-	 * │ │ │ │ │        │c1  │c2  │c3  │
-	 * └─┴─────┘        ├────┼────┼────┤
-	 *                  │c1  │c2  │c3  │
-	 *                  ├────┼────┼────┤
-	 *                  │c1  │c2  │c3  │
-	 *                  └────┴────┴────┘
+Normal           Example
+┌─────┬─┐        ┌────┬────┬────┐
+│ │ │ │ │        │h1  │h2  │h3  │
+├─┴─┼─┬─┤        ├────┼────┼────┤
+│ │ │ │ │        │c1  │c2  │c3  │
+└─┴─────┘        ├────┼────┼────┤
+                 │c1  │c2  │c3  │
+                 ├────┼────┼────┤
+                 │c1  │c2  │c3  │
+                 └────┴────┴────┘
 	 * </pre>
 	 */
 	UTF_LIGHT(
@@ -147,16 +173,16 @@ public enum V2_E_TableThemes {
 	/**
 	 * A them with UTF-8 light (single) lines vertically and double lines horizontally.
 	 * <pre>
-	* Normal           Example
-	* ╒═════╤═╕        ╒════╤════╤════╕
-	* │ │ │ │ │        │h1  │h2  │h3  │
-	* ╞═╧═╪═╤═╡        ╞════╪════╪════╡
-	* │ │ │ │ │        │c1  │c2  │c3  │
-	* ╘═╧═════╛        ╞════╪════╪════╡
-	*                  │c1  │c2  │c3  │
-	*                  ╞════╪════╪════╡
-	*                  │c1  │c2  │c3  │
-	*                  ╘════╧════╧════╛
+Normal           Example
+╒═════╤═╕        ╒════╤════╤════╕
+│ │ │ │ │        │h1  │h2  │h3  │
+╞═╧═╪═╤═╡        ╞════╪════╪════╡
+│ │ │ │ │        │c1  │c2  │c3  │
+╘═╧═════╛        ╞════╪════╪════╡
+                 │c1  │c2  │c3  │
+                 ╞════╪════╪════╡
+                 │c1  │c2  │c3  │
+                 ╘════╧════╧════╛
 	 * </pre>
 	 */
 	UTF_LIGHT_DOUBLE(
@@ -170,16 +196,16 @@ public enum V2_E_TableThemes {
 	/**
 	 * A them with UTF-8 light (single) lines for normal rules and UTF-8 double lines for strong rules.
 	 * <pre>
-	 * Normal           Strong           Example
-	 * ┌─────┬─┐        ╒═════╤═╕        ╒════╤════╤════╕
-	 * │ │ │ │ │        │ │ │ │ │        │h1  │h2  │h3  │
-	 * ├─┴─┼─┬─┤        ╞═╧═╪═╤═╡        ╞════╪════╪════╡
-	 * │ │ │ │ │        │ │ │ │ │        │c1  │c2  │c3  │
-	 * └─┴─────┘        ╘═╧═════╛        ├────┼────┼────┤
-	 *                                   │c1  │c2  │c3  │
-	 *                                   ├────┼────┼────┤
-	 *                                   │c1  │c2  │c3  │
-	 *                                   ╘════╧════╧════╛
+Normal           Strong           Example
+┌─────┬─┐        ╒═════╤═╕        ╒════╤════╤════╕
+│ │ │ │ │        │ │ │ │ │        │h1  │h2  │h3  │
+├─┴─┼─┬─┤        ╞═╧═╪═╤═╡        ╞════╪════╪════╡
+│ │ │ │ │        │ │ │ │ │        │c1  │c2  │c3  │
+└─┴─────┘        ╘═╧═════╛        ├────┼────┼────┤
+                                  │c1  │c2  │c3  │
+                                  ├────┼────┼────┤
+                                  │c1  │c2  │c3  │
+                                  ╘════╧════╧════╛
 	 * </pre>
 	 */
 	UTF_STRONG_DOUBLE(
@@ -196,16 +222,16 @@ public enum V2_E_TableThemes {
 	/**
 	 * A them with UTF-8 with heavy (thick) lines vertically and horizontally.
 	 * <pre>
-	* Normal           Example
-	* ┏━━━━━┳━┓        ┏━━━━┳━━━━┳━━━━┓
-	* ┃ ┃ ┃ ┃ ┃        ┃h1  ┃h2  ┃h3  ┃
-	* ┣━┻━╋━┳━┫        ┣━━━━╋━━━━╋━━━━┫
-	* ┃ ┃ ┃ ┃ ┃        ┃c1  ┃c2  ┃c3  ┃
-	* ┗━┻━━━━━┛        ┣━━━━╋━━━━╋━━━━┫
-	*               ┃c1  ┃c2  ┃c3  ┃
-	*               ┣━━━━╋━━━━╋━━━━┫
-	*               ┃c1  ┃c2  ┃c3  ┃
-	*               ┗━━━━┻━━━━┻━━━━┛
+Normal           Example
+┏━━━━━┳━┓        ┏━━━━┳━━━━┳━━━━┓
+┃ ┃ ┃ ┃ ┃        ┃h1  ┃h2  ┃h3  ┃
+┣━┻━╋━┳━┫        ┣━━━━╋━━━━╋━━━━┫
+┃ ┃ ┃ ┃ ┃        ┃c1  ┃c2  ┃c3  ┃
+┗━┻━━━━━┛        ┣━━━━╋━━━━╋━━━━┫
+                 ┃c1  ┃c2  ┃c3  ┃
+                 ┣━━━━╋━━━━╋━━━━┫
+                 ┃c1  ┃c2  ┃c3  ┃
+                 ┗━━━━┻━━━━┻━━━━┛
 	 * </pre>
 	 */
 	UTF_HEAVY(

@@ -160,7 +160,7 @@ public class Test_CodeForDocs_V2 {
 	public void test_Readme_Example_TableThemes(){
 		V2_AsciiTable at = new V2_AsciiTable(1);
 		at.addRule();
-		at.addRow("some text with padding");
+		at.addRow("some column text");
 		at.addRule();
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();

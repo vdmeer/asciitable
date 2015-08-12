@@ -13,10 +13,27 @@
  * limitations under the License.
  */
 
+package de.vandermeer.asciitable.v2.themes;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
 /**
- * Version 2 of an implementation of an ASCII Table with flexible renderes and themes for rows and tables.
+ * Tests for {@link V2_E_TableThemes}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.1.1-SNAPSHOT build 150812 (12-Aug-15) for Java 1.7
+ * @since      v0.0.8
  */
-package de.vandermeer.asciitable.v2;
+public class Test_V2_E_TableThemes {
+
+	@Test
+	public void test_Themes(){
+		for(V2_E_TableThemes t : V2_E_TableThemes.values()){
+			assertTrue(t.get()!=null);
+			V2_Validator.testTableTheme(t.get());
+			System.out.println(t.name() + "\n" + t.get().toDoc() + "\n\n");
+		}
+	}
+}
