@@ -30,4 +30,5 @@ public enum V2_E_RuleStyle {
 	/** A strong, emphasized rule, exact type (top, mid, bottom) needs to be calculated. */
 	STRONG,
 	;
+
 }

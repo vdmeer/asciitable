@@ -44,7 +44,6 @@ public class Test_CodeForDocs_V2 {
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
-System.out.println(at);
 //		System.out.println(rend.render(at));
 	}
 
@@ -174,4 +173,5 @@ System.out.println(at);
 		rend.setTheme(V2_E_TableThemes.UTF_DOUBLE.get());
 //		System.out.println(rend.render(at));
 	}
+
 }

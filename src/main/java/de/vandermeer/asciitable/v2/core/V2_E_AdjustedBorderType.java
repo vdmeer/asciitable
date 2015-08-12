@@ -38,4 +38,5 @@ public enum V2_E_AdjustedBorderType {
 
 	/** A content border. */
 	CONTENT
+
 }

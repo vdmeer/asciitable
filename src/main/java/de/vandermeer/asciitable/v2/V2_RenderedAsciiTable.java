@@ -59,4 +59,5 @@ public class V2_RenderedAsciiTable {
 		}
 		return ret;
 	}
+
 }

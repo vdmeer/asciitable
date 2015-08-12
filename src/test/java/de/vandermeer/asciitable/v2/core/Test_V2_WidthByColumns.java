@@ -22,7 +22,7 @@ import org.junit.Test;
 import de.vandermeer.asciitable.v2.core.V2_WidthByColumns;
 
 /**
- * Tests for column width class.
+ * Tests for {@link V2_WidthByColumns}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.1.1 build 150812 (12-Aug-15) for Java 1.7
@@ -57,4 +57,5 @@ public class Test_V2_WidthByColumns {
 		assertEquals(5, cw.ar[1]);
 		assertEquals(3, cw.ar[2]);
 	}
+
 }

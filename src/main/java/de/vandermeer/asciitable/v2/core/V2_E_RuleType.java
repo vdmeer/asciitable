@@ -33,4 +33,5 @@ public enum V2_E_RuleType {
 	/** A bottom rule of a table. */
 	BOTTOM,
 	;
+
 }

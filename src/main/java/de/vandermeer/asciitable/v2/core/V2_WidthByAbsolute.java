@@ -70,4 +70,5 @@ public class V2_WidthByAbsolute implements V2_Width {
 		}
 		return ret;
 	}
+
 }

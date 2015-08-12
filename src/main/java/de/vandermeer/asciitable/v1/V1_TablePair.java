@@ -52,4 +52,5 @@ public interface V1_TablePair<LHS, RHS> {
 	 * @return description
 	 */
 	String getDescription();
+
 }

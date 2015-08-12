@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package de.vandermeer.asciitable.v1;
 
 import java.util.ArrayList;
@@ -691,4 +692,5 @@ public final class V1_AsciiTable {
 		ret.append("------------------------------------");
 		return ret.toString();
 	}
+
 }

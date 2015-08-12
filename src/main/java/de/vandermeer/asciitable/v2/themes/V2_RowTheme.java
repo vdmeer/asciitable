@@ -73,4 +73,5 @@ public interface V2_RowTheme {
 	 * @return documentation representation of the row theme
 	 */
 	StrBuilder toDoc();
+
 }
