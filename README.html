@@ -692,7 +692,7 @@ heavy character. The following shows a table using the standard heavy theme (<co
 Once a table is defined, rules and rows can be added.
 A rule is a special row with border formatting characters (similar to a rule in a LaTeX table).
 A row is a content row with content (in form of strings or objects with <code>toString()</code> method).
-A row should have content for each of the columns defined for the table, e.g. if the table is set fo 3 columns each row should define content for 3 columns.</p>
+A row should have content for each of the columns defined for the table, e.g. if the table is set for 3 columns each row should define content for 3 columns.</p>
 </div>
 <div class="paragraph">
 <p>Once a table is defined and filled, a renderer is used to render the table.
@@ -717,7 +717,7 @@ It will produce a rendered table, which can then be printed to the screen or oth
 <div class="ulist">
 <ul>
 <li>
-<p>a rule is a separator of rows usin a normal row theme</p>
+<p>a rule is a separator of rows using a normal row theme</p>
 </li>
 <li>
 <p>a strong rule is a separator of rows using a strong row theme</p>
@@ -739,7 +739,7 @@ It will produce a rendered table, which can then be printed to the screen or oth
 <div class="paragraph">
 <p>A table, once created, can be rendered using any renderer.
 Any renderer can render any created table multiple (any) times.
-Furthermore, a renderer can re-render a table (if it has been changed) anytime.</p>
+Furthermore, a renderer can re-render a table (if it has been changed) any time.</p>
 </div>
 </div>
 <div class="sect2">
@@ -952,9 +952,9 @@ System.out.println(rend.render(at));</pre>
 <h3 id="_column_spanning">Column spanning</h3>
 <div class="paragraph">
 <p>Rows can span columns.
-This is done by adding columns of <code>null</code> content to a row followd by a column with content.
+This is done by adding columns of <code>null</code> content to a row followed by a column with content.
 The column with content will span all previous rows with content <code>null</code>.
-The followign example creates a table with 5 columns and different column spanning (all to none columns):</p>
+The following example creates a table with 5 columns and different column spanning (all to none columns):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1004,9 +1004,9 @@ System.out.println(rend.render(at));</pre>
 <h3 id="_padding_character">Padding Character</h3>
 <div class="paragraph">
 <p>The table renderer can be set to use different padding characters.
-A padding character is the character used to fill content rows (all their columns) upto the next border.
-Using UTF-8 characters might not be result in te anticipated result.
-The followign example creates a table with 1 table rendered with the same renderer set for different padding characters:</p>
+A padding character is the character used to fill content rows (all their columns) up to the next border.
+Using UTF-8 characters might not be result in the anticipated result.
+The following example creates a table with 1 table rendered with the same renderer set for different padding characters:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1054,13 +1054,13 @@ System.out.println(rend.render(at));</pre>
 <div class="paragraph">
 <p>The table renderer can be set to use different table themes.
 A table theme defines all border characters for rules, strong rules and content rows.
-The followign example creates a table with 1 table rendered with the same renderer set for different table themes (using pre-defined themes):</p>
+The following example creates a table with 1 table rendered with the same renderer set for different table themes (using pre-defined themes):</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>V2_AsciiTable at = new V2_AsciiTable(1);
 at.addRule();
-at.addRow("some text with padding");
+at.addRow("some column text");
 at.addRule();
 
 V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
@@ -1080,19 +1080,19 @@ System.out.println(rend.render(at));</pre>
 <div class="listingblock">
 <div class="content">
 <pre>+--------------------------------------------------------------------------+
-|some text with padding                                                    |
+|some column text                                                          |
 +--------------------------------------------------------------------------+
 
 ┌──────────────────────────────────────────────────────────────────────────┐
-│some text with padding                                                    │
+│some column text                                                          │
 └──────────────────────────────────────────────────────────────────────────┘
 
 ╓──────────────────────────────────────────────────────────────────────────╖
-║some text with padding                                                    ║
+║some column text                                                          ║
 ╙──────────────────────────────────────────────────────────────────────────╜
 
 ╔══════════════════════════════════════════════════════════════════════════╗
-║some text with padding                                                    ║
+║some column text                                                          ║
 ╚══════════════════════════════════════════════════════════════════════════╝</pre>
 </div>
 </div>
@@ -1102,7 +1102,7 @@ System.out.println(rend.render(at));</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-08-12 00:14:02 IST
+Last updated 2015-08-12 10:32:17 IST
 </div>
 </div>
 </body>
