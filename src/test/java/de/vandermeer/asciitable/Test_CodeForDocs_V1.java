@@ -24,7 +24,7 @@ import de.vandermeer.asciitable.v1.V1_StandardTableThemes;
  * Tests for ASCII table V1 for code used in documentation.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.1.0 build 150812 (12-Aug-15) for Java 1.7
+ * @version    v0.1.1-SNAPSHOT build 150812 (12-Aug-15) for Java 1.7
  */
 public class Test_CodeForDocs_V1 {
 
@@ -34,7 +34,7 @@ public class Test_CodeForDocs_V1 {
 		at.addRow(null, null, "Table Heading");
 		at.addRow("first row (col1)", "with some information", "and more information");
 		at.addRow("second row (col1)", "with some information (col2)", "and more information (col3)");
-		System.err.println(at.render());
+//		System.err.println(at.render());
 	}
 
 	@Test

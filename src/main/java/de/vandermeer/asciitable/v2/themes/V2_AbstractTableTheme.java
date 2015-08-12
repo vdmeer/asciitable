@@ -23,10 +23,10 @@ import de.vandermeer.asciitable.commons.TableException;
  * Abstract {@link V2_TableTheme} implementation.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.1.0 build 150812 (12-Aug-15) for Java 1.7
+ * @version    v0.1.1-SNAPSHOT build 150812 (12-Aug-15) for Java 1.7
  * @since      v0.0.8
  */
-class V2_AbstractTableTheme implements V2_TableTheme {
+public class V2_AbstractTableTheme implements V2_TableTheme {
 
 	/** Theme for a bottom row. */
 	private V2_RowTheme bottom;

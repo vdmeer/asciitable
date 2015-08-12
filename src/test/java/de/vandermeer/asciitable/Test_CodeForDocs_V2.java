@@ -26,7 +26,7 @@ import de.vandermeer.asciitable.v2.themes.V2_E_TableThemes;
  * Tests for ASCII table V2 for code used in documentation.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.1.0 build 150812 (12-Aug-15) for Java 1.7
+ * @version    v0.1.1-SNAPSHOT build 150812 (12-Aug-15) for Java 1.7
  */
 public class Test_CodeForDocs_V2 {
 
@@ -44,6 +44,7 @@ public class Test_CodeForDocs_V2 {
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
+System.out.println(at);
 //		System.out.println(rend.render(at));
 	}
 
@@ -160,7 +161,7 @@ public class Test_CodeForDocs_V2 {
 	public void test_Readme_Example_TableThemes(){
 		V2_AsciiTable at = new V2_AsciiTable(1);
 		at.addRule();
-		at.addRow("some text with padding");
+		at.addRow("some column text");
 		at.addRule();
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();

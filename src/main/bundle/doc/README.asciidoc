@@ -192,7 +192,7 @@ The class allows to define a table with +n+ columns.
 Once a table is defined, rules and rows can be added.
 A rule is a special row with border formatting characters (similar to a rule in a LaTeX table).
 A row is a content row with content (in form of strings or objects with +toString()+ method).
-A row should have content for each of the columns defined for the table, e.g. if the table is set fo 3 columns each row should define content for 3 columns.
+A row should have content for each of the columns defined for the table, e.g. if the table is set for 3 columns each row should define content for 3 columns.
 
 Once a table is defined and filled, a renderer is used to render the table.
 This render object is initialized with the table width and themes.
@@ -208,7 +208,7 @@ The standard usage is:
 
 * create a table for +n+ columns
 * add rules and rows
-	** a rule is a separator of rows usin a normal row theme
+	** a rule is a separator of rows using a normal row theme
 	** a strong rule is a separator of rows using a strong row theme
 	** a row is the actual content with objects per column (or spanning columns, as explained below)
 * create a renderer and configure it
@@ -216,7 +216,7 @@ The standard usage is:
 
 A table, once created, can be rendered using any renderer.
 Any renderer can render any created table multiple (any) times.
-Furthermore, a renderer can re-render a table (if it has been changed) anytime.
+Furthermore, a renderer can re-render a table (if it has been changed) any time.
 
 
 A table with 1 column
@@ -398,9 +398,9 @@ Column spanning
 ~~~~~~~~~~~~~~~
 
 Rows can span columns.
-This is done by adding columns of +null+ content to a row followd by a column with content.
+This is done by adding columns of +null+ content to a row followed by a column with content.
 The column with content will span all previous rows with content +null+.
-The followign example creates a table with 5 columns and different column spanning (all to none columns):
+The following example creates a table with 5 columns and different column spanning (all to none columns):
 ---------------------------------------------
 V2_AsciiTable at = new V2_AsciiTable(5);
 at.addRuleStrong();
@@ -445,9 +445,9 @@ Padding Character
 ~~~~~~~~~~~~~~~~~
 
 The table renderer can be set to use different padding characters.
-A padding character is the character used to fill content rows (all their columns) upto the next border.
-Using UTF-8 characters might not be result in te anticipated result.
-The followign example creates a table with 1 table rendered with the same renderer set for different padding characters:
+A padding character is the character used to fill content rows (all their columns) up to the next border.
+Using UTF-8 characters might not be result in the anticipated result.
+The following example creates a table with 1 table rendered with the same renderer set for different padding characters:
 ---------------------------------------------
 V2_AsciiTable at = new V2_AsciiTable(1);
 at.addRule();
@@ -490,11 +490,11 @@ Table Theme
 
 The table renderer can be set to use different table themes.
 A table theme defines all border characters for rules, strong rules and content rows.
-The followign example creates a table with 1 table rendered with the same renderer set for different table themes (using pre-defined themes):
+The following example creates a table with 1 table rendered with the same renderer set for different table themes (using pre-defined themes):
 ---------------------------------------------
 V2_AsciiTable at = new V2_AsciiTable(1);
 at.addRule();
-at.addRow("some text with padding");
+at.addRow("some column text");
 at.addRule();
 
 V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
@@ -511,18 +511,18 @@ System.out.println(rend.render(at));
 The output of this example will be:
 ----------------------------------------------------------------------------------------
 +--------------------------------------------------------------------------+
-|some text with padding                                                    |
+|some column text                                                          |
 +--------------------------------------------------------------------------+
 
 ┌──────────────────────────────────────────────────────────────────────────┐
-│some text with padding                                                    │
+│some column text                                                          │
 └──────────────────────────────────────────────────────────────────────────┘
 
 ╓──────────────────────────────────────────────────────────────────────────╖
-║some text with padding                                                    ║
+║some column text                                                          ║
 ╙──────────────────────────────────────────────────────────────────────────╜
 
 ╔══════════════════════════════════════════════════════════════════════════╗
-║some text with padding                                                    ║
+║some column text                                                          ║
 ╚══════════════════════════════════════════════════════════════════════════╝
 ----------------------------------------------------------------------------------------

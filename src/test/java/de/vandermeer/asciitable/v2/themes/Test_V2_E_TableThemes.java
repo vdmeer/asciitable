@@ -13,26 +13,27 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v1;
+package de.vandermeer.asciitable.v2.themes;
+
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 /**
- * Tests for Transformers, some of which are repeated in TransformationTests.
+ * Tests for {@link V2_E_TableThemes}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.1.0 build 150812 (12-Aug-15) for Java 1.7
+ * @version    v0.1.1-SNAPSHOT build 150812 (12-Aug-15) for Java 1.7
+ * @since      v0.0.8
  */
-public class Test_Transformers {
+public class Test_V2_E_TableThemes {
 
-	@Test public void test_Object2Text(){
-//		Skb_Transformer<Object, String> tf=Transformers.OBJECT_TO_TEXT();
-//
-//		AsciiTable table=AsciiTable.newTable(2, 15);
-//		table.addRow("col A1", "col A2");
-//		String test="+------+------+\r\n" +
-//					"|col A1|col A2|\r\n" + 
-//					"+------+------+\r\n";
-//		assertEquals(test, tf.transform(table));
+	@Test
+	public void test_Themes(){
+		for(V2_E_TableThemes t : V2_E_TableThemes.values()){
+			assertTrue(t.get()!=null);
+			V2_Validator.testTableTheme(t.get());
+			System.out.println(t.name() + "\n" + t.get().toDoc() + "\n\n");
+		}
 	}
 }

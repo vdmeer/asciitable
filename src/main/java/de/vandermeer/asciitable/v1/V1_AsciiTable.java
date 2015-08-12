@@ -26,7 +26,7 @@ import org.apache.commons.lang3.text.StrBuilder;
 import org.apache.commons.lang3.text.WordUtils;
 
 import de.vandermeer.asciitable.commons.ArrayTransformations;
-import de.vandermeer.asciitable.commons.Table_ToStringStyle;
+import de.vandermeer.asciitable.commons.ObjectToStringStyle;
 
 /**
  * Original ASCII table with flexible column number, column width, wrapping, spanning and themes.
@@ -79,7 +79,7 @@ import de.vandermeer.asciitable.commons.Table_ToStringStyle;
  * }</pre>
  * 
  * The output of this example will be:
- * <pre>
+ * <pre style="line-height:17px">
 	+--------------------------------------------------------------------------+
 	|                              Table Heading                               |
 	+------------------------+------------------------+------------------------+
@@ -102,7 +102,7 @@ import de.vandermeer.asciitable.commons.Table_ToStringStyle;
  * }</pre>
  * 
  * The output of this example will be:
- * <pre>
+ * <pre style="line-height:17px">
 	+-----------------------------------------------+
 	|                 Table Heading                 |
 	+----------+---------------+--------------------+
@@ -121,7 +121,7 @@ import de.vandermeer.asciitable.commons.Table_ToStringStyle;
  * }</pre>
  * 
  * The output will now be:
- * <pre>
+ * <pre style="line-height:17px">
 	┌───────────────────────────────────────────────┐
 	│                 Table Heading                 │
 	├──────────┬───────────────┬────────────────────┤
@@ -133,7 +133,7 @@ import de.vandermeer.asciitable.commons.Table_ToStringStyle;
  * </pre>
  * 
  * If you use the theme {@link V1_StandardTableThemes#DOUBLE}, the output should look like this:
- * <pre>
+ * <pre style="line-height:17px">
 	╔═══════════════════════════════════════════════╗
 	║                 Table Heading                 ║
 	╠══════════╦═══════════════╦════════════════════╣
@@ -145,7 +145,7 @@ import de.vandermeer.asciitable.commons.Table_ToStringStyle;
  * </pre>
  * 
  * If we use the theme {@link V1_StandardTableThemes#LIGHT_DOUBLE}, the output should look like this:
- * <pre>
+ * <pre style="line-height:17px">
 	╒═══════════════════════════════════════════════╕
 	│                 Table Heading                 │
 	╞══════════╤═══════════════╤════════════════════╡
@@ -157,7 +157,7 @@ import de.vandermeer.asciitable.commons.Table_ToStringStyle;
  * </pre>
  * 
  * If we use the theme {@link V1_StandardTableThemes#DOUBLE_LIGHT}, the output should look like this:
- * <pre>
+ * <pre style="line-height:17px">
 	╓───────────────────────────────────────────────╖
 	║                 Table Heading                 ║
 	╟──────────╥───────────────╥────────────────────╢
@@ -172,18 +172,18 @@ import de.vandermeer.asciitable.commons.Table_ToStringStyle;
  * fonts on windows do not show heavy box drawing characters as monotype or have varying width for whitespaces when using
  * heavy character. The following shows a table using the standard heavy theme ({@link V1_StandardTableThemes#HEAVY}):
  * <pre>
-	┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-	┃                 Table Heading                 ┃
-	┣━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┫
-	┃row 1     ┃this is col 2  ┃and this is column 3┃
-	┣━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━┫
-	┃row 2     ┃some text for  ┃and some text for   ┃
-	┃          ┃column 2       ┃column 3            ┃
-	┗━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━┛
+ * ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+ * ┃                 Table Heading                 ┃
+ * ┣━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┫
+ * ┃row 1     ┃this is col 2  ┃and this is column 3┃
+ * ┣━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━┫
+ * ┃row 2     ┃some text for  ┃and some text for   ┃
+ * ┃          ┃column 2       ┃column 3            ┃
+ * ┗━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━┛
  * </pre>
  * 
  * There are also a number of LaTeX style themes pre-defined. For instance {@link V1_StandardTableThemes#LATEX_LIGHT_TRIPLE_DASH}, which unfortunately does not render easily to HTML:
- * <pre>
+ * <pre style="line-height:17px">
 	┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
 	                  Table Heading                  
 	┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -195,7 +195,7 @@ import de.vandermeer.asciitable.commons.Table_ToStringStyle;
  * </pre>
  * 
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.1.0 build 150812 (12-Aug-15) for Java 1.7
+ * @version    v0.1.1-SNAPSHOT build 150812 (12-Aug-15) for Java 1.7
  * @since      v0.0.1
  */
 public final class V1_AsciiTable {
@@ -675,15 +675,15 @@ public final class V1_AsciiTable {
 	 * @return string with debug information about the table
 	 */
 	public String toString(){
-		ToStringBuilder ret=new ToStringBuilder(this, Table_ToStringStyle.TS_STYLE)
+		ToStringBuilder ret = new ToStringBuilder(this, ObjectToStringStyle.getStyle())
 			.append("columns   ", this.columns, false)
 			.append("columns   ", this.columns)
 			.append("------------------------------------")
 			.append("table     ", this.table, false)
 		;
 
-		if(this.table!=null&&this.table.size()>0){
-			for(Integer i:table.keySet()){
+		if(this.table!=null && this.table.size()>0){
+			for(Integer i : this.table.keySet()){
 				ret.append(String.format("  row(%3d)", i), this.table.get(i));
 			}
 		}

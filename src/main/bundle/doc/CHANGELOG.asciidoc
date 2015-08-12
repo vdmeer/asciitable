@@ -1,15 +1,26 @@
+v0.1.1 - feature add - 2015-08-13
+---------------------------------
+* V2 changes
+	** added LaTeX-style table theme (ASC7_LATEX_STYLE_STRONG)
+	** added tests and edited javadoc
+	** made V2_AbstractTableTheme public
+* added ARRAY_TO_STRING to ArrayTransformations (from skb-base)
+* renamed Table_ToStringStyle to ObjectToStringStyle since it is more general than for tables
+	** removed kv methods
+
+
 v0.1.0 - minor version change - 2015-08-12
 ------------------------------------------
 * bug fix in WidthByColumn
 * edit of documentation (javadoc and readme)
 * minor changes in v2 theme handling
-* v1 and v2 changes
+* V1 and V2 changes
 	** renamed all v1 classes to "V1_"
 	** renamed all v2 classes to "V2_"
-* v1 changes
+* V1 changes
 	** moved TablePair from commons to v1 (only used in v1)
 	** refactored CommonFactory from commons to v1/V1_Factory (only used in v1)
-* v2 changes
+* V2 changes
 	** added AbstractTableTheme and changed E_TableThemes and TableThemeBuilder implementations
 	** added AbstractRowTheme and changed E_RowThemes and RowThemeBuilder implementations
 	** changed exceptions on V2_Validator to TableException

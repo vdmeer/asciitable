@@ -15,13 +15,16 @@
 
 package de.vandermeer.asciitable.v2.core;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import de.vandermeer.asciitable.commons.TableException;
+import de.vandermeer.asciitable.commons.ObjectToStringStyle;
 
 /**
  * A table row, either a rule or a row with content for columns.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.1.0 build 150812 (12-Aug-15) for Java 1.7
+ * @version    v0.1.1-SNAPSHOT build 150812 (12-Aug-15) for Java 1.7
  * @since      v0.0.3
  */
 public class V2_TableRow {
@@ -149,5 +152,35 @@ public class V2_TableRow {
 		if(this.isRule() && style!=null){
 			this.ruleStyle = style;
 		}
+	}
+
+	/**
+	 * Returns a string with debug information.
+	 * @param indent number of spaces for indentation, useful for nested operations
+	 * @return string with debug information about the table
+	 */
+	public String toString(int indent){
+		ToStringBuilder ret = new ToStringBuilder(this, ObjectToStringStyle.getStyle(indent));
+
+		if(this.isContent()){
+			ret.append("row type       ", "content with " + this.columns.length + " column(s)");
+			ret.append("columns        ", this.columns, false);
+			ret.append("columns        ", this.columns);
+		}
+		if(this.isRule()){
+			ret.append("row type       ", "rule type " + this.ruleType + " style " + this.ruleStyle);
+		}
+		ret.append("borders        ", this.borders, false);
+		ret.append("borders        ", this.borders);
+
+		return ret.toString();
+	}
+
+	/**
+	 * Returns a string with debug information.
+	 * @return string with debug information about the table
+	 */
+	public String toString(){
+		return this.toString(0);
 	}
 }
