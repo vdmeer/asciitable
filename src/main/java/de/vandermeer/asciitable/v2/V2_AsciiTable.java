@@ -21,7 +21,7 @@ import java.util.List;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import de.vandermeer.asciitable.commons.TableException;
-import de.vandermeer.asciitable.commons.Table_ToStringStyle;
+import de.vandermeer.asciitable.commons.ObjectToStringStyle;
 import de.vandermeer.asciitable.v2.core.V2_E_RuleStyle;
 import de.vandermeer.asciitable.v2.core.V2_E_RuleType;
 import de.vandermeer.asciitable.v2.core.V2_TableRow;
@@ -497,21 +497,20 @@ public class V2_AsciiTable {
 	 * @return string with debug information about the table
 	 */
 	public String toString(){
-		ToStringBuilder ret = new ToStringBuilder(this, Table_ToStringStyle.TS_STYLE)
+		ToStringBuilder ret = new ToStringBuilder(this, ObjectToStringStyle.getStyle())
 			.append("column count   ", this.columns)
-//			.append("column widths  ", this.columnWidth, false)
-//			.append("column widths  ", this.columnWidth)
-//			.append("borders        ", this.borders, false)
-//			.append("borders        ", this.borders)
-			.append("------------------------------------")
 			.append("table          ", this.table, false)
+			.append("")
+			.append("------------------------------------")
+			.append("")
 		;
 
-//		if(this.table!=null&&this.table.size()>0){
-//			for(Integer i:table.keySet()){
-//				ret.append(String.format("  row(%3d)", i), this.table.get(i));
-//			}
-//		}
+		if(this.table!=null && this.table.size()>0){
+			for(V2_TableRow row : this.table){
+				ret.append(row.toString(4));
+				ret.append("");
+			}
+		}
 
 		ret.append("------------------------------------");
 		return ret.toString();

@@ -20,6 +20,7 @@ package de.vandermeer.asciitable.commons;
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.1.1-SNAPSHOT build 150812 (12-Aug-15) for Java 1.7
+ * @since      v0.0.1
  */
 public class TableException extends RuntimeException {
 	/** UUID */

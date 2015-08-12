@@ -15,7 +15,10 @@
 
 package de.vandermeer.asciitable.v2.core;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import de.vandermeer.asciitable.commons.TableException;
+import de.vandermeer.asciitable.commons.ObjectToStringStyle;
 
 /**
  * A table row, either a rule or a row with content for columns.
@@ -149,5 +152,35 @@ public class V2_TableRow {
 		if(this.isRule() && style!=null){
 			this.ruleStyle = style;
 		}
+	}
+
+	/**
+	 * Returns a string with debug information.
+	 * @param indent number of spaces for indentation, useful for nested operations
+	 * @return string with debug information about the table
+	 */
+	public String toString(int indent){
+		ToStringBuilder ret = new ToStringBuilder(this, ObjectToStringStyle.getStyle(indent));
+
+		if(this.isContent()){
+			ret.append("row type       ", "content with " + this.columns.length + " column(s)");
+			ret.append("columns        ", this.columns, false);
+			ret.append("columns        ", this.columns);
+		}
+		if(this.isRule()){
+			ret.append("row type       ", "rule type " + this.ruleType + " style " + this.ruleStyle);
+		}
+		ret.append("borders        ", this.borders, false);
+		ret.append("borders        ", this.borders);
+
+		return ret.toString();
+	}
+
+	/**
+	 * Returns a string with debug information.
+	 * @return string with debug information about the table
+	 */
+	public String toString(){
+		return this.toString(0);
 	}
 }

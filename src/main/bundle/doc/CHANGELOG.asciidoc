@@ -3,6 +3,10 @@ v0.1.1 - feature add - 2015-##-##
 * V2 changes
 	** added LaTeX-style table theme (ASC7_LATEX_STYLE_STRONG)
 	** added tests and edited javadoc
+	** made V2_AbstractTableTheme public
+* added ARRAY_TO_STRING to ArrayTransformations (from skb-base)
+* renamed Table_ToStringStyle to ObjectToStringStyle since it is more general than for tables
+	** removed kv methods
 
 
 v0.1.0 - minor version change - 2015-08-12

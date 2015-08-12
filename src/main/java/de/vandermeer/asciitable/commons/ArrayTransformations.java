@@ -17,19 +17,20 @@ package de.vandermeer.asciitable.commons;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.text.StrBuilder;
 import org.apache.commons.lang3.text.WordUtils;
 
-
 /**
- * Collections of methods to transform arrays.
+ * Collections array transformation methods.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.1.1-SNAPSHOT build 150812 (12-Aug-15) for Java 1.7
+ * @since      v0.0.1
  */
 public abstract class ArrayTransformations {
 
 	/**
-	 * Flips a table (array of arrays).
+	 * Flips an array of arrays (a table).
 	 * For each cell in the table the row and column indexes are 'turned over', that is for instance the cell [1][2] becomes [2][1].
 	 * Consider an input table of
 	 * <pre>
@@ -37,15 +38,16 @@ public abstract class ArrayTransformations {
 	 * row 2: a2, b2, c2
 	 * row 3: a3, b3, c3
 	 * </pre>
-	 * the transformer will return a table of
+	 * 
+	 * The transformed table will be
 	 * <pre>
 	 * row 1: a1, a2, a3
 	 * row 2: b1, b2, b3
 	 * row 3: c1, c2, c3
 	 * </pre>
-	 * A null table as input results in a null table in the output.
+	 * 
 	 * @param ar input array which will be flipped
-	 * @return flipped array
+	 * @return flipped array, null if input was null
 	 */
 	public static final String[][] FLIP_ARRAY(String[][] ar){
 		if(ar==null){
@@ -105,7 +107,7 @@ public abstract class ArrayTransformations {
 	}
 
 	/**
-	 * Takes an objects and returns a string array with wrapped lines of max length.
+	 * Takes an object (used as a string) and returns a string array with wrapped lines of max length.
 	 * The wrapping is done using StringUtils and WordUtils so that words are not broken into characters.
 	 * @param length max length of a string in the returned array
 	 * @param obj input object, null and empty objects are allowed
@@ -119,5 +121,38 @@ public abstract class ArrayTransformations {
 			return new String[]{};
 		}
 		return StringUtils.split(WordUtils.wrap(obj.toString(), length, "@@@", true), "@@@");
+	}
+
+	/**
+	 * Takes a 2 dimensional array and returns a string representation in table form.
+	 * @param <T> type of the input array
+	 * @param ar the array to be transformed
+	 * @return a string representation of the array
+	 */
+	public static final <T> StrBuilder ARRAY_TO_STRING(T[][] ar){
+		StrBuilder ret = new StrBuilder(50);
+		for(int row=0; row<ar.length; row++){ //TODO not null save
+			if(ar[row]==null){
+				ret.append("[").append(row).appendln("]: null");
+			}
+			else if(ar[row].length==0){
+				ret.append("[").append(row).appendln("]: 0");
+			}
+			else{
+				for(int col=0; col<ar[row].length; col++){
+					ret.append("[").append(row).append("][").append(col).append("]: ");
+					if(ar[row][col]==null){
+						ret.appendln("null");
+					}
+					else if("".equals(ar[row][col])){
+						ret.appendln("0");
+					}
+					else{
+						ret.appendln(ar[row][col]);
+					}
+				}
+			}
+		}
+		return ret;
 	}
 }
