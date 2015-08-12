@@ -17,6 +17,6 @@
  * Version 2 of an implementation of an ASCII Table with flexible renderes and themes for rows and tables.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.1.1 build 150812 (12-Aug-15) for Java 1.7
+ * @version    v0.1.2 build 150812 (12-Aug-15) for Java 1.7
  */
 package de.vandermeer.asciitable.v2;
