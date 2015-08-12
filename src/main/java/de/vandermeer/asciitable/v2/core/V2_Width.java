@@ -33,4 +33,5 @@ public interface V2_Width {
 	 * @return array with overall width and width of individual columns
 	 */
 	public int[] calculateWidth(int columnCount);
+
 }

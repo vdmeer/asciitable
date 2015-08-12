@@ -594,13 +594,22 @@ public enum V2_E_RowThemes {
 	 * </pre>
 	 */
 	UTF_HEAVY_CONTENT				('┃', '┃', '┃', '┃', '┃', '\u2003', "UTF-8 with heavy (thick) lines vertically and horizontally for content row"),
+
 	;
-
-
 
 	/** Local builder. */
 	V2_RowThemeBuilder builder = new V2_RowThemeBuilder();
 
+	/**
+	 * Returns a row theme.
+	 * @param leftBorder left border character
+	 * @param midBorderUp mid up border character
+	 * @param midBorderAll mid all border character
+	 * @param midBorderDown mid down border character
+	 * @param rightBorder right border character
+	 * @param mid mid character
+	 * @param description a description
+	 */
 	private V2_E_RowThemes(char leftBorder, char midBorderUp, char midBorderAll, char midBorderDown, char rightBorder, char mid, String description){
 		this.builder
 			.setDescription(description)
@@ -614,7 +623,12 @@ public enum V2_E_RowThemes {
 		V2_Validator.testRowTheme(this.builder.build());
 	}
 
+	/**
+	 * Returns the actual theme.
+	 * @return the theme
+	 */
 	public V2_RowTheme get(){
 		return this.builder.build();
 	}
+
 }

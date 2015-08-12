@@ -31,4 +31,5 @@ public enum V2_E_BorderPosition {
 
 	/** Right border. */
 	RIGHT;
+
 }

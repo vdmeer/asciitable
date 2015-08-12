@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.vandermeer.asciitable.v1;
 
+package de.vandermeer.asciitable.v1;
 
 /**
  * Predefined render themes for the ASCII table.
@@ -386,4 +386,5 @@ public enum V1_StandardTableThemes implements V1_TableTheme {
 	public char[] getTheme() {
 		return this.theme;
 	}
+
 }

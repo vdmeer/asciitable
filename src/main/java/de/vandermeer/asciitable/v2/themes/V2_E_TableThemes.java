@@ -247,17 +247,41 @@ Normal           Example
 	/** Local theme. */
 	V2_TableTheme theme;
 
+	/**
+	 * Creates a new table theme.
+	 * @param top top rule theme (same for strong)
+	 * @param mid mid rule theme (same for strong)
+	 * @param bottom bottom rule theme (same for strong)
+	 * @param content content theme
+	 * @param description a description
+	 */
 	V2_E_TableThemes(V2_E_RowThemes top, V2_E_RowThemes mid, V2_E_RowThemes bottom, V2_E_RowThemes content, String description){
 		this.theme = new V2_AbstractTableTheme(top.get(), mid.get(), bottom.get(), content.get(), description);
 		V2_Validator.testTableTheme(this.theme);
 	}
 
+	/**
+	 * Creates a new table theme.
+	 * @param top top rule theme
+	 * @param topStrong top strong rule theme
+	 * @param mid mid rule theme
+	 * @param midStrong mid strong rule theme
+	 * @param bottom bottom rule theme
+	 * @param bottomStrong bottom strong rule theme
+	 * @param content content theme
+	 * @param description a description
+	 */
 	V2_E_TableThemes(V2_E_RowThemes top, V2_E_RowThemes topStrong, V2_E_RowThemes mid, V2_E_RowThemes midStrong, V2_E_RowThemes bottom, V2_E_RowThemes bottomStrong, V2_E_RowThemes content, String description){
 		this.theme = new V2_AbstractTableTheme(top.get(), topStrong.get(), mid.get(), midStrong.get(), bottom.get(), bottomStrong.get(), content.get(), description);
 		V2_Validator.testTableTheme(this.theme);
 	}
 
+	/**
+	 * Returns the actual theme.
+	 * @return the actual theme
+	 */
 	public V2_TableTheme get(){
 		return this.theme;
 	}
+
 }

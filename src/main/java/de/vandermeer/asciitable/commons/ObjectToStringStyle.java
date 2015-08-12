@@ -60,4 +60,5 @@ public abstract class ObjectToStringStyle {
 
 		return ret;
 	}
+
 }

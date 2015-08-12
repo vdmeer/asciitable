@@ -15,7 +15,6 @@
 
 package de.vandermeer.asciitable.v1;
 
-
 /**
  * Factory for common table artifacts.
  *
@@ -73,4 +72,5 @@ public abstract class V1_Factory {
 			}
 		};
 	}
+
 }

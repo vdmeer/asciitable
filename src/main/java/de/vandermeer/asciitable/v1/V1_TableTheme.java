@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package de.vandermeer.asciitable.v1;
 
 /**
@@ -44,6 +45,7 @@ public interface V1_TableTheme {
 	 */
 	char[] getTheme();
 
+	/** The Theme's description. */
 	Object getDescription();
 
 	/** Constant to access a down+horizontal character from theme array. */
@@ -78,4 +80,5 @@ public interface V1_TableTheme {
 
 	/** Constant to access a vertical+right character from theme array. */
 	static final int VERTICAL_AND_RIGHT = 10;
+
 }

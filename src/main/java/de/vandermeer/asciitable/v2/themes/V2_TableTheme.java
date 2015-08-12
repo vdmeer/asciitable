@@ -79,4 +79,5 @@ public interface V2_TableTheme {
 	 * @return documentation representation of the table theme
 	 */
 	StrBuilder toDoc();
+
 }
