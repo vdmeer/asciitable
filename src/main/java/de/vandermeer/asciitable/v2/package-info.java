@@ -25,7 +25,7 @@
  * 		<li>automated text wrapping in columns with automated adjustment of adjacent columns</li>
  * 		<li>padding of columns - number of padding characters before and after text in columns</li>
  * 		<li>spanning columns - a column spanning multiple columns</li>
- * 		<li>renderes to render - a table is rendered by a separate object, called the renderer, with a standard renderer provided</li>
+ * 		<li>renders to render - a table is rendered by a separate object, called the renderer, with a standard renderer provided</li>
  * 		<li>table row themes - allow to define a theme for a table for for content rows and several rule types, large set of standard themes are defined</li>
  * 		<li>table themes - allow to define a theme for a complete table, some standard themes are provided</li>
  * 		<li>one content row - a standard row for content with alignment and padding</li>
@@ -132,7 +132,7 @@
  * 
  * <h4>Create a renderer and configure it</h4>
  * We create the standard renderer and configure it to use the provided table theme {@link de.vandermeer.asciitable.v2.themes.V2_E_TableThemes#UTF_LIGHT}.
- * The we add a width to the renderer using {@link de.vandermeer.asciitable.v2.render.width.V2_WidthByAbsolute} for a table width of 76 characters.
+ * The we add a width to the renderer using {@link de.vandermeer.asciitable.v2.render.width.V2_WidthAbsoluteEven} for a table width of 76 characters.
  * <pre>{@code
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());

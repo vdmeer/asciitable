@@ -19,10 +19,10 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import de.vandermeer.asciitable.v2.render.width.V2_WidthByColumns;
+import de.vandermeer.asciitable.v2.render.width.V2_WidthFixedColumns;
 
 /**
- * Tests for {@link V2_WidthByColumns}.
+ * Tests for {@link V2_WidthFixedColumns}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.1.2 build 150812 (12-Aug-15) for Java 1.7
@@ -31,13 +31,13 @@ public class Test_V2_WidthByColumns {
 
 	@Test
 	public void testConstructor(){
-		V2_WidthByColumns cw = new V2_WidthByColumns();
+		V2_WidthFixedColumns cw = new V2_WidthFixedColumns();
 		assertEquals(0, cw.ar.length);
 	}
 
 	@Test
 	public void testAdd(){
-		V2_WidthByColumns cw = new V2_WidthByColumns();
+		V2_WidthFixedColumns cw = new V2_WidthFixedColumns();
 
 		cw.add(5);
 		assertEquals(1, cw.ar.length);

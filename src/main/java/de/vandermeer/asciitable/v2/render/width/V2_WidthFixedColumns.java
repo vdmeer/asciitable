@@ -24,7 +24,7 @@ import org.apache.commons.lang3.ArrayUtils;
  * @version    v0.1.2 build 150812 (12-Aug-15) for Java 1.7
  * @since      v0.0.5
  */
-public class V2_WidthByColumns extends AbstractWidth {
+public class V2_WidthFixedColumns extends AbstractWidth {
 
 	/** Column width array. */
 	int[] ar;
@@ -33,7 +33,7 @@ public class V2_WidthByColumns extends AbstractWidth {
 	 * Returns a new table width calculator.
 	 * Default internal array is set to size 1 (1 column) of width 0.
 	 */
-	public V2_WidthByColumns(){
+	public V2_WidthFixedColumns(){
 		this.ar = new int[0];
 	}
 
@@ -42,7 +42,7 @@ public class V2_WidthByColumns extends AbstractWidth {
 	 * @param width column width in number of characters
 	 * @return self to allow for chaining
 	 */
-	public V2_WidthByColumns add(int width){
+	public V2_WidthFixedColumns add(int width){
 		if(width>=3){
 			this.ar = ArrayUtils.add(this.ar, width);
 		}

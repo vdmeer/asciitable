@@ -22,14 +22,14 @@ package de.vandermeer.asciitable.v2.render.width;
  * @version    v0.1.2 build 150812 (12-Aug-15) for Java 1.7
  * @since      v0.0.5
  */
-public class V2_WidthByAbsolute extends AbstractWidth {
+public class V2_WidthAbsoluteEven extends AbstractWidth {
 
 	/**
 	 * Sets the absolute width of the table.
 	 * @param width absolute table width as number of characters
 	 * @return self to allow for chaining
 	 */
-	public V2_WidthByAbsolute setWidth(int width){
+	public V2_WidthAbsoluteEven setWidth(int width){
 		if(width>=3){
 			this.width = width;
 		}
