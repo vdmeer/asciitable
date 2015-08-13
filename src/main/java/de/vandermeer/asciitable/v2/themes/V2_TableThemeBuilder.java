@@ -21,7 +21,7 @@ import de.vandermeer.asciitable.commons.TableException;
  * Builder for a table themes.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.1.2 build 150812 (12-Aug-15) for Java 1.7
+ * @version    v0.2.0 build 150814 (14-Aug-15) for Java 1.7
  * @since      v0.0.5
  */
 public class V2_TableThemeBuilder {
