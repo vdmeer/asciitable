@@ -17,9 +17,11 @@ package de.vandermeer.asciitable;
 
 import org.junit.Test;
 
+import de.svenjacobs.loremipsum.LoremIpsum;
+import de.vandermeer.asciitable.v2.RenderedTable;
 import de.vandermeer.asciitable.v2.V2_AsciiTable;
-import de.vandermeer.asciitable.v2.V2_AsciiTableRenderer;
-import de.vandermeer.asciitable.v2.core.V2_WidthByAbsolute;
+import de.vandermeer.asciitable.v2.render.V2_AsciiTableRenderer;
+import de.vandermeer.asciitable.v2.render.width.V2_WidthByAbsolute;
 import de.vandermeer.asciitable.v2.themes.V2_E_TableThemes;
 
 /**
@@ -31,9 +33,9 @@ import de.vandermeer.asciitable.v2.themes.V2_E_TableThemes;
 public class Test_CodeForDocs_V2 {
 
 	@Test
-	public void test_Readme_Example_1Column(){
-		V2_AsciiTable at = new V2_AsciiTable(1);
-		at.addRuleStrong();
+	public void test_Example_1Column(){
+		V2_AsciiTable at = new V2_AsciiTable();
+		at.addRule();
 		at.addRow("Table Heading");
 		at.addRule();
 		at.addRow("first row (col1)");
@@ -44,16 +46,17 @@ public class Test_CodeForDocs_V2 {
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
-//		System.out.println(rend.render(at));
+//		RenderedTable rt = rend.render(at);
+//		System.out.println(rt);
 	}
 
 	@Test
-	public void test_Readme_Example_2Columns(){
-		V2_AsciiTable at = new V2_AsciiTable(2);
-		at.addRuleStrong();
+	public void test_Example_2Columns(){
+		V2_AsciiTable at = new V2_AsciiTable();
+		at.addRule();
 		at.addRow(null,"Table Heading");
 		at.addRule();
-		at.addRow("first row (col1)", "with some information");
+		at.addRow("first row (col1)", "with some information (col2)");
 		at.addRule();
 		at.addRow("second row (col1)", "with some information (col2)");
 		at.addRule();
@@ -61,13 +64,14 @@ public class Test_CodeForDocs_V2 {
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
-//		System.out.println(rend.render(at));
+//		RenderedTable rt = rend.render(at);
+//		System.out.println(rt);
 	}
 
 	@Test
-	public void test_Readme_Example_3Columns(){
-		V2_AsciiTable at = new V2_AsciiTable(3);
-		at.addRuleStrong();
+	public void test_Example_3Columns(){
+		V2_AsciiTable at = new V2_AsciiTable();
+		at.addRule();
 		at.addRow(null, null, "Table Heading");
 		at.addRule();
 		at.addRow("first row (col1)", "with some information", "and more information");
@@ -78,13 +82,14 @@ public class Test_CodeForDocs_V2 {
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
-//		System.out.println(rend.render(at));
+//		RenderedTable rt = rend.render(at);
+//		System.out.println(rt);
 	}
 
 	@Test
-	public void test_Readme_Example_4Columns(){
-		V2_AsciiTable at = new V2_AsciiTable(4);
-		at.addRuleStrong();
+	public void test_Example_4Columns(){
+		V2_AsciiTable at = new V2_AsciiTable();
+		at.addRule();
 		at.addRow(null, null, null, "Table Heading");
 		at.addRule();
 		at.addRow("first row (col1)", "with some information", "and more information", "even more");
@@ -95,13 +100,14 @@ public class Test_CodeForDocs_V2 {
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
-//		System.out.println(rend.render(at));
+//		RenderedTable rt = rend.render(at);
+//		System.out.println(rt);
 	}
 
 	@Test
-	public void test_Readme_Example_5Columns(){
-		V2_AsciiTable at = new V2_AsciiTable(5);
-		at.addRuleStrong();
+	public void test_Example_5Columns(){
+		V2_AsciiTable at = new V2_AsciiTable();
+		at.addRule();
 		at.addRow(null, null, null, null, "Table Heading");
 		at.addRule();
 		at.addRow("first row (col1)", "with some information", "and more information", "even more", "more");
@@ -112,13 +118,14 @@ public class Test_CodeForDocs_V2 {
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
-//		System.out.println(rend.render(at));
+//		RenderedTable rt = rend.render(at);
+//		System.out.println(rt);
 	}
 
 	@Test
-	public void test_Readme_Example_ColSpanning(){
-		V2_AsciiTable at = new V2_AsciiTable(5);
-		at.addRuleStrong();
+	public void test_Example_ColSpanning(){
+		V2_AsciiTable at = new V2_AsciiTable().setDefaultPadding(1);
+		at.addRule();
 		at.addRow(null, null, null, null, "span all 5 columns");
 		at.addRule();
 		at.addRow(null, null, null, "span 4 columns", "just 1 column");
@@ -134,13 +141,14 @@ public class Test_CodeForDocs_V2 {
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-		rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
-//		System.out.println(rend.render(at));
+		rend.setWidth(new V2_WidthByAbsolute().setWidth(81));
+//		RenderedTable rt = rend.render(at);
+//		System.out.println(rt);
 	}
 
 	@Test
-	public void test_Readme_Example_PaddingChar(){
-		V2_AsciiTable at = new V2_AsciiTable(1);
+	public void test_Example_PaddingChar(){
+		V2_AsciiTable at = new V2_AsciiTable();
 		at.addRule();
 		at.addRow("some text with padding");
 		at.addRule();
@@ -157,8 +165,8 @@ public class Test_CodeForDocs_V2 {
 	}
 
 	@Test
-	public void test_Readme_Example_TableThemes(){
-		V2_AsciiTable at = new V2_AsciiTable(1);
+	public void test_Example_TableThemes(){
+		V2_AsciiTable at = new V2_AsciiTable();
 		at.addRule();
 		at.addRow("some column text");
 		at.addRule();
@@ -174,4 +182,49 @@ public class Test_CodeForDocs_V2 {
 //		System.out.println(rend.render(at));
 	}
 
+	@Test
+	public void test_Example_Alignment_Std(){
+		V2_AsciiTable at = new V2_AsciiTable();
+		at.addRule();
+		at.addRow("left", "right", "center").setAlignment(new char[]{'l', 'r', 'c'});
+		at.addRule();
+
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new V2_WidthByAbsolute().setWidth(80));
+//		RenderedTable rt = rend.render(at);
+//		System.out.println(rt);
+	}
+
+	@Test
+	public void test_Example_Alignment_Justified(){
+		V2_AsciiTable at = new V2_AsciiTable();
+		at.addRule();
+		at.addRow(new LoremIpsum().getWords()).setAlignment(new char[]{'j'});
+		at.addRule();
+		at.addRow(new LoremIpsum().getWords()).setAlignment(new char[]{'t'});
+		at.addRule();
+
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new V2_WidthByAbsolute().setWidth(60));
+//		RenderedTable rt = rend.render(at);
+//		System.out.println(rt);
+	}
+
+	@Test
+	public void test_Example_Padding(){
+		V2_AsciiTable at = new V2_AsciiTable();
+		at.addRule();
+		at.addRow("padding 0", "padding 1", "padding 2", "padding 3", "padding 4").setPadding(new int[]{0, 1, 2, 3, 4});
+		at.addRule();
+
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
+		RenderedTable rt = rend.render(at);
+		System.out.println(rt);
+	}
+
 }
+

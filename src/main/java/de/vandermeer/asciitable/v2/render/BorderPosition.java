@@ -13,27 +13,24 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.core;
+package de.vandermeer.asciitable.v2.render;
 
 /**
- * Theme for borders of content rows.
+ * Position of a border element.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.1.2 build 150812 (12-Aug-15) for Java 1.7
  * @since      v0.0.3
  */
-public enum V2_E_RowBorderTheme {
+public enum BorderPosition {
 
-	/** Borders everywhere (inside, outside). */
-	ALL,
+	/** Left border. */
+	LEFT,
 
-	/** Borders only inside the row, for instance not most left and most right. */
-	INNER,
+	/** Middle border. */
+	MIDDLE,
 
-	/** Borders only outside the row, for instance only most left and most right. */
-	OUTER,
-
-	/** No borders at all. */
-	NONE
+	/** Right border. */
+	RIGHT;
 
 }

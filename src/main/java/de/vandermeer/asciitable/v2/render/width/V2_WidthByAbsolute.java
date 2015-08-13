@@ -13,27 +13,16 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.core;
+package de.vandermeer.asciitable.v2.render.width;
 
 /**
- * Utility to define the width a table for a table renderer using an absolute table width.
+ * Utility to define the width of table columns using an absolute table width evenly distributed over all columns.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.1.2 build 150812 (12-Aug-15) for Java 1.7
  * @since      v0.0.5
  */
-public class V2_WidthByAbsolute implements V2_Width {
-
-	/** Width of the table. */
-	int width;
-
-	/**
-	 * Returns a new table width calculator.
-	 * Default width is set to 0;
-	 */
-	public V2_WidthByAbsolute(){
-		this.width = 0;
-	}
+public class V2_WidthByAbsolute extends AbstractWidth {
 
 	/**
 	 * Sets the absolute width of the table.
@@ -48,23 +37,29 @@ public class V2_WidthByAbsolute implements V2_Width {
 	}
 
 	@Override
-	public int[] calculateWidth(int columnCount) {
-		int[] ret = new int[columnCount+1];
+	public int[] getColumnWidths(int padding) {
+		int[] ret = new int[this.colNumber];
 
-		if(this.width<(columnCount*3 + columnCount + 1)){
+		int content = 0;
+		if(padding>0){
+			content = this.colNumber*padding + this.colNumber;
+		}
+		else{
+			content = this.colNumber*3;
+		}
+		int borders = this.colNumber + 1;
+		if(this.width<(content + borders)){
 			throw new IllegalArgumentException("wrong width argument: width must allow for borders");
 		}
 
-		ret[0] = this.width;
+		int distribute = this.width-1-this.colNumber;		//this is to be distributed over columns
+		int colmin = distribute/this.colNumber;				//this is minimum width of each column
+		int leftover = distribute-colmin*this.colNumber;	//leftover
 
-		int distribute = this.width-1-columnCount;			//this is to be distributed over columns
-		int colmin = distribute/columnCount;				//this is minimum width of each column
-		int leftover = distribute-colmin*columnCount;		//leftover
-
-		for(int i=0; i<columnCount; i++){
-			ret[i+1] = colmin;
+		for(int i=0; i<this.colNumber; i++){
+			ret[i] = colmin;
 			if(leftover!=0){
-				ret[i+1] += 1;
+				ret[i] += 1;
 				leftover -= 1;
 			}
 		}

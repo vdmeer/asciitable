@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.core;
+package de.vandermeer.asciitable.v2.render.width;
 
 import org.apache.commons.lang3.ArrayUtils;
 
 /**
- * Utility to define the width of columns for a table renderer using width for individual columns.
+ * Utility to define the width of table columns using a fixed width for each column.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.1.2 build 150812 (12-Aug-15) for Java 1.7
  * @since      v0.0.5
  */
-public class V2_WidthByColumns implements V2_Width {
+public class V2_WidthByColumns extends AbstractWidth {
 
 	/** Column width array. */
 	int[] ar;
@@ -34,7 +34,7 @@ public class V2_WidthByColumns implements V2_Width {
 	 * Default internal array is set to size 1 (1 column) of width 0.
 	 */
 	public V2_WidthByColumns(){
-		this.ar = new int[1];
+		this.ar = new int[0];
 	}
 
 	/**
@@ -46,41 +46,16 @@ public class V2_WidthByColumns implements V2_Width {
 		if(width>=3){
 			this.ar = ArrayUtils.add(this.ar, width);
 		}
-		this.ar[0] = this.getWidthSum();
+		this.width += width;
 		return this;
 	}
 
-	/**
-	 * Returns the sum of all set columns.
-	 * @return sum of all set columns
-	 */
-	public int getWidthSum(){
-		int ret=0;
-		if(this.ar.length>1){
-			for (int i=1; i<this.ar.length; i++){
-				ret += this.ar[i];
-			}
-		}
-		return ret;
-	}
-
-	/**
-	 * Returns the currently set column array.
-	 * @return column array
-	 */
-	public int[] getArray(){
-		return this.ar;
-	}
-
 	@Override
-	public int[] calculateWidth(int columnCount) {
-		if(columnCount != (this.ar.length-1)){
+	public int[] getColumnWidths(int padding) {
+		if(this.colNumber != (this.ar.length-1)){
 			throw new IllegalArgumentException("wrong columns array length: columns array length must be the same as the columns used to initialise the table");
 		}
-
 		int[] ret = ArrayUtils.addAll(new int[0], this.ar);
-//		ret[0] = count+1;	//for table grid, number of columns + 1
-
 		return ret;
 	}
 

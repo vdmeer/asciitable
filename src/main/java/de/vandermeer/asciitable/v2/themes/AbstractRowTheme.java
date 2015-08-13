@@ -24,7 +24,7 @@ import org.apache.commons.lang3.text.StrBuilder;
  * @version    v0.1.2 build 150812 (12-Aug-15) for Java 1.7
  * @since      v0.0.8
  */
-public class V2_AbstractRowTheme implements V2_RowTheme {
+public class AbstractRowTheme implements V2_RowTheme {
 
 	/** Left border character. */
 	private char leftBorder;
@@ -58,7 +58,7 @@ public class V2_AbstractRowTheme implements V2_RowTheme {
 	 * @param description row theme description
 	 * @throws TableException if any of the parameters is null or blank
 	 */
-	V2_AbstractRowTheme(final char right, final char left, final char mid, final char midAll, final char midUp, final char midDown, final String description){
+	AbstractRowTheme(final char right, final char left, final char mid, final char midAll, final char midUp, final char midDown, final String description){
 		this.leftBorder = left;
 		this.midBorderUp = midUp;
 		this.midBorderAll = midAll;
@@ -67,7 +67,7 @@ public class V2_AbstractRowTheme implements V2_RowTheme {
 		this.mid = mid;
 		this.description = description;
 
-		V2_Validator.testRowTheme(this);
+		V2_RowThemeBuilder.testRowTheme(this);
 	}
 
 	@Override

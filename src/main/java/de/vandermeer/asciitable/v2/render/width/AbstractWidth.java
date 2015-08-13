@@ -13,23 +13,32 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.core;
+package de.vandermeer.asciitable.v2.render.width;
 
 /**
- * Position of a border element.
+ * Abstract implementation of {@link V2_Width}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.1.2 build 150812 (12-Aug-15) for Java 1.7
- * @since      v0.0.3
+ * @since      v0.2.0
  */
-public enum V2_E_BorderPosition {
-	/** Left border. */
-	LEFT,
+public abstract class AbstractWidth implements V2_Width {
 
-	/** Middle border. */
-	MIDDLE,
+	/** Width of the table. */
+	protected int width;
 
-	/** Right border. */
-	RIGHT;
+	/** Number of columns for the table. */
+	protected int colNumber;
+
+	@Override
+	public V2_Width setColumnCount(int count) {
+		this.colNumber = count;
+		return this;
+	}
+
+	@Override
+	public int getTableWidth() {
+		return this.width;
+	}
 
 }

@@ -17,7 +17,6 @@ package de.vandermeer.asciitable.v2.themes;
 
 import de.vandermeer.asciitable.commons.TableException;
 
-
 /**
  * Builder for a table themes.
  *
@@ -137,7 +136,41 @@ public class V2_TableThemeBuilder {
 	 * @throws TableException if any of the parameters is null or blank
 	 */
 	public V2_TableTheme build(){
-		return new V2_AbstractTableTheme(this.top, this.topStrong, this.mid, this.midStrong, this.bottom, this.bottomStrong, this.content, this.description);
+		return new AbstractTableTheme(this.top, this.topStrong, this.mid, this.midStrong, this.bottom, this.bottomStrong, this.content, this.description);
+	}
+
+	/**
+	 * Tests a table theme.
+	 * @param theme theme to be tested
+	 * @throws TableException if any of the theme methods returns 0 or null
+	 */
+	public static void testTableTheme(V2_TableTheme theme){
+		if(theme.getTop()==null){
+			throw new TableException("table theme incomplete", "no top row defined");
+		}
+		if(theme.getTopStrong()==null){
+			throw new TableException("table theme incomplete", "no top row strong defined");
+		}
+		if(theme.getMid()==null){
+			throw new TableException("table theme incomplete", "no mid row strong defined");
+		}
+		if(theme.getMidStrong()==null){
+			throw new TableException("table theme incomplete", "no mid row strong defined");
+		}
+		if(theme.getBottom()==null){
+			throw new TableException("table theme incomplete", "no bottom row strong defined");
+		}
+		if(theme.getBottomStrong()==null){
+			throw new TableException("table theme incomplete", "no bottom row strong defined");
+		}
+
+		if(theme.getContent()==null){
+			throw new TableException("table theme incomplete", "no content row defined");
+		}
+
+		if(theme.getDescription()==null){
+			throw new TableException("table theme incomplete", "no description defined");
+		}
 	}
 
 }

@@ -20,13 +20,13 @@ import java.util.List;
 import org.apache.commons.lang3.text.StrBuilder;
 
 /**
- * A fully rendered table ready to be printed or written to files.
+ * A fully rendered table (list of rendered rows) ready to be printed or written to files.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.1.2 build 150812 (12-Aug-15) for Java 1.7
  * @since      v0.0.5
  */
-public class V2_RenderedAsciiTable {
+public class RenderedTable {
 
 	/** List of rendered rows. */
 	List<StrBuilder> rows;
@@ -35,17 +35,13 @@ public class V2_RenderedAsciiTable {
 	 * Returns a new rendered table initialized with a list of rendered rows.
 	 * @param rows rendered rows
 	 */
-	public V2_RenderedAsciiTable(List<StrBuilder> rows){
+	public RenderedTable(List<StrBuilder> rows){
 		this.rows = rows;
 	}
 
 	@Override
 	public String toString(){
-		String ret = new String();
-		for(StrBuilder sb : this.rows){
-			ret += sb.toString() + "\n";
-		}
-		return ret;
+		return this.toStrBuilder().toString();
 	}
 
 	/**

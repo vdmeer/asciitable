@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.core;
+package de.vandermeer.asciitable.v2.row;
 
 /**
  * Types of table rule: top, mid, bottom.
@@ -22,7 +22,7 @@ package de.vandermeer.asciitable.v2.core;
  * @version    v0.1.2 build 150812 (12-Aug-15) for Java 1.7
  * @since      v0.0.3
  */
-public enum V2_E_RuleType {
+public enum RuleType {
 
 	/** A top rule of a table. */
 	TOP,

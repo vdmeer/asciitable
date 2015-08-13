@@ -1,4 +1,16 @@
-v0.1.2 - feature add - 2015-08-13
+v0.2.0 - feature add - 2015-##-##
+---------------------------------
+* minor version change due to many changes, added features and refactoring
+* overhaul of V2
+	** some refacotring and renaming
+	** all classes for the external API are V2_*, all other (rathr internal) classes don't have that prefix
+	** moved standard methods into utils class
+	** separated content rows from rule rows (now by class)
+	** added alignment and padding to content rows
+	** changed the width classes: now in separate package, with interface and abstract implementation
+
+
+v0.1.2 - maintenance - 2015-08-13
 ---------------------------------
 * maintenance of java files
 

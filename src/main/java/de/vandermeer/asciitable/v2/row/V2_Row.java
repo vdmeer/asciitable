@@ -13,25 +13,21 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.core;
+package de.vandermeer.asciitable.v2.row;
 
 /**
- * Calculator for the width of a table.
+ * A table row.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.1.2 build 150812 (12-Aug-15) for Java 1.7
- * @since      v0.0.5
+ * @since      v0.2.0
  */
-public interface V2_Width {
+public interface V2_Row {
 
 	/**
-	 * Returns an array with calculated width of columns.
-	 * The array length is the number of columns + 1.
-	 * The first entry in the array is the overall table width.
-	 * Each following entry is the width of the respective column.
-	 * @param columnCount number of columns to calculate width for
-	 * @return array with overall width and width of individual columns
+	 * Returns a string with debug information.
+	 * @param indent number of spaces for indentation, useful for nested operations
+	 * @return string with debug information about the table
 	 */
-	public int[] calculateWidth(int columnCount);
-
+	String toString(int indent);
 }

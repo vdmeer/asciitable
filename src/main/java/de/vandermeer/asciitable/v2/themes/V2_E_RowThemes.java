@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.v2.themes;
 
-
-
 /**
  * Standard row themes for tables.
  *
@@ -455,6 +453,7 @@ public enum V2_E_RowThemes {
 	 * </pre>
 	 */
 	UTF_DOUBLE_TOP					('╔', '═', '═', '╦', '╗', '═', "UTF-8 double characters for a top rule"),
+
 	/**
 	 * UTF-8 double characters for a mid rule.
 	 * <pre>
@@ -462,6 +461,7 @@ public enum V2_E_RowThemes {
 	 * </pre>
 	 * */
 	UTF_DOUBLE_MID					('╠', '╩', '╬', '╦', '╣', '═', "UTF-8 double characters for a mid rule"),
+
 	/**
 	 * UTF-8 double characters for a bottom rule.
 	 * <pre>
@@ -469,6 +469,7 @@ public enum V2_E_RowThemes {
 	 * </pre>
 	 * */
 	UTF_DOUBLE_BOTTOM				('╚', '╩', '═', '═', '╝', '═', "UTF-8 double characters for a bottom rule"),
+
 	/**
 	 * UTF-8 double characters for a content row.
 	 * <pre>
@@ -485,6 +486,7 @@ public enum V2_E_RowThemes {
 	 * </pre>
 	 */
 	UTF_DOUBLE_LIGHT_TOP			('╓', '─', '─', '╥', '╖', '─', "UTF-8 double lines vertically and light (single) lines horizontally for top rule"),
+
 	/**
 	 * UTF-8 double lines vertically and light (single) lines horizontally for mid rule.
 	 * <pre>
@@ -492,6 +494,7 @@ public enum V2_E_RowThemes {
 	 * </pre>
 	 */
 	UTF_DOUBLE_LIGHT_MID			('╟', '╨', '╫', '╥', '╢', '─', "UTF-8 double lines vertically and light (single) lines horizontally for mid rule"),
+
 	/**
 	 * UTF-8 double lines vertically and light (single) lines horizontally for bottom rule.
 	 * <pre>
@@ -499,6 +502,7 @@ public enum V2_E_RowThemes {
 	 * </pre>
 	 */
 	UTF_DOUBLE_LIGHT_BOTTOM			('╙', '╨', '─', '─', '╜', '─', "UTF-8 double lines vertically and light (single) lines horizontally for bottom rule"),
+
 	/**
 	 * UTF-8 double lines vertically and light (single) lines horizontally for content row.
 	 * <pre>
@@ -514,6 +518,7 @@ public enum V2_E_RowThemes {
 	 * </pre>
 	 */
 	UTF_LIGHT_TOP					('┌', '─', '─', '┬', '┐', '─', "UTF-8 light (single) lines vertically and horizontally for top rule"),
+
 	/**
 	 * UTF-8 light (single) lines vertically and horizontally for mid rule.
 	 * <pre>
@@ -521,6 +526,7 @@ public enum V2_E_RowThemes {
 	 * </pre>
 	 */
 	UTF_LIGHT_MID					('├', '┴', '┼', '┬', '┤', '─', "UTF-8 light (single) lines vertically and horizontally for mid rule"),
+
 	/**
 	 * UTF-8 light (single) lines vertically and horizontally for bottom rule.
 	 * <pre>
@@ -528,6 +534,7 @@ public enum V2_E_RowThemes {
 	 * </pre>
 	 */
 	UTF_LIGHT_BOTTOM				('└', '┴', '─', '─', '┘', '─', "UTF-8 light (single) lines vertically and horizontally for bottom rule"),
+
 	/**
 	 * UTF-8 light (single) lines vertically and horizontally for content row.
 	 * <pre>
@@ -544,6 +551,7 @@ public enum V2_E_RowThemes {
 	 * </pre>
 	 */
 	UTF_LIGHT_DOUBLE_TOP			('╒', '═', '═', '╤', '╕', '═', "UTF-8 light (single) lines vertically and double lines horizontally for top rule"),
+
 	/**
 	 * UTF-8 light (single) lines vertically and double lines horizontally for mid rule.
 	 * <pre>
@@ -558,6 +566,7 @@ public enum V2_E_RowThemes {
 	 * </pre>
 	 */
 	UTF_LIGHT_DOUBLE_BOTTOM			('╘', '╧', '═', '═', '╛', '═', "UTF-8 light (single) lines vertically and double lines horizontally for bottom rule"),
+
 	/**
 	 * UTF-8 light (single) lines vertically and double lines horizontally for content row.
 	 * <pre>
@@ -573,6 +582,7 @@ public enum V2_E_RowThemes {
 	 * </pre>
 	 */
 	UTF_HEAVY_TOP					('┏', '━', '━', '┳', '┓', '━', "UTF-8 with heavy (thick) lines vertically and horizontally for top rule"),
+
 	/**
 	 * UTF-8 with heavy (thick) lines vertically and horizontally for mid rule.
 	 * <pre>
@@ -580,6 +590,7 @@ public enum V2_E_RowThemes {
 	 * </pre>
 	 */
 	UTF_HEAVY_MID					('┣', '┻', '╋', '┳', '┫', '━', "UTF-8 with heavy (thick) lines vertically and horizontally for mid rule"),
+
 	/**
 	 * UTF-8 with heavy (thick) lines vertically and horizontally for bottom rule.
 	 * <pre>
@@ -587,6 +598,7 @@ public enum V2_E_RowThemes {
 	 * </pre>
 	 */
 	UTF_HEAVY_BOTTOM				('┗', '┻', '━', '━', '┛', '━', "UTF-8 with heavy (thick) lines vertically and horizontally for bottom rule"),
+
 	/**
 	 * UTF-8 with heavy (thick) lines vertically and horizontally for content row.
 	 * <pre>
@@ -620,7 +632,7 @@ public enum V2_E_RowThemes {
 			.setMidBorderDown(midBorderDown)
 			.setMidBorderUp(midBorderUp)
 		;
-		V2_Validator.testRowTheme(this.builder.build());
+		V2_RowThemeBuilder.testRowTheme(this.builder.build());
 	}
 
 	/**

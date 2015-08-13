@@ -13,30 +13,22 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.core;
+package de.vandermeer.asciitable.v2.row;
 
 /**
- * Adjust border enum.
+ * Style of a table rule: normal or strong.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.1.2 build 150812 (12-Aug-15) for Java 1.7
  * @since      v0.0.3
  */
-public enum V2_E_AdjustedBorderType {
+public enum RuleStyle {
 
-	/** A none-border. */
-	NONE,
+	/** A normal, standard rule. */
+	NORMAL,
 
-	/** An up border. */
-	UP,
-
-	/** An all border (up and down). */
-	ALL,
-
-	/** A down border. */
-	DOWN,
-
-	/** A content border. */
-	CONTENT
+	/** A strong, emphasized rule. */
+	STRONG,
+	;
 
 }

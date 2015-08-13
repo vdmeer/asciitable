@@ -13,28 +13,11 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.themes;
-
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
 /**
- * Tests for {@link V2_E_RowThemes}.
+ * V2 core artifacts.
+ *
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.1.2 build 150812 (12-Aug-15) for Java 1.7
- * @since      v0.0.8
  */
-public class Test_V2_E_RowThemes {
-
-	@Test
-	public void test_Themes(){
-		for(V2_E_RowThemes t : V2_E_RowThemes.values()){
-			assertTrue(t.get()!=null);
-			V2_RowThemeBuilder.testRowTheme(t.get());
-			System.out.println(t.name() + "\n" + t.get().toDoc() + "\n\n");
-		}
-	}
-
-}
+package de.vandermeer.asciitable.v2.row;

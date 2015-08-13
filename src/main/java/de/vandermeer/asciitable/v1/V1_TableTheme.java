@@ -45,7 +45,10 @@ public interface V1_TableTheme {
 	 */
 	char[] getTheme();
 
-	/** The Theme's description. */
+	/**
+	 * The theme's description.
+	 * @return theme description
+	 */
 	Object getDescription();
 
 	/** Constant to access a down+horizontal character from theme array. */

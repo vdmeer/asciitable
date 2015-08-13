@@ -13,13 +13,13 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.core;
+package de.vandermeer.asciitable.v2.render.width;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import de.vandermeer.asciitable.v2.core.V2_WidthByColumns;
+import de.vandermeer.asciitable.v2.render.width.V2_WidthByColumns;
 
 /**
  * Tests for {@link V2_WidthByColumns}.
@@ -32,8 +32,7 @@ public class Test_V2_WidthByColumns {
 	@Test
 	public void testConstructor(){
 		V2_WidthByColumns cw = new V2_WidthByColumns();
-		assertEquals(1, cw.ar.length);
-		assertEquals(0, cw.ar[0]);
+		assertEquals(0, cw.ar.length);
 	}
 
 	@Test
@@ -41,21 +40,18 @@ public class Test_V2_WidthByColumns {
 		V2_WidthByColumns cw = new V2_WidthByColumns();
 
 		cw.add(5);
-		assertEquals(2, cw.ar.length);
+		assertEquals(1, cw.ar.length);
 		assertEquals(5, cw.ar[0]);
-		assertEquals(5, cw.ar[1]);
 
 		cw.add(3);
-		assertEquals(3, cw.ar.length);
-		assertEquals(8, cw.ar[0]);
-		assertEquals(5, cw.ar[1]);
-		assertEquals(3, cw.ar[2]);
+		assertEquals(2, cw.ar.length);
+		assertEquals(5, cw.ar[0]);
+		assertEquals(3, cw.ar[1]);
 
 		cw.add(1);//do not add anything smaller than 3
-		assertEquals(3, cw.ar.length);
-		assertEquals(8, cw.ar[0]);
-		assertEquals(5, cw.ar[1]);
-		assertEquals(3, cw.ar[2]);
+		assertEquals(2, cw.ar.length);
+		assertEquals(5, cw.ar[0]);
+		assertEquals(3, cw.ar[1]);
 	}
 
 }

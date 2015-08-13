@@ -13,11 +13,34 @@
  * limitations under the License.
  */
 
+package de.vandermeer.asciitable.v2.render.width;
+
 /**
- * V2 core artifacts.
- *
+ * Calculator for the width of a table.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.1.2 build 150812 (12-Aug-15) for Java 1.7
+ * @since      v0.0.5
  */
-package de.vandermeer.asciitable.v2.core;
+public interface V2_Width {
+
+	/**
+	 * Sets the number of columns for which calculation should return an array.
+	 * @param count number of columns
+	 * @return self to allow for chaining
+	 */
+	V2_Width setColumnCount(int count);
+
+	/**
+	 * Returns the width of each column in an array, column one being [0] and so on.
+	 * @param defaultPadding the default padding for the calculation
+	 * @return column width array
+	 */
+	int[] getColumnWidths(int defaultPadding);
+
+	/**
+	 * Returns the overall table width.
+	 * @return overall table width
+	 */
+	int getTableWidth();
+}
