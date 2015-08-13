@@ -222,9 +222,33 @@ public class Test_CodeForDocs_V2 {
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
-		RenderedTable rt = rend.render(at);
-		System.out.println(rt);
+//		RenderedTable rt = rend.render(at);
+//		System.out.println(rt);
 	}
 
-}
+	@Test
+	public void test_Example_RuleStyle(){
+		V2_AsciiTable at = new V2_AsciiTable();
+		at.addStrongRule();
+		at.addRow("col1", "col2", "col3");
+		at.addStrongRule();
+		at.addRow("col1", "col2", "col3");
+		at.addRule();
+		at.addRow("col1", "col2", "col3");
+		at.addStrongRule();
+		at.addRow("col1", "col2", "col3");
+		at.addRule();
+		at.addRow("col1", "col2", "col3");
+		at.addStrongRule();
 
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
+		rend.setTheme(V2_E_TableThemes.ASC7_LATEX_STYLE_STRONG.get());
+		RenderedTable rt = rend.render(at);
+		System.out.println(rt);
+
+		rend.setTheme(V2_E_TableThemes.ASC7_LATEX_STYLE_STRONG2.get());
+//		rt = rend.render(at);
+//		System.out.println(rt);
+	}
+}

@@ -92,7 +92,7 @@ public class V2_AsciiTable {
 	 * If the table has no rows specified, the rule will be a top rule. Otherwise it will be a mid rule.
 	 * The renderer will automatically convert a final mid rule (last row of a table) into a bottom rule.
 	 */
-	public final void addRuleStrong(){
+	public final void addStrongRule(){
 		if(this.table.size()==0){
 			this.table.add(new RuleRow(RuleType.TOP, RuleStyle.STRONG));
 		}

@@ -546,7 +546,85 @@
 	╚══════════════════════════════════════════════════════════════════════════╝
  * </pre>
  * 
+ * 
+ * <br><h3>Rule styles</h3>
+ * <p>
+ * 		Rules can come in two style: normal or strong.
+ * 		To add a normal rule the the table use {@link de.vandermeer.asciitable.v2.V2_AsciiTable#addRule()}.
+ * 		To add a normal rule the the table use {@link de.vandermeer.asciitable.v2.V2_AsciiTable#addStrongRule()}.
+ * </p>
+ * <p>
+ * 		Any table theme will suport normal rules.
+ * 		Strong rules will only be rendered differently if the table theme support them.
+ * 		The rendering for strong rules can differ for top, mid, and bottom rules dependin on the theme.
+ * 		That means they can all look the same or very different depending on what the table theme defines.
+ * 		For instance, the them {@link de.vandermeer.asciitable.v2.themes.V2_E_TableThemes#ASC7_LATEX_STYLE_STRONG}
+ * 		defines the same strong top and bottom but different mid rules.
+ * 		However, the theme {@link de.vandermeer.asciitable.v2.themes.V2_E_TableThemes#ASC7_LATEX_STYLE_STRONG2}
+ * 		defines very different strong rules for top, mid, bottom.
+ * </p>
+ * <p>
+ * The following example creates a table with several strong rules and renders them using the two different themes used above.
+ * </p>
+ * <pre>{@code
+	V2_AsciiTable at = new V2_AsciiTable();
+	at.addStrongRule();
+	at.addRow("col1", "col2", "col3");
+	at.addStrongRule();
+	at.addRow("col1", "col2", "col3");
+	at.addRule();
+	at.addRow("col1", "col2", "col3");
+	at.addStrongRule();
+	at.addRow("col1", "col2", "col3");
+	at.addRule();
+	at.addRow("col1", "col2", "col3");
+	at.addStrongRule();
+
+	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+	rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
+	rend.setTheme(V2_E_TableThemes.ASC7_LATEX_STYLE_STRONG.get());
+	RenderedTable rt = rend.render(at);
+	System.out.println(rt);
+
+	rend.setTheme(V2_E_TableThemes.ASC7_LATEX_STYLE_STRONG2.get());
+	rt = rend.render(at);
+	System.out.println(rt);
+ * }</pre>
+ * 
+ * The output of the first rendered table will be:
+ * <pre style="line-height:17px">
+	≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+	  col1                     col2                     col3                    
+	════════════════════════════════════════════════════════════════════════════
+	  col1                     col2                     col3                    
+	────────────────────────────────────────────────────────────────────────────
+	  col1                     col2                     col3                    
+	════════════════════════════════════════════════════════════════════════════
+	  col1                     col2                     col3                    
+	────────────────────────────────────────────────────────────────────────────
+	  col1                     col2                     col3                    
+	≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+ * </pre>
+ * 
+ * The output of the first second table will be:
+ * <pre style="line-height:17px">
+	▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+	  col1                     col2                     col3                    
+	════════════════════════════════════════════════════════════════════════════
+	  col1                     col2                     col3                    
+	────────────────────────────────────────────────────────────────────────────
+	  col1                     col2                     col3                    
+	════════════════════════════════════════════════════════════════════════════
+	  col1                     col2                     col3                    
+	────────────────────────────────────────────────────────────────────────────
+	  col1                     col2                     col3                    
+	▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+ * </pre>
+ * 
+ * 
+ * 
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.1.2 build 150812 (12-Aug-15) for Java 1.7
  */
 package de.vandermeer.asciitable.v2;
+

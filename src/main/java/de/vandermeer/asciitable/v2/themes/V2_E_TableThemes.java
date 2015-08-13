@@ -100,6 +100,32 @@ Normal           Strong           Example
 	),
 
 	/**
+	 * A theme for ASCII-7 based LaTeX-style table theme without borders.
+	 * <pre>
+Normal           Strong           Example
+─────────        ▀▀▀▀▀▀▀▀▀        ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+                                   h1   h2   h3   
+─────────        ═════════        ════════════════
+                                   c1   c2   c3   
+─────────        ▓▓▓▓▓▓▓▓▓        ────────────────
+                                   c1   c2   c3   
+                                  ────────────────
+                                   c1   c2   c3   
+                                  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+	 * </pre>
+	 */
+	ASC7_LATEX_STYLE_STRONG2(
+			V2_E_RowThemes.UTF_LINE_LIGHT,
+			V2_E_RowThemes.ASC7_LINE_UPPER_HALF_BLOCK,
+			V2_E_RowThemes.UTF_LINE_LIGHT,
+			V2_E_RowThemes.UTF_LINE_DOUBLE,
+			V2_E_RowThemes.UTF_LINE_LIGHT,
+			V2_E_RowThemes.ASC7_LINE_HIGH_DENSITY_DOTTED,
+			V2_E_RowThemes.ASC7_SIMPLE_CONTENT_BLANK,
+			"ASCII-7 based LaTeX-style table theme without borders"
+	),
+
+	/**
 	 * A them with UTF-8 characters with double lines vertically and horizontally.
 	 * <pre>
 Normal           Example
