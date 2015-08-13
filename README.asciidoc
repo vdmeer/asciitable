@@ -1,528 +1,342 @@
 ASCII Table
 ===========
-Several implementations of an text table, originally using ASCII characters for borders but now also supporting UTF-8 characters.
+Several implementations of an text table, originally using ASCII and UTF-8 characters for borders.
 :toc:
 
 The tables allows for various degrees of flexibility for number of columns, column width, automated line wrapping, column spanning and themes for tables and table rows.
+
+Current release is https://search.maven.org/#artifactdetails|de.vandermeer|asciitable|0.1.2|jar[0.1.2].
+All releases are on https://search.maven.org/#search|gav|1|g%3A%22de.vandermeer%22%20AND%20a%3A%22asciitable%22[Maven Central].
 
 This blog post explains how to get UTF-8 support in the whole tool chain http://vdmeer-sven.blogspot.ie/2014/06/utf-8-support-w-java-and-console.html[blog on UTF-8].
 Updates will be at here https://github.com/vdmeer/skb/wiki/HowTo-UTF-8-Support-in-Java-and-Console[SKB Wiki on UTF-8].
 
 
-ASCII Table Version 1
----------------------
+Versions
+--------
 
-This is the original table. The code is now frozen, the only changes will be bug fixes.
+The following versions are in the project:
 
-The class allows to define a table with +n+ columns.
-Width set either as overall table width with equally distributed column widths or as fixed width per column.
-A table can be rendered using a table theme. A set of themes is pre-defined, additional themes can be defined as needed.
+* V1 - first generation table implementation with limited features and theme support. The code for this version is frozen and only bug fixes fill apply.
+* V2 - second generation table implementation. This code is under active development and will progress.
 
 
-Using the ASCII Table V1
+
+Version 2 Overview
+------------------
+
+
+Features
+~~~~~~~~
+This table implementation provides the following features:
+
+* flexible columns - the number of columns in the first content row determine the columns the table supports
+* various methods to define column width - overall table width with evenly distributed columns, fixed column width, others can be added if required
+* text alignment in columns - left, right, center and two version of justified, configurable per column
+* automated text wrapping in columns with automated adjustment of adjacent columns
+* padding of columns - number of padding characters before and after text in columns
+* spanning columns - a column spanning multiple columns
+* renders to render - a table is rendered by a separate object, called the renderer, with a standard renderer provided
+* table row themes - allow to define a theme for a table for for content rows and several rule types, large set of standard themes are defined
+* table themes - allow to define a theme for a complete table, some standard themes are provided
+* one content row - a standard row for content with alignment and padding
+* rule rows with 2 different types - rules are horizontal delimiters, e.g. lines. Rules can be top (first in the table), mid (anywhere in the middle) or bottom (last in the table). Rules can be normal or strong (e.g. extra thick line).
+
+
+Concepts and Realization
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-First get a new instance of the ASCII Table using one of the two static factory methods:
+The main concepts are: table, row, renderer, theme, and rendered table.
 
-* A table with an overall table width and evenly distributed column widths: +newTable(Integer, Integer)+
-	** for instance +V1_AsciiTable at = V1_AsciiTable.newTable(3, 76);+ will create a new table with 3 columns with 24 characters width each.
-	   The remaining 4 characters (to table width of 76) are used for vertical lines.
-* A table with +n+ columns and a fixed width set per columns: +newTable(Integer[])+
-	** for instance +V1_AsciiTable at = V1_AsciiTable.newTable(new Integer[]{10, 20, 30});+ will create a new table with 3 columns, where 
-	   column 1 has a width of 10 characters, column 2 has a width of 20 characters and column 3 has a width of 30 characters. The overall table
-	   has then a width of 64 characters (60 characters for the columns plus 4 characters for vertical lines).
+Table
+^^^^^
+A table is a collection of rows.
+The package provides a single implementation of the table +V2_AsciiTable+.
+The implementation allows to add rows and set some general configuration, such as default padding.
 
-Once the table is created +addRow(Object...)+ can be used to add rows to it.
-Finally, call +render()+ render the table into a string.
+Row
+^^^
+A row is either a rule (horizontal delimiter) or a content row (then with columns of content).
+The terminology used here is rule for a rule row and row for a content row.
 
-To change the appearance of the rendered table use +setTheme()+ and +setPaddingCharacter()+.
-The table theme determines the borders of the table. The default theme is +V1_StandardTableThemes.PLAIN_7BIT+.
-A number of themes are provided in +V1_StandardTableThemes+, including light, double and heavy UTF-8 character boxes and LaTeX style table themes.
-Individual themes can be created by creating a class implementing the +V1_TableTheme+ interface.
-The padding character is used to pad content lines in table rows. The default is blank (␣).
-Themes and padding characters are applied per render call, enabling a table to be rendered multiple times with different options.
+The row package defines an interface for a row +V2_Row+.
+It also provides two implementations: +ContentRow+ for content rows
+and +RuleRow+ for rules.
+Both of those row classes are supported by the provided renderer.
+Other row classes can be added if required, but then special renderers need to proivded as well.
 
+Renderer
+^^^^^^^^
+A renderer is taking a finalized (filled) table producing a rendered version of it.
+The render package defines a general interface +V2_TableRenderer+
+and a default implementation +V2_AsciiTableRenderer+.
+Other renderers can be created by implementing the interface.
 
-A simple example with overall width
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A renderer is taking a +V2_Width+ object for calculating the width of columns.
+This object is defined as an interface with several implementations provided for different ways of defining column width.
+More of those width object can be defined as required.
 
-A simple example creating a table with 3 rows and three columns. The first row spans 3 columns, each column of the second row fits
-into a single line, and the second and third column of the third row are broken into two lines:
+A table can be rendered multiple times by any render object, i.e. the underlying original table will not be changed by the renderer.
+The only change realized is a rewrite of the row type of the top and bottom rows if they are rules, to make sure they are marked as top and bottom rules.
+The renderer is building a list of so called processed rows +ProcessedRow+, which old all render-specific settings.
 
-----------------------------------------------------------------------------------------
-V1_AsciiTable at = V1_AsciiTable.newTable(3, 76);
-at.addRow(null, null, "Table Heading");
-at.addRow("first row (col1)", "with some information", "and more information");
-at.addRow("second row (col1)", "with some information (col2)", "and more information (col3)");
-System.out.println(at.render());
-----------------------------------------------------------------------------------------
+This feature, render a table any time with any renderer and re-render a table with the same renderer, allows to change settings such as width, themes, padding character.
+It also allows to render a table for different output, such as HTML or LaTeX, of such renderers where provided.
 
-The output of this example will be:
+Theme
+^^^^^
+A theme is either a table theme or a row theme used by the renderer to generate the output.
+The theme package defines both as interfaces: +V2_TableTheme+ and +V2_RowTheme+.
+It also provides builders to generate theme objects: +V2_TableThemeBuilder+ and +V2_RowThemeBuilder+.
+The builders allow for an easy creation of new themes as required.
 
-----------------------------------------------------------------------------------------
-+--------------------------------------------------------------------------+
-|                              Table Heading                               |
-+------------------------+------------------------+------------------------+
-|first row (col1)        |with some information   |and more information    |
-+------------------------+------------------------+------------------------+
-|second row (col1)       |with some information   |and more information    |
-|                        |(col2)                  |(col3)                  |
-+------------------------+------------------------+------------------------+
-----------------------------------------------------------------------------------------
+The themes are supported by underlying abstract implementation of their respective interfaces: +AbstractTableTheme+ and +AbstractRowTheme+.
 
+A large number of row themes are defined in +V2_E_RowThemes+, ready to be used.
+A number of table themes are defined in +V2_E_TableThemes+, ready to be used.
+These two enumerates also demonstrate how to define a theme.
 
-An example with fixed columns
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Another example, this time using an +Integer[]+ to initialize the table.
-The table again has 3 rows and 3 columns, but this time column 1 is set to 10 characters, column 2 is set to 15 characters and column 3 is set to 20 characters:
---------------------------------------------------------------------------------------------
-Integer[] columns = new Integer[]{10, 15, 20};
-V1_AsciiTable at = V1_AsciiTable.newTable(columns);
-at.addRow(null, null, "Table Heading");
-at.addRow("row 1", "this is col 2", "and this is column 3");
-at.addRow("row 2", "some text for column 2", "and some text for column 3");
-System.out.println(at.render());
---------------------------------------------------------------------------------------------
-
-The output of this example will be:
---------------------------------------------------
-+-----------------------------------------------+
-|                 Table Heading                 |
-+----------+---------------+--------------------+
-|row 1     |this is col 2  |and this is column 3|
-+----------+---------------+--------------------+
-|row 2     |some text for  |and some text for   |
-|          |column 2       |column 3            |
-+----------+---------------+--------------------+
---------------------------------------------------
+Rendered Table
+^^^^^^^^^^^^^^
+A rendered table is the output of a renderer. This final table can then be printed or written to a file.
+The package implements the rendered table in +RenderedTable+.
+It is essentially a list of +StrBuilder+ objects with an overwritten toString method.
 
 
-Examples with different table themes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The table theme can be changed any time before rendering the table.
-Take the example above, we can change the theme to +V1_StandardTableThemes.LIGHT+ and then render the table:
---------------------------------------------------------------------------------------------
-at.setTheme(V1_StandardTableThemes.LIGHT);
-System.out.println(at.render());
---------------------------------------------------------------------------------------------
-
-The output will now be:
---------------------------------------------------
-┌───────────────────────────────────────────────┐
-│                 Table Heading                 │
-├──────────┬───────────────┬────────────────────┤
-│row 1     │this is col 2  │and this is column 3│
-├──────────┼───────────────┼────────────────────┤
-│row 2     │some text for  │and some text for   │
-│          │column 2       │column 3            │
-└──────────┴───────────────┴────────────────────┘
---------------------------------------------------
-
-If we use the theme +V1_StandardTableThemes.DOUBLE+, the output should look like this:
---------------------------------------------------
-╔═══════════════════════════════════════════════╗
-║                 Table Heading                 ║
-╠══════════╦═══════════════╦════════════════════╣
-║row 1     ║this is col 2  ║and this is column 3║
-╠══════════╬═══════════════╬════════════════════╣
-║row 2     ║some text for  ║and some text for   ║
-║          ║column 2       ║column 3            ║
-╚══════════╩═══════════════╩════════════════════╝
---------------------------------------------------
-
-If we use the theme +V1_StandardTableThemes.LIGHT_DOUBLE+, the output should look like this:
---------------------------------------------------
-╒═══════════════════════════════════════════════╕
-│                 Table Heading                 │
-╞══════════╤═══════════════╤════════════════════╡
-│row 1     │this is col 2  │and this is column 3│
-╞══════════╪═══════════════╪════════════════════╡
-│row 2     │some text for  │and some text for   │
-│          │column 2       │column 3            │
-╘══════════╧═══════════════╧════════════════════╛
---------------------------------------------------
-
-If we use the theme +V1_StandardTableThemes.DOUBLE_LIGHT+, the output should look like this:
---------------------------------------------------
-╓───────────────────────────────────────────────╖
-║                 Table Heading                 ║
-╟──────────╥───────────────╥────────────────────╢
-║row 1     ║this is col 2  ║and this is column 3║
-╟──────────╫───────────────╫────────────────────╢
-║row 2     ║some text for  ║and some text for   ║
-║          ║column 2       ║column 3            ║
-╙──────────╨───────────────╨────────────────────╜
---------------------------------------------------
-
-The look and feel of themes with heavy characters can differ, depending on the font that is being used. Many console
-fonts on windows do not show heavy box drawing characters as monotype or have varying width for whitespaces when using
-heavy character. The following shows a table using the standard heavy theme (+V1_StandardTableThemes.HEAVY+):
-----------------------------------------------------------------------------------------
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃                 Table Heading                 ┃
-┣━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┫
-┃row 1     ┃this is col 2  ┃and this is column 3┃
-┣━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━┫
-┃row 2     ┃some text for  ┃and some text for   ┃
-┃          ┃column 2       ┃column 3            ┃
-┗━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━┛
-----------------------------------------------------------------------------------------
-
-There are also a number of LaTeX style themes pre-defined. For instance +V1_StandardTableThemes.LATEX_LIGHT_TRIPLE_DASH+, which unfortunately does not render easily to HTML:
-----------------------------------------------------------------------------------------
-┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
-                  Table Heading                  
-┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
- row 1      this is col 2   and this is column 3 
-┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
- row 2      some text for   and some text for    
-            column 2        column 3             
-┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
-----------------------------------------------------------------------------------------
-
-
-ASCII Table Version 2
----------------------
-
-This is the 2nd generation table.
-
-The class allows to define a table with +n+ columns.
-Once a table is defined, rules and rows can be added.
-A rule is a special row with border formatting characters (similar to a rule in a LaTeX table).
-A row is a content row with content (in form of strings or objects with +toString()+ method).
-A row should have content for each of the columns defined for the table, e.g. if the table is set for 3 columns each row should define content for 3 columns.
-
-Once a table is defined and filled, a renderer is used to render the table.
-This render object is initialized with the table width and themes.
-It will produce a rendered table, which can then be printed to the screen or other output that accept a string (such as a file).
-
-A set of row themes and table themes are pre-defined. Additional themes can be easily defined and validated.
-
-
-Using the ASCII Table V2
-~~~~~~~~~~~~~~~~~~~~~~~~
-
+Standard Usage - create and render a simple table
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The standard usage is:
-
-* create a table for +n+ columns
+* create a table
 * add rules and rows
-	** a rule is a separator of rows using a normal row theme
-	** a strong rule is a separator of rows using a strong row theme
-	** a row is the actual content with objects per column (or spanning columns, as explained below)
 * create a renderer and configure it
-* render the table and print it
+* render the table
+* use the finally rendered table, e.g. print it to a console or write it to a file
 
-A table, once created, can be rendered using any renderer.
-Any renderer can render any created table multiple (any) times.
-Furthermore, a renderer can re-render a table (if it has been changed) any time.
-
-
-A table with 1 column
-~~~~~~~~~~~~~~~~~~~~~
-
-First get a new instance of the ASCII Table using the public constructor set for 1 column:
----------------------------------------------
-V2_AsciiTable at = new V2_AsciiTable(1);
----------------------------------------------
-
-Next, fill the table.
-The example here adds a strong rule followed by a content row, a rule, a content row, a rule, a content row, and a final rule.
----------------------------------------------
-at.addRuleStrong();
-at.addRow("Table Heading");
-at.addRule();
-at.addRow("first row (col1)");
-at.addRule();
-at.addRow("second row (col1)");
-at.addRule();
----------------------------------------------
-
-Last, create a renderer object, configure it, render the table, and print it.
-The example here uses a theme +V2_E_TableThemes.UTF_LIGHT+ to render the table for an absolute width of 76 characters:
----------------------------------------------
-V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
-rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
-System.out.println(rend.render(at));
----------------------------------------------
-
-The output of this example will be:
+Create a table
+^^^^^^^^^^^^^^
 ----------------------------------------------------------------------------------------
-┌──────────────────────────────────────────────────────────────────────────┐
-│Table Heading                                                             │
-├──────────────────────────────────────────────────────────────────────────┤
-│first row (col1)                                                          │
-├──────────────────────────────────────────────────────────────────────────┤
-│second row (col1)                                                         │
-└──────────────────────────────────────────────────────────────────────────┘
+V2_AsciiTable at = new V2_AsciiTable();
 ----------------------------------------------------------------------------------------
 
-
-A table with 2 columns
-~~~~~~~~~~~~~~~~~~~~~~
-
-The following example creates a table with 2 columns:
----------------------------------------------
-V2_AsciiTable at = new V2_AsciiTable(2);
-at.addRuleStrong();
-at.addRow(null,"Table Heading");
+Add content and rule rows
+^^^^^^^^^^^^^^^^^^^^^^^^^
+We add a combination of rows and rules and a final rule.
+----------------------------------------------------------------------------------------
 at.addRule();
-at.addRow("first row (col1)", "with some information");
+at.addRow("first row (col1)", "with some information (col2)");
 at.addRule();
 at.addRow("second row (col1)", "with some information (col2)");
 at.addRule();
+----------------------------------------------------------------------------------------
 
+Create a renderer and configure it
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+We create the standard renderer and configure it to use the provided table theme +V2_E_TableThemes.UTF_LIGHT+.
+The we add a width to the renderer using +V2_WidthAbsoluteEven+ for a table width of 76 characters.
+----------------------------------------------------------------------------------------
 V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
-System.out.println(rend.render(at));
----------------------------------------------
-
-The output of this example will be:
-----------------------------------------------------------------------------------------
-┌──────────────────────────────────────────────────────────────────────────┐
-│                              Table Heading                               │
-├─────────────────────────────────────┬────────────────────────────────────┤
-│first row (col1)                     │with some information               │
-├─────────────────────────────────────┼────────────────────────────────────┤
-│second row (col1)                    │with some information (col2)        │
-└─────────────────────────────────────┴────────────────────────────────────┘
+rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
 ----------------------------------------------------------------------------------------
 
-
-A table with 3 columns
-~~~~~~~~~~~~~~~~~~~~~~
-
-The following example creates a table with 3 columns:
----------------------------------------------
-V2_AsciiTable at = new V2_AsciiTable(3);
-at.addRuleStrong();
-at.addRow(null, null, "Table Heading");
-at.addRule();
-at.addRow("first row (col1)", "with some information", "and more information");
-at.addRule();
-at.addRow("second row (col1)", "with some information (col2)", "and more information (col3)");
-at.addRule();
-
-V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
-rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
-System.out.println(rend.render(at));
----------------------------------------------
-
-The output of this example will be:
+Render the table
+^^^^^^^^^^^^^^^^
 ----------------------------------------------------------------------------------------
-┌──────────────────────────────────────────────────────────────────────────┐
-│                              Table Heading                               │
-├────────────────────────┬────────────────────────┬────────────────────────┤
-│first row (col1)        │with some information   │and more information    │
-├────────────────────────┼────────────────────────┼────────────────────────┤
-│second row (col1)       │with some information   │and more information    │
-│                        │(col2)                  │(col3)                  │
-└────────────────────────┴────────────────────────┴────────────────────────┘
+RenderedTable rt = rend.render(at);
+----------------------------------------------------------------------------------------
+
+Use the finally rendered table
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Simply print it to standard out.
+----------------------------------------------------------------------------------------
+System.out.println(rt);
+----------------------------------------------------------------------------------------
+
+The will result in the following table being printed to the console:
+----------------------------------------------------------------------------------------
+	┌─────────────────────────────────────┬────────────────────────────────────┐
+	│ first row (col1)                    │ with some information (col2)       │
+	├─────────────────────────────────────┼────────────────────────────────────┤
+	│ second row (col1)                   │ with some information (col2)       │
+	└─────────────────────────────────────┴────────────────────────────────────┘
 ----------------------------------------------------------------------------------------
 
 
-A table with 4 columns
-~~~~~~~~~~~~~~~~~~~~~~
+Version 2 Examples
+------------------
 
-The following example creates a table with 4 columns:
----------------------------------------------
-V2_AsciiTable at = new V2_AsciiTable(4);
-at.addRuleStrong();
-at.addRow(null, null, null, "Table Heading");
-at.addRule();
-at.addRow("first row (col1)", "with some information", "and more information", "even more");
-at.addRule();
-at.addRow("second row (col1)", "with some information (col2)", "and more information (col3)", "even more");
-at.addRule();
-
-V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
-rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
-System.out.println(rend.render(at));
----------------------------------------------
-
-The output of this example will be:
+A table with four columns
+~~~~~~~~~~~~~~~~~~~~~~~~~
 ----------------------------------------------------------------------------------------
-┌──────────────────────────────────────────────────────────────────────────┐
-│                              Table Heading                               │
-├──────────────────┬──────────────────┬──────────────────┬─────────────────┤
-│first row (col1)  │with some         │and more          │even more        │
-│                  │information       │information       │                 │
-├──────────────────┼──────────────────┼──────────────────┼─────────────────┤
-│second row (col1) │with some         │and more          │even more        │
-│                  │information (col2)│information (col3)│                 │
-└──────────────────┴──────────────────┴──────────────────┴─────────────────┘
+	┌──────────────────────────────────────────────────────────────────────────┐
+	│ Table Heading                                                            │
+	├──────────────────┬──────────────────┬──────────────────┬─────────────────┤
+	│ first row (col1) │ with some        │ and more         │ even more       │
+	│                  │ information      │ information      │                 │
+	├──────────────────┼──────────────────┼──────────────────┼─────────────────┤
+	│ second row       │ with some        │ and more         │ even more       │
+	│ (col1)           │ information      │ information      │                 │
+	│                  │ (col2)           │ (col3)           │                 │
+	└──────────────────┴──────────────────┴──────────────────┴─────────────────┘
 ----------------------------------------------------------------------------------------
 
-
-A table with 5 columns
-~~~~~~~~~~~~~~~~~~~~~~
-
-The following example creates a table with 5 columns:
----------------------------------------------
-new V2_AsciiTable(5);
-at.addRuleStrong();
-at.addRow(null, null, null, null, "Table Heading");
-at.addRule();
-at.addRow("first row (col1)", "with some information", "and more information", "even more", "more");
-at.addRule();
-at.addRow("second row (col1)", "with some information (col2)", "and more information (col3)", "even more", "more");
-at.addRule();
-
-V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
-rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
-System.out.println(rend.render(at));
----------------------------------------------
-
-The output of this example will be:
+Text alignment in columns - left, right, center
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ----------------------------------------------------------------------------------------
-┌──────────────────────────────────────────────────────────────────────────┐
-│                              Table Heading                               │
-├──────────────┬──────────────┬──────────────┬──────────────┬──────────────┤
-│first row     │with some     │and more      │even more     │more          │
-│(col1)        │information   │information   │              │              │
-├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
-│second row    │with some     │and more      │even more     │more          │
-│(col1)        │information   │information   │              │              │
-│              │(col2)        │(col3)        │              │              │
-└──────────────┴──────────────┴──────────────┴──────────────┴──────────────┘
+	┌──────────────────────────┬─────────────────────────┬─────────────────────────┐
+	│ left                     │                   right │         center          │
+	└──────────────────────────┴─────────────────────────┴─────────────────────────┘
 ----------------------------------------------------------------------------------------
 
+Text alignment in columns - justified
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------------------------------------------------------
+	┌──────────────────────────────────────────────────────────┐
+	│ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, │
+	│ sed  diam  nonumy  eirmod  tempor  invidunt ut labore et │
+	│ dolore  magna  aliquyam erat, sed diam voluptua. At vero │
+	│ eos  et  accusam  et justo duo dolores et ea rebum. Stet │
+	│ clita  kasd gubergren, no sea takimata sanctus est Lorem │
+	│ ipsum dolor sit amet.                                    │
+	├──────────────────────────────────────────────────────────┤
+	│ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, │
+	│ sed  diam  nonumy  eirmod  tempor  invidunt ut labore et │
+	│ dolore  magna  aliquyam erat, sed diam voluptua. At vero │
+	│ eos  et  accusam  et justo duo dolores et ea rebum. Stet │
+	│ clita  kasd gubergren, no sea takimata sanctus est Lorem │
+	│                                    ipsum dolor sit amet. │
+	└──────────────────────────────────────────────────────────┘
+----------------------------------------------------------------------------------------
+
+Column padding
+~~~~~~~~~~~~~~
+----------------------------------------------------------------------------------------
+	┌──────────────┬──────────────┬──────────────┬──────────────┬──────────────┐
+	│padding 0     │ padding 1    │  padding 2   │   padding    │    paddin    │
+	│              │              │              │   3          │    g 4       │
+	└──────────────┴──────────────┴──────────────┴──────────────┴──────────────┘
+----------------------------------------------------------------------------------------
 
 Column spanning
 ~~~~~~~~~~~~~~~
-
-Rows can span columns.
-This is done by adding columns of +null+ content to a row followed by a column with content.
-The column with content will span all previous rows with content +null+.
-The following example creates a table with 5 columns and different column spanning (all to none columns):
----------------------------------------------
-V2_AsciiTable at = new V2_AsciiTable(5);
-at.addRuleStrong();
-at.addRow(null, null, null, null, "span all 5 columns");
-at.addRule();
-at.addRow(null, null, null, "span 4 columns", "just 1 column");
-at.addRule();
-at.addRow(null, null, "span 3 columns", null, "span 2 columns");
-at.addRule();
-at.addRow(null, "span 2 columns", null, null, "span 3 columns");
-at.addRule();
-at.addRow("just 1 column", null, null, null, "span 4 columns");
-at.addRule();
-at.addRow("just 1 column", "just 1 column", "just 1 column", "just 1 column", "just 1 column");
-at.addRule();
-
-V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
-rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
-System.out.println(rend.render(at));
----------------------------------------------
-
-The output of this example will be:
 ----------------------------------------------------------------------------------------
-┌──────────────────────────────────────────────────────────────────────────┐
-│                            span all 5 columns                            │
-├───────────────────────────────────────────────────────────┬──────────────┤
-│                      span 4 columns                       │just 1 column │
-├────────────────────────────────────────────┬──────────────┴──────────────┤
-│               span 3 columns               │       span 2 columns        │
-├─────────────────────────────┬──────────────┴─────────────────────────────┤
-│       span 2 columns        │               span 3 columns               │
-├──────────────┬──────────────┴────────────────────────────────────────────┤
-│just 1 column │                      span 4 columns                       │
-├──────────────┼──────────────┬──────────────┬──────────────┬──────────────┤
-│just 1 column │just 1 column │just 1 column │just 1 column │just 1 column │
-└──────────────┴──────────────┴──────────────┴──────────────┴──────────────┘
+	┌───────────────────────────────────────────────────────────────────────────────┐
+	│ span all 5 columns                                                            │
+	├───────────────────────────────────────────────────────────────┬───────────────┤
+	│ span 4 columns                                                │ just 1 column │
+	├───────────────────────────────────────────────┬───────────────┴───────────────┤
+	│ span 3 columns                                │ span 2 columns                │
+	├───────────────────────────────┬───────────────┴───────────────────────────────┤
+	│ span 2 columns                │ span 3 columns                                │
+	├───────────────┬───────────────┴───────────────────────────────────────────────┤
+	│ just 1 column │ span 4 columns                                                │
+	├───────────────┼───────────────┬───────────────┬───────────────┬───────────────┤
+	│ just 1 column │ just 1 column │ just 1 column │ just 1 column │ just 1 column │
+	└───────────────┴───────────────┴───────────────┴───────────────┴───────────────┘
 ----------------------------------------------------------------------------------------
 
-
-Padding Character
-~~~~~~~~~~~~~~~~~
-
-The table renderer can be set to use different padding characters.
-A padding character is the character used to fill content rows (all their columns) up to the next border.
-Using UTF-8 characters might not be result in the anticipated result.
-The following example creates a table with 1 table rendered with the same renderer set for different padding characters:
----------------------------------------------
-V2_AsciiTable at = new V2_AsciiTable(1);
-at.addRule();
-at.addRow("some text with padding");
-at.addRule();
-
-V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
-rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
-System.out.println(rend.render(at));
-rend.setPaddingChar('*');
-System.out.println(rend.render(at));
-rend.setPaddingChar('-');
-System.out.println(rend.render(at));
-rend.setPaddingChar('␣');
-System.out.println(rend.render(at));
----------------------------------------------
-
-The output of this example will be:
+Rule styles
+~~~~~~~~~~~
 ----------------------------------------------------------------------------------------
-+--------------------------------------------------------------------------+
-|some text with padding                                                    |
-+--------------------------------------------------------------------------+
+	≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+	  col1                     col2                     col3                    
+	════════════════════════════════════════════════════════════════════════════
+	  col1                     col2                     col3                    
+	────────────────────────────────────────────────────────────────────────────
+	  col1                     col2                     col3                    
+	════════════════════════════════════════════════════════════════════════════
+	  col1                     col2                     col3                    
+	────────────────────────────────────────────────────────────────────────────
+	  col1                     col2                     col3                    
+	≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 
-+--------------------------------------------------------------------------+
-|some text with padding****************************************************|
-+--------------------------------------------------------------------------+
 
-+--------------------------------------------------------------------------+
-|some text with padding----------------------------------------------------|
-+--------------------------------------------------------------------------+
-
-+--------------------------------------------------------------------------+
-|some text with padding␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣|
-+--------------------------------------------------------------------------+
+	▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+	  col1                     col2                     col3                    
+	════════════════════════════════════════════════════════════════════════════
+	  col1                     col2                     col3                    
+	────────────────────────────────────────────────────────────────────────────
+	  col1                     col2                     col3                    
+	════════════════════════════════════════════════════════════════════════════
+	  col1                     col2                     col3                    
+	────────────────────────────────────────────────────────────────────────────
+	  col1                     col2                     col3                    
+	▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 ----------------------------------------------------------------------------------------
 
+Width with table width and evenly distributed column witdh
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------------------------------------------------------
+	┌────────────────┬───────────────┬───────────────┐
+	│ col1           │ col2          │ col3          │
+	└────────────────┴───────────────┴───────────────┘
+
+	┌─────────┬─────────┬────────┐
+	│ col1    │ col2    │ col3   │
+	└─────────┴─────────┴────────┘
+
+	┌──────┬─────┬─────┐
+	│ col1 │ col │ col │
+	│      │ 2   │ 3   │
+	└──────┴─────┴─────┘
+----------------------------------------------------------------------------------------
+
+Width with fixed width per column
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------------------------------------------------------
+	┌──────────┬────────────────────┬──────────────────────────────┐
+	│ col1     │ col2               │ col3                         │
+	└──────────┴────────────────────┴──────────────────────────────┘
+
+	┌─────┬──────────┬───────────────┐
+	│ col │ col2     │ col3          │
+	│ 1   │          │               │
+	└─────┴──────────┴───────────────┘
+
+	┌───┬─────┬───────┐
+	│ c │ col │ col3  │
+	│ o │ 2   │       │
+	│ l │     │       │
+	│ 1 │     │       │
+	└───┴─────┴───────┘
+----------------------------------------------------------------------------------------
+
+Padding Characters
+~~~~~~~~~~~~~~~~~~
+----------------------------------------------------------------------------------------
+	+--------------------------------------------------------------------------+
+	| some text with padding                                                   |
+	+--------------------------------------------------------------------------+
+
+	+--------------------------------------------------------------------------+
+	| some text with padding***************************************************|
+	+--------------------------------------------------------------------------+
+
+	+--------------------------------------------------------------------------+
+	| some text with padding---------------------------------------------------|
+	+--------------------------------------------------------------------------+
+
+	+--------------------------------------------------------------------------+
+	| some text with padding␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣|
+	+--------------------------------------------------------------------------+
+----------------------------------------------------------------------------------------
 
 Table Theme
 ~~~~~~~~~~~
-
-The table renderer can be set to use different table themes.
-A table theme defines all border characters for rules, strong rules and content rows.
-The following example creates a table with 1 table rendered with the same renderer set for different table themes (using pre-defined themes):
----------------------------------------------
-V2_AsciiTable at = new V2_AsciiTable(1);
-at.addRule();
-at.addRow("some column text");
-at.addRule();
-
-V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
-rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
-System.out.println(rend.render(at));
-rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-System.out.println(rend.render(at));
-rend.setTheme(V2_E_TableThemes.UTF_DOUBLE_LIGHT.get());
-System.out.println(rend.render(at));
-rend.setTheme(V2_E_TableThemes.UTF_DOUBLE.get());
-System.out.println(rend.render(at));
----------------------------------------------
-
-The output of this example will be:
 ----------------------------------------------------------------------------------------
-+--------------------------------------------------------------------------+
-|some column text                                                          |
-+--------------------------------------------------------------------------+
+	+--------------------------------------------------------------------------+
+	| some column text                                                         |
+	+--------------------------------------------------------------------------+
 
-┌──────────────────────────────────────────────────────────────────────────┐
-│some column text                                                          │
-└──────────────────────────────────────────────────────────────────────────┘
+	┌──────────────────────────────────────────────────────────────────────────┐
+	│ some column text                                                         │
+	└──────────────────────────────────────────────────────────────────────────┘
 
-╓──────────────────────────────────────────────────────────────────────────╖
-║some column text                                                          ║
-╙──────────────────────────────────────────────────────────────────────────╜
+	╓──────────────────────────────────────────────────────────────────────────╖
+	║ some column text                                                         ║
+	╙──────────────────────────────────────────────────────────────────────────╜
 
-╔══════════════════════════════════════════════════════════════════════════╗
-║some column text                                                          ║
-╚══════════════════════════════════════════════════════════════════════════╝
+	╔══════════════════════════════════════════════════════════════════════════╗
+	║ some column text                                                         ║
+	╚══════════════════════════════════════════════════════════════════════════╝
 ----------------------------------------------------------------------------------------
