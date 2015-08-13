@@ -17,7 +17,6 @@ package de.vandermeer.asciitable.v2.themes;
 
 import de.vandermeer.asciitable.commons.TableException;
 
-
 /**
  * Builder for a row themes.
  *
@@ -124,7 +123,36 @@ public class V2_RowThemeBuilder {
 	 * @throws TableException if any of the parameters is null or blank
 	 */
 	public V2_RowTheme build() {
-		return new V2_AbstractRowTheme(this.rightBorder, this.leftBorder, this.mid, this.midBorderAll, this.midBorderUp, this.midBorderDown, this.description);
+		return new AbstractRowTheme(this.rightBorder, this.leftBorder, this.mid, this.midBorderAll, this.midBorderUp, this.midBorderDown, this.description);
+	}
+
+	/**
+	 * Tests a row theme.
+	 * @param theme theme to be tested
+	 * @throws TableException if any of the theme methods returns 0 or null
+	 */
+	public static void testRowTheme(V2_RowTheme theme){
+		if(theme.getLeftBorder()==0){
+			throw new TableException("row theme incomplete", "no left border defined");
+		}
+		if(theme.getRightBorder()==0){
+			throw new TableException("row theme incomplete", "no right border defined");
+		}
+		if(theme.getMid()==0){
+			throw new TableException("row theme incomplete", "no mid character defined");
+		}
+		if(theme.getMidBorderAll()==0){
+			throw new TableException("row theme incomplete", "no mid all character defined");
+		}
+		if(theme.getMidBorderDown()==0){
+			throw new TableException("row theme incomplete", "no mid down character defined");
+		}
+		if(theme.getMidBorderUp()==0){
+			throw new TableException("row theme incomplete", "no mid up character defined");
+		}
+		if(theme.getDescription()==null){
+			throw new TableException("row theme incomplete", "no description defined");
+		}
 	}
 
 }

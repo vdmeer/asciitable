@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.v2.themes;
 
-
-
 /**
  * Standard table themes.
  *
@@ -97,6 +95,32 @@ Normal           Strong           Example
 			V2_E_RowThemes.UTF_LINE_DOUBLE,
 			V2_E_RowThemes.UTF_LINE_LIGHT,
 			V2_E_RowThemes.ASC7_LINE_CONGRUENCE,
+			V2_E_RowThemes.ASC7_SIMPLE_CONTENT_BLANK,
+			"ASCII-7 based LaTeX-style table theme without borders"
+	),
+
+	/**
+	 * A theme for ASCII-7 based LaTeX-style table theme without borders.
+	 * <pre>
+Normal           Strong           Example
+─────────        ▀▀▀▀▀▀▀▀▀        ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+                                   h1   h2   h3   
+─────────        ═════════        ════════════════
+                                   c1   c2   c3   
+─────────        ▓▓▓▓▓▓▓▓▓        ────────────────
+                                   c1   c2   c3   
+                                  ────────────────
+                                   c1   c2   c3   
+                                  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+	 * </pre>
+	 */
+	ASC7_LATEX_STYLE_STRONG2(
+			V2_E_RowThemes.UTF_LINE_LIGHT,
+			V2_E_RowThemes.ASC7_LINE_UPPER_HALF_BLOCK,
+			V2_E_RowThemes.UTF_LINE_LIGHT,
+			V2_E_RowThemes.UTF_LINE_DOUBLE,
+			V2_E_RowThemes.UTF_LINE_LIGHT,
+			V2_E_RowThemes.ASC7_LINE_HIGH_DENSITY_DOTTED,
 			V2_E_RowThemes.ASC7_SIMPLE_CONTENT_BLANK,
 			"ASCII-7 based LaTeX-style table theme without borders"
 	),
@@ -256,8 +280,8 @@ Normal           Example
 	 * @param description a description
 	 */
 	V2_E_TableThemes(V2_E_RowThemes top, V2_E_RowThemes mid, V2_E_RowThemes bottom, V2_E_RowThemes content, String description){
-		this.theme = new V2_AbstractTableTheme(top.get(), mid.get(), bottom.get(), content.get(), description);
-		V2_Validator.testTableTheme(this.theme);
+		this.theme = new AbstractTableTheme(top.get(), mid.get(), bottom.get(), content.get(), description);
+		V2_TableThemeBuilder.testTableTheme(this.theme);
 	}
 
 	/**
@@ -272,8 +296,8 @@ Normal           Example
 	 * @param description a description
 	 */
 	V2_E_TableThemes(V2_E_RowThemes top, V2_E_RowThemes topStrong, V2_E_RowThemes mid, V2_E_RowThemes midStrong, V2_E_RowThemes bottom, V2_E_RowThemes bottomStrong, V2_E_RowThemes content, String description){
-		this.theme = new V2_AbstractTableTheme(top.get(), topStrong.get(), mid.get(), midStrong.get(), bottom.get(), bottomStrong.get(), content.get(), description);
-		V2_Validator.testTableTheme(this.theme);
+		this.theme = new AbstractTableTheme(top.get(), topStrong.get(), mid.get(), midStrong.get(), bottom.get(), bottomStrong.get(), content.get(), description);
+		V2_TableThemeBuilder.testTableTheme(this.theme);
 	}
 
 	/**

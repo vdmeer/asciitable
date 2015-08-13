@@ -26,7 +26,7 @@ import de.vandermeer.asciitable.commons.TableException;
  * @version    v0.1.2 build 150812 (12-Aug-15) for Java 1.7
  * @since      v0.0.8
  */
-public class V2_AbstractTableTheme implements V2_TableTheme {
+public class AbstractTableTheme implements V2_TableTheme {
 
 	/** Theme for a bottom row. */
 	private V2_RowTheme bottom;
@@ -64,7 +64,7 @@ public class V2_AbstractTableTheme implements V2_TableTheme {
 	 * @param description descriptive text for the theme
 	 * @throws TableException if any of the parameters is null or blank
 	 */
-	V2_AbstractTableTheme(final V2_RowTheme top, final V2_RowTheme mid, final V2_RowTheme bottom, final V2_RowTheme content, final String description){
+	AbstractTableTheme(final V2_RowTheme top, final V2_RowTheme mid, final V2_RowTheme bottom, final V2_RowTheme content, final String description){
 		this(top, top, mid, mid, bottom, bottom, content, description);
 	}
 
@@ -80,7 +80,7 @@ public class V2_AbstractTableTheme implements V2_TableTheme {
 	 * @param description descriptive text for the theme
 	 * @throws TableException if any of the parameters is null or blank
 	 */
-	V2_AbstractTableTheme(final V2_RowTheme top, final V2_RowTheme topStrong, final V2_RowTheme mid, final V2_RowTheme midStrong, final V2_RowTheme bottom, final V2_RowTheme bottomStrong, final V2_RowTheme content, final String description){
+	AbstractTableTheme(final V2_RowTheme top, final V2_RowTheme topStrong, final V2_RowTheme mid, final V2_RowTheme midStrong, final V2_RowTheme bottom, final V2_RowTheme bottomStrong, final V2_RowTheme content, final String description){
 		this.bottom = bottom;
 		this.bottomStrong = bottomStrong;
 		this.content = content;
@@ -90,7 +90,7 @@ public class V2_AbstractTableTheme implements V2_TableTheme {
 		this.top = top;
 		this.topStrong = topStrong;
 
-		V2_Validator.testTableTheme(this);
+		V2_TableThemeBuilder.testTableTheme(this);
 
 		if(top.toDoc().equals(topStrong.toDoc()) && bottom.toDoc().equals(bottomStrong.toDoc()) && mid.toDoc().equals(midStrong.toDoc())){
 			this.hasStrong = false;

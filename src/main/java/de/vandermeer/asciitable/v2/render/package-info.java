@@ -13,23 +13,11 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.core;
-
 /**
- * Position of a border element.
+ * V2 classes to render a table.
+ *
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.1.2 build 150812 (12-Aug-15) for Java 1.7
- * @since      v0.0.3
  */
-public enum V2_E_BorderPosition {
-	/** Left border. */
-	LEFT,
-
-	/** Middle border. */
-	MIDDLE,
-
-	/** Right border. */
-	RIGHT;
-
-}
+package de.vandermeer.asciitable.v2.render;
