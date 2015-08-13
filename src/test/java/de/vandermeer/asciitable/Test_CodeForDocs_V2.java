@@ -18,10 +18,10 @@ package de.vandermeer.asciitable;
 import org.junit.Test;
 
 import de.svenjacobs.loremipsum.LoremIpsum;
-import de.vandermeer.asciitable.v2.RenderedTable;
 import de.vandermeer.asciitable.v2.V2_AsciiTable;
 import de.vandermeer.asciitable.v2.render.V2_AsciiTableRenderer;
 import de.vandermeer.asciitable.v2.render.width.V2_WidthAbsoluteEven;
+import de.vandermeer.asciitable.v2.render.width.V2_WidthFixedColumns;
 import de.vandermeer.asciitable.v2.themes.V2_E_TableThemes;
 
 /**
@@ -244,11 +244,52 @@ public class Test_CodeForDocs_V2 {
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
 		rend.setTheme(V2_E_TableThemes.ASC7_LATEX_STYLE_STRONG.get());
-		RenderedTable rt = rend.render(at);
-		System.out.println(rt);
+//		RenderedTable rt = rend.render(at);
+//		System.out.println(rt);
 
 		rend.setTheme(V2_E_TableThemes.ASC7_LATEX_STYLE_STRONG2.get());
 //		rt = rend.render(at);
 //		System.out.println(rt);
 	}
+
+	@Test
+	public void test_Example_WidthAbsoluteEven(){
+		V2_AsciiTable at = new V2_AsciiTable();
+		at.addRule();
+		at.addRow("col1", "col2", "col3");
+		at.addRule();
+
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+
+		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(50));
+//		System.out.println(rend.render(at));
+
+		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(30));
+//		System.out.println(rend.render(at));
+
+		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(20));
+//		System.out.println(rend.render(at));
+	}
+
+	@Test
+	public void test_Example_WidthFixedColumns(){
+		V2_AsciiTable at = new V2_AsciiTable();
+		at.addRule();
+		at.addRow("col1", "col2", "col3");
+		at.addRule();
+
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+
+		rend.setWidth(new V2_WidthFixedColumns().add(10).add(20).add(30));
+		System.out.println(rend.render(at));
+
+		rend.setWidth(new V2_WidthFixedColumns().add(5).add(10).add(15));
+		System.out.println(rend.render(at));
+
+		rend.setWidth(new V2_WidthFixedColumns().add(3).add(5).add(7));
+		System.out.println(rend.render(at));
+	}
+
 }

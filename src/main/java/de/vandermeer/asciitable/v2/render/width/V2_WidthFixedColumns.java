@@ -52,7 +52,7 @@ public class V2_WidthFixedColumns extends AbstractWidth {
 
 	@Override
 	public int[] getColumnWidths(int padding) {
-		if(this.colNumber != (this.ar.length-1)){
+		if(this.colNumber != (this.ar.length)){
 			throw new IllegalArgumentException("wrong columns array length: columns array length must be the same as the columns used to initialise the table");
 		}
 		int[] ret = ArrayUtils.addAll(new int[0], this.ar);

@@ -622,9 +622,108 @@
  * </pre>
  * 
  * 
+ * <br><h3>Table and column widths</h3>
+ * <p>
+ * 		The renderer can be configured with {@link de.vandermeer.asciitable.v2.render.width.V2_Width} objects for calculating the width of columns and the overall table.
+ * 		Depending on the object, the rendering of the table will differ.
+ * 		Several implementations are provided, others can be added by implementing the interface.
+ * </p>
+ * 
+ * <h4>Width with table width and evenly distributed column witdh</h4>
+ * <p>
+ * 		The class {@link de.vandermeer.asciitable.v2.render.width.V2_WidthAbsoluteEven} calculates the width using an absolute table width and then using the same width for each column.
+ * 		Same here means as evenly distributed as possible.
+ * 		The following examples show the same single row table rendered with different widths.
+ * </p>
+ * <pre>{@code
+	V2_AsciiTable at = new V2_AsciiTable();
+	at.addRule();
+	at.addRow("col1", "col2", "col3");
+	at.addRule();
+
+	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+
+	rend.setWidth(new V2_WidthAbsoluteEven().setWidth(50));
+	System.out.println(rend.render(at));
+
+	rend.setWidth(new V2_WidthAbsoluteEven().setWidth(30));
+	System.out.println(rend.render(at));
+
+	rend.setWidth(new V2_WidthAbsoluteEven().setWidth(20));
+	System.out.println(rend.render(at));
+ * }</pre>
+ * 
+ * The output of the examples are:
+ * <pre style="line-height:17px">
+	┌────────────────┬───────────────┬───────────────┐
+	│ col1           │ col2          │ col3          │
+	└────────────────┴───────────────┴───────────────┘
+
+	┌─────────┬─────────┬────────┐
+	│ col1    │ col2    │ col3   │
+	└─────────┴─────────┴────────┘
+
+	┌──────┬─────┬─────┐
+	│ col1 │ col │ col │
+	│      │ 2   │ 3   │
+	└──────┴─────┴─────┘
+ * </pre>
+ * 
+ * <h4>Width with fixed width per column</h4>
+ * <p>
+ * 		The class {@link de.vandermeer.asciitable.v2.render.width.V2_WidthFixedColumns} calculates the width using a fixed width per column.
+ * 		The following examples show the same single row table rendered with different widths.
+ * </p>
+ * <pre>{@code
+	V2_AsciiTable at = new V2_AsciiTable();
+	at.addRule();
+	at.addRow("col1", "col2", "col3");
+	at.addRule();
+
+	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+
+	rend.setWidth(new V2_WidthFixedColumns().add(10).add(20).add(30));
+	System.out.println(rend.render(at));
+
+	rend.setWidth(new V2_WidthFixedColumns().add(5).add(10).add(15));
+	System.out.println(rend.render(at));
+
+	rend.setWidth(new V2_WidthFixedColumns().add(3).add(5).add(7));
+	System.out.println(rend.render(at));
+ * }</pre>
+ * 
+ * The output of the examples are:
+ * <pre style="line-height:17px">
+	┌──────────┬────────────────────┬──────────────────────────────┐
+	│ col1     │ col2               │ col3                         │
+	└──────────┴────────────────────┴──────────────────────────────┘
+
+	┌─────┬──────────┬───────────────┐
+	│ col │ col2     │ col3          │
+	│ 1   │          │               │
+	└─────┴──────────┴───────────────┘
+
+	┌───┬─────┬───────┐
+	│ c │ col │ col3  │
+	│ o │ 2   │       │
+	│ l │     │       │
+	│ 1 │     │       │
+	└───┴─────┴───────┘
+ * </pre>
+ * 
+ * 
+ * 
  * 
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.1.2 build 150812 (12-Aug-15) for Java 1.7
  */
 package de.vandermeer.asciitable.v2;
+
+import de.vandermeer.asciitable.v2.render.V2_AsciiTableRenderer;
+import de.vandermeer.asciitable.v2.render.width.V2_WidthFixedColumns;
+import de.vandermeer.asciitable.v2.themes.V2_E_TableThemes;
+
+
 
