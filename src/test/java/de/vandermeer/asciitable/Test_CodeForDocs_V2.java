@@ -33,6 +33,25 @@ import de.vandermeer.asciitable.v2.themes.V2_E_TableThemes;
 public class Test_CodeForDocs_V2 {
 
 	@Test
+	public void test_Example_SimpleTable(){
+		V2_AsciiTable at = new V2_AsciiTable();
+
+		at.addRule();
+		at.addRow("first row (col1)", "with some information (col2)");
+		at.addRule();
+		at.addRow("second row (col1)", "with some information (col2)");
+		at.addRule();
+
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
+
+//		RenderedTable rt = rend.render(at);
+
+//		System.out.println(rt);
+	}
+
+	@Test
 	public void test_Example_1Column(){
 		V2_AsciiTable at = new V2_AsciiTable();
 		at.addRule();
@@ -46,8 +65,7 @@ public class Test_CodeForDocs_V2 {
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
-//		RenderedTable rt = rend.render(at);
-//		System.out.println(rt);
+//		System.out.println(rend.render(at));
 	}
 
 	@Test
@@ -64,8 +82,7 @@ public class Test_CodeForDocs_V2 {
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
-//		RenderedTable rt = rend.render(at);
-//		System.out.println(rt);
+//		System.out.println(rend.render(at));
 	}
 
 	@Test
@@ -82,8 +99,7 @@ public class Test_CodeForDocs_V2 {
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
-//		RenderedTable rt = rend.render(at);
-//		System.out.println(rt);
+//		System.out.println(rend.render(at));
 	}
 
 	@Test
@@ -100,8 +116,7 @@ public class Test_CodeForDocs_V2 {
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
-//		RenderedTable rt = rend.render(at);
-//		System.out.println(rt);
+//		System.out.println(rend.render(at));
 	}
 
 	@Test
@@ -118,8 +133,7 @@ public class Test_CodeForDocs_V2 {
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
-//		RenderedTable rt = rend.render(at);
-//		System.out.println(rt);
+//		System.out.println(rend.render(at));
 	}
 
 	@Test
@@ -142,8 +156,7 @@ public class Test_CodeForDocs_V2 {
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(81));
-//		RenderedTable rt = rend.render(at);
-//		System.out.println(rt);
+//		System.out.println(rend.render(at));
 	}
 
 	@Test
@@ -174,10 +187,13 @@ public class Test_CodeForDocs_V2 {
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
 //		System.out.println(rend.render(at));
+
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 //		System.out.println(rend.render(at));
+
 		rend.setTheme(V2_E_TableThemes.UTF_DOUBLE_LIGHT.get());
 //		System.out.println(rend.render(at));
+
 		rend.setTheme(V2_E_TableThemes.UTF_DOUBLE.get());
 //		System.out.println(rend.render(at));
 	}
@@ -192,8 +208,7 @@ public class Test_CodeForDocs_V2 {
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(80));
-//		RenderedTable rt = rend.render(at);
-//		System.out.println(rt);
+//		System.out.println(rend.render(at));
 	}
 
 	@Test
@@ -208,8 +223,7 @@ public class Test_CodeForDocs_V2 {
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(60));
-//		RenderedTable rt = rend.render(at);
-//		System.out.println(rt);
+//		System.out.println(rend.render(at));
 	}
 
 	@Test
@@ -222,8 +236,7 @@ public class Test_CodeForDocs_V2 {
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
-//		RenderedTable rt = rend.render(at);
-//		System.out.println(rt);
+//		System.out.println(rend.render(at));
 	}
 
 	@Test
@@ -244,12 +257,10 @@ public class Test_CodeForDocs_V2 {
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
 		rend.setTheme(V2_E_TableThemes.ASC7_LATEX_STYLE_STRONG.get());
-//		RenderedTable rt = rend.render(at);
-//		System.out.println(rt);
+//		System.out.println(rend.render(at));
 
 		rend.setTheme(V2_E_TableThemes.ASC7_LATEX_STYLE_STRONG2.get());
-//		rt = rend.render(at);
-//		System.out.println(rt);
+//		System.out.println(rend.render(at));
 	}
 
 	@Test
@@ -283,13 +294,13 @@ public class Test_CodeForDocs_V2 {
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 
 		rend.setWidth(new V2_WidthFixedColumns().add(10).add(20).add(30));
-		System.out.println(rend.render(at));
+//		System.out.println(rend.render(at));
 
 		rend.setWidth(new V2_WidthFixedColumns().add(5).add(10).add(15));
-		System.out.println(rend.render(at));
+//		System.out.println(rend.render(at));
 
 		rend.setWidth(new V2_WidthFixedColumns().add(3).add(5).add(7));
-		System.out.println(rend.render(at));
+//		System.out.println(rend.render(at));
 	}
 
 }

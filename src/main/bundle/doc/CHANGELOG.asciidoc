@@ -9,6 +9,9 @@ v0.2.0 - feature add - 2015-##-##
 	** added alignment and padding to content rows
 	** changed the width classes: now in separate package, with interface and abstract implementation
 	** added all documentation to the pacakages
+	** created package for render, added width to it
+	** bug fixes
+	** added loremipsum package for testing justified columns
 
 
 v0.1.2 - maintenance - 2015-08-13

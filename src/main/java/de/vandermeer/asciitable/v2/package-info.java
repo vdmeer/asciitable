@@ -136,7 +136,7 @@
  * <pre>{@code
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-	rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
+	rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
  * }</pre>
  * 
  * <h4>Render the table</h4>
@@ -179,8 +179,7 @@
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 	rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
-	RenderedTable rt = rend.render(at);
-	System.out.println(rt);
+	System.out.println(rend.render(at));
  * }</pre>
  * 
  * Will print the following table to the standard output:
@@ -208,8 +207,7 @@
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 	rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
-	RenderedTable rt = rend.render(at);
-	System.out.println(rt);
+	System.out.println(rend.render(at));
  * }</pre>
  * 
  * Will print the following table to the standard output:
@@ -238,8 +236,7 @@
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 	rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
-	RenderedTable rt = rend.render(at);
-	System.out.println(rt);
+	System.out.println(rend.render(at));
  * }</pre>
  * 
  * Will print the following table to the standard output:
@@ -331,8 +328,7 @@
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 	rend.setWidth(new V2_WidthByAbsolute().setWidth(80));
-	RenderedTable rt = rend.render(at);
-	System.out.println(rt);
+	System.out.println(rend.render(at));
  * }</pre>
  * 
  * The output of this example will be:
@@ -356,8 +352,7 @@
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new V2_WidthByAbsolute().setWidth(60));
-		RenderedTable rt = rend.render(at);
-		System.out.println(rt);
+		System.out.println(rend.render(at));
  * }</pre>
  * 
  * The output of this example will be:
@@ -406,8 +401,7 @@
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 	rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
-	RenderedTable rt = rend.render(at);
-	System.out.println(rt);
+	System.out.println(rend.render(at));
  * }</pre>
  * 
  * The output of this example will be:
@@ -519,10 +513,13 @@
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 	rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
 	System.out.println(rend.render(at));
+
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 	System.out.println(rend.render(at));
+
 	rend.setTheme(V2_E_TableThemes.UTF_DOUBLE_LIGHT.get());
 	System.out.println(rend.render(at));
+
 	rend.setTheme(V2_E_TableThemes.UTF_DOUBLE.get());
 	System.out.println(rend.render(at));
  * }</pre>
@@ -583,12 +580,10 @@
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 	rend.setWidth(new V2_WidthByAbsolute().setWidth(76));
 	rend.setTheme(V2_E_TableThemes.ASC7_LATEX_STYLE_STRONG.get());
-	RenderedTable rt = rend.render(at);
-	System.out.println(rt);
+	System.out.println(rend.render(at));
 
 	rend.setTheme(V2_E_TableThemes.ASC7_LATEX_STYLE_STRONG2.get());
-	rt = rend.render(at);
-	System.out.println(rt);
+	System.out.println(rend.render(at));
  * }</pre>
  * 
  * The output of the first rendered table will be:
@@ -714,16 +709,7 @@
  * </pre>
  * 
  * 
- * 
- * 
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.1.2 build 150812 (12-Aug-15) for Java 1.7
  */
 package de.vandermeer.asciitable.v2;
-
-import de.vandermeer.asciitable.v2.render.V2_AsciiTableRenderer;
-import de.vandermeer.asciitable.v2.render.width.V2_WidthFixedColumns;
-import de.vandermeer.asciitable.v2.themes.V2_E_TableThemes;
-
-
-
