@@ -8,7 +8,7 @@
 						<id>bundle-asciidoc</id>
 						<phase>process-resources</phase>
 						<configuration>
-							<sourceDirectory>src/main/bundle/doc</sourceDirectory>
+							<sourceDirectory>src/bundle/doc</sourceDirectory>
 							<outputDirectory>./</outputDirectory>
 							<backend>html</backend>
 							<attributes>
@@ -34,7 +34,7 @@
 							<outputDirectory>./</outputDirectory>
 							<resources>
 								<resource>
-									<directory>src/main/bundle/doc</directory>
+									<directory>src/bundle/doc</directory>
 									<filtering>true</filtering>
 								</resource>
 							</resources>
