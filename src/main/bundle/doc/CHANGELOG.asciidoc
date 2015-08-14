@@ -1,3 +1,7 @@
+v0.2.1 - patch - 2015-##-##
+---------------------------
+
+
 v0.2.0 - feature add - 2015-08-14
 ---------------------------------
 * minor version change due to many changes, added features and refactoring
