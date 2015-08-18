@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable;
+package de.vandermeer.asciitable.v1;
 
 import org.junit.Test;
 

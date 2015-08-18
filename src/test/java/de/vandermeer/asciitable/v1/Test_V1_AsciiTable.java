@@ -31,7 +31,7 @@ import de.vandermeer.asciitable.v1.V1_AsciiTable;
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.2.0 build 150814 (14-Aug-15) for Java 1.7
  */
-public class Test_V2_AsciiTable {
+public class Test_V1_AsciiTable {
 
 	@Test
 	public void testInitColumns(){

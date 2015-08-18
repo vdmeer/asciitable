@@ -1,5 +1,6 @@
 v0.2.1 - patch - 2015-##-##
 ---------------------------
+* added a lot of JavaDoc to packages and overview
 
 
 v0.2.0 - feature add - 2015-08-14
