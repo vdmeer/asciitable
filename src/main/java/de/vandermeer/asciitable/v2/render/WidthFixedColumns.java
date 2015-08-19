@@ -13,9 +13,11 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.render.width;
+package de.vandermeer.asciitable.v2.render;
 
 import org.apache.commons.lang3.ArrayUtils;
+
+import de.vandermeer.asciitable.v2.V2_AsciiTable;
 
 /**
  * Utility to define the width of table columns using a fixed width for each column.
@@ -24,7 +26,7 @@ import org.apache.commons.lang3.ArrayUtils;
  * @version    v0.2.0 build 150814 (14-Aug-15) for Java 1.7
  * @since      v0.0.5
  */
-public class V2_WidthFixedColumns extends AbstractWidth {
+public class WidthFixedColumns implements V2_Width{
 
 	/** Column width array. */
 	int[] ar;
@@ -33,7 +35,7 @@ public class V2_WidthFixedColumns extends AbstractWidth {
 	 * Returns a new table width calculator.
 	 * Default internal array is set to size 1 (1 column) of width 0.
 	 */
-	public V2_WidthFixedColumns(){
+	public WidthFixedColumns(){
 		this.ar = new int[0];
 	}
 
@@ -42,17 +44,20 @@ public class V2_WidthFixedColumns extends AbstractWidth {
 	 * @param width column width in number of characters
 	 * @return self to allow for chaining
 	 */
-	public V2_WidthFixedColumns add(int width){
+	public WidthFixedColumns add(int width){
 		if(width>=3){
 			this.ar = ArrayUtils.add(this.ar, width);
 		}
-		this.width += width;
 		return this;
 	}
 
 	@Override
-	public int[] getColumnWidths(int padding) {
-		if(this.colNumber != (this.ar.length)){
+	public int[] getColumnWidths(V2_AsciiTable table) {
+		if(table==null){
+			return null;
+		}
+
+		if(table.getColumnCount() != (this.ar.length)){
 			throw new IllegalArgumentException("wrong columns array length: columns array length must be the same as the columns used to initialise the table");
 		}
 		int[] ret = ArrayUtils.addAll(new int[0], this.ar);

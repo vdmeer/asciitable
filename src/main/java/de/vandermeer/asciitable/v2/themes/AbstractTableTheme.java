@@ -90,7 +90,7 @@ public class AbstractTableTheme implements V2_TableTheme {
 		this.top = top;
 		this.topStrong = topStrong;
 
-		V2_TableThemeBuilder.testTableTheme(this);
+		ThemeValidator.validateTableTheme(this);
 
 		if(top.toDoc().equals(topStrong.toDoc()) && bottom.toDoc().equals(bottomStrong.toDoc()) && mid.toDoc().equals(midStrong.toDoc())){
 			this.hasStrong = false;

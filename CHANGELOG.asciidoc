@@ -1,3 +1,15 @@
+v0.2.1 - refactor / docs - 2015-##-##
+-------------------------------------
+* added a lot of JavaDoc to packages and overview
+* added test cases for JavaDoc examples
+* V2 changes
+	** fixed return type of all methods in V2_TableRenderer (now actual self not abstract implementation)
+	** moved the testTheme methods of the table/row theme builders into a new class ThemeValidator (fixes a tangle problem)
+	** moved content creation from Processed row to Renderer (fixes a tangle problem)
+	** smaller changes in width package, plus added more width calculation objects (longest word with several constraints)
+	** moved all width ojects into the render package, renamed the implementations of the interface removing V2_
+
+
 v0.2.0 - feature add - 2015-08-14
 ---------------------------------
 * minor version change due to many changes, added features and refactoring

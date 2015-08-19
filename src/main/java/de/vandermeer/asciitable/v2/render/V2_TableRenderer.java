@@ -17,7 +17,6 @@ package de.vandermeer.asciitable.v2.render;
 
 import de.vandermeer.asciitable.v2.RenderedTable;
 import de.vandermeer.asciitable.v2.V2_AsciiTable;
-import de.vandermeer.asciitable.v2.render.width.V2_Width;
 import de.vandermeer.asciitable.v2.themes.V2_TableTheme;
 
 /**
@@ -41,14 +40,14 @@ public interface V2_TableRenderer {
 	 * @param width new width
 	 * @return self to allow for chaining
 	 */
-	V2_AsciiTableRenderer setWidth(V2_Width width);
+	V2_TableRenderer setWidth(V2_Width width);
 
 	/**
 	 * Sets the padding character.
 	 * @param pChar new padding character
 	 * @return self to allow for chaining
 	 */
-	V2_AsciiTableRenderer setPaddingChar(char pChar);
+	V2_TableRenderer setPaddingChar(char pChar);
 
 	/**
 	 * Sets and tests the theme for the table.
@@ -56,6 +55,6 @@ public interface V2_TableRenderer {
 	 * @return self to allow for chaining
 	 * @throws IllegalArgumentException if the theme is not valid
 	 */
-	V2_AsciiTableRenderer setTheme(V2_TableTheme theme);
+	V2_TableRenderer setTheme(V2_TableTheme theme);
 
 }

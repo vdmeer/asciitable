@@ -13,15 +13,17 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable;
+package de.vandermeer.asciitable.v2;
 
 import org.junit.Test;
 
 import de.svenjacobs.loremipsum.LoremIpsum;
-import de.vandermeer.asciitable.v2.V2_AsciiTable;
 import de.vandermeer.asciitable.v2.render.V2_AsciiTableRenderer;
-import de.vandermeer.asciitable.v2.render.width.V2_WidthAbsoluteEven;
-import de.vandermeer.asciitable.v2.render.width.V2_WidthFixedColumns;
+import de.vandermeer.asciitable.v2.render.WidthAbsoluteEven;
+import de.vandermeer.asciitable.v2.render.WidthFixedColumns;
+import de.vandermeer.asciitable.v2.render.WidthLongestWord;
+import de.vandermeer.asciitable.v2.render.WidthLongestWordMaxCol;
+import de.vandermeer.asciitable.v2.render.WidthLongestWordMinCol;
 import de.vandermeer.asciitable.v2.themes.V2_E_TableThemes;
 
 /**
@@ -44,11 +46,11 @@ public class Test_CodeForDocs_V2 {
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
+		rend.setWidth(new WidthAbsoluteEven(76));
 
-//		RenderedTable rt = rend.render(at);
-
-//		System.out.println(rt);
+		RenderedTable rt = rend.render(at);
+		System.out.println("simple table");
+		System.out.println(rt);
 	}
 
 	@Test
@@ -64,8 +66,9 @@ public class Test_CodeForDocs_V2 {
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
-//		System.out.println(rend.render(at));
+		rend.setWidth(new WidthAbsoluteEven(76));
+		System.out.println("table 1 columns");
+		System.out.println(rend.render(at));
 	}
 
 	@Test
@@ -81,8 +84,9 @@ public class Test_CodeForDocs_V2 {
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
-//		System.out.println(rend.render(at));
+		rend.setWidth(new WidthAbsoluteEven(76));
+		System.out.println("table 2 columns");
+		System.out.println(rend.render(at));
 	}
 
 	@Test
@@ -98,8 +102,9 @@ public class Test_CodeForDocs_V2 {
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
-//		System.out.println(rend.render(at));
+		rend.setWidth(new WidthAbsoluteEven(76));
+		System.out.println("table 4 columns");
+		System.out.println(rend.render(at));
 	}
 
 	@Test
@@ -115,8 +120,9 @@ public class Test_CodeForDocs_V2 {
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
-//		System.out.println(rend.render(at));
+		rend.setWidth(new WidthAbsoluteEven(76));
+		System.out.println("table 4 columns");
+		System.out.println(rend.render(at));
 	}
 
 	@Test
@@ -132,13 +138,14 @@ public class Test_CodeForDocs_V2 {
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
-//		System.out.println(rend.render(at));
+		rend.setWidth(new WidthAbsoluteEven(76));
+		System.out.println("table 5 columns");
+		System.out.println(rend.render(at));
 	}
 
 	@Test
 	public void test_Example_ColSpanning(){
-		V2_AsciiTable at = new V2_AsciiTable().setDefaultPadding(1);
+		V2_AsciiTable at = new V2_AsciiTable();
 		at.addRule();
 		at.addRow(null, null, null, null, "span all 5 columns");
 		at.addRule();
@@ -155,8 +162,9 @@ public class Test_CodeForDocs_V2 {
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(81));
-//		System.out.println(rend.render(at));
+		rend.setWidth(new WidthAbsoluteEven(81));
+		System.out.println("col spanning 1");
+		System.out.println(rend.render(at));
 	}
 
 	@Test
@@ -167,14 +175,18 @@ public class Test_CodeForDocs_V2 {
 		at.addRule();
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
-		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
-//		System.out.println(rend.render(at));
+		rend.setWidth(new WidthAbsoluteEven(76));
+		System.out.println("padding char 1");
+		System.out.println(rend.render(at));
 		rend.setPaddingChar('*');
-//		System.out.println(rend.render(at));
+		System.out.println("padding char 2");
+		System.out.println(rend.render(at));
 		rend.setPaddingChar('-');
-//		System.out.println(rend.render(at));
+		System.out.println("padding char 3");
+		System.out.println(rend.render(at));
 		rend.setPaddingChar('␣');
-//		System.out.println(rend.render(at));
+		System.out.println("padding char 4");
+		System.out.println(rend.render(at));
 	}
 
 	@Test
@@ -185,17 +197,20 @@ public class Test_CodeForDocs_V2 {
 		at.addRule();
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
-		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
-//		System.out.println(rend.render(at));
+		rend.setWidth(new WidthAbsoluteEven(76));
+		System.out.println(rend.render(at));
 
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-//		System.out.println(rend.render(at));
+		System.out.println("themes 1");
+		System.out.println(rend.render(at));
 
 		rend.setTheme(V2_E_TableThemes.UTF_DOUBLE_LIGHT.get());
-//		System.out.println(rend.render(at));
+		System.out.println("themes 2");
+		System.out.println(rend.render(at));
 
 		rend.setTheme(V2_E_TableThemes.UTF_DOUBLE.get());
-//		System.out.println(rend.render(at));
+		System.out.println("themes 3");
+		System.out.println(rend.render(at));
 	}
 
 	@Test
@@ -207,8 +222,9 @@ public class Test_CodeForDocs_V2 {
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(80));
-//		System.out.println(rend.render(at));
+		rend.setWidth(new WidthAbsoluteEven(80));
+		System.out.println("align standard");
+		System.out.println(rend.render(at));
 	}
 
 	@Test
@@ -222,8 +238,9 @@ public class Test_CodeForDocs_V2 {
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(60));
-//		System.out.println(rend.render(at));
+		rend.setWidth(new WidthAbsoluteEven(60));
+		System.out.println("align justified");
+		System.out.println(rend.render(at));
 	}
 
 	@Test
@@ -235,8 +252,9 @@ public class Test_CodeForDocs_V2 {
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
-//		System.out.println(rend.render(at));
+		rend.setWidth(new WidthAbsoluteEven(76));
+		System.out.println("padding");
+		System.out.println(rend.render(at));
 	}
 
 	@Test
@@ -255,12 +273,14 @@ public class Test_CodeForDocs_V2 {
 		at.addStrongRule();
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
-		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
+		rend.setWidth(new WidthAbsoluteEven(76));
 		rend.setTheme(V2_E_TableThemes.ASC7_LATEX_STYLE_STRONG.get());
-//		System.out.println(rend.render(at));
+		System.out.println("rule style 1");
+		System.out.println(rend.render(at));
 
 		rend.setTheme(V2_E_TableThemes.ASC7_LATEX_STYLE_STRONG2.get());
-//		System.out.println(rend.render(at));
+		System.out.println("rule style 2");
+		System.out.println(rend.render(at));
 	}
 
 	@Test
@@ -273,14 +293,17 @@ public class Test_CodeForDocs_V2 {
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 
-		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(50));
-//		System.out.println(rend.render(at));
+		rend.setWidth(new WidthAbsoluteEven(50));
+		System.out.println("absolute even 1");
+		System.out.println(rend.render(at));
 
-		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(30));
-//		System.out.println(rend.render(at));
+		rend.setWidth(new WidthAbsoluteEven(30));
+		System.out.println("absolute even 2");
+		System.out.println(rend.render(at));
 
-		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(20));
-//		System.out.println(rend.render(at));
+		rend.setWidth(new WidthAbsoluteEven(20));
+		System.out.println("absolute even 3");
+		System.out.println(rend.render(at));
 	}
 
 	@Test
@@ -293,14 +316,111 @@ public class Test_CodeForDocs_V2 {
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 
-		rend.setWidth(new V2_WidthFixedColumns().add(10).add(20).add(30));
-//		System.out.println(rend.render(at));
+		rend.setWidth(new WidthFixedColumns().add(10).add(20).add(30));
+		System.out.println("fixed columns 1");
+		System.out.println(rend.render(at));
 
-		rend.setWidth(new V2_WidthFixedColumns().add(5).add(10).add(15));
-//		System.out.println(rend.render(at));
+		rend.setWidth(new WidthFixedColumns().add(5).add(10).add(15));
+		System.out.println("fixed columns 2");
+		System.out.println(rend.render(at));
 
-		rend.setWidth(new V2_WidthFixedColumns().add(3).add(5).add(7));
-//		System.out.println(rend.render(at));
+		rend.setWidth(new WidthFixedColumns().add(3).add(5).add(7));
+		System.out.println("fixed columns 3");
+		System.out.println(rend.render(at));
 	}
 
+	@Test
+	public void test_Example_WidthLongestWord(){
+		V2_AsciiTable at = new V2_AsciiTable(0);
+		at.addRule();
+		at.addRow("first", "information");
+		at.addRule();
+		at.addRow("second", "info");
+		at.addRule();
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new WidthLongestWord());
+		System.out.println("longest word 1");
+		System.out.println(rend.render(at));
+
+
+		at = new V2_AsciiTable(1);
+		at.addRule();
+		at.addRow("first", "information");
+		at.addRule();
+		at.addRow("second", "info");
+		at.addRule();
+		rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new WidthLongestWord());
+		System.out.println("longest word 2");
+		System.out.println(rend.render(at));
+
+
+		at = new V2_AsciiTable(0);
+		at.addRule();
+		at.addRow("first", "information").setPadding(new int[]{2, 3});
+		at.addRule();
+		at.addRow("second", "info").setPadding(new int[]{3, 4});
+		at.addRule();
+		rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new WidthLongestWord());
+		System.out.println("longest word 3");
+		System.out.println(rend.render(at));
+	}
+
+	@Test
+	public void test_Example_WidthLongestWordMinCol(){
+		V2_AsciiTable at = new V2_AsciiTable();
+		at.addRule();
+		at.addRow("first", "information");
+		at.addRule();
+		at.addRow("second", "info");
+		at.addRule();
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new WidthLongestWordMinCol(11));
+		System.out.println("longest word mincol 1");
+		System.out.println(rend.render(at));
+
+		at = new V2_AsciiTable();
+		at.addRule();
+		at.addRow("first", "information");
+		at.addRule();
+		at.addRow("second", "info");
+		at.addRule();
+		rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new WidthLongestWordMinCol(new int[]{-1,50}));
+		System.out.println("longest word mincol 2");
+		System.out.println(rend.render(at));
+	}
+
+	@Test
+	public void test_Example_WidthLongestWordMaxCol(){
+		V2_AsciiTable at = new V2_AsciiTable();
+		at.addRule();
+		at.addRow("first", "information");
+		at.addRule();
+		at.addRow("second", "info");
+		at.addRule();
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new WidthLongestWordMaxCol(10));
+		System.out.println("longest word maxcol 1");
+		System.out.println(rend.render(at));
+
+		at = new V2_AsciiTable();
+		at.addRule();
+		at.addRow("first", "information");
+		at.addRule();
+		at.addRow("second", "info");
+		at.addRule();
+		rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new WidthLongestWordMaxCol(new int[]{5,-1}));
+		System.out.println("longest word maxcol 2");
+		System.out.println(rend.render(at));
+	}
 }

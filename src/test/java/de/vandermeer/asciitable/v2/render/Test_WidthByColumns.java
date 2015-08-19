@@ -13,31 +13,31 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.render.width;
+package de.vandermeer.asciitable.v2.render;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import de.vandermeer.asciitable.v2.render.width.V2_WidthFixedColumns;
+import de.vandermeer.asciitable.v2.render.WidthFixedColumns;
 
 /**
- * Tests for {@link V2_WidthFixedColumns}.
+ * Tests for {@link WidthFixedColumns}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.2.0 build 150814 (14-Aug-15) for Java 1.7
  */
-public class Test_V2_WidthByColumns {
+public class Test_WidthByColumns {
 
 	@Test
 	public void testConstructor(){
-		V2_WidthFixedColumns cw = new V2_WidthFixedColumns();
+		WidthFixedColumns cw = new WidthFixedColumns();
 		assertEquals(0, cw.ar.length);
 	}
 
 	@Test
 	public void testAdd(){
-		V2_WidthFixedColumns cw = new V2_WidthFixedColumns();
+		WidthFixedColumns cw = new WidthFixedColumns();
 
 		cw.add(5);
 		assertEquals(1, cw.ar.length);

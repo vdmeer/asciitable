@@ -13,32 +13,22 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.render.width;
+package de.vandermeer.asciitable.v2.row;
 
 /**
- * Abstract implementation of {@link V2_Width}.
+ * Style of a table rule: normal or strong.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.2.0 build 150814 (14-Aug-15) for Java 1.7
- * @since      v0.2.0
+ * @since      v0.0.3
  */
-public abstract class AbstractWidth implements V2_Width {
+public enum RuleRowStyle {
 
-	/** Width of the table. */
-	protected int width;
+	/** A normal, standard rule. */
+	NORMAL,
 
-	/** Number of columns for the table. */
-	protected int colNumber;
-
-	@Override
-	public V2_Width setColumnCount(int count) {
-		this.colNumber = count;
-		return this;
-	}
-
-	@Override
-	public int getTableWidth() {
-		return this.width;
-	}
+	/** A strong, emphasized rule. */
+	STRONG,
+	;
 
 }

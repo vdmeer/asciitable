@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.v2.render;
 
-import de.vandermeer.asciitable.v2.render.width.V2_Width;
-import de.vandermeer.asciitable.v2.row.ContentRow;
 import de.vandermeer.asciitable.v2.row.V2_Row;
 
 /**
@@ -48,12 +46,14 @@ public class ProcessedRow {
 			throw new IllegalArgumentException("row cannot be null");
 		}
 		this.original = row;
+	}
 
-		if(row instanceof ContentRow){
-			ContentRow crow = (ContentRow)row;
-			this.procColumns = V2_Utilities.createContentArray(crow.getColumns(), width, crow.getPadding());
-			this.borderTypes = V2_Utilities.getBorderTypes_ContentRow(procColumns[0], crow, colNumber);
-		}
+	/**
+	 * Sets the processed columns of this row.
+	 * @param ar new processed columns
+	 */
+	public final void setProcessedColumns(String[][] ar){
+		this.procColumns = ar;
 	}
 
 	/**
@@ -65,7 +65,15 @@ public class ProcessedRow {
 	}
 
 	/**
-	 * Returns the adjusted orders array of this row
+	 * Sets the adjusted orders array of this row.
+	 * @param ar new adjusted border array
+	 */
+	public void getBorderTypes(BorderType[] ar){
+		this.borderTypes = ar;
+	}
+
+	/**
+	 * Returns the adjusted orders array of this row.
 	 * @return adjusted border array
 	 */
 	public BorderType[] getBorderTypes(){
@@ -73,7 +81,7 @@ public class ProcessedRow {
 	}
 
 	/**
-	 * Sets the adjusted orders array of this row
+	 * Sets the adjusted orders array of this row.
 	 * @param array border array
 	 */
 	public void setBorderTypes(BorderType[] array){
@@ -83,7 +91,7 @@ public class ProcessedRow {
 	}
 
 	/**
-	 * Returns the original row with the original definitions and content
+	 * Returns the original row with the original definitions and content.
 	 * @return original row
 	 */
 	public V2_Row getOriginalRow(){

@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.render.width;
+package de.vandermeer.asciitable.v2.render;
+
+import de.vandermeer.asciitable.v2.V2_AsciiTable;
 
 /**
  * Calculator for the width of a table.
@@ -25,22 +27,10 @@ package de.vandermeer.asciitable.v2.render.width;
 public interface V2_Width {
 
 	/**
-	 * Sets the number of columns for which calculation should return an array.
-	 * @param count number of columns
-	 * @return self to allow for chaining
-	 */
-	V2_Width setColumnCount(int count);
-
-	/**
 	 * Returns the width of each column in an array, column one being [0] and so on.
-	 * @param defaultPadding the default padding for the calculation
+	 * @param table the table with all content, important for some width calculations
 	 * @return column width array
 	 */
-	int[] getColumnWidths(int defaultPadding);
+	int[] getColumnWidths(V2_AsciiTable table);
 
-	/**
-	 * Returns the overall table width.
-	 * @return overall table width
-	 */
-	int getTableWidth();
 }

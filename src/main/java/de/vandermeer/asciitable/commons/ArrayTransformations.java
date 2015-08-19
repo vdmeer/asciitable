@@ -30,6 +30,40 @@ import org.apache.commons.lang3.text.WordUtils;
 public abstract class ArrayTransformations {
 
 	/**
+	 * Takes a 2 dimensional array and returns a string representation in table form.
+	 * @param <T> type of the input array
+	 * @param ar the array to be transformed
+	 * @return a string representation of the array
+	 */
+	public static final <T> StrBuilder ARRAY_TO_STRING(T[][] ar){
+		StrBuilder ret = new StrBuilder(50);
+		for(int row=0; row<ar.length; row++){ //TODO not null save
+			if(ar[row]==null){
+				ret.append("[").append(row).appendln("]: null");
+			}
+			else if(ar[row].length==0){
+				ret.append("[").append(row).appendln("]: 0");
+			}
+			else{
+				for(int col=0; col<ar[row].length; col++){
+					ret.append("[").append(row).append("][").append(col).append("]: ");
+					if(ar[row][col]==null){
+						ret.appendln("null");
+					}
+					else if("".equals(ar[row][col])){
+						ret.appendln("0");
+					}
+					else{
+						ret.appendln(ar[row][col]);
+					}
+				}
+			}
+		}
+		return ret;
+	}
+
+
+	/**
 	 * Flips an array of arrays (a table).
 	 * For each cell in the table the row and column indexes are 'turned over', that is for instance the cell [1][2] becomes [2][1].
 	 * Consider an input table of
@@ -62,7 +96,6 @@ public abstract class ArrayTransformations {
 		}
 		return ret;
 	}
-
 
 	/**
 	 * Normalizes an array of strings.
@@ -121,39 +154,6 @@ public abstract class ArrayTransformations {
 			return new String[]{};
 		}
 		return StringUtils.split(WordUtils.wrap(obj.toString(), length, "@@@", true), "@@@");
-	}
-
-	/**
-	 * Takes a 2 dimensional array and returns a string representation in table form.
-	 * @param <T> type of the input array
-	 * @param ar the array to be transformed
-	 * @return a string representation of the array
-	 */
-	public static final <T> StrBuilder ARRAY_TO_STRING(T[][] ar){
-		StrBuilder ret = new StrBuilder(50);
-		for(int row=0; row<ar.length; row++){ //TODO not null save
-			if(ar[row]==null){
-				ret.append("[").append(row).appendln("]: null");
-			}
-			else if(ar[row].length==0){
-				ret.append("[").append(row).appendln("]: 0");
-			}
-			else{
-				for(int col=0; col<ar[row].length; col++){
-					ret.append("[").append(row).append("][").append(col).append("]: ");
-					if(ar[row][col]==null){
-						ret.appendln("null");
-					}
-					else if("".equals(ar[row][col])){
-						ret.appendln("0");
-					}
-					else{
-						ret.appendln(ar[row][col]);
-					}
-				}
-			}
-		}
-		return ret;
 	}
 
 }

@@ -13,22 +13,39 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.row;
+package de.vandermeer.asciitable.v2.render;
+
+import org.junit.Test;
+
+import de.vandermeer.asciitable.v2.RenderedTable;
+import de.vandermeer.asciitable.v2.V2_AsciiTable;
+import de.vandermeer.asciitable.v2.themes.V2_E_TableThemes;
 
 /**
- * Style of a table rule: normal or strong.
+ * Tests for code used in render JavaDoc.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.2.0 build 150814 (14-Aug-15) for Java 1.7
- * @since      v0.0.3
  */
-public enum RuleStyle {
+public class Test_CodeForDocs {
 
-	/** A normal, standard rule. */
-	NORMAL,
+	@Test
+	public void test_TableWithoutArrayNeed(){
+		V2_AsciiTable at = new V2_AsciiTable();
 
-	/** A strong, emphasized rule. */
-	STRONG,
-	;
+		at.addRule();
+		at.addRow("1-1", "1-2", "1-3");
+		at.addRule();
+		at.addRow("2-1", "2-2", "2-3");
+		at.addRule();
+
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new WidthAbsoluteEven(25));
+		rend.setPaddingChar('_');
+
+		RenderedTable rt = rend.render(at);
+		System.out.println(rt);
+	}
 
 }

@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.vandermeer</groupId>
 	<artifactId>asciitable</artifactId>
-	<version>0.2.0</version>
+	<version>0.2.1</version>
 	<packaging>jar</packaging>
 
 	<name>Ascii Table</name>
@@ -48,7 +48,7 @@
 	<scm>
 		<developerConnection>scm:git:git@github.com:vdmeer/asciitable.git</developerConnection>
 		<connection>scm:git:git://github.com/vdmeer/asciitable.git</connection>
-		<tag>asciitable-0.2.0</tag>
+		<tag>asciitable-0.2.1</tag>
 		<url>https://github.com/vdmeer/asciitable</url>
 	</scm>
 
@@ -116,7 +116,7 @@
 						<id>bundle-asciidoc</id>
 						<phase>process-resources</phase>
 						<configuration>
-							<sourceDirectory>src/main/bundle/doc</sourceDirectory>
+							<sourceDirectory>src/bundle/doc</sourceDirectory>
 							<outputDirectory>./</outputDirectory>
 							<backend>html</backend>
 							<attributes>
@@ -142,7 +142,7 @@
 							<outputDirectory>./</outputDirectory>
 							<resources>
 								<resource>
-									<directory>src/main/bundle/doc</directory>
+									<directory>src/bundle/doc</directory>
 									<filtering>true</filtering>
 								</resource>
 							</resources>
@@ -223,7 +223,7 @@
 							<docencoding>${project.resources.sourceEncoding}</docencoding>
 							<charset>${project.resources.sourceEncoding}</charset>
 							<aggregate>true</aggregate>
-							<overview>overview.html</overview>
+							<overview>${basedir}/src/main/javadoc/overview.html</overview>
 							<nohelp>true</nohelp>
 							<header>${project.name}: ${project.version}</header>
 							<footer>${project.name}: ${project.version}</footer>
@@ -231,6 +231,8 @@
 							<noqualifier>all</noqualifier>
 							<detectLinks>true</detectLinks>
 							<detectJavaApiLink>true</detectJavaApiLink>
+							<javadocDirectory>${basedir}/src/main/javadoc</javadocDirectory>
+							<docfilessubdirs>true</docfilessubdirs>
 						</configuration>
 					</execution>
 				</executions>

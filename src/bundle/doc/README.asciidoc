@@ -5,7 +5,7 @@ Several implementations of an text table, originally using ASCII and UTF-8 chara
 
 The tables allows for various degrees of flexibility for number of columns, column width, automated line wrapping, column spanning and themes for tables and table rows.
 
-Current release is https://search.maven.org/#artifactdetails|de.vandermeer|asciitable|0.1.2|jar[0.1.2].
+Current release is https://search.maven.org/#artifactdetails|de.vandermeer|asciitable|0.2.1|jar[0.2.1].
 All releases are on https://search.maven.org/#search|gav|1|g%3A%22de.vandermeer%22%20AND%20a%3A%22asciitable%22[Maven Central].
 
 This blog post explains how to get UTF-8 support in the whole tool chain http://vdmeer-sven.blogspot.ie/2014/06/utf-8-support-w-java-and-console.html[blog on UTF-8].
@@ -24,6 +24,7 @@ The following versions are in the project:
 
 Version 2 Overview
 ------------------
+
 
 
 Features
@@ -48,11 +49,15 @@ Concepts and Realization
 
 The main concepts are: table, row, renderer, theme, and rendered table.
 
+
+
 Table
 ^^^^^
 A table is a collection of rows.
 The package provides a single implementation of the table +V2_AsciiTable+.
 The implementation allows to add rows and set some general configuration, such as default padding.
+
+
 
 Row
 ^^^
@@ -64,6 +69,8 @@ It also provides two implementations: +ContentRow+ for content rows
 and +RuleRow+ for rules.
 Both of those row classes are supported by the provided renderer.
 Other row classes can be added if required, but then special renderers need to proivded as well.
+
+
 
 Renderer
 ^^^^^^^^
@@ -77,11 +84,12 @@ This object is defined as an interface with several implementations provided for
 More of those width object can be defined as required.
 
 A table can be rendered multiple times by any render object, i.e. the underlying original table will not be changed by the renderer.
-The only change realized is a rewrite of the row type of the top and bottom rows if they are rules, to make sure they are marked as top and bottom rules.
 The renderer is building a list of so called processed rows +ProcessedRow+, which old all render-specific settings.
 
 This feature, render a table any time with any renderer and re-render a table with the same renderer, allows to change settings such as width, themes, padding character.
 It also allows to render a table for different output, such as HTML or LaTeX, of such renderers where provided.
+
+
 
 Theme
 ^^^^^
@@ -96,11 +104,14 @@ A large number of row themes are defined in +V2_E_RowThemes+, ready to be used.
 A number of table themes are defined in +V2_E_TableThemes+, ready to be used.
 These two enumerates also demonstrate how to define a theme.
 
+
+
 Rendered Table
 ^^^^^^^^^^^^^^
 A rendered table is the output of a renderer. This final table can then be printed or written to a file.
 The package implements the rendered table in +RenderedTable+.
 It is essentially a list of +StrBuilder+ objects with an overwritten toString method.
+
 
 
 Standard Usage - create and render a simple table
@@ -112,11 +123,15 @@ The standard usage is:
 * render the table
 * use the finally rendered table, e.g. print it to a console or write it to a file
 
+
+
 Create a table
 ^^^^^^^^^^^^^^
 ----------------------------------------------------------------------------------------
 V2_AsciiTable at = new V2_AsciiTable();
 ----------------------------------------------------------------------------------------
+
+
 
 Add content and rule rows
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -129,21 +144,27 @@ at.addRow("second row (col1)", "with some information (col2)");
 at.addRule();
 ----------------------------------------------------------------------------------------
 
+
+
 Create a renderer and configure it
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 We create the standard renderer and configure it to use the provided table theme +V2_E_TableThemes.UTF_LIGHT+.
-The we add a width to the renderer using +V2_WidthAbsoluteEven+ for a table width of 76 characters.
+The we add a width to the renderer using +WidthAbsoluteEven+ for a table width of 76 characters.
 ----------------------------------------------------------------------------------------
 V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
+rend.setWidth(new WidthAbsoluteEven(76));
 ----------------------------------------------------------------------------------------
+
+
 
 Render the table
 ^^^^^^^^^^^^^^^^
 ----------------------------------------------------------------------------------------
 RenderedTable rt = rend.render(at);
 ----------------------------------------------------------------------------------------
+
+
 
 Use the finally rendered table
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -165,6 +186,8 @@ The will result in the following table being printed to the console:
 Version 2 Examples
 ------------------
 
+
+
 A table with four columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 ----------------------------------------------------------------------------------------
@@ -180,6 +203,8 @@ A table with four columns
 	└──────────────────┴──────────────────┴──────────────────┴─────────────────┘
 ----------------------------------------------------------------------------------------
 
+
+
 Text alignment in columns - left, right, center
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ----------------------------------------------------------------------------------------
@@ -187,6 +212,8 @@ Text alignment in columns - left, right, center
 	│ left                     │                   right │         center          │
 	└──────────────────────────┴─────────────────────────┴─────────────────────────┘
 ----------------------------------------------------------------------------------------
+
+
 
 Text alignment in columns - justified
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -208,6 +235,8 @@ Text alignment in columns - justified
 	└──────────────────────────────────────────────────────────┘
 ----------------------------------------------------------------------------------------
 
+
+
 Column padding
 ~~~~~~~~~~~~~~
 ----------------------------------------------------------------------------------------
@@ -216,6 +245,8 @@ Column padding
 	│              │              │              │   3          │    g 4       │
 	└──────────────┴──────────────┴──────────────┴──────────────┴──────────────┘
 ----------------------------------------------------------------------------------------
+
+
 
 Column spanning
 ~~~~~~~~~~~~~~~
@@ -234,6 +265,8 @@ Column spanning
 	│ just 1 column │ just 1 column │ just 1 column │ just 1 column │ just 1 column │
 	└───────────────┴───────────────┴───────────────┴───────────────┴───────────────┘
 ----------------------------------------------------------------------------------------
+
+
 
 Rule styles
 ~~~~~~~~~~~
@@ -264,6 +297,8 @@ Rule styles
 	▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 ----------------------------------------------------------------------------------------
 
+
+
 Width with table width and evenly distributed column witdh
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ----------------------------------------------------------------------------------------
@@ -280,6 +315,8 @@ Width with table width and evenly distributed column witdh
 	│      │ 2   │ 3   │
 	└──────┴─────┴─────┘
 ----------------------------------------------------------------------------------------
+
+
 
 Width with fixed width per column
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -301,6 +338,68 @@ Width with fixed width per column
 	└───┴─────┴───────┘
 ----------------------------------------------------------------------------------------
 
+
+
+Width using longest word per column, with 0, standard, and individual padding
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------------------------------------------------------
+	┌──────┬───────────┐
+	│first │information│
+	├──────┼───────────┤
+	│second│info       │
+	└──────┴───────────┘
+
+	┌────────┬─────────────┐
+	│ first  │ information │
+	├────────┼─────────────┤
+	│ second │ info        │
+	└────────┴─────────────┘
+
+	┌────────────┬─────────────────┐
+	│  first     │   information   │
+	├────────────┼─────────────────┤
+	│   second   │    info         │
+	└────────────┴─────────────────┘
+----------------------------------------------------------------------------------------
+
+
+Width using longest word per column with minimum column width and different options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------------------------------------------------------
+	┌───────────┬─────────────┐
+	│ first     │ information │
+	├───────────┼─────────────┤
+	│ second    │ info        │
+	└───────────┴─────────────┘
+
+	┌────────┬──────────────────────────────────────────────────┐
+	│ first  │ information                                      │
+	├────────┼──────────────────────────────────────────────────┤
+	│ second │ info                                             │
+	└────────┴──────────────────────────────────────────────────┘
+----------------------------------------------------------------------------------------
+
+
+Width using longest word per column with maximum column width and different options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------------------------------------------------------
+	┌────────┬──────────┐
+	│ first  │ informat │
+	│        │ ion      │
+	├────────┼──────────┤
+	│ second │ info     │
+	└────────┴──────────┘
+
+	┌─────┬─────────────┐
+	│ fir │ information │
+	│ st  │             │
+	├─────┼─────────────┤
+	│ sec │ info        │
+	│ ond │             │
+	└─────┴─────────────┘
+----------------------------------------------------------------------------------------
+
+
 Padding Characters
 ~~~~~~~~~~~~~~~~~~
 ----------------------------------------------------------------------------------------
@@ -320,6 +419,8 @@ Padding Characters
 	| some text with padding␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣|
 	+--------------------------------------------------------------------------+
 ----------------------------------------------------------------------------------------
+
+
 
 Table Theme
 ~~~~~~~~~~~

@@ -24,8 +24,8 @@ import de.vandermeer.asciitable.commons.ObjectToStringStyle;
 import de.vandermeer.asciitable.commons.TableException;
 import de.vandermeer.asciitable.v2.row.ContentRow;
 import de.vandermeer.asciitable.v2.row.RuleRow;
-import de.vandermeer.asciitable.v2.row.RuleStyle;
-import de.vandermeer.asciitable.v2.row.RuleType;
+import de.vandermeer.asciitable.v2.row.RuleRowStyle;
+import de.vandermeer.asciitable.v2.row.RuleRowType;
 import de.vandermeer.asciitable.v2.row.V2_Row;
 
 /**
@@ -51,18 +51,17 @@ public class V2_AsciiTable {
 	 * The number of columns used in the first content row determines the number of columns for the table.
 	 */
 	public V2_AsciiTable(){
-		this.table = new LinkedList<V2_Row>();
+		this(-1);
 	}
 
 	/**
-	 * Sets the default padding to be used for columns in content rows.
-	 * The standard value (if not set) is 1, meaning 1 charachter left and one character right.
+	 * Creates a new table with default padding to be used for columns in content rows.
+	 * The standard value (if not set) is 1, meaning 1 character left and one character right.
 	 * @param padding default padding
-	 * @return self to allow for chaining
 	 */
-	public V2_AsciiTable setDefaultPadding(int padding){
-		this.defaultPadding = padding;
-		return this;
+	public V2_AsciiTable (int padding){
+		this.defaultPadding = (padding==-1)?1:padding;
+		this.table = new LinkedList<V2_Row>();
 	}
 
 	/**
@@ -80,10 +79,10 @@ public class V2_AsciiTable {
 	 */
 	public final void addRule(){
 		if(this.table.size()==0){
-			this.table.add(new RuleRow(RuleType.TOP));
+			this.table.add(new RuleRow(RuleRowType.TOP));
 		}
 		else{
-			this.table.add(new RuleRow(RuleType.MID));
+			this.table.add(new RuleRow(RuleRowType.MID));
 		}
 	}
 
@@ -94,10 +93,10 @@ public class V2_AsciiTable {
 	 */
 	public final void addStrongRule(){
 		if(this.table.size()==0){
-			this.table.add(new RuleRow(RuleType.TOP, RuleStyle.STRONG));
+			this.table.add(new RuleRow(RuleRowType.TOP, RuleRowStyle.STRONG));
 		}
 		else{
-			this.table.add(new RuleRow(RuleType.MID, RuleStyle.STRONG));
+			this.table.add(new RuleRow(RuleRowType.MID, RuleRowStyle.STRONG));
 		}
 	}
 

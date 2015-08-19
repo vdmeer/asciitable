@@ -632,7 +632,7 @@ public enum V2_E_RowThemes {
 			.setMidBorderDown(midBorderDown)
 			.setMidBorderUp(midBorderUp)
 		;
-		V2_RowThemeBuilder.testRowTheme(this.builder.build());
+		ThemeValidator.validateRowTheme(this.builder.build());
 	}
 
 	/**
