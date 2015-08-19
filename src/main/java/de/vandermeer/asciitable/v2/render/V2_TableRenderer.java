@@ -17,7 +17,6 @@ package de.vandermeer.asciitable.v2.render;
 
 import de.vandermeer.asciitable.v2.RenderedTable;
 import de.vandermeer.asciitable.v2.V2_AsciiTable;
-import de.vandermeer.asciitable.v2.render.width.V2_Width;
 import de.vandermeer.asciitable.v2.themes.V2_TableTheme;
 
 /**

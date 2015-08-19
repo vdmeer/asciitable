@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.render.width;
+package de.vandermeer.asciitable.v2.render;
 
 import org.apache.commons.lang3.StringUtils;
 

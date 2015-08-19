@@ -73,7 +73,7 @@
  * 		Other renderers can be created by implementing the interface.
  * </p>
  * <p>
- * 		A renderer is taking a {@link de.vandermeer.asciitable.v2.render.width.V2_Width} object for calculating the width of columns.
+ * 		A renderer is taking a {@link de.vandermeer.asciitable.v2.render.V2_Width} object for calculating the width of columns.
  * 		This object is defined as an interface with several implementations provided for different ways of defining column width.
  * 		More of those width object can be defined as required.
  * </p>
@@ -147,11 +147,11 @@
  * 
  * <h4>Create a renderer and configure it</h4>
  * We create the standard renderer and configure it to use the provided table theme {@link de.vandermeer.asciitable.v2.themes.V2_E_TableThemes#UTF_LIGHT}.
- * The we add a width to the renderer using {@link de.vandermeer.asciitable.v2.render.width.V2_WidthAbsoluteEven} for a table width of 76 characters.
+ * The we add a width to the renderer using {@link de.vandermeer.asciitable.v2.render.WidthAbsoluteEven} for a table width of 76 characters.
  * <pre>{@code
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-	rend.setWidth(new V2_WidthAbsoluteEven(76));
+	rend.setWidth(new WidthAbsoluteEven(76));
  * }</pre>
  * 
  * 
@@ -200,7 +200,7 @@
 
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-	rend.setWidth(new V2_WidthAbsoluteEven(76));
+	rend.setWidth(new WidthAbsoluteEven(76));
 	System.out.println(rend.render(at));
  * }</pre>
  * 
@@ -230,7 +230,7 @@
 
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-	rend.setWidth(new V2_WidthAbsoluteEven(76));
+	rend.setWidth(new WidthAbsoluteEven(76));
 	System.out.println(rend.render(at));
  * }</pre>
  * 
@@ -261,7 +261,7 @@
 
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-	rend.setWidth(new V2_WidthAbsoluteEven(76));
+	rend.setWidth(new WidthAbsoluteEven(76));
 	System.out.println(rend.render(at));
  * }</pre>
  * 
@@ -293,7 +293,7 @@
 
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-	rend.setWidth(new V2_WidthAbsoluteEven(76));
+	rend.setWidth(new WidthAbsoluteEven(76));
 	System.out.println(rend.render(at));
  * }</pre>
  * 
@@ -327,7 +327,7 @@
 
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-	rend.setWidth(new V2_WidthAbsoluteEven(76));
+	rend.setWidth(new WidthAbsoluteEven(76));
 	System.out.println(rend.render(at));
  * }</pre>
  * 
@@ -358,7 +358,7 @@
 
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-	rend.setWidth(new V2_WidthAbsoluteEven(80));
+	rend.setWidth(new WidthAbsoluteEven(80));
 	System.out.println(rend.render(at));
  * }</pre>
  * 
@@ -382,7 +382,7 @@
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-		rend.setWidth(new V2_WidthAbsoluteEven(60));
+		rend.setWidth(new WidthAbsoluteEven(60));
 		System.out.println(rend.render(at));
  * }</pre>
  * 
@@ -432,7 +432,7 @@
 
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-	rend.setWidth(new V2_WidthAbsoluteEven(76));
+	rend.setWidth(new WidthAbsoluteEven(76));
 	System.out.println(rend.render(at));
  * }</pre>
  * 
@@ -469,7 +469,7 @@
 
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-	rend.setWidth(new V2_WidthAbsoluteEven(76));
+	rend.setWidth(new WidthAbsoluteEven(76));
 	System.out.println(rend.render(at));
  * }</pre>
  * 
@@ -504,7 +504,7 @@
 	at.addRule();
 
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
-	rend.setWidth(new V2_WidthAbsoluteEven(76));
+	rend.setWidth(new WidthAbsoluteEven(76));
 	System.out.println(rend.render(at));
 	rend.setPaddingChar('*');
 	System.out.println(rend.render(at));
@@ -546,7 +546,7 @@
 	at.addRule();
 
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
-	rend.setWidth(new V2_WidthAbsoluteEven(76));
+	rend.setWidth(new WidthAbsoluteEven(76));
 	System.out.println(rend.render(at));
 
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
@@ -614,7 +614,7 @@
 	at.addStrongRule();
 
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
-	rend.setWidth(new V2_WidthAbsoluteEven(76));
+	rend.setWidth(new WidthAbsoluteEven(76));
 	rend.setTheme(V2_E_TableThemes.ASC7_LATEX_STYLE_STRONG.get());
 	System.out.println(rend.render(at));
 
@@ -655,7 +655,7 @@
  * 
  * <br><h3>Table and column widths</h3>
  * <p>
- * 		The renderer can be configured with {@link de.vandermeer.asciitable.v2.render.width.V2_Width} objects for calculating the width of columns and the overall table.
+ * 		The renderer can be configured with {@link de.vandermeer.asciitable.v2.render.V2_Width} objects for calculating the width of columns and the overall table.
  * 		Depending on the object, the rendering of the table will differ.
  * 		Several implementations are provided, others can be added by implementing the interface.
  * </p>
@@ -664,9 +664,9 @@
  * 
  * <h4>Width with table width and evenly distributed column witdh</h4>
  * <p>
- * 		The class {@link de.vandermeer.asciitable.v2.render.width.V2_WidthAbsoluteEven} calculates the width using an absolute table width and then using the same width for each column.
+ * 		The class {@link de.vandermeer.asciitable.v2.render.WidthAbsoluteEven} calculates the width using an absolute table width and then using the same width for each column.
  * 		Same here means as evenly distributed as possible.
- * 		The following examples show the same single row table rendered with different widths.
+ * 		The following examples show the same 3-row table rendered with different widths.
  * </p>
  * <pre>{@code
 	V2_AsciiTable at = new V2_AsciiTable();
@@ -677,13 +677,13 @@
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 
-	rend.setWidth(new V2_WidthAbsoluteEven(50));
+	rend.setWidth(new WidthAbsoluteEven(50));
 	System.out.println(rend.render(at));
 
-	rend.setWidth(new V2_WidthAbsoluteEven(30));
+	rend.setWidth(new WidthAbsoluteEven(30));
 	System.out.println(rend.render(at));
 
-	rend.setWidth(new V2_WidthAbsoluteEven(20));
+	rend.setWidth(new WidthAbsoluteEven(20));
 	System.out.println(rend.render(at));
  * }</pre>
  * 
@@ -707,8 +707,8 @@
  * 
  * <h4>Width with fixed width per column</h4>
  * <p>
- * 		The class {@link de.vandermeer.asciitable.v2.render.width.V2_WidthFixedColumns} calculates the width using a fixed width per column.
- * 		The following examples show the same single row table rendered with different widths.
+ * 		The class {@link de.vandermeer.asciitable.v2.render.WidthFixedColumns} calculates the width using a fixed width per column.
+ * 		The following examples show the same 3-row table rendered with different widths.
  * </p>
  * <pre>{@code
 	V2_AsciiTable at = new V2_AsciiTable();
@@ -719,13 +719,13 @@
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 
-	rend.setWidth(new V2_WidthFixedColumns().add(10).add(20).add(30));
+	rend.setWidth(new WidthFixedColumns().add(10).add(20).add(30));
 	System.out.println(rend.render(at));
 
-	rend.setWidth(new V2_WidthFixedColumns().add(5).add(10).add(15));
+	rend.setWidth(new WidthFixedColumns().add(5).add(10).add(15));
 	System.out.println(rend.render(at));
 
-	rend.setWidth(new V2_WidthFixedColumns().add(3).add(5).add(7));
+	rend.setWidth(new WidthFixedColumns().add(3).add(5).add(7));
 	System.out.println(rend.render(at));
  * }</pre>
  * 
@@ -749,7 +749,89 @@
  * </pre>
  * 
  * 
+ * <h4>Width using the longest word per column for column width</h4>
+ * <p>
+ * 		The class {@link de.vandermeer.asciitable.v2.render.WidthLongestWord} calculates column width using the longest word per column (plus column padding).
+ * 		The following examples show the same 3-row table rendered with different paddings.
+ * </p>
+ * <pre>{@code
+	V2_AsciiTable at = new V2_AsciiTable(0);
+	at.addRule();
+	at.addRow("first row (col1)", "with some information (col2)");
+	at.addRule();
+	at.addRow("second row (col1)", "with some information (col2)");
+	at.addRule();
+	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+	rend.setWidth(new WidthLongestWord());
+	System.out.println(rend.render(at));
+
+	at = new V2_AsciiTable(1);
+	at.addRule();
+	at.addRow("first row (col1)", "with some information (col2)");
+	at.addRule();
+	at.addRow("second row (col1)", "with some information (col2)");
+	at.addRule();
+	rend = new V2_AsciiTableRenderer();
+	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+	rend.setWidth(new WidthLongestWord());
+	System.out.println(rend.render(at));
+
+	at = new V2_AsciiTable(0);
+	at.addRule();
+	at.addRow("first row (col1)", "with some information (col2)").setPadding(new int[]{2, 3});
+	at.addRule();
+	at.addRow("second row (col1)", "with some information (col2)").setPadding(new int[]{3, 4});
+	at.addRule();
+	rend = new V2_AsciiTableRenderer();
+	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+	rend.setWidth(new WidthLongestWord());
+	System.out.println("longest word 3");
+	System.out.println(rend.render(at));
+ * }</pre>
+ * 
+ * The output of the examples are:
+ * <pre style="line-height:17px">
+	┌──────┬───────────┐
+	│first │with some  │
+	│row   │information│
+	│(col1)│(col2)     │
+	├──────┼───────────┤
+	│second│with some  │
+	│row   │information│
+	│(col1)│(col2)     │
+	└──────┴───────────┘
+
+	┌────────┬─────────────┐
+	│ first  │ with some   │
+	│ row    │ information │
+	│ (col1) │ (col2)      │
+	├────────┼─────────────┤
+	│ second │ with some   │
+	│ row    │ information │
+	│ (col1) │ (col2)      │
+	└────────┴─────────────┘
+
+	┌────────────┬───────────────────┐
+	│  first     │   with some       │
+	│  row       │   information     │
+	│  (col1)    │   (col2)          │
+	├────────────┼───────────────────┤
+	│   second   │    with some      │
+	│   row      │    information    │
+	│   (col1)   │    (col2)         │
+	└────────────┴───────────────────┘
+ * </pre>
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.2.0 build 150814 (14-Aug-15) for Java 1.7
  */
 package de.vandermeer.asciitable.v2;
+
+

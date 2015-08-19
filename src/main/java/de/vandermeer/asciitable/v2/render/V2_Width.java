@@ -13,22 +13,24 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.render.width;
+package de.vandermeer.asciitable.v2.render;
 
 import de.vandermeer.asciitable.v2.V2_AsciiTable;
 
 /**
- * Utility to define the width of table columns using the longest word per column without further constraints.
+ * Calculator for the width of a table.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.2.0 build 150814 (14-Aug-15) for Java 1.7
  * @since      v0.0.5
  */
-public class V2_WidthLongestWord implements V2_Width {
+public interface V2_Width {
 
-	@Override
-	public int[] getColumnWidths(V2_AsciiTable table) {
-		return (table==null)?null:WidthUtilities.longestWord(table);
-	}
+	/**
+	 * Returns the width of each column in an array, column one being [0] and so on.
+	 * @param table the table with all content, important for some width calculations
+	 * @return column width array
+	 */
+	int[] getColumnWidths(V2_AsciiTable table);
 
 }

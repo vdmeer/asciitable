@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.render.width;
+package de.vandermeer.asciitable.v2.render;
 
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -26,7 +26,7 @@ import de.vandermeer.asciitable.v2.V2_AsciiTable;
  * @version    v0.2.0 build 150814 (14-Aug-15) for Java 1.7
  * @since      v0.0.5
  */
-public class V2_WidthFixedColumns implements V2_Width{
+public class WidthFixedColumns implements V2_Width{
 
 	/** Column width array. */
 	int[] ar;
@@ -35,7 +35,7 @@ public class V2_WidthFixedColumns implements V2_Width{
 	 * Returns a new table width calculator.
 	 * Default internal array is set to size 1 (1 column) of width 0.
 	 */
-	public V2_WidthFixedColumns(){
+	public WidthFixedColumns(){
 		this.ar = new int[0];
 	}
 
@@ -44,7 +44,7 @@ public class V2_WidthFixedColumns implements V2_Width{
 	 * @param width column width in number of characters
 	 * @return self to allow for chaining
 	 */
-	public V2_WidthFixedColumns add(int width){
+	public WidthFixedColumns add(int width){
 		if(width>=3){
 			this.ar = ArrayUtils.add(this.ar, width);
 		}

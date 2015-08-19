@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.render.width;
+package de.vandermeer.asciitable.v2.render;
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,17 +22,19 @@ import org.junit.Test;
 
 import de.svenjacobs.loremipsum.LoremIpsum;
 import de.vandermeer.asciitable.v2.V2_AsciiTable;
+import de.vandermeer.asciitable.v2.render.V2_Width;
+import de.vandermeer.asciitable.v2.render.WidthLongestWord;
 
 /**
- * Tests for {@link V2_WidthLongestWord}.
+ * Tests for {@link WidthLongestWord}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.2.0 build 150814 (14-Aug-15) for Java 1.7
  */
-public class Test_V2_WidthLongestWord {
+public class Test_WidthLongestWord {
 
 	@Test
-	public void test_SomeTests(){
+	public void test_CodeForDoc(){
 		V2_AsciiTable at;
 		int[] cols;
 		V2_Width width;
@@ -43,7 +45,7 @@ public class Test_V2_WidthLongestWord {
 		at.addRule();
 		at.addRow("second row (col1)", "with some information (col2)");
 		at.addRule();
-		width = new V2_WidthLongestWord();
+		width = new WidthLongestWord();
 		cols = width.getColumnWidths(at);
 		assertEquals(2, cols.length);
 		assertEquals(6,  cols[0]);		// longest word: second (6)
@@ -56,7 +58,7 @@ public class Test_V2_WidthLongestWord {
 		at.addRule();
 		at.addRow("second row (col1)", "with some information (col2)");
 		at.addRule();
-		width = new V2_WidthLongestWord();
+		width = new WidthLongestWord();
 		cols = width.getColumnWidths(at);
 		assertEquals(2, cols.length);
 		assertEquals(8,  cols[0]);		// longest word: second (6) + padding 1*2
@@ -70,7 +72,7 @@ public class Test_V2_WidthLongestWord {
 		at.addRule();
 		at.addRow("second row (col1)", "with some information (col2)").setPadding(new int[]{3, 4});
 		at.addRule();
-		width = new V2_WidthLongestWord();
+		width = new WidthLongestWord();
 		cols = width.getColumnWidths(at);
 		assertEquals(2, cols.length);
 		assertEquals(12,  cols[0]);		// longest word: second (6) + padding 3*2
@@ -80,7 +82,7 @@ public class Test_V2_WidthLongestWord {
 
 		at = new V2_AsciiTable();
 		at.addRow(new LoremIpsum().getWords());
-		width = new V2_WidthLongestWord();
+		width = new WidthLongestWord();
 		cols = width.getColumnWidths(at);
 		assertEquals(1, cols.length);
 		assertEquals(12,  cols[0]);		// longest word: sadipscing (10) + padding 1

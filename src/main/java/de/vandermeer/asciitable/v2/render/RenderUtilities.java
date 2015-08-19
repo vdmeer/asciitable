@@ -28,7 +28,7 @@ import de.vandermeer.asciitable.v2.themes.V2_RowTheme;
  * @version    v0.2.0 build 150814 (14-Aug-15) for Java 1.7
  * @since      v0.0.5
  */
-public abstract class V2_Utilities {
+public abstract class RenderUtilities {
 
 	/**
 	 * Creates a content array, that is an array with columns.

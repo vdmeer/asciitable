@@ -58,7 +58,6 @@ public class V2_AsciiTable {
 	 * Creates a new table with default padding to be used for columns in content rows.
 	 * The standard value (if not set) is 1, meaning 1 character left and one character right.
 	 * @param padding default padding
-	 * @return self to allow for chaining
 	 */
 	public V2_AsciiTable (int padding){
 		this.defaultPadding = (padding==-1)?1:padding;

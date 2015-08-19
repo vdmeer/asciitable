@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.render.width;
+package de.vandermeer.asciitable.v2.render;
 
 import de.vandermeer.asciitable.v2.V2_AsciiTable;
 
@@ -24,7 +24,7 @@ import de.vandermeer.asciitable.v2.V2_AsciiTable;
  * @version    v0.2.0 build 150814 (14-Aug-15) for Java 1.7
  * @since      v0.0.5
  */
-public class V2_WidthAbsoluteEven implements V2_Width {
+public class WidthAbsoluteEven implements V2_Width {
 
 	/** Width of the table. */
 	protected int width;
@@ -33,7 +33,7 @@ public class V2_WidthAbsoluteEven implements V2_Width {
 	 * Returns a new width object with an overall table width set.
 	 * @param width absolute table width as number of characters
 	 */
-	public V2_WidthAbsoluteEven(int width){
+	public WidthAbsoluteEven(int width){
 		if(width>=3){
 			this.width = width;
 		}

@@ -24,7 +24,6 @@ import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciitable.v2.RenderedTable;
 import de.vandermeer.asciitable.v2.V2_AsciiTable;
-import de.vandermeer.asciitable.v2.render.width.V2_Width;
 import de.vandermeer.asciitable.v2.row.ContentRow;
 import de.vandermeer.asciitable.v2.row.RuleRow;
 import de.vandermeer.asciitable.v2.row.RuleRowType;
@@ -136,25 +135,25 @@ public class V2_AsciiTableRenderer implements V2_TableRenderer {
 			ProcessedRow pr = new ProcessedRow(row, cols, table.getColumnCount());
 			if(row instanceof ContentRow){
 				ContentRow crow = (ContentRow)row;
-				String[][] procColumns = V2_Utilities.createContentArray(crow.getColumns(), cols, crow.getPadding());
+				String[][] procColumns = RenderUtilities.createContentArray(crow.getColumns(), cols, crow.getPadding());
 				pr.setProcessedColumns(procColumns);
-				pr.setBorderTypes(V2_Utilities.getBorderTypes_ContentRow(procColumns[0], crow, table.getColumnCount()));
+				pr.setBorderTypes(RenderUtilities.getBorderTypes_ContentRow(procColumns[0], crow, table.getColumnCount()));
 			}
 			this.rows.add(pr);
 		}
 
 		//now adjust borders for top rule
-		BorderType[] array = V2_Utilities.getBorderTypes_TopRule((this.rows.size()>1)?this.rows.get(1):null, this.rows.get(0).getOriginalRow(), table.getColumnCount());
+		BorderType[] array = RenderUtilities.getBorderTypes_TopRule((this.rows.size()>1)?this.rows.get(1):null, this.rows.get(0).getOriginalRow(), table.getColumnCount());
 		this.rows.get(0).setBorderTypes(array);
 
 		//adjust border for bottom rule
-		array = V2_Utilities.getBorderTypes_BottomRule((this.rows.size()>1)?this.rows.get(this.rows.size()-2):null, this.rows.get(this.rows.size()-1).getOriginalRow(), table.getColumnCount());
+		array = RenderUtilities.getBorderTypes_BottomRule((this.rows.size()>1)?this.rows.get(this.rows.size()-2):null, this.rows.get(this.rows.size()-1).getOriginalRow(), table.getColumnCount());
 		this.rows.get(this.rows.size()-1).setBorderTypes(array);
 
 		//and now adjust borders for all mid rules
 		if(this.rows.size()>2){
 			for(int r=1; r<this.rows.size()-1; r++){
-				array = V2_Utilities.getBorderTypes_MidRule(this.rows.get(r-1), (r<this.rows.size()-2)?this.rows.get(r+1):null, this.rows.get(r).getOriginalRow(), table.getColumnCount());
+				array = RenderUtilities.getBorderTypes_MidRule(this.rows.get(r-1), (r<this.rows.size()-2)?this.rows.get(r+1):null, this.rows.get(r).getOriginalRow(), table.getColumnCount());
 				this.rows.get(r).setBorderTypes(array);
 			}
 		}
@@ -221,13 +220,13 @@ public class V2_AsciiTableRenderer implements V2_TableRenderer {
 			for(int k=0; k<borders.length; k++){
 				if(borders[k]!=BorderType.NONE){
 					if(k==0){
-						ret.append(V2_Utilities.getChar(BorderPosition.LEFT, borders[k], rt));
+						ret.append(RenderUtilities.getChar(BorderPosition.LEFT, borders[k], rt));
 					}
 					else if(k==borders.length-1){
-						ret.append(V2_Utilities.getChar(BorderPosition.RIGHT, borders[k], rt));
+						ret.append(RenderUtilities.getChar(BorderPosition.RIGHT, borders[k], rt));
 					}
 					else{
-						ret.append(V2_Utilities.getChar(BorderPosition.MIDDLE, borders[k], rt));
+						ret.append(RenderUtilities.getChar(BorderPosition.MIDDLE, borders[k], rt));
 					}
 				}
 
@@ -401,13 +400,13 @@ public class V2_AsciiTableRenderer implements V2_TableRenderer {
 
 		for(int k=0; k<borders.length; k++){
 			if(k==0){
-				ret.append(V2_Utilities.getChar(BorderPosition.LEFT, borders[k], rt));
+				ret.append(RenderUtilities.getChar(BorderPosition.LEFT, borders[k], rt));
 			}
 			else if(k==borders.length-1){
-				ret.append(V2_Utilities.getChar(BorderPosition.RIGHT, borders[k], rt));
+				ret.append(RenderUtilities.getChar(BorderPosition.RIGHT, borders[k], rt));
 			}
 			else{
-				ret.append(V2_Utilities.getChar(BorderPosition.MIDDLE, borders[k], rt));
+				ret.append(RenderUtilities.getChar(BorderPosition.MIDDLE, borders[k], rt));
 			}
 
 			if(k<cols.length){

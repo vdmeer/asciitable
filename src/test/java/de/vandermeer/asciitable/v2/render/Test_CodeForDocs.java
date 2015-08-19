@@ -19,7 +19,6 @@ import org.junit.Test;
 
 import de.vandermeer.asciitable.v2.RenderedTable;
 import de.vandermeer.asciitable.v2.V2_AsciiTable;
-import de.vandermeer.asciitable.v2.render.width.V2_WidthAbsoluteEven;
 import de.vandermeer.asciitable.v2.themes.V2_E_TableThemes;
 
 /**
@@ -42,7 +41,7 @@ public class Test_CodeForDocs {
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-		rend.setWidth(new V2_WidthAbsoluteEven(25));
+		rend.setWidth(new WidthAbsoluteEven(25));
 		rend.setPaddingChar('_');
 
 		RenderedTable rt = rend.render(at);

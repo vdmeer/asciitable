@@ -15,7 +15,6 @@
 
 package de.vandermeer.asciitable.v2.render;
 
-import de.vandermeer.asciitable.v2.render.width.V2_Width;
 import de.vandermeer.asciitable.v2.row.V2_Row;
 
 /**

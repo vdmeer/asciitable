@@ -20,8 +20,8 @@ import org.junit.Test;
 import de.vandermeer.asciitable.v2.RenderedTable;
 import de.vandermeer.asciitable.v2.V2_AsciiTable;
 import de.vandermeer.asciitable.v2.render.V2_AsciiTableRenderer;
-import de.vandermeer.asciitable.v2.render.V2_Utilities;
-import de.vandermeer.asciitable.v2.render.width.V2_WidthAbsoluteEven;
+import de.vandermeer.asciitable.v2.render.RenderUtilities;
+import de.vandermeer.asciitable.v2.render.WidthAbsoluteEven;
 import de.vandermeer.asciitable.v2.themes.V2_E_TableThemes;
 
 /**
@@ -44,7 +44,7 @@ public class Test_CodeForDocs {
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-		rend.setWidth(new V2_WidthAbsoluteEven(19));
+		rend.setWidth(new WidthAbsoluteEven(19));
 
 		RenderedTable rt = rend.render(at);
 		System.out.println(rt);
@@ -54,10 +54,10 @@ public class Test_CodeForDocs {
 	public void test_TableWithoutArrayNeedAsArray(){
 		//disable the flip array in V2_Utils for correct output
 		String[][] ar;
-		ar = V2_Utilities.createContentArray(new Object[]{"1-1", "1-2", "1-3"}, new int[]{5, 5, 5}, new int[]{1, 1, 1});
+		ar = RenderUtilities.createContentArray(new Object[]{"1-1", "1-2", "1-3"}, new int[]{5, 5, 5}, new int[]{1, 1, 1});
 		System.out.println(ArrayTransformations.ARRAY_TO_STRING(ar));
 
-		ar = V2_Utilities.createContentArray(new Object[]{"2-1", "2-2", "2-3"}, new int[]{5, 5, 5}, new int[]{1, 1, 1});
+		ar = RenderUtilities.createContentArray(new Object[]{"2-1", "2-2", "2-3"}, new int[]{5, 5, 5}, new int[]{1, 1, 1});
 		System.out.println(ArrayTransformations.ARRAY_TO_STRING(ar));
 	}
 
@@ -73,7 +73,7 @@ public class Test_CodeForDocs {
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-		rend.setWidth(new V2_WidthAbsoluteEven(19));
+		rend.setWidth(new WidthAbsoluteEven(19));
 
 		RenderedTable rt = rend.render(at);
 		System.out.println(rt);
@@ -83,10 +83,10 @@ public class Test_CodeForDocs {
 	public void test_TableWithArrayNeedAsArray(){
 		//disable the flip array in V2_Utils for correct output
 		String[][] ar;
-		ar = V2_Utilities.createContentArray(new Object[]{"1-1", "1-2 text", "1-3"}, new int[]{5, 5, 5}, new int[]{1, 1, 1});
+		ar = RenderUtilities.createContentArray(new Object[]{"1-1", "1-2 text", "1-3"}, new int[]{5, 5, 5}, new int[]{1, 1, 1});
 		System.out.println(ArrayTransformations.ARRAY_TO_STRING(ar));
 
-		ar = V2_Utilities.createContentArray(new Object[]{"2-1", "2-2", "2-3"}, new int[]{5, 5, 5}, new int[]{1, 1, 1});
+		ar = RenderUtilities.createContentArray(new Object[]{"2-1", "2-2", "2-3"}, new int[]{5, 5, 5}, new int[]{1, 1, 1});
 		System.out.println(ArrayTransformations.ARRAY_TO_STRING(ar));
 	}
 

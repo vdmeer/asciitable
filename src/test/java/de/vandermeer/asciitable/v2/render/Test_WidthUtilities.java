@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.render.width;
+package de.vandermeer.asciitable.v2.render;
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,6 +22,7 @@ import org.junit.Test;
 
 import de.svenjacobs.loremipsum.LoremIpsum;
 import de.vandermeer.asciitable.v2.V2_AsciiTable;
+import de.vandermeer.asciitable.v2.render.WidthUtilities;
 
 /**
  * Tests for {@link WidthUtilities}.
@@ -45,15 +46,15 @@ public class Test_WidthUtilities {
 
 		cols = WidthUtilities.longestWord(at);
 		assertEquals(2, cols.length);
-		assertEquals(6,  cols[0]);		// longest word: second (6)
-		assertEquals(11, cols[1]);		// longest word: information (11)
+		assertEquals(8,  cols[0]);		// longest word: second (6) + padding
+		assertEquals(13, cols[1]);		// longest word: information (11) + padding
 		System.out.println(ArrayUtils.toString(cols));
 
 		at = new V2_AsciiTable();
 		at.addRow(new LoremIpsum().getWords());
 		cols = WidthUtilities.longestWord(at);
 		assertEquals(1, cols.length);
-		assertEquals(10,  cols[0]);		// longest word: sadipscing (10)
+		assertEquals(12,  cols[0]);		// longest word: sadipscing (10) + padding
 		System.out.println(ArrayUtils.toString(cols));
 	}
 }

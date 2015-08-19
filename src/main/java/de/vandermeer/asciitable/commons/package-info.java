@@ -219,7 +219,7 @@
  * 
  * 
  * <h4>Complete solution - creating a content array</h4>
- * Taking version 2 and the over-size example above, a complete solution is implemented in {@link de.vandermeer.asciitable.v2.render.V2_Utilities#createContentArray(Object[], int[], int[])}.
+ * Taking version 2 and the over-size example above, a complete solution is implemented in {@link de.vandermeer.asciitable.v2.render.RenderUtilities#createContentArray(Object[], int[], int[])}.
  * The method receives the original content array of a row plus an integer array with column width and an integer array with padding per column (V2 introduced padding for columns).
  * The following code shows how a renderer would call this method:
  * <pre>{@code

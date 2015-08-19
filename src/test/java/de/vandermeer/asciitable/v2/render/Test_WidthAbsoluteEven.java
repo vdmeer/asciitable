@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.render.width;
+package de.vandermeer.asciitable.v2.render;
 
 import static org.junit.Assert.assertEquals;
 
@@ -21,22 +21,23 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;
 
 import de.vandermeer.asciitable.v2.V2_AsciiTable;
+import de.vandermeer.asciitable.v2.render.WidthAbsoluteEven;
 
 /**
- * Tests for {@link V2_WidthAbsoluteEven}.
+ * Tests for {@link WidthAbsoluteEven}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.2.0 build 150814 (14-Aug-15) for Java 1.7
  */
-public class Test_V2_WidthAbsoluteEven {
+public class Test_WidthAbsoluteEven {
 
 	@Test
 	public void test_CodeForDoc(){
-		V2_WidthAbsoluteEven w;
+		WidthAbsoluteEven w;
 		int[] cols;
 		V2_AsciiTable at;
 
-		w = new V2_WidthAbsoluteEven(74);
+		w = new WidthAbsoluteEven(74);
 		at = new V2_AsciiTable();
 		at.addRow("one");
 		cols = w.getColumnWidths(at);
@@ -45,7 +46,7 @@ public class Test_V2_WidthAbsoluteEven {
 		System.out.println(ArrayUtils.toString(cols));
 
 
-		w = new V2_WidthAbsoluteEven(74);
+		w = new WidthAbsoluteEven(74);
 		at = new V2_AsciiTable();
 		at.addRow("one", "two");
 		cols = w.getColumnWidths(at);
@@ -55,7 +56,7 @@ public class Test_V2_WidthAbsoluteEven {
 		System.out.println(ArrayUtils.toString(cols));
 
 
-		w = new V2_WidthAbsoluteEven(74);
+		w = new WidthAbsoluteEven(74);
 		at = new V2_AsciiTable();
 		at.addRow("one", "two", "three");
 		cols = w.getColumnWidths(at);
@@ -66,7 +67,7 @@ public class Test_V2_WidthAbsoluteEven {
 		System.out.println(ArrayUtils.toString(cols));
 
 
-		w = new V2_WidthAbsoluteEven(74);
+		w = new WidthAbsoluteEven(74);
 		at = new V2_AsciiTable();
 		at.addRow("one", "two", "three", "four");
 		cols = w.getColumnWidths(at);
@@ -78,7 +79,7 @@ public class Test_V2_WidthAbsoluteEven {
 		System.out.println(ArrayUtils.toString(cols));
 
 
-		w = new V2_WidthAbsoluteEven(74);
+		w = new WidthAbsoluteEven(74);
 		at = new V2_AsciiTable();
 		at.addRow("one", "two", "three", "four", "five");
 		cols = w.getColumnWidths(at);
@@ -91,7 +92,7 @@ public class Test_V2_WidthAbsoluteEven {
 		System.out.println(ArrayUtils.toString(cols));
 
 
-		w = new V2_WidthAbsoluteEven(79);
+		w = new WidthAbsoluteEven(79);
 		at = new V2_AsciiTable();
 		at.addRow("one", "two", "three", "four", "five");
 		cols = w.getColumnWidths(at);
