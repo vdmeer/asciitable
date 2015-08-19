@@ -1,5 +1,5 @@
-v0.2.1 - patch - 2015-##-##
----------------------------
+v0.2.1 - refactor / docs - 2015-##-##
+-------------------------------------
 * added a lot of JavaDoc to packages and overview
 * added test cases for JavaDoc examples
 * V2 changes
