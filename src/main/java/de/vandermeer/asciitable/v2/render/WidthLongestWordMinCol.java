@@ -21,7 +21,7 @@ import de.vandermeer.asciitable.v2.V2_AsciiTable;
  * Utility to define the width of table columns using the longest word per column but with a minimum column length.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.2.0 build 150814 (14-Aug-15) for Java 1.7
+ * @version    v0.2.1 build 150819 (19-Aug-15) for Java 1.7
  * @since      v0.0.5
  */
 public class WidthLongestWordMinCol implements V2_Width {

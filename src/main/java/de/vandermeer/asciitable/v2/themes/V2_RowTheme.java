@@ -21,7 +21,7 @@ import org.apache.commons.lang3.text.StrBuilder;
  * Interface for themes of table rows.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.2.0 build 150814 (14-Aug-15) for Java 1.7
+ * @version    v0.2.1 build 150819 (19-Aug-15) for Java 1.7
  * @since      v0.0.3
  */
 public interface V2_RowTheme {
