@@ -5,7 +5,7 @@ Several implementations of an text table, originally using ASCII and UTF-8 chara
 
 The tables allows for various degrees of flexibility for number of columns, column width, automated line wrapping, column spanning and themes for tables and table rows.
 
-Current release is https://search.maven.org/#artifactdetails|de.vandermeer|asciitable|0.1.2|jar[0.2.0].
+Current release is https://search.maven.org/#artifactdetails|de.vandermeer|asciitable|0.2.0|jar[0.2.0].
 All releases are on https://search.maven.org/#search|gav|1|g%3A%22de.vandermeer%22%20AND%20a%3A%22asciitable%22[Maven Central].
 
 This blog post explains how to get UTF-8 support in the whole tool chain http://vdmeer-sven.blogspot.ie/2014/06/utf-8-support-w-java-and-console.html[blog on UTF-8].
@@ -84,7 +84,6 @@ This object is defined as an interface with several implementations provided for
 More of those width object can be defined as required.
 
 A table can be rendered multiple times by any render object, i.e. the underlying original table will not be changed by the renderer.
-The only change realized is a rewrite of the row type of the top and bottom rows if they are rules, to make sure they are marked as top and bottom rules.
 The renderer is building a list of so called processed rows +ProcessedRow+, which old all render-specific settings.
 
 This feature, render a table any time with any renderer and re-render a table with the same renderer, allows to change settings such as width, themes, padding character.
@@ -345,36 +344,60 @@ Width using longest word per column, with 0, standard, and individual padding
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ----------------------------------------------------------------------------------------
 	┌──────┬───────────┐
-	│first │with some  │
-	│row   │information│
-	│(col1)│(col2)     │
+	│first │information│
 	├──────┼───────────┤
-	│second│with some  │
-	│row   │information│
-	│(col1)│(col2)     │
+	│second│info       │
 	└──────┴───────────┘
 
 	┌────────┬─────────────┐
-	│ first  │ with some   │
-	│ row    │ information │
-	│ (col1) │ (col2)      │
+	│ first  │ information │
 	├────────┼─────────────┤
-	│ second │ with some   │
-	│ row    │ information │
-	│ (col1) │ (col2)      │
+	│ second │ info        │
 	└────────┴─────────────┘
 
-	┌────────────┬───────────────────┐
-	│  first     │   with some       │
-	│  row       │   information     │
-	│  (col1)    │   (col2)          │
-	├────────────┼───────────────────┤
-	│   second   │    with some      │
-	│   row      │    information    │
-	│   (col1)   │    (col2)         │
-	└────────────┴───────────────────┘
+	┌────────────┬─────────────────┐
+	│  first     │   information   │
+	├────────────┼─────────────────┤
+	│   second   │    info         │
+	└────────────┴─────────────────┘
 ----------------------------------------------------------------------------------------
 
+
+Width using longest word per column with minimum column width and different options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------------------------------------------------------
+	┌───────────┬─────────────┐
+	│ first     │ information │
+	├───────────┼─────────────┤
+	│ second    │ info        │
+	└───────────┴─────────────┘
+
+	┌────────┬──────────────────────────────────────────────────┐
+	│ first  │ information                                      │
+	├────────┼──────────────────────────────────────────────────┤
+	│ second │ info                                             │
+	└────────┴──────────────────────────────────────────────────┘
+----------------------------------------------------------------------------------------
+
+
+Width using longest word per column with maximum column width and different options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------------------------------------------------------
+	┌────────┬──────────┐
+	│ first  │ informat │
+	│        │ ion      │
+	├────────┼──────────┤
+	│ second │ info     │
+	└────────┴──────────┘
+
+	┌─────┬─────────────┐
+	│ fir │ information │
+	│ st  │             │
+	├─────┼─────────────┤
+	│ sec │ info        │
+	│ ond │             │
+	└─────┴─────────────┘
+----------------------------------------------------------------------------------------
 
 
 Padding Characters

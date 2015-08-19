@@ -22,6 +22,8 @@ import de.vandermeer.asciitable.v2.render.V2_AsciiTableRenderer;
 import de.vandermeer.asciitable.v2.render.WidthAbsoluteEven;
 import de.vandermeer.asciitable.v2.render.WidthFixedColumns;
 import de.vandermeer.asciitable.v2.render.WidthLongestWord;
+import de.vandermeer.asciitable.v2.render.WidthLongestWordMaxCol;
+import de.vandermeer.asciitable.v2.render.WidthLongestWordMinCol;
 import de.vandermeer.asciitable.v2.themes.V2_E_TableThemes;
 
 /**
@@ -331,9 +333,9 @@ public class Test_CodeForDocs_V2 {
 	public void test_Example_WidthLongestWord(){
 		V2_AsciiTable at = new V2_AsciiTable(0);
 		at.addRule();
-		at.addRow("first row (col1)", "with some information (col2)");
+		at.addRow("first", "information");
 		at.addRule();
-		at.addRow("second row (col1)", "with some information (col2)");
+		at.addRow("second", "info");
 		at.addRule();
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
@@ -344,9 +346,9 @@ public class Test_CodeForDocs_V2 {
 
 		at = new V2_AsciiTable(1);
 		at.addRule();
-		at.addRow("first row (col1)", "with some information (col2)");
+		at.addRow("first", "information");
 		at.addRule();
-		at.addRow("second row (col1)", "with some information (col2)");
+		at.addRow("second", "info");
 		at.addRule();
 		rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
@@ -357,14 +359,68 @@ public class Test_CodeForDocs_V2 {
 
 		at = new V2_AsciiTable(0);
 		at.addRule();
-		at.addRow("first row (col1)", "with some information (col2)").setPadding(new int[]{2, 3});
+		at.addRow("first", "information").setPadding(new int[]{2, 3});
 		at.addRule();
-		at.addRow("second row (col1)", "with some information (col2)").setPadding(new int[]{3, 4});
+		at.addRow("second", "info").setPadding(new int[]{3, 4});
 		at.addRule();
 		rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new WidthLongestWord());
 		System.out.println("longest word 3");
+		System.out.println(rend.render(at));
+	}
+
+	@Test
+	public void test_Example_WidthLongestWordMinCol(){
+		V2_AsciiTable at = new V2_AsciiTable();
+		at.addRule();
+		at.addRow("first", "information");
+		at.addRule();
+		at.addRow("second", "info");
+		at.addRule();
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new WidthLongestWordMinCol(11));
+		System.out.println("longest word mincol 1");
+		System.out.println(rend.render(at));
+
+		at = new V2_AsciiTable();
+		at.addRule();
+		at.addRow("first", "information");
+		at.addRule();
+		at.addRow("second", "info");
+		at.addRule();
+		rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new WidthLongestWordMinCol(new int[]{-1,50}));
+		System.out.println("longest word mincol 2");
+		System.out.println(rend.render(at));
+	}
+
+	@Test
+	public void test_Example_WidthLongestWordMaxCol(){
+		V2_AsciiTable at = new V2_AsciiTable();
+		at.addRule();
+		at.addRow("first", "information");
+		at.addRule();
+		at.addRow("second", "info");
+		at.addRule();
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new WidthLongestWordMaxCol(10));
+		System.out.println("longest word maxcol 1");
+		System.out.println(rend.render(at));
+
+		at = new V2_AsciiTable();
+		at.addRule();
+		at.addRow("first", "information");
+		at.addRule();
+		at.addRow("second", "info");
+		at.addRule();
+		rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new WidthLongestWordMaxCol(new int[]{5,-1}));
+		System.out.println("longest word maxcol 2");
 		System.out.println(rend.render(at));
 	}
 }

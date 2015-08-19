@@ -438,6 +438,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_width_with_table_width_and_evenly_distributed_column_witdh">Width with table width and evenly distributed column witdh</a></li>
 <li><a href="#_width_with_fixed_width_per_column">Width with fixed width per column</a></li>
 <li><a href="#_width_using_longest_word_per_column_with_0_standard_and_individual_padding">Width using longest word per column, with 0, standard, and individual padding</a></li>
+<li><a href="#_width_using_longest_word_per_column_with_minimum_column_width_and_different_options">Width using longest word per column with minimum column width and different options</a></li>
+<li><a href="#_width_using_longest_word_per_column_with_maximum_column_width_and_different_options">Width using longest word per column with maximum column width and different options</a></li>
 <li><a href="#_padding_characters">Padding Characters</a></li>
 <li><a href="#_table_theme">Table Theme</a></li>
 </ul>
@@ -452,7 +454,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>The tables allows for various degrees of flexibility for number of columns, column width, automated line wrapping, column spanning and themes for tables and table rows.</p>
 </div>
 <div class="paragraph">
-<p>Current release is <a href="https://search.maven.org/#artifactdetails|de.vandermeer|asciitable|0.1.2|jar">0.2.0</a>.
+<p>Current release is <a href="https://search.maven.org/#artifactdetails|de.vandermeer|asciitable|0.2.0|jar">0.2.0</a>.
 All releases are on <a href="https://search.maven.org/#search|gav|1|g%3A%22de.vandermeer%22%20AND%20a%3A%22asciitable%22">Maven Central</a>.</p>
 </div>
 <div class="paragraph">
@@ -567,7 +569,6 @@ More of those width object can be defined as required.</p>
 </div>
 <div class="paragraph">
 <p>A table can be rendered multiple times by any render object, i.e. the underlying original table will not be changed by the renderer.
-The only change realized is a rewrite of the row type of the top and bottom rows if they are rules, to make sure they are marked as top and bottom rules.
 The renderer is building a list of so called processed rows <code>ProcessedRow</code>, which old all render-specific settings.</p>
 </div>
 <div class="paragraph">
@@ -842,34 +843,61 @@ rend.setWidth(new WidthAbsoluteEven(76));</pre>
 <div class="listingblock">
 <div class="content">
 <pre>	┌──────┬───────────┐
-	│first │with some  │
-	│row   │information│
-	│(col1)│(col2)     │
+	│first │information│
 	├──────┼───────────┤
-	│second│with some  │
-	│row   │information│
-	│(col1)│(col2)     │
+	│second│info       │
 	└──────┴───────────┘
 
 	┌────────┬─────────────┐
-	│ first  │ with some   │
-	│ row    │ information │
-	│ (col1) │ (col2)      │
+	│ first  │ information │
 	├────────┼─────────────┤
-	│ second │ with some   │
-	│ row    │ information │
-	│ (col1) │ (col2)      │
+	│ second │ info        │
 	└────────┴─────────────┘
 
-	┌────────────┬───────────────────┐
-	│  first     │   with some       │
-	│  row       │   information     │
-	│  (col1)    │   (col2)          │
-	├────────────┼───────────────────┤
-	│   second   │    with some      │
-	│   row      │    information    │
-	│   (col1)   │    (col2)         │
-	└────────────┴───────────────────┘</pre>
+	┌────────────┬─────────────────┐
+	│  first     │   information   │
+	├────────────┼─────────────────┤
+	│   second   │    info         │
+	└────────────┴─────────────────┘</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_width_using_longest_word_per_column_with_minimum_column_width_and_different_options">Width using longest word per column with minimum column width and different options</h3>
+<div class="listingblock">
+<div class="content">
+<pre>	┌───────────┬─────────────┐
+	│ first     │ information │
+	├───────────┼─────────────┤
+	│ second    │ info        │
+	└───────────┴─────────────┘
+
+	┌────────┬──────────────────────────────────────────────────┐
+	│ first  │ information                                      │
+	├────────┼──────────────────────────────────────────────────┤
+	│ second │ info                                             │
+	└────────┴──────────────────────────────────────────────────┘</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_width_using_longest_word_per_column_with_maximum_column_width_and_different_options">Width using longest word per column with maximum column width and different options</h3>
+<div class="listingblock">
+<div class="content">
+<pre>	┌────────┬──────────┐
+	│ first  │ informat │
+	│        │ ion      │
+	├────────┼──────────┤
+	│ second │ info     │
+	└────────┴──────────┘
+
+	┌─────┬─────────────┐
+	│ fir │ information │
+	│ st  │             │
+	├─────┼─────────────┤
+	│ sec │ info        │
+	│ ond │             │
+	└─────┴─────────────┘</pre>
 </div>
 </div>
 </div>
@@ -922,7 +950,7 @@ rend.setWidth(new WidthAbsoluteEven(76));</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-08-19 20:18:18 IST
+Last updated 2015-08-19 21:26:07 IST
 </div>
 </div>
 </body>

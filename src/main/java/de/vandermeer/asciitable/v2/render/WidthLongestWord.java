@@ -28,6 +28,10 @@ public class WidthLongestWord implements V2_Width {
 
 	@Override
 	public int[] getColumnWidths(V2_AsciiTable table) {
+		if(table==null){
+			return null;
+		}
+
 		return (table==null)?null:WidthUtilities.longestWord(table);
 	}
 

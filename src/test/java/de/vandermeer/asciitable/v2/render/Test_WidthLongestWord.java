@@ -41,9 +41,9 @@ public class Test_WidthLongestWord {
 
 		at = new V2_AsciiTable(0);
 		at.addRule();
-		at.addRow("first row (col1)", "with some information (col2)");
+		at.addRow("first", "information");
 		at.addRule();
-		at.addRow("second row (col1)", "with some information (col2)");
+		at.addRow("second", "info");
 		at.addRule();
 		width = new WidthLongestWord();
 		cols = width.getColumnWidths(at);
@@ -54,9 +54,9 @@ public class Test_WidthLongestWord {
 
 		at = new V2_AsciiTable(1);
 		at.addRule();
-		at.addRow("first row (col1)", "with some information (col2)");
+		at.addRow("first", "information");
 		at.addRule();
-		at.addRow("second row (col1)", "with some information (col2)");
+		at.addRow("second", "info");
 		at.addRule();
 		width = new WidthLongestWord();
 		cols = width.getColumnWidths(at);
@@ -68,15 +68,15 @@ public class Test_WidthLongestWord {
 
 		at = new V2_AsciiTable(0);
 		at.addRule();
-		at.addRow("first row (col1)", "with some information (col2)").setPadding(new int[]{2, 3});
+		at.addRow("first", "information").setPadding(new int[]{2, 3});
 		at.addRule();
-		at.addRow("second row (col1)", "with some information (col2)").setPadding(new int[]{3, 4});
+		at.addRow("second", "info").setPadding(new int[]{3, 4});
 		at.addRule();
 		width = new WidthLongestWord();
 		cols = width.getColumnWidths(at);
 		assertEquals(2, cols.length);
 		assertEquals(12,  cols[0]);		// longest word: second (6) + padding 3*2
-		assertEquals(19, cols[1]);		// longest word: information (11) + padding 4*2
+		assertEquals(17, cols[1]);		// longest word: information (11) + padding 3*2
 		System.out.println(ArrayUtils.toString(cols));
 
 

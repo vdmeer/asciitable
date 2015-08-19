@@ -158,7 +158,6 @@
  * 		<li>table width 74, 4 columns: {@code 18,17,17,17}</li>
  * 		<li>table width 74, 5 columns: {@code 14,14,14,13,13}</li>
  *		<li>table width 79, 5 columns: {@code 15,15,15,14,14}</li>
- * 		<li></li>
  * </ul>
  * 
  * 
@@ -177,8 +176,8 @@
  * The following example creates a table with two rows and two columns each and no padding:
  * <pre>{@code
 	V2_AsciiTable at = new V2_AsciiTable(0);
-	at.addRow("first row (col1)", "with some information (col2)");
-	at.addRow("second row (col1)", "with some information (col2)");
+	at.addRow("first", "information");
+	at.addRow("second", "info");
  * }</pre>
  * 
  * Then we use this table to calculate the width using the longest word:
@@ -195,14 +194,14 @@
  * The following example create a table with two rows and two columns each, and it applies different padding to individual columns.
  * <pre>{@code
 	V2_AsciiTable at = new V2_AsciiTable(0);
-	at.addRow("first row (col1)", "with some information (col2)").setPadding(new int[]{2, 3});
-	at.addRow("second row (col1)", "with some information (col2)").setPadding(new int[]{3, 4});
+	at.addRow("first", "information").setPadding(new int[]{2, 3});
+	at.addRow("second", "info").setPadding(new int[]{3, 4});
  * }</pre>
  * 
  * <p>
  * 		The calculated width for the columns are now as follows:
  * 		12 for the first column (longest word: second plus padding of 3 twice) and
- * 		19 for the second column (longest word: information plus padding of 4 twice). 
+ * 		17 for the second column (longest word: information plus padding of 3 twice). 
  * </p>
  * 
  * 

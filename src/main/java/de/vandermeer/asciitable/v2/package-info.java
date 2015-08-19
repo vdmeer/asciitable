@@ -373,17 +373,17 @@
  * The first row justifies the text and has the last line left bound.
  * The second row justifies the text and has the last line right bound.
  * <pre>{@code
-		V2_AsciiTable at = new V2_AsciiTable();
-		at.addRule();
-		at.addRow(new LoremIpsum().getWords()).setAlignment(new char[]{'j'});
-		at.addRule();
-		at.addRow(new LoremIpsum().getWords()).setAlignment(new char[]{'t'});
-		at.addRule();
+	V2_AsciiTable at = new V2_AsciiTable();
+	at.addRule();
+	at.addRow(new LoremIpsum().getWords()).setAlignment(new char[]{'j'});
+	at.addRule();
+	at.addRow(new LoremIpsum().getWords()).setAlignment(new char[]{'t'});
+	at.addRule();
 
-		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
-		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-		rend.setWidth(new WidthAbsoluteEven(60));
-		System.out.println(rend.render(at));
+	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+	rend.setWidth(new WidthAbsoluteEven(60));
+	System.out.println(rend.render(at));
  * }</pre>
  * 
  * The output of this example will be:
@@ -749,17 +749,17 @@
  * </pre>
  * 
  * 
- * <h4>Width using the longest word per column for column width</h4>
+ * <h4>Width using the longest word per column for column width, no further restrictions</h4>
  * <p>
  * 		The class {@link de.vandermeer.asciitable.v2.render.WidthLongestWord} calculates column width using the longest word per column (plus column padding).
- * 		The following examples show the same 3-row table rendered with different paddings.
+ * 		The following examples show the same 2-row table rendered with different widths.
  * </p>
  * <pre>{@code
 	V2_AsciiTable at = new V2_AsciiTable(0);
 	at.addRule();
-	at.addRow("first row (col1)", "with some information (col2)");
+	at.addRow("first", "information");
 	at.addRule();
-	at.addRow("second row (col1)", "with some information (col2)");
+	at.addRow("second", "info");
 	at.addRule();
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
@@ -768,9 +768,9 @@
 
 	at = new V2_AsciiTable(1);
 	at.addRule();
-	at.addRow("first row (col1)", "with some information (col2)");
+	at.addRow("first", "information");
 	at.addRule();
-	at.addRow("second row (col1)", "with some information (col2)");
+	at.addRow("second", "info");
 	at.addRule();
 	rend = new V2_AsciiTableRenderer();
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
@@ -779,9 +779,9 @@
 
 	at = new V2_AsciiTable(0);
 	at.addRule();
-	at.addRow("first row (col1)", "with some information (col2)").setPadding(new int[]{2, 3});
+	at.addRow("first", "information".setPadding(new int[]{2, 3});
 	at.addRule();
-	at.addRow("second row (col1)", "with some information (col2)").setPadding(new int[]{3, 4});
+	at.addRow("second", "info").setPadding(new int[]{3, 4});
 	at.addRule();
 	rend = new V2_AsciiTableRenderer();
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
@@ -793,39 +793,121 @@
  * The output of the examples are:
  * <pre style="line-height:17px">
 	┌──────┬───────────┐
-	│first │with some  │
-	│row   │information│
-	│(col1)│(col2)     │
+	│first │information│
 	├──────┼───────────┤
-	│second│with some  │
-	│row   │information│
-	│(col1)│(col2)     │
+	│second│info       │
 	└──────┴───────────┘
 
 	┌────────┬─────────────┐
-	│ first  │ with some   │
-	│ row    │ information │
-	│ (col1) │ (col2)      │
+	│ first  │ information │
 	├────────┼─────────────┤
-	│ second │ with some   │
-	│ row    │ information │
-	│ (col1) │ (col2)      │
+	│ second │ info        │
 	└────────┴─────────────┘
 
-	┌────────────┬───────────────────┐
-	│  first     │   with some       │
-	│  row       │   information     │
-	│  (col1)    │   (col2)          │
-	├────────────┼───────────────────┤
-	│   second   │    with some      │
-	│   row      │    information    │
-	│   (col1)   │    (col2)         │
-	└────────────┴───────────────────┘
+	┌────────────┬─────────────────┐
+	│  first     │   information   │
+	├────────────┼─────────────────┤
+	│   second   │    info         │
+	└────────────┴─────────────────┘
  * </pre>
  * 
  * 
+ * <h4>Width using the longest word per column for column width with minimum column width</h4>
+ * <p>
+ * 		The class {@link de.vandermeer.asciitable.v2.render.WidthLongestWordMinCol} calculates column width using the longest word per column (plus column padding) with a minimum column width.
+ * 		The following examples show the same 2-row table rendered with different widths.
+ * 		Example one uses an overall minimum (so column 1 is longer).
+ * 		Example two uses individual minimum with column 2 being longer.
+ * </p>
+ * <pre>{@code
+	V2_AsciiTable at = new V2_AsciiTable();
+	at.addRule();
+	at.addRow("first", "information");
+	at.addRule();
+	at.addRow("second", "info");
+	at.addRule();
+	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+	rend.setWidth(new WidthLongestWordMinCol(11));
+	System.out.println(rend.render(at));
+
+	at = new V2_AsciiTable();
+	at.addRule();
+	at.addRow("first", "information");
+	at.addRule();
+	at.addRow("second", "info");
+	at.addRule();
+	rend = new V2_AsciiTableRenderer();
+	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+	rend.setWidth(new WidthLongestWordMinCol(new int[]{-1,50}));
+	System.out.println(rend.render(at));
+ * }</pre>
+ * 
+ * The output of the examples are:
+ * <pre style="line-height:17px">
+	┌───────────┬─────────────┐
+	│ first     │ information │
+	├───────────┼─────────────┤
+	│ second    │ info        │
+	└───────────┴─────────────┘
+
+	┌────────┬──────────────────────────────────────────────────┐
+	│ first  │ information                                      │
+	├────────┼──────────────────────────────────────────────────┤
+	│ second │ info                                             │
+	└────────┴──────────────────────────────────────────────────┘
+ * </pre>
  * 
  * 
+ * <h4>Width using the longest word per column for column width with maximum column width</h4>
+ * <p>
+ * 		The class {@link de.vandermeer.asciitable.v2.render.WidthLongestWordMaxCol} calculates column width using the longest word per column (plus column padding) with a maximum column width.
+ * 		The following examples show the same 2-row table rendered with different widths.
+ * 		Example one uses an overall maximum (so column 2 is shorter).
+ * 		Example two uses individual maximum with column 1 being shorter.
+ * </p>
+ * <pre>{@code
+	V2_AsciiTable at = new V2_AsciiTable();
+	at.addRule();
+	at.addRow("first", "information");
+	at.addRule();
+	at.addRow("second", "info");
+	at.addRule();
+	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+	rend.setWidth(new WidthLongestWordMaxCol(10));
+	System.out.println(rend.render(at));
+
+	at = new V2_AsciiTable();
+	at.addRule();
+	at.addRow("first", "information");
+	at.addRule();
+	at.addRow("second", "info");
+	at.addRule();
+	rend = new V2_AsciiTableRenderer();
+	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+	rend.setWidth(new WidthLongestWordMaxCol(new int[]{5,-1}));
+	System.out.println(rend.render(at));
+ * }</pre>
+ * 
+ * The output of the examples are:
+ * <pre style="line-height:17px">
+	┌────────┬──────────┐
+	│ first  │ informat │
+	│        │ ion      │
+	├────────┼──────────┤
+	│ second │ info     │
+	└────────┴──────────┘
+
+	┌─────┬─────────────┐
+	│ fir │ information │
+	│ st  │             │
+	├─────┼─────────────┤
+	│ sec │ info        │
+	│ ond │             │
+	└─────┴─────────────┘
+ * </pre>
+
  * 
  * 
  * 
@@ -833,5 +915,6 @@
  * @version    v0.2.0 build 150814 (14-Aug-15) for Java 1.7
  */
 package de.vandermeer.asciitable.v2;
+
 
 
