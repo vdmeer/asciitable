@@ -19,7 +19,7 @@ import de.vandermeer.asciitable.commons.ArrayTransformations;
 import de.vandermeer.asciitable.v2.V2_AsciiTable;
 import de.vandermeer.asciitable.v2.row.ContentRow;
 import de.vandermeer.asciitable.v2.row.RuleRow;
-import de.vandermeer.asciitable.v2.row.RuleType;
+import de.vandermeer.asciitable.v2.row.RuleRowType;
 import de.vandermeer.asciitable.v2.row.V2_Row;
 import de.vandermeer.asciitable.v2.themes.V2_RowTheme;
 
@@ -68,16 +68,16 @@ public abstract class V2_Utilities {
 
 	/**
 	 * Fixes top and bottom rules.
-	 * If the top of the table is a rule, the rule type will be changed to {@link RuleType#TOP}.
-	 * If the bottom of the table is a rule, the rule type will be changed to {@link RuleType#BOTTOM}.
+	 * If the top of the table is a rule, the rule type will be changed to {@link RuleRowType#TOP}.
+	 * If the bottom of the table is a rule, the rule type will be changed to {@link RuleRowType#BOTTOM}.
 	 * @param table the table to fix rows for
 	 */
 	public static void fixTableRules(V2_AsciiTable table){
 		if(table.getTable().get(0) instanceof RuleRow){
-			((RuleRow)table.getTable().get(0)).setRuleType(RuleType.TOP);
+			((RuleRow)table.getTable().get(0)).setRuleType(RuleRowType.TOP);
 		}
 		if(table.getTable().get(table.getTable().size()-1) instanceof RuleRow){
-			((RuleRow)table.getTable().get(table.getTable().size()-1)).setRuleType(RuleType.BOTTOM);
+			((RuleRow)table.getTable().get(table.getTable().size()-1)).setRuleType(RuleRowType.BOTTOM);
 		}
 	}
 

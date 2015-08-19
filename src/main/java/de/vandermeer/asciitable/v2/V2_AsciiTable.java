@@ -24,8 +24,8 @@ import de.vandermeer.asciitable.commons.ObjectToStringStyle;
 import de.vandermeer.asciitable.commons.TableException;
 import de.vandermeer.asciitable.v2.row.ContentRow;
 import de.vandermeer.asciitable.v2.row.RuleRow;
-import de.vandermeer.asciitable.v2.row.RuleStyle;
-import de.vandermeer.asciitable.v2.row.RuleType;
+import de.vandermeer.asciitable.v2.row.RuleRowStyle;
+import de.vandermeer.asciitable.v2.row.RuleRowType;
 import de.vandermeer.asciitable.v2.row.V2_Row;
 
 /**
@@ -80,10 +80,10 @@ public class V2_AsciiTable {
 	 */
 	public final void addRule(){
 		if(this.table.size()==0){
-			this.table.add(new RuleRow(RuleType.TOP));
+			this.table.add(new RuleRow(RuleRowType.TOP));
 		}
 		else{
-			this.table.add(new RuleRow(RuleType.MID));
+			this.table.add(new RuleRow(RuleRowType.MID));
 		}
 	}
 
@@ -94,10 +94,10 @@ public class V2_AsciiTable {
 	 */
 	public final void addStrongRule(){
 		if(this.table.size()==0){
-			this.table.add(new RuleRow(RuleType.TOP, RuleStyle.STRONG));
+			this.table.add(new RuleRow(RuleRowType.TOP, RuleRowStyle.STRONG));
 		}
 		else{
-			this.table.add(new RuleRow(RuleType.MID, RuleStyle.STRONG));
+			this.table.add(new RuleRow(RuleRowType.MID, RuleRowStyle.STRONG));
 		}
 	}
 

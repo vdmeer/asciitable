@@ -57,10 +57,28 @@
  * 		<li>{@link de.vandermeer.asciitable.v2.render.BorderType#DOWN} - a border that goes down (linked to the next row) only,</li>
  * 		<li>{@link de.vandermeer.asciitable.v2.render.BorderType#ALL} - a border that goes up and down (linked to the previous and to the next row),</li>
  * 		<li>{@link de.vandermeer.asciitable.v2.render.BorderType#CONTENT} - a border specific to a content row with special linkage to previous and next rows,</li>
- * 		<li>{@link de.vandermeer.asciitable.v2.render.BorderType#NONE} - a border that goes neither up nor down nor is a content border.</li>
+ * 		<li>{@link de.vandermeer.asciitable.v2.render.BorderType#NONE} - a border that goes neither up nor down nor is a content border, usually a blank character, used for column spanning.</li>
  * </ul>
  * 
  * This border type assists a renderer to pick the right character from a row theme.
+ * 
+ * 
+ * 
+ * <h3>A complete border description</h3>
+ * <p>
+ * 		Combining border type and border position describes a complete border.
+ * 		With both characteristics, the renderer can pick the correct border character from a row or table theme.
+ * 		Once the type and the position of the row are determined, border charaters can be retrieved from table and row themes. 
+ * </p>
+ * 
+ * <p>
+ * 		For instance, a border of type {@link de.vandermeer.asciitable.v2.render.BorderPosition#MIDDLE} and position {@link de.vandermeer.asciitable.v2.render.BorderType#ALL}
+ * 		means to use {@code getMidBorderAll()} for a mid-rule row on a {@link de.vandermeer.asciitable.v2.themes.V2_RowTheme} to get the right character.
+ * 		For the row theme {@link de.vandermeer.asciitable.v2.themes.V2_E_RowThemes#UTF_DOUBLE_MID} this character will be '╬'.
+ * 		Similar, a border of type {@link de.vandermeer.asciitable.v2.render.BorderPosition#RIGHT} and position {@link de.vandermeer.asciitable.v2.render.BorderType#UP}
+ * 		means to use {@code getMidBorderAll()} for a bottom-rule row.
+ * 		For the row theme {@link de.vandermeer.asciitable.v2.themes.V2_E_RowThemes#UTF_DOUBLE_BOTTOM} this character will be '╝'.
+ * </p>
  * 
  * 
  * 

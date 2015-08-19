@@ -29,18 +29,18 @@ import de.vandermeer.asciitable.commons.ObjectToStringStyle;
 public class RuleRow implements V2_Row {
 
 	/** Type of a rule row, will be null for a content row. */
-	private RuleType ruleType;
+	private RuleRowType ruleType;
 
 	/** Style of a rule row, will be null for a content row. */
-	private RuleStyle ruleStyle;
+	private RuleRowStyle ruleStyle;
 
 	/**
 	 * Returns a new table row of a particular rule type without content.
 	 * The rule style is set to normal.
 	 * @param type rule type of the row
 	 */
-	public RuleRow(RuleType type){
-		this(type, RuleStyle.NORMAL);
+	public RuleRow(RuleRowType type){
+		this(type, RuleRowStyle.NORMAL);
 	}
 
 	/**
@@ -48,7 +48,7 @@ public class RuleRow implements V2_Row {
 	 * @param type rule type of the row
 	 * @param style rule style
 	 */
-	public RuleRow(RuleType type, RuleStyle style){
+	public RuleRow(RuleRowType type, RuleRowStyle style){
 		this.ruleType = type;
 		this.ruleStyle = style;
 
@@ -64,7 +64,7 @@ public class RuleRow implements V2_Row {
 	 * Returns the rule style of the row.
 	 * @return rule style, null if not set, i.e. for content rows
 	 */
-	public RuleStyle getRuleStyle(){
+	public RuleRowStyle getRuleStyle(){
 		return this.ruleStyle;
 	}
 
@@ -72,7 +72,7 @@ public class RuleRow implements V2_Row {
 	 * Sets the rule type if the row is a rule row and the new type is not null.
 	 * @param type new rule type
 	 */
-	public void setRuleType(RuleType type){
+	public void setRuleType(RuleRowType type){
 		if(type!=null){
 			this.ruleType = type;
 		}
@@ -82,7 +82,7 @@ public class RuleRow implements V2_Row {
 	 * Sets the rule style if the row is a rule row and the new style is not null.
 	 * @param style new rule style
 	 */
-	public void setRuleStyle(RuleStyle style){
+	public void setRuleStyle(RuleRowStyle style){
 		if(style!=null){
 			this.ruleStyle = style;
 		}
@@ -92,7 +92,7 @@ public class RuleRow implements V2_Row {
 	 * Returns the rule type of the row.
 	 * @return rule type, null if not set, i.e. for content rows
 	 */
-	public RuleType getRuleType(){
+	public RuleRowType getRuleType(){
 		return this.ruleType;
 	}
 

@@ -22,7 +22,7 @@ package de.vandermeer.asciitable.v2.row;
  * @version    v0.2.0 build 150814 (14-Aug-15) for Java 1.7
  * @since      v0.0.3
  */
-public enum RuleStyle {
+public enum RuleRowStyle {
 
 	/** A normal, standard rule. */
 	NORMAL,

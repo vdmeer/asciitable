@@ -14,7 +14,7 @@
  */
 
 /**
- * V2 core artifacts.
+ * V2 row artifacts.
  *
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
