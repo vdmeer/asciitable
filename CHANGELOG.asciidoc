@@ -7,6 +7,7 @@ v0.2.1 - patch - 2015-##-##
 	** moved the testTheme methods of the table/row theme builders into a new class ThemeValidator (fixes a tangle problem)
 	** moved content creation from Processed row to Renderer (fixes a tangle problem)
 	** smaller changes in width package, plus added more width calculation objects (longest word with several constraints)
+	** moved all width ojects into the render package, renamed the implementations of the interface removing V2_
 
 
 v0.2.0 - feature add - 2015-08-14

@@ -437,6 +437,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_rule_styles">Rule styles</a></li>
 <li><a href="#_width_with_table_width_and_evenly_distributed_column_witdh">Width with table width and evenly distributed column witdh</a></li>
 <li><a href="#_width_with_fixed_width_per_column">Width with fixed width per column</a></li>
+<li><a href="#_width_using_longest_word_per_column_with_0_standard_and_individual_padding">Width using longest word per column, with 0, standard, and individual padding</a></li>
 <li><a href="#_padding_characters">Padding Characters</a></li>
 <li><a href="#_table_theme">Table Theme</a></li>
 </ul>
@@ -637,13 +638,13 @@ at.addRule();</pre>
 <h4 id="_create_a_renderer_and_configure_it">Create a renderer and configure it</h4>
 <div class="paragraph">
 <p>We create the standard renderer and configure it to use the provided table theme <code>V2_E_TableThemes.UTF_LIGHT</code>.
-The we add a width to the renderer using <code>V2_WidthAbsoluteEven</code> for a table width of 76 characters.</p>
+The we add a width to the renderer using <code>WidthAbsoluteEven</code> for a table width of 76 characters.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));</pre>
+rend.setWidth(new WidthAbsoluteEven(76));</pre>
 </div>
 </div>
 </div>
@@ -837,6 +838,42 @@ rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));</pre>
 </div>
 </div>
 <div class="sect2">
+<h3 id="_width_using_longest_word_per_column_with_0_standard_and_individual_padding">Width using longest word per column, with 0, standard, and individual padding</h3>
+<div class="listingblock">
+<div class="content">
+<pre>	┌──────┬───────────┐
+	│first │with some  │
+	│row   │information│
+	│(col1)│(col2)     │
+	├──────┼───────────┤
+	│second│with some  │
+	│row   │information│
+	│(col1)│(col2)     │
+	└──────┴───────────┘
+
+	┌────────┬─────────────┐
+	│ first  │ with some   │
+	│ row    │ information │
+	│ (col1) │ (col2)      │
+	├────────┼─────────────┤
+	│ second │ with some   │
+	│ row    │ information │
+	│ (col1) │ (col2)      │
+	└────────┴─────────────┘
+
+	┌────────────┬───────────────────┐
+	│  first     │   with some       │
+	│  row       │   information     │
+	│  (col1)    │   (col2)          │
+	├────────────┼───────────────────┤
+	│   second   │    with some      │
+	│   row      │    information    │
+	│   (col1)   │    (col2)         │
+	└────────────┴───────────────────┘</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_padding_characters">Padding Characters</h3>
 <div class="listingblock">
 <div class="content">
@@ -885,7 +922,7 @@ rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-08-15 00:05:27 IST
+Last updated 2015-08-19 20:18:18 IST
 </div>
 </div>
 </body>
