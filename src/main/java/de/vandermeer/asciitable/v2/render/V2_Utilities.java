@@ -16,10 +16,8 @@
 package de.vandermeer.asciitable.v2.render;
 
 import de.vandermeer.asciitable.commons.ArrayTransformations;
-import de.vandermeer.asciitable.v2.V2_AsciiTable;
 import de.vandermeer.asciitable.v2.row.ContentRow;
 import de.vandermeer.asciitable.v2.row.RuleRow;
-import de.vandermeer.asciitable.v2.row.RuleRowType;
 import de.vandermeer.asciitable.v2.row.V2_Row;
 import de.vandermeer.asciitable.v2.themes.V2_RowTheme;
 
@@ -67,22 +65,7 @@ public abstract class V2_Utilities {
 	}
 
 	/**
-	 * Fixes top and bottom rules.
-	 * If the top of the table is a rule, the rule type will be changed to {@link RuleRowType#TOP}.
-	 * If the bottom of the table is a rule, the rule type will be changed to {@link RuleRowType#BOTTOM}.
-	 * @param table the table to fix rows for
-	 */
-	public static void fixTableRules(V2_AsciiTable table){
-		if(table.getTable().get(0) instanceof RuleRow){
-			((RuleRow)table.getTable().get(0)).setRuleType(RuleRowType.TOP);
-		}
-		if(table.getTable().get(table.getTable().size()-1) instanceof RuleRow){
-			((RuleRow)table.getTable().get(table.getTable().size()-1)).setRuleType(RuleRowType.BOTTOM);
-		}
-	}
-
-	/**
-	 * Returns the border types for a bottom rule.
+	 * Returns the border types for a bottom rule, regardless of the actual type of the given row.
 	 * @param prev the previous row in the table
 	 * @param row the original row
 	 * @param colNumbers number of columns in the table
@@ -94,42 +77,35 @@ public abstract class V2_Utilities {
 			return ret;
 		}
 
-		RuleRow original = (RuleRow)row;
+		ret = new BorderType[colNumbers+1];
+		for(int i=0; i<ret.length; i++){
+			ret[i] = BorderType.NONE;
+		}
 
-		switch(original.getRuleType()){
-			case BOTTOM:
-				ret = new BorderType[colNumbers+1];
-				for(int i=0; i<ret.length; i++){
-					ret[i] = BorderType.NONE;
-				}
-
-				if(prev!=null){
-					BorderType[] relAdj = prev.getBorderTypes();
-					if(relAdj!=null){
-						for(int i=0; i<relAdj.length; i++){
-							switch(relAdj[i]){
-								case NONE:
-									ret[i] = BorderType.NONE;
-									break;
-								case UP:
-									ret[i] = BorderType.NONE;
-									break;
-								case ALL:
-									ret[i] = BorderType.UP;
-									break;
-								case DOWN:
-									ret[i] = BorderType.UP;
-									break;
-								case CONTENT:
-									ret[i] = BorderType.UP;
-									break;
-							}
-						}
+		if(prev!=null){
+			BorderType[] relAdj = prev.getBorderTypes();
+			if(relAdj!=null){
+				for(int i=0; i<relAdj.length; i++){
+					switch(relAdj[i]){
+						case NONE:
+							ret[i] = BorderType.NONE;
+							break;
+						case UP:
+							ret[i] = BorderType.NONE;
+							break;
+						case ALL:
+							ret[i] = BorderType.UP;
+							break;
+						case DOWN:
+							ret[i] = BorderType.UP;
+							break;
+						case CONTENT:
+							ret[i] = BorderType.UP;
+							break;
+						
 					}
 				}
-				break;
-			default:
-				break;
+			}
 		}
 		return ret;
 	}
@@ -177,7 +153,7 @@ public abstract class V2_Utilities {
 	}
 
 	/**
-	 * Returns the border types for a mid rule.
+	 * Returns the border types for a mid rule, regardless of the actual type of the given row.
 	 * @param prev previous row in the table
 	 * @param next next row in the table
 	 * @param row the original row
@@ -190,73 +166,65 @@ public abstract class V2_Utilities {
 			return ret;
 		}
 
-		RuleRow original = (RuleRow)row;
+		ret = new BorderType[colNumbers+1];
+		for(int i=0; i<ret.length; i++){
+			ret[i] = BorderType.NONE;
+		}
 
-		switch(original.getRuleType()){
-			case MID:
-				ret = new BorderType[colNumbers+1];
-				for(int i=0; i<ret.length; i++){
-					ret[i] = BorderType.NONE;
-				}
-
-				//first set everything against the previous row (if any)
-				if(prev!=null){
-					BorderType[] relAdj = prev.getBorderTypes();
-					if(relAdj!=null){
-						for(int i=0; i<relAdj.length; i++){
-							switch(relAdj[i]){
-								case NONE:
-									ret[i] = BorderType.NONE;
-									break;
-								case UP:
-									ret[i] = BorderType.NONE;
-									break;
-								case ALL:
-									ret[i] = BorderType.UP;
-									break;
-								case DOWN:
-									ret[i] = BorderType.UP;
-									break;
-								case CONTENT:
-									ret[i] = BorderType.UP;
-									break;
-							}
-						}
+		//first set everything against the previous row (if any)
+		if(prev!=null){
+			BorderType[] relAdj = prev.getBorderTypes();
+			if(relAdj!=null){
+				for(int i=0; i<relAdj.length; i++){
+					switch(relAdj[i]){
+						case NONE:
+							ret[i] = BorderType.NONE;
+							break;
+						case UP:
+							ret[i] = BorderType.NONE;
+							break;
+						case ALL:
+							ret[i] = BorderType.UP;
+							break;
+						case DOWN:
+							ret[i] = BorderType.UP;
+							break;
+						case CONTENT:
+							ret[i] = BorderType.UP;
+							break;
 					}
 				}
+			}
+		}
 
-				//next set anything against the next row (if any)
-				if(next!=null){
-					BorderType[] relAdj = next.getBorderTypes();
-					if(relAdj!=null){
-						for(int i=0; i<relAdj.length; i++){
-							switch(relAdj[i]){
-								case NONE:
-								case DOWN:
-									break;
-								case CONTENT:
-								case ALL:
-								case UP:
-									if(ret[i]==BorderType.UP){
-										ret[i] = BorderType.ALL;
-									}
-									else{
-										ret[i] = BorderType.DOWN;
-									}
-									break;
+		//next set anything against the next row (if any)
+		if(next!=null){
+			BorderType[] relAdj = next.getBorderTypes();
+			if(relAdj!=null){
+				for(int i=0; i<relAdj.length; i++){
+					switch(relAdj[i]){
+						case NONE:
+						case DOWN:
+							break;
+						case CONTENT:
+						case ALL:
+						case UP:
+							if(ret[i]==BorderType.UP){
+								ret[i] = BorderType.ALL;
 							}
-						}
+							else{
+								ret[i] = BorderType.DOWN;
+							}
+							break;
 					}
 				}
-				break;
-			default:
-				break;
+			}
 		}
 		return ret;
 	}
 
 	/**
-	 * Returns the border types for a top rule.
+	 * Returns the border types for a top rule, regardless of the actual type of the given row.
 	 * @param next the next row in the table
 	 * @param row the original row
 	 * @param colNumbers number of columns in the table
@@ -268,42 +236,34 @@ public abstract class V2_Utilities {
 			return ret;
 		}
 
-		RuleRow original = (RuleRow)row;
+		ret = new BorderType[colNumbers+1];
+		for(int i=0; i<ret.length; i++){
+			ret[i] = BorderType.NONE;
+		}
 
-		switch(original.getRuleType()){
-			case TOP:
-				ret = new BorderType[colNumbers+1];
-				for(int i=0; i<ret.length; i++){
-					ret[i] = BorderType.NONE;
-				}
-
-				if(next!=null){
-					BorderType[] relAdj = next.getBorderTypes();
-					if(relAdj!=null){
-						for(int i=0; i<relAdj.length; i++){
-						 	switch(relAdj[i]){
-								case NONE:
-									ret[i] = BorderType.NONE;
-									break;
-								case UP:
-									ret[i] = BorderType.DOWN;
-									break;
-								case ALL:
-									ret[i] = BorderType.DOWN;
-									break;
-								case DOWN:
-									ret[i] = BorderType.NONE;
-									break;
-								case CONTENT:
-									ret[i] = BorderType.DOWN;
-									break;
-							}
-						}
+		if(next!=null){
+			BorderType[] relAdj = next.getBorderTypes();
+			if(relAdj!=null){
+				for(int i=0; i<relAdj.length; i++){
+				 	switch(relAdj[i]){
+						case NONE:
+							ret[i] = BorderType.NONE;
+							break;
+						case UP:
+							ret[i] = BorderType.DOWN;
+							break;
+						case ALL:
+							ret[i] = BorderType.DOWN;
+							break;
+						case DOWN:
+							ret[i] = BorderType.NONE;
+							break;
+						case CONTENT:
+							ret[i] = BorderType.DOWN;
+							break;
 					}
 				}
-				break;
-			default:
-				break;
+			}
 		}
 		return ret;
 	}

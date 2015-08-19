@@ -33,7 +33,7 @@ import de.vandermeer.asciitable.v2.themes.V2_E_TableThemes;
 public class Test_CodeForDocs {
 
 	@Test
-	public void test_TaleWithoutArrayNeed(){
+	public void test_TableWithoutArrayNeed(){
 		V2_AsciiTable at = new V2_AsciiTable();
 
 		at.addRule();
@@ -44,14 +44,14 @@ public class Test_CodeForDocs {
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(19));
+		rend.setWidth(new V2_WidthAbsoluteEven(19));
 
 		RenderedTable rt = rend.render(at);
 		System.out.println(rt);
 	}
 
 	@Test
-	public void test_TaleWithoutArrayNeedAsArray(){
+	public void test_TableWithoutArrayNeedAsArray(){
 		//disable the flip array in V2_Utils for correct output
 		String[][] ar;
 		ar = V2_Utilities.createContentArray(new Object[]{"1-1", "1-2", "1-3"}, new int[]{5, 5, 5}, new int[]{1, 1, 1});
@@ -62,7 +62,7 @@ public class Test_CodeForDocs {
 	}
 
 	@Test
-	public void test_TaleWithArrayNeed(){
+	public void test_TableWithArrayNeed(){
 		V2_AsciiTable at = new V2_AsciiTable();
 
 		at.addRule();
@@ -73,14 +73,14 @@ public class Test_CodeForDocs {
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-		rend.setWidth(new V2_WidthAbsoluteEven().setWidth(19));
+		rend.setWidth(new V2_WidthAbsoluteEven(19));
 
 		RenderedTable rt = rend.render(at);
 		System.out.println(rt);
 	}
 
 	@Test
-	public void test_TaleWithArrayNeedAsArray(){
+	public void test_TableWithArrayNeedAsArray(){
 		//disable the flip array in V2_Utils for correct output
 		String[][] ar;
 		ar = V2_Utilities.createContentArray(new Object[]{"1-1", "1-2 text", "1-3"}, new int[]{5, 5, 5}, new int[]{1, 1, 1});

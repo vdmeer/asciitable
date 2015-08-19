@@ -136,7 +136,7 @@ The we add a width to the renderer using +V2_WidthAbsoluteEven+ for a table widt
 ----------------------------------------------------------------------------------------
 V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-rend.setWidth(new V2_WidthAbsoluteEven().setWidth(76));
+rend.setWidth(new V2_WidthAbsoluteEven(76));
 ----------------------------------------------------------------------------------------
 
 Render the table

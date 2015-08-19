@@ -32,7 +32,7 @@ public class Test_V2_E_TableThemes {
 	public void test_Themes(){
 		for(V2_E_TableThemes t : V2_E_TableThemes.values()){
 			assertTrue(t.get()!=null);
-			V2_TableThemeBuilder.testTableTheme(t.get());
+			ThemeValidator.validateTableTheme(t.get());
 			System.out.println(t.name() + "\n" + t.get().toDoc() + "\n\n");
 		}
 	}

@@ -12,11 +12,11 @@
   <property name="project-type" value="maven" />
   <property name="hide-externals" value="true" />
   <classpath>
-    <classpathentry kind="lib" path="../../../target/asciitable-0.1.1-SNAPSHOT.jar" />
-    <classpathentry kind="lib" path="../../../target/test-classes" />
+    <classpathentry kind="lib" path="../../target/asciitable-0.2.1.jar" />
+    <classpathentry kind="lib" path="../../target/test-classes" />
   </classpath>
   <pom-root-files>
-    <pom path="../../../pom.xml" />
+    <pom path="../../pom.xml" />
   </pom-root-files>
   <excludes>
     <exclude expression="*.Test*" active="true" />

@@ -34,7 +34,7 @@ public class Test_CodeForDocs_V1 {
 		at.addRow(null, null, "Table Heading");
 		at.addRow("first row (col1)", "with some information", "and more information");
 		at.addRow("second row (col1)", "with some information (col2)", "and more information (col3)");
-//		System.out.println(at.render());
+		System.out.println(at.render());
 	}
 
 	@Test
@@ -44,31 +44,31 @@ public class Test_CodeForDocs_V1 {
 		at.addRow(null, null, "Table Heading");
 		at.addRow("row 1", "this is col 2", "and this is column 3");
 		at.addRow("row 2", "some text for column 2", "and some text for column 3");
-//		System.out.println(at.render());
+		System.out.println(at.render());
 
 		at.setTheme(V1_StandardTableThemes.LIGHT);
 		at.render();
-//		System.out.println(at.render());
+		System.out.println(at.render());
 
 		at.setTheme(V1_StandardTableThemes.DOUBLE);
 		at.render();
-//		System.out.println(at.render());
+		System.out.println(at.render());
 
 		at.setTheme(V1_StandardTableThemes.LIGHT_DOUBLE);
 		at.render();
-//		System.out.println(at.render());
+		System.out.println(at.render());
 
 		at.setTheme(V1_StandardTableThemes.DOUBLE_LIGHT);
 		at.render();
-//		System.out.println(at.render());
+		System.out.println(at.render());
 
 		at.setTheme(V1_StandardTableThemes.HEAVY);
 		at.render();
-//		System.out.println(at.render());
+		System.out.println(at.render());
 
 		at.setTheme(V1_StandardTableThemes.LATEX_LIGHT_TRIPLE_DASH);
 		at.render();
-//		System.out.println(at.render());
+		System.out.println(at.render());
 	}
 
 }

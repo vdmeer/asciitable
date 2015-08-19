@@ -13,24 +13,40 @@
  * limitations under the License.
  */
 
-package de.vandermeer.asciitable.v2.render.width;
+package de.vandermeer.asciitable.v2.render;
 
+import org.junit.Test;
+
+import de.vandermeer.asciitable.v2.RenderedTable;
 import de.vandermeer.asciitable.v2.V2_AsciiTable;
+import de.vandermeer.asciitable.v2.render.width.V2_WidthAbsoluteEven;
+import de.vandermeer.asciitable.v2.themes.V2_E_TableThemes;
 
 /**
- * Calculator for the width of a table.
+ * Tests for code used in render JavaDoc.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.2.0 build 150814 (14-Aug-15) for Java 1.7
- * @since      v0.0.5
  */
-public interface V2_Width {
+public class Test_CodeForDocs {
 
-	/**
-	 * Returns the width of each column in an array, column one being [0] and so on.
-	 * @param table the table with all content, important for some width calculations
-	 * @return column width array
-	 */
-	int[] getColumnWidths(V2_AsciiTable table);
+	@Test
+	public void test_TableWithoutArrayNeed(){
+		V2_AsciiTable at = new V2_AsciiTable();
+
+		at.addRule();
+		at.addRow("1-1", "1-2", "1-3");
+		at.addRule();
+		at.addRow("2-1", "2-2", "2-3");
+		at.addRule();
+
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new V2_WidthAbsoluteEven(25));
+		rend.setPaddingChar('_');
+
+		RenderedTable rt = rend.render(at);
+		System.out.println(rt);
+	}
 
 }

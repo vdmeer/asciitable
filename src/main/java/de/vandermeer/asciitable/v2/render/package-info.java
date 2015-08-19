@@ -26,9 +26,9 @@
  * The {@link de.vandermeer.asciitable.v2.render.V2_TableRenderer} interface provides the base line for realizing a table renderer.
  * It defines a number of methods to set the behavior of a renderer:
  * <ul>
- * 		<li>{@link de.vandermeer.asciitable.v2.render.V2_TableRenderer#setPaddingChar(char)} - sets the padding character for a renderer. This character is being used to pad all content rows (each line of them).</li>
- * 		<li>{@link de.vandermeer.asciitable.v2.render.V2_TableRenderer#setWidth(de.vandermeer.asciitable.v2.render.width.V2_Width)} - sets the table width being calculated by the given width object.</li>
- * 		<li>{@link de.vandermeer.asciitable.v2.render.V2_TableRenderer#setTheme(de.vandermeer.asciitable.v2.themes.V2_TableTheme)} - set the theme the renderer should use to render the table.</li>
+ * 		<li>Set the padding character for a renderer (character used to pad all content rows, each line of them) - {@link de.vandermeer.asciitable.v2.render.V2_TableRenderer#setPaddingChar(char)},</li>
+ * 		<li>Set the table width being calculated by the given width object - {@link de.vandermeer.asciitable.v2.render.V2_TableRenderer#setWidth(de.vandermeer.asciitable.v2.render.width.V2_Width)},</li>
+ * 		<li>Set the theme the renderer should use to render the table - {@link de.vandermeer.asciitable.v2.render.V2_TableRenderer#setTheme(de.vandermeer.asciitable.v2.themes.V2_TableTheme)}.</li>
  * </ul>
  * 
  * 
@@ -36,6 +36,21 @@
  * <h3>The ASCII Table Renderer Implementation</h3>
  * The class {@link de.vandermeer.asciitable.v2.render.V2_AsciiTableRenderer} implements a standard renderer.
  * It is using the theme {@link de.vandermeer.asciitable.v2.themes.V2_E_TableThemes#PLAIN_7BIT} as default theme.
+ * 
+ * 
+ * 
+ * <h3>Storing render information per row - {@link de.vandermeer.asciitable.v2.render.ProcessedRow}</h3>
+ * <p>
+ * 		To enable multiple renderer objects processing the same table each renderer stores all information of the rendering process in a new table (list of rows).
+ * 		This new table contains {@link de.vandermeer.asciitable.v2.render.ProcessedRow} objects that contain the render-generated information.
+ * 		The original table is not changed (except for adjustment of top and bottom rule row types).
+ * 		So each renderer creates its own view of the original table.
+ * </p>
+ * 
+ * <p>
+ * 		A processed row contains a link to the original row (for access to original content and configuration)
+ * 		plus the generated information for processed columns (wrapped lines, normalized, flipped content array) and border types.
+ * </p>
  * 
  * 
  * 
@@ -48,6 +63,7 @@
  * </ul>
  * 
  * This border position assists a renderer to pick the right character from a row theme.
+ * 
  * 
  * 
  * <h3>Define a border type</h3>
@@ -68,13 +84,16 @@
  * <p>
  * 		Combining border type and border position describes a complete border.
  * 		With both characteristics, the renderer can pick the correct border character from a row or table theme.
- * 		Once the type and the position of the row are determined, border charaters can be retrieved from table and row themes. 
+ * 		Once the type and the position of the row are determined, border character can be retrieved from table and row themes. 
  * </p>
  * 
  * <p>
  * 		For instance, a border of type {@link de.vandermeer.asciitable.v2.render.BorderPosition#MIDDLE} and position {@link de.vandermeer.asciitable.v2.render.BorderType#ALL}
  * 		means to use {@code getMidBorderAll()} for a mid-rule row on a {@link de.vandermeer.asciitable.v2.themes.V2_RowTheme} to get the right character.
  * 		For the row theme {@link de.vandermeer.asciitable.v2.themes.V2_E_RowThemes#UTF_DOUBLE_MID} this character will be '╬'.
+ * </p>
+ * 
+ * <p>
  * 		Similar, a border of type {@link de.vandermeer.asciitable.v2.render.BorderPosition#RIGHT} and position {@link de.vandermeer.asciitable.v2.render.BorderType#UP}
  * 		means to use {@code getMidBorderAll()} for a bottom-rule row.
  * 		For the row theme {@link de.vandermeer.asciitable.v2.themes.V2_E_RowThemes#UTF_DOUBLE_BOTTOM} this character will be '╝'.
@@ -85,13 +104,12 @@
  * <h3>Utilities</h3>
  * The class {@link de.vandermeer.asciitable.v2.render.V2_Utilities} implements a number of utility methods applicable to all (many) renderer implementations:
  * <ul>
- * 		<li>{@link de.vandermeer.asciitable.v2.render.V2_Utilities#createContentArray(Object[], int[], int[])} - creates a content array for a row that wraps over-size lines, normalizes the row array, and finally flips it for easy rendering,</li>
- * 		<li>{@link de.vandermeer.asciitable.v2.render.V2_Utilities#fixTableRules(de.vandermeer.asciitable.v2.V2_AsciiTable)} - does set the right type for the top and bottom rule of a table,</li>
- * 		<li>{@link de.vandermeer.asciitable.v2.render.V2_Utilities#getBorderTypes_BottomRule(ProcessedRow, de.vandermeer.asciitable.v2.row.V2_Row, int)} - returns the border types for a bottom rule,</li>
- * 		<li>{@link de.vandermeer.asciitable.v2.render.V2_Utilities#getBorderTypes_ContentRow(String[], de.vandermeer.asciitable.v2.row.ContentRow, int)} - returns the border types for a content rule,</li>
- * 		<li>{@link de.vandermeer.asciitable.v2.render.V2_Utilities#getBorderTypes_MidRule(ProcessedRow, ProcessedRow, de.vandermeer.asciitable.v2.row.V2_Row, int)} - returns the border types for a mid rule,</li>
- * 		<li>{@link de.vandermeer.asciitable.v2.render.V2_Utilities#getBorderTypes_TopRule(ProcessedRow, de.vandermeer.asciitable.v2.row.V2_Row, int)} - returns the border types for a top rule,</li>
- * 		<li>{@link de.vandermeer.asciitable.v2.render.V2_Utilities#getChar(BorderPosition, BorderType, de.vandermeer.asciitable.v2.themes.V2_RowTheme)} - returns the actual border character to be used from a row theme for a given border type and position.</li>
+ * 		<li>Create a content array for a row that wraps over-size lines, normalizes the row array, and finally flips it for easy rendering - {@link de.vandermeer.asciitable.v2.render.V2_Utilities#createContentArray(Object[], int[], int[])},</li>
+ * 		<li>Calculate the border types for a bottom rule - {@link de.vandermeer.asciitable.v2.render.V2_Utilities#getBorderTypes_BottomRule(ProcessedRow, de.vandermeer.asciitable.v2.row.V2_Row, int)},</li>
+ * 		<li>Calculate the border types for a content rule - {@link de.vandermeer.asciitable.v2.render.V2_Utilities#getBorderTypes_ContentRow(String[], de.vandermeer.asciitable.v2.row.ContentRow, int)},</li>
+ * 		<li>Calculate the border types for a mid rule - {@link de.vandermeer.asciitable.v2.render.V2_Utilities#getBorderTypes_MidRule(ProcessedRow, ProcessedRow, de.vandermeer.asciitable.v2.row.V2_Row, int)},</li>
+ * 		<li>Calculate the border types for a top rule - {@link de.vandermeer.asciitable.v2.render.V2_Utilities#getBorderTypes_TopRule(ProcessedRow, de.vandermeer.asciitable.v2.row.V2_Row, int)},</li>
+ * 		<li>Determine the actual border character to be used from a row theme for a given border type and position - {@link de.vandermeer.asciitable.v2.render.V2_Utilities#getChar(BorderPosition, BorderType, de.vandermeer.asciitable.v2.themes.V2_RowTheme)}.</li>
  * </ul>
  * 
  * 

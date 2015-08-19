@@ -27,15 +27,52 @@ import de.vandermeer.asciitable.v2.V2_AsciiTable;
 import de.vandermeer.asciitable.v2.render.width.V2_Width;
 import de.vandermeer.asciitable.v2.row.ContentRow;
 import de.vandermeer.asciitable.v2.row.RuleRow;
+import de.vandermeer.asciitable.v2.row.RuleRowType;
 import de.vandermeer.asciitable.v2.row.V2_Row;
+import de.vandermeer.asciitable.v2.themes.ThemeValidator;
 import de.vandermeer.asciitable.v2.themes.V2_E_TableThemes;
 import de.vandermeer.asciitable.v2.themes.V2_RowTheme;
 import de.vandermeer.asciitable.v2.themes.V2_TableTheme;
-import de.vandermeer.asciitable.v2.themes.V2_TableThemeBuilder;
 
 /**
  * Renders a table.
- *
+ * 
+ * Using the renderer is very simple. First, create and fill a table:
+ * <pre>{@code
+	V2_AsciiTable at = new V2_AsciiTable();
+	at.addRule();
+	at.addRow("1-1", "1-2", "1-3");
+	at.addRule();
+	at.addRow("2-1", "2-2", "2-3");
+	at.addRule();
+ * }</pre>
+ * 
+ * Then create a renderer and set the table width,
+ * set the theme to be used (if other than the default theme {@link V2_E_TableThemes#PLAIN_7BIT}) and
+ * set the padding character to be used (if other than the default padding character ' '):
+ * <pre>{@code
+	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+	rend.setWidth(new V2_WidthAbsoluteEven().setWidth(25));
+	rend.setPaddingChar('_');
+ * }</pre>
+ * 
+ * Finally render the created table, resulting in a rendered table ready to be printed or written to a file:
+ * <pre>{@code
+	RenderedTable rt = rend.render(at);
+	System.out.println(rt);
+ * }</pre>
+ * 
+ * The example above will result in this table printed to standard out:
+ * <pre style="line-height:17px">
+	┌───────┬───────┬───────┐
+	│_1-1___│_1-2___│_1-3___│
+	├───────┼───────┼───────┤
+	│_2-1___│_2-2___│_2-3___│
+	└───────┴───────┴───────┘
+ * </pre>
+ * 
+ * 
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.2.0 build 150814 (14-Aug-15) for Java 1.7
  * @since      v0.0.5
@@ -90,16 +127,20 @@ public class V2_AsciiTableRenderer implements V2_TableRenderer {
 			throw new IllegalArgumentException("wrong table width argument: no width set");
 		}
 
-		int[] cols = this.width.setColumnCount(table.getColumnCount()).getColumnWidths(table.getDefaultPadding());
+		int[] cols = this.width.getColumnWidths(table);
 
 		//got width, now prepare all table information
 
-		//start fixing the table top and bottom rules if they are set
-		V2_Utilities.fixTableRules(table);
-
 		//now create a list of processed table rows
 		for(V2_Row row : table.getTable()){
-			this.rows.add(new ProcessedRow(row, cols, table.getColumnCount()));
+			ProcessedRow pr = new ProcessedRow(row, cols, table.getColumnCount());
+			if(row instanceof ContentRow){
+				ContentRow crow = (ContentRow)row;
+				String[][] procColumns = V2_Utilities.createContentArray(crow.getColumns(), cols, crow.getPadding());
+				pr.setProcessedColumns(procColumns);
+				pr.setBorderTypes(V2_Utilities.getBorderTypes_ContentRow(procColumns[0], crow, table.getColumnCount()));
+			}
+			this.rows.add(pr);
 		}
 
 		//now adjust borders for top rule
@@ -119,18 +160,40 @@ public class V2_AsciiTableRenderer implements V2_TableRenderer {
 		}
 
 		List<StrBuilder> ret = new LinkedList<StrBuilder>();
-		for(ProcessedRow row : this.rows){
-			V2_Row original = row.getOriginalRow();
+		for(int i=0; i<this.rows.size(); i++){
+			V2_Row original = this.rows.get(i).getOriginalRow();
 			if(original instanceof ContentRow){
-				ret.add(this.renderContentRow(row, cols));
+				ret.add(this.renderContentRow(this.rows.get(i), cols));
 			}
 			else if(original instanceof RuleRow){
-				ret.add(this.renderRuleRow(row, cols));
+				if(i==0){
+					ret.add(this.renderRuleRow(this.rows.get(i), cols, RuleRowType.TOP));
+				}
+				else if(i==(this.rows.size()-1)){
+					ret.add(this.renderRuleRow(this.rows.get(i), cols, RuleRowType.BOTTOM));
+				}
+				else{
+					ret.add(this.renderRuleRow(this.rows.get(i), cols, null));
+				}
 			}
 			else{
 				System.err.println("ERROR in renderering");//TODO
 			}
 		}
+
+//		for(ProcessedRow row : this.rows){
+//			V2_Row original = row.getOriginalRow();
+//			if(original instanceof ContentRow){
+//				ret.add(this.renderContentRow(row, cols));
+//			}
+//			else if(original instanceof RuleRow){
+//				ret.add(this.renderRuleRow(row, cols, null));
+//			}
+//			else{
+//				System.err.println("ERROR in renderering");//TODO
+//			}
+//		}
+
 		return new RenderedTable(ret);
 	}
 
@@ -292,16 +355,18 @@ public class V2_AsciiTableRenderer implements V2_TableRenderer {
 	 * Renders a rule row.
 	 * @param row processed row to render
 	 * @param cols columns calculated by {@link V2_Width}
+	 * @param assumeType is a rule row type the methods has to assume, regardless of the actual set type in the original row
 	 * @return a string builder with the rendered string of the rendered row
 	 */
-	protected final StrBuilder renderRuleRow(ProcessedRow row, int[] cols){
+	protected final StrBuilder renderRuleRow(ProcessedRow row, int[] cols, RuleRowType assumeType){
 		StrBuilder ret = new StrBuilder(100);
 		V2_RowTheme rt = null;
 		BorderType[] borders = row.getBorderTypes();
 
 		RuleRow original = (RuleRow)row.getOriginalRow();
+		RuleRowType type = (assumeType==null)?original.getRuleType():assumeType;
 
-		switch(original.getRuleType()){
+		switch(type){
 			case BOTTOM:
 				switch(original.getRuleStyle()){
 					case NORMAL:
@@ -362,7 +427,7 @@ public class V2_AsciiTableRenderer implements V2_TableRenderer {
 	@Override
 	public V2_AsciiTableRenderer setTheme(V2_TableTheme theme){
 		if(theme!=null){
-			V2_TableThemeBuilder.testTableTheme(theme);
+			ThemeValidator.validateTableTheme(theme);
 			this.theme = theme;
 		}
 		return this;

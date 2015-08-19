@@ -32,7 +32,7 @@ public class Test_V2_E_RowThemes {
 	public void test_Themes(){
 		for(V2_E_RowThemes t : V2_E_RowThemes.values()){
 			assertTrue(t.get()!=null);
-			V2_RowThemeBuilder.testRowTheme(t.get());
+			ThemeValidator.validateRowTheme(t.get());
 			System.out.println(t.name() + "\n" + t.get().toDoc() + "\n\n");
 		}
 	}

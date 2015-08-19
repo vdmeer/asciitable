@@ -67,7 +67,7 @@ public class AbstractRowTheme implements V2_RowTheme {
 		this.mid = mid;
 		this.description = description;
 
-		V2_RowThemeBuilder.testRowTheme(this);
+		ThemeValidator.validateRowTheme(this);
 	}
 
 	@Override

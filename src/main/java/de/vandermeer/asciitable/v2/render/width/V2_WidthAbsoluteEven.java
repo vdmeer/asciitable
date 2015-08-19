@@ -15,6 +15,8 @@
 
 package de.vandermeer.asciitable.v2.render.width;
 
+import de.vandermeer.asciitable.v2.V2_AsciiTable;
+
 /**
  * Utility to define the width of table columns using an absolute table width evenly distributed over all columns.
  *
@@ -22,41 +24,47 @@ package de.vandermeer.asciitable.v2.render.width;
  * @version    v0.2.0 build 150814 (14-Aug-15) for Java 1.7
  * @since      v0.0.5
  */
-public class V2_WidthAbsoluteEven extends AbstractWidth {
+public class V2_WidthAbsoluteEven implements V2_Width {
+
+	/** Width of the table. */
+	protected int width;
 
 	/**
-	 * Sets the absolute width of the table.
+	 * Returns a new width object with an overall table width set.
 	 * @param width absolute table width as number of characters
-	 * @return self to allow for chaining
 	 */
-	public V2_WidthAbsoluteEven setWidth(int width){
+	public V2_WidthAbsoluteEven(int width){
 		if(width>=3){
 			this.width = width;
 		}
-		return this;
 	}
 
 	@Override
-	public int[] getColumnWidths(int padding) {
-		int[] ret = new int[this.colNumber];
+	public int[] getColumnWidths(V2_AsciiTable table) {
+		if(table==null){
+			return null;
+		}
+
+		int colNumber = table.getColumnCount();
+		int[] ret = new int[colNumber];
 
 		int content = 0;
-		if(padding>0){
-			content = this.colNumber*padding + this.colNumber;
+		if(table.getDefaultPadding()>0){
+			content = colNumber*table.getDefaultPadding() + colNumber;
 		}
 		else{
-			content = this.colNumber*3;
+			content = colNumber*3;
 		}
-		int borders = this.colNumber + 1;
+		int borders = colNumber + 1;
 		if(this.width<(content + borders)){
 			throw new IllegalArgumentException("wrong width argument: width must allow for borders");
 		}
 
-		int distribute = this.width-1-this.colNumber;		//this is to be distributed over columns
-		int colmin = distribute/this.colNumber;				//this is minimum width of each column
-		int leftover = distribute-colmin*this.colNumber;	//leftover
+		int distribute = this.width-1-colNumber;		//this is to be distributed over columns
+		int colmin = distribute/colNumber;				//this is minimum width of each column (w/o leftover)
+		int leftover = distribute-colmin*colNumber;	//leftover
 
-		for(int i=0; i<this.colNumber; i++){
+		for(int i=0; i<colNumber; i++){
 			ret[i] = colmin;
 			if(leftover!=0){
 				ret[i] += 1;
