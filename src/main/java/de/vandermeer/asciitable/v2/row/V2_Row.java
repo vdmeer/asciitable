@@ -19,7 +19,7 @@ package de.vandermeer.asciitable.v2.row;
  * A table row.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.2.1 build 150819 (19-Aug-15) for Java 1.7
+ * @version    v0.2.2 build 150827 (27-Aug-15) for Java 1.7
  * @since      v0.2.0
  */
 public interface V2_Row {

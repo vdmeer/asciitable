@@ -25,8 +25,8 @@ import de.vandermeer.asciitable.v2.row.V2_Row;
  * Utility to define the width of table columns automatically based on the longest line in each column.
  *
  * @author     Sebastian Thomschke &lt;sebthom@sourceforge.net&gt;
- * @version    v0.2.2 build 150819 (19-Aug-15) for Java 1.7
- * @since      v0.2.1
+ * @version    v0.2.2 build 150827 (27-Aug-15) for Java 1.7
+ * @since      v0.2.2
  */
 public class WidthLongestLine implements V2_Width {
 	private static final Pattern NEW_LINE = Pattern.compile("[\\r?\\n]+");
