@@ -141,6 +141,7 @@ public abstract class ArrayTransformations {
 
 	/**
 	 * Takes an object (used as a string) and returns a string array with wrapped lines of max length.
+	 * The wrapping will first look for newlines in the string, create an array of strings and then wrap lines for each of the array elements.
 	 * The wrapping is done using StringUtils and WordUtils so that words are not broken into characters.
 	 * @param length max length of a string in the returned array
 	 * @param obj input object, null and empty objects are allowed
@@ -153,7 +154,14 @@ public abstract class ArrayTransformations {
 		if("".equals(obj)){
 			return new String[]{};
 		}
-		return StringUtils.split(WordUtils.wrap(obj.toString(), length, "@@@", true), "@@@");
+		String[] split = StringUtils.split(obj.toString(), "\n");
+		String[] ret = new String[0];
+		for(String s :split){
+			String[] add = StringUtils.split(WordUtils.wrap(s, length, "@@@", true), "@@@");
+			ret = ArrayUtils.addAll(ret, add);
+		}
+//		return StringUtils.split(WordUtils.wrap(obj.toString(), length, "@@@", true), "@@@");
+		return ret;
 	}
 
 }

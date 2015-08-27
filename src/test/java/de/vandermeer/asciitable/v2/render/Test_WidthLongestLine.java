@@ -1,4 +1,5 @@
-/*
+/* Copyright 2015 Sebastian Thomschke <sebthom@sourceforge.net>
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -11,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package de.vandermeer.asciitable.v2.render;
 
 import static org.junit.Assert.*;
@@ -71,6 +73,7 @@ public class Test_WidthLongestLine {
 		assertTrue(Arrays.equals(new int[] { padd + 2, padd + 2, padd + 2, padd + 3, padd + 2 }, cols));
 
 		at.addRow("", "1", "22", "333\n4444", "4444");
+		at.addRule();
 		cols = w.getColumnWidths(at);
 		System.out.println(Arrays.toString(cols));
 		System.out.println(rend.setWidth(w).render(at));

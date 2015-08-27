@@ -366,7 +366,7 @@ public class Test_CodeForDocs_V2 {
 		rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new WidthLongestWord());
-		System.out.println("longest word 3");
+		System.out.println("longest word 3 - w/padding");
 		System.out.println(rend.render(at));
 	}
 
@@ -421,6 +421,24 @@ public class Test_CodeForDocs_V2 {
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new WidthLongestWordMaxCol(new int[]{5,-1}));
 		System.out.println("longest word maxcol 2");
+		System.out.println(rend.render(at));
+	}
+
+	@Test
+	public void test_Example_CondLineBreak(){
+		V2_AsciiTable at = new V2_AsciiTable();
+		at.addRule();
+		at.addRow("request", "status", "causes");
+		at.addRule();
+		at.addRow("1", "invalid", "* size limit exceeded\n* invalid characters found");
+		at.addRule();
+		at.addRow("2", "valid", "* all requirements satisfied");
+		at.addRule();
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.PLAIN_7BIT.get());
+		rend.setWidth(new WidthFixedColumns().add(10).add(10).add(40));
+
+		System.out.println("conditional line break");
 		System.out.println(rend.render(at));
 	}
 }
