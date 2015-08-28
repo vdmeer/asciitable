@@ -18,9 +18,11 @@ package de.vandermeer.asciitable.v2;
 import org.junit.Test;
 
 import de.svenjacobs.loremipsum.LoremIpsum;
+import de.vandermeer.asciitable.v2.column.ContentList;
 import de.vandermeer.asciitable.v2.render.V2_AsciiTableRenderer;
 import de.vandermeer.asciitable.v2.render.WidthAbsoluteEven;
 import de.vandermeer.asciitable.v2.render.WidthFixedColumns;
+import de.vandermeer.asciitable.v2.render.WidthLongestLine;
 import de.vandermeer.asciitable.v2.render.WidthLongestWord;
 import de.vandermeer.asciitable.v2.render.WidthLongestWordMaxCol;
 import de.vandermeer.asciitable.v2.render.WidthLongestWordMinCol;
@@ -222,7 +224,7 @@ public class Test_CodeForDocs_V2 {
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-		rend.setWidth(new WidthAbsoluteEven(80));
+		rend.setWidth(new WidthAbsoluteEven(76));
 		System.out.println("align standard");
 		System.out.println(rend.render(at));
 	}
@@ -425,20 +427,74 @@ public class Test_CodeForDocs_V2 {
 	}
 
 	@Test
+	public void test_Example_WidthLongestLine(){
+		V2_AsciiTable at = new V2_AsciiTable();
+		at.addRule();
+		at.addRow("", "1", "22", "333", "4444");
+		at.addRule();
+		WidthLongestLine width = new WidthLongestLine();
+
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		System.out.println("longest line 1");
+		System.out.println(rend.setWidth(width).render(at));
+
+		int padd = 2 * at.getDefaultPadding();
+		width.add(padd + 2, 0);
+		System.out.println("longest line 2");
+		System.out.println(rend.setWidth(width).render(at));
+
+		width.add(padd + 2, 0).add(0, 0).add(0, 0).add(0, padd + 2);
+		System.out.println("longest line 3");
+		System.out.println(rend.setWidth(width).render(at));
+
+		at.addRow("", "1", "22", "333\n4444", "4444");
+		at.addRule();
+		System.out.println("longest line 4");
+		System.out.println(rend.setWidth(width).render(at));
+	}
+
+	@Test
 	public void test_Example_CondLineBreak(){
 		V2_AsciiTable at = new V2_AsciiTable();
 		at.addRule();
-		at.addRow("request", "status", "causes");
-		at.addRule();
-		at.addRow("1", "invalid", "* size limit exceeded\n* invalid characters found");
-		at.addRule();
-		at.addRow("2", "valid", "* all requirements satisfied");
+		at.addRow(new LoremIpsum().getParagraphs(1) + "\r\n\n<br>" + new LoremIpsum().getParagraphs(1));
 		at.addRule();
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
-		rend.setTheme(V2_E_TableThemes.PLAIN_7BIT.get());
-		rend.setWidth(new WidthFixedColumns().add(10).add(10).add(40));
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new WidthFixedColumns().add(60));
+		System.out.println("conditional line break (3 of them)");
+		System.out.println(rend.render(at));
+	}
 
-		System.out.println("conditional line break");
+	@Test
+	public void test_Example_ContentList(){
+		ContentList list = new ContentList();
+		list.addItem("list item one");
+		list.addItem("list item two");
+		list.addItem("list item three");
+
+		V2_AsciiTable at = new V2_AsciiTable();
+		at.addRule();
+		at.addRow("column with a list using list object", list);
+		at.addRule();
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new WidthFixedColumns().add(25).add(40));
+		System.out.println("content list w/List object");
+		System.out.println(rend.render(at));
+	}
+
+	@Test
+	public void test_Example_ContentListWithLinebreak(){
+		V2_AsciiTable at = new V2_AsciiTable();
+		at.addRule();
+		at.addRow("column with a list using line breaks", " * list item one\n * list item two \r\n * list item three");
+		at.addRule();
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new WidthFixedColumns().add(25).add(40));
+		System.out.println("content list with line breaks");
 		System.out.println(rend.render(at));
 	}
 }

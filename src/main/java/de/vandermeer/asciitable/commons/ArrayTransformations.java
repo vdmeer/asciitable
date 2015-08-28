@@ -18,6 +18,7 @@ package de.vandermeer.asciitable.commons;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.text.StrBuilder;
+import org.apache.commons.lang3.text.StrTokenizer;
 import org.apache.commons.lang3.text.WordUtils;
 
 /**
@@ -141,8 +142,32 @@ public abstract class ArrayTransformations {
 
 	/**
 	 * Takes an object (used as a string) and returns a string array with wrapped lines of max length.
-	 * The wrapping will first look for newlines in the string, create an array of strings and then wrap lines for each of the array elements.
+	 * The process is as follows:
+	 * (1) replace all line breaks (CR LF, CR, LF) into HTML4 line break entity (&lt;br&gt;).
+	 * (2) replace all HTML4 line break entities to HTML5 entities (as in self-closing &lt;br/&gt; entity).
+	 * (3) use a tokenizer to process the resulting string (not ignoring empty tokens, since they mark required line breaks).
+	 * (4) for each element of the array returned by the tokenizer, see if there are long lines that need wrapping, if so wrap the lines.
+	 * (5) while wrapping lines, add all created strings to the return array.
 	 * The wrapping is done using StringUtils and WordUtils so that words are not broken into characters.
+	 * 
+	 * As a result, a string containing 1 line break will be converted into 2 paragraphs (array length 2, assuming all text fits in the given width):
+	 * <pre>{@code
+	String: "paragraph 1\nparagraph 2"
+	Array:  {paragraph 1,paragraph 2}
+	 * }</pre>
+	 * A string containing 2 line breaks will be converted into 3 strings (first paragraph, additional line break, second paragraph, assuming all text fits in the given width):
+	 * <pre>{@code
+	String: "paragraph 1\n\nparagraph 2"
+	Array: {paragraph 1,,paragraph 2}
+	 * }</pre>
+	 * 
+	 * The same examples from above will change if the text does not fit into the given width, i.e. lines are wrapped.
+	 * With a width of the resulting arrays will look like this:
+	 * <pre>{@code
+	Array 1: {parag,raph,1,parag,raph,2}
+	Array 2: {parag,raph,1,,parag,raph,2}
+	 * }</pre>
+	 * 
 	 * @param length max length of a string in the returned array
 	 * @param obj input object, null and empty objects are allowed
 	 * @return string array with wrapped strings: null of input object was null or its toString() returned null, empty array if empty string, array with lines of wrappings otherwise
@@ -154,13 +179,20 @@ public abstract class ArrayTransformations {
 		if("".equals(obj)){
 			return new String[]{};
 		}
-		String[] split = StringUtils.split(obj.toString(), "\n");
+
+		String lfRep = StringUtils.replacePattern(obj.toString(), "\\r\\n|\\r|\\n", "<br>");
+		lfRep = StringUtils.replace(lfRep, "<br>", "<br/>");
+		StrTokenizer tok = new StrTokenizer(lfRep, "<br/>").setIgnoreEmptyTokens(false);
+		String[] split = tok.getTokenArray();
+
 		String[] ret = new String[0];
-		for(String s :split){
-			String[] add = StringUtils.split(WordUtils.wrap(s, length, "@@@", true), "@@@");
-			ret = ArrayUtils.addAll(ret, add);
+		for(int i=0; i<split.length; i++){
+			if(StringUtils.isBlank(split[i])){
+				ret = ArrayUtils.add(ret, split[i]);
+				continue;
+			}
+			ret = ArrayUtils.addAll(ret, StringUtils.split(WordUtils.wrap(split[i], length, "@@@@", true), "@@@@"));
 		}
-//		return StringUtils.split(WordUtils.wrap(obj.toString(), length, "@@@", true), "@@@");
 		return ret;
 	}
 

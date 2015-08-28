@@ -432,6 +432,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_a_table_with_four_columns">A table with four columns</a></li>
 <li><a href="#_text_alignment_in_columns_left_right_center">Text alignment in columns - left, right, center</a></li>
 <li><a href="#_text_alignment_in_columns_justified">Text alignment in columns - justified</a></li>
+<li><a href="#_conditiona_line_breaks_crlf_cr_lf_br_and_br">Conditiona Line Breaks (CRLF, CR, LF, &lt;br&gt; and &lt;br/&gt;</a></li>
+<li><a href="#_using_conditional_line_breaks_to_create_lists">Using Conditional Line Breaks to create lists</a></li>
 <li><a href="#_column_padding">Column padding</a></li>
 <li><a href="#_column_spanning">Column spanning</a></li>
 <li><a href="#_rule_styles">Rule styles</a></li>
@@ -440,6 +442,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_width_using_longest_word_per_column_with_0_standard_and_individual_padding">Width using longest word per column, with 0, standard, and individual padding</a></li>
 <li><a href="#_width_using_longest_word_per_column_with_minimum_column_width_and_different_options">Width using longest word per column with minimum column width and different options</a></li>
 <li><a href="#_width_using_longest_word_per_column_with_maximum_column_width_and_different_options">Width using longest word per column with maximum column width and different options</a></li>
+<li><a href="#_width_using_longest_line_per_column">Width using longest line per column</a></li>
+<li><a href="#_width_using_longest_line_per_column_with_minimum_column_width_column_1">Width using longest line per column with minimum column width (column 1)</a></li>
+<li><a href="#_width_using_longest_line_per_column_with_maximum_column_width_column_5">Width using longest line per column with maximum column width (column 5)</a></li>
 <li><a href="#_padding_characters">Padding Characters</a></li>
 <li><a href="#_table_theme">Table Theme</a></li>
 </ul>
@@ -707,9 +712,9 @@ rend.setWidth(new WidthAbsoluteEven(76));</pre>
 <h3 id="_text_alignment_in_columns_left_right_center">Text alignment in columns - left, right, center</h3>
 <div class="listingblock">
 <div class="content">
-<pre>	┌──────────────────────────┬─────────────────────────┬─────────────────────────┐
-	│ left                     │                   right │         center          │
-	└──────────────────────────┴─────────────────────────┴─────────────────────────┘</pre>
+<pre>	┌────────────────────────┬────────────────────────┬────────────────────────┐
+	│ left                   │                  right │         center         │
+	└────────────────────────┴────────────────────────┴────────────────────────┘</pre>
 </div>
 </div>
 </div>
@@ -732,6 +737,41 @@ rend.setWidth(new WidthAbsoluteEven(76));</pre>
 	│ clita  kasd gubergren, no sea takimata sanctus est Lorem │
 	│                                    ipsum dolor sit amet. │
 	└──────────────────────────────────────────────────────────┘</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_conditiona_line_breaks_crlf_cr_lf_br_and_br">Conditiona Line Breaks (CRLF, CR, LF, &lt;br&gt; and &lt;br/&gt;</h3>
+<div class="listingblock">
+<div class="content">
+<pre>┌────────────────────────────────────────────────────────────┐
+│ Lorem ipsum dolor sit amet, consetetur sadipscing elitr,   │
+│ sed diam nonumy eirmod tempor invidunt ut labore et dolore │
+│ magna aliquyam erat, sed diam voluptua. At vero eos et     │
+│ accusam et justo duo dolores et ea rebum. Stet clita kasd  │
+│ gubergren, no sea takimata sanctus est Lorem ipsum dolor   │
+│ sit amet.                                                  │
+│                                                            │
+│                                                            │
+│ Lorem ipsum dolor sit amet, consetetur sadipscing elitr,   │
+│ sed diam nonumy eirmod tempor invidunt ut labore et dolore │
+│ magna aliquyam erat, sed diam voluptua. At vero eos et     │
+│ accusam et justo duo dolores et ea rebum. Stet clita kasd  │
+│ gubergren, no sea takimata sanctus est Lorem ipsum dolor   │
+│ sit amet.                                                  │
+└────────────────────────────────────────────────────────────┘</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_conditional_line_breaks_to_create_lists">Using Conditional Line Breaks to create lists</h3>
+<div class="listingblock">
+<div class="content">
+<pre>	┌─────────────────────────┬────────────────────────────────────────┐
+	│ column with a list      │ * list item one                        │
+	│ using line breaks       │ * list item two                        │
+	│                         │ * list item three                      │
+	└─────────────────────────┴────────────────────────────────────────┘</pre>
 </div>
 </div>
 </div>
@@ -902,6 +942,48 @@ rend.setWidth(new WidthAbsoluteEven(76));</pre>
 </div>
 </div>
 <div class="sect2">
+<h3 id="_width_using_longest_line_per_column">Width using longest line per column</h3>
+<div class="listingblock">
+<div class="content">
+<pre>	┌──┬───┬────┬─────┬──────┐
+	│  │ 1 │ 22 │ 333 │ 4444 │
+	└──┴───┴────┴─────┴──────┘</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>	┌────┬────┬────┬──────┬────┐
+	│    │ 1  │ 22 │ 333  │ 44 │
+	│    │    │    │      │ 44 │
+	├────┼────┼────┼──────┼────┤
+	│    │ 1  │ 22 │ 333  │ 44 │
+	│    │    │    │ 4444 │ 44 │
+	└────┴────┴────┴──────┴────┘</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_width_using_longest_line_per_column_with_minimum_column_width_column_1">Width using longest line per column with minimum column width (column 1)</h3>
+<div class="listingblock">
+<div class="content">
+<pre>	┌────┬───┬────┬─────┬──────┐
+	│    │ 1 │ 22 │ 333 │ 4444 │
+	└────┴───┴────┴─────┴──────┘</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_width_using_longest_line_per_column_with_maximum_column_width_column_5">Width using longest line per column with maximum column width (column 5)</h3>
+<div class="listingblock">
+<div class="content">
+<pre>	┌────┬────┬────┬─────┬────┐
+	│    │ 1  │ 22 │ 333 │ 44 │
+	│    │    │    │     │ 44 │
+	└────┴────┴────┴─────┴────┘</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_padding_characters">Padding Characters</h3>
 <div class="listingblock">
 <div class="content">
@@ -950,7 +1032,7 @@ rend.setWidth(new WidthAbsoluteEven(76));</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-08-19 21:58:43 IST
+Last updated 2015-08-28 14:27:38 IST
 </div>
 </div>
 </body>
