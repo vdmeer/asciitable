@@ -20,7 +20,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import de.vandermeer.asciitable.v2.V2_AsciiTable;
 
 /**
- * Utility to define the width of table columns using a fixed width for each column.
+ * Defines the width of table columns using a fixed width for each column.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.2.2 build 150901 (01-Sep-15) for Java 1.7
@@ -32,7 +32,7 @@ public class WidthFixedColumns implements V2_Width{
 	int[] ar;
 
 	/**
-	 * Returns a new table width calculator.
+	 * Creates a new width object.
 	 * Default internal array is set to size 1 (1 column) of width 0.
 	 */
 	public WidthFixedColumns(){

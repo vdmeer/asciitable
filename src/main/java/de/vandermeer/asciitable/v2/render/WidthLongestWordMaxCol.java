@@ -18,7 +18,7 @@ package de.vandermeer.asciitable.v2.render;
 import de.vandermeer.asciitable.v2.V2_AsciiTable;
 
 /**
- * Utility to define the width of table columns using the longest word per column but with a maximum column length.
+ * Defines the width of table columns using the longest word per column but with a maximum column length.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.2.2 build 150901 (01-Sep-15) for Java 1.7
