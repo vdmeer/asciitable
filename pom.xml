@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.vandermeer</groupId>
 	<artifactId>asciitable</artifactId>
-	<version>0.2.1</version>
+	<version>0.2.2</version>
 	<packaging>jar</packaging>
 
 	<name>Ascii Table</name>
@@ -48,7 +48,7 @@
 	<scm>
 		<developerConnection>scm:git:git@github.com:vdmeer/asciitable.git</developerConnection>
 		<connection>scm:git:git://github.com/vdmeer/asciitable.git</connection>
-		<tag>asciitable-0.2.1</tag>
+		<tag>asciitable-0.2.2</tag>
 		<url>https://github.com/vdmeer/asciitable</url>
 	</scm>
 
@@ -63,10 +63,6 @@
 			<name>Sven van der Meer</name>
 			<email>vdmeer.sven@mykolab.com</email>
 				<url>http://www.vandermeer.de</url>
-<!--
-				<organization>ACME</organization>
-				<organizationUrl>http://www.example.com</organizationUrl>
--->
 				<roles>
 					<role>creator</role>
 					<role>developer</role>
@@ -81,6 +77,12 @@
 	</developers>
 
 	<contributors>
+		<contributor>
+			<name>Sebastian Thomschke</name>
+			<email>sebthom@sourceforge.net</email>
+			<url>https://github.com/sebthom</url>
+			<timezone>Europe/Berlin</timezone>
+		</contributor>
 	</contributors>
 
 	<dependencies>

@@ -21,16 +21,18 @@ import de.svenjacobs.loremipsum.LoremIpsum;
 import de.vandermeer.asciitable.v2.render.V2_AsciiTableRenderer;
 import de.vandermeer.asciitable.v2.render.WidthAbsoluteEven;
 import de.vandermeer.asciitable.v2.render.WidthFixedColumns;
+import de.vandermeer.asciitable.v2.render.WidthLongestLine;
 import de.vandermeer.asciitable.v2.render.WidthLongestWord;
 import de.vandermeer.asciitable.v2.render.WidthLongestWordMaxCol;
 import de.vandermeer.asciitable.v2.render.WidthLongestWordMinCol;
+import de.vandermeer.asciitable.v2.row.ContentRow;
 import de.vandermeer.asciitable.v2.themes.V2_E_TableThemes;
 
 /**
  * Tests for ASCII table V2 for code used in documentation.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.2.1 build 150819 (19-Aug-15) for Java 1.7
+ * @version    v0.2.2 build 150827 (27-Aug-15) for Java 1.7
  */
 public class Test_CodeForDocs_V2 {
 
@@ -222,7 +224,7 @@ public class Test_CodeForDocs_V2 {
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-		rend.setWidth(new WidthAbsoluteEven(80));
+		rend.setWidth(new WidthAbsoluteEven(76));
 		System.out.println("align standard");
 		System.out.println(rend.render(at));
 	}
@@ -366,7 +368,7 @@ public class Test_CodeForDocs_V2 {
 		rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new WidthLongestWord());
-		System.out.println("longest word 3");
+		System.out.println("longest word 3 - w/padding");
 		System.out.println(rend.render(at));
 	}
 
@@ -421,6 +423,79 @@ public class Test_CodeForDocs_V2 {
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new WidthLongestWordMaxCol(new int[]{5,-1}));
 		System.out.println("longest word maxcol 2");
+		System.out.println(rend.render(at));
+	}
+
+	@Test
+	public void test_Example_WidthLongestLine(){
+		V2_AsciiTable at = new V2_AsciiTable();
+		at.addRule();
+		at.addRow("", "1", "22", "333", "4444");
+		at.addRule();
+		WidthLongestLine width = new WidthLongestLine();
+
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		System.out.println("longest line 1");
+		System.out.println(rend.setWidth(width).render(at));
+
+		int padd = 2 * at.getDefaultPadding();
+		width.add(padd + 2, 0);
+		System.out.println("longest line 2");
+		System.out.println(rend.setWidth(width).render(at));
+
+		width.add(padd + 2, 0).add(0, 0).add(0, 0).add(0, padd + 2);
+		System.out.println("longest line 3");
+		System.out.println(rend.setWidth(width).render(at));
+
+		at.addRow("", "1", "22", "333\n4444", "4444");
+		at.addRule();
+		System.out.println("longest line 4");
+		System.out.println(rend.setWidth(width).render(at));
+	}
+
+	@Test
+	public void test_Example_CondLineBreak(){
+		V2_AsciiTable at = new V2_AsciiTable();
+		at.addRule();
+		at.addRow(new LoremIpsum().getParagraphs(1) + "\r\n\n<br>" + new LoremIpsum().getParagraphs(1));
+		at.addRule();
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new WidthFixedColumns().add(60));
+		System.out.println("conditional line break (3 of them)");
+		System.out.println(rend.render(at));
+	}
+
+	@Test
+	public void test_Example_ContentListWithLinebreak(){
+		V2_AsciiTable at = new V2_AsciiTable();
+		at.addRule();
+		at.addRow("column with a list using line breaks", " * list item one\n * list item two \r\n * list item three");
+		at.addRule();
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new WidthFixedColumns().add(25).add(40));
+		System.out.println("content list with line breaks");
+		System.out.println(rend.render(at));
+	}
+
+	@Test
+	public void test_Example_NoBorder(){
+		ContentRow row;
+		V2_AsciiTable at = new V2_AsciiTable(0);
+		at.addRule();
+		row = at.addRow(new LoremIpsum().getParagraphs(1));
+		row.setAlignment(new char[]{'j'});
+		at.addRule();
+		row = at.addRow(new LoremIpsum().getParagraphs(1));
+		row.setPadding(new int[]{5});
+		row.setAlignment(new char[]{'j'});
+		at.addRule();
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.NO_BORDERS.get());
+		rend.setWidth(new WidthFixedColumns().add(60));
+		System.out.println("no border");
 		System.out.println(rend.render(at));
 	}
 }

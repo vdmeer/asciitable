@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.2">
-<meta name="author" content="Several implementations of an text table, originally using ASCII and UTF-8 characters for borders.">
+<meta name="author" content="Several implementations of a text table, originally using ASCII and UTF-8 characters for borders.">
 <title>ASCII Table</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400">
 <style>
@@ -414,13 +414,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>ASCII Table</h1>
 <div class="details">
-<span id="author" class="author">Several implementations of an text table, originally using ASCII and UTF-8 characters for borders.</span><br>
+<span id="author" class="author">Several implementations of a text table, originally using ASCII and UTF-8 characters for borders.</span><br>
 </div>
 <div id="toc" class="toc">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_versions">Versions</a></li>
-<li><a href="#_version_2_overview">Version 2 Overview</a>
+<li><a href="#_ascii_table_versions">ASCII Table Versions</a></li>
+<li><a href="#_ascii_tabel_version_2_overview">ASCII Tabel Version 2 Overview</a>
 <ul class="sectlevel2">
 <li><a href="#_features">Features</a></li>
 <li><a href="#_concepts_and_realization">Concepts and Realization</a></li>
@@ -432,6 +432,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_a_table_with_four_columns">A table with four columns</a></li>
 <li><a href="#_text_alignment_in_columns_left_right_center">Text alignment in columns - left, right, center</a></li>
 <li><a href="#_text_alignment_in_columns_justified">Text alignment in columns - justified</a></li>
+<li><a href="#_conditional_line_breaks_crlf_cr_lf_br_and_br">Conditional Line Breaks (CRLF, CR, LF, &lt;br&gt; and &lt;br/&gt;</a></li>
+<li><a href="#_using_conditional_line_breaks_to_create_lists">Using Conditional Line Breaks to create lists</a></li>
 <li><a href="#_column_padding">Column padding</a></li>
 <li><a href="#_column_spanning">Column spanning</a></li>
 <li><a href="#_rule_styles">Rule styles</a></li>
@@ -440,8 +442,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_width_using_longest_word_per_column_with_0_standard_and_individual_padding">Width using longest word per column, with 0, standard, and individual padding</a></li>
 <li><a href="#_width_using_longest_word_per_column_with_minimum_column_width_and_different_options">Width using longest word per column with minimum column width and different options</a></li>
 <li><a href="#_width_using_longest_word_per_column_with_maximum_column_width_and_different_options">Width using longest word per column with maximum column width and different options</a></li>
+<li><a href="#_width_using_longest_line_per_column">Width using longest line per column</a></li>
+<li><a href="#_width_using_longest_line_per_column_with_minimum_column_width_column_1">Width using longest line per column with minimum column width (column 1)</a></li>
+<li><a href="#_width_using_longest_line_per_column_with_maximum_column_width_column_5">Width using longest line per column with maximum column width (column 5)</a></li>
 <li><a href="#_padding_characters">Padding Characters</a></li>
 <li><a href="#_table_theme">Table Theme</a></li>
+<li><a href="#_table_theme_with_no_borders_for_paragraph_formatting">Table Theme with no Borders for Paragraph Formatting</a></li>
 </ul>
 </li>
 </ul>
@@ -454,7 +460,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>The tables allows for various degrees of flexibility for number of columns, column width, automated line wrapping, column spanning and themes for tables and table rows.</p>
 </div>
 <div class="paragraph">
-<p>Current release is <a href="https://search.maven.org/#artifactdetails|de.vandermeer|asciitable|0.2.1|jar">0.2.1</a>.
+<p>Current release is <a href="https://search.maven.org/#artifactdetails|de.vandermeer|asciitable|0.2.2|jar">0.2.2</a>.
 All releases are on <a href="https://search.maven.org/#search|gav|1|g%3A%22de.vandermeer%22%20AND%20a%3A%22asciitable%22">Maven Central</a>.</p>
 </div>
 <div class="paragraph">
@@ -464,10 +470,10 @@ Updates will be at here <a href="https://github.com/vdmeer/skb/wiki/HowTo-UTF-8-
 </div>
 </div>
 <div class="sect1">
-<h2 id="_versions">Versions</h2>
+<h2 id="_ascii_table_versions">ASCII Table Versions</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The following versions are in the project:</p>
+<p>The following table versions are in the project:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -482,7 +488,7 @@ Updates will be at here <a href="https://github.com/vdmeer/skb/wiki/HowTo-UTF-8-
 </div>
 </div>
 <div class="sect1">
-<h2 id="_version_2_overview">Version 2 Overview</h2>
+<h2 id="_ascii_tabel_version_2_overview">ASCII Tabel Version 2 Overview</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_features">Features</h3>
@@ -707,9 +713,9 @@ rend.setWidth(new WidthAbsoluteEven(76));</pre>
 <h3 id="_text_alignment_in_columns_left_right_center">Text alignment in columns - left, right, center</h3>
 <div class="listingblock">
 <div class="content">
-<pre>	┌──────────────────────────┬─────────────────────────┬─────────────────────────┐
-	│ left                     │                   right │         center          │
-	└──────────────────────────┴─────────────────────────┴─────────────────────────┘</pre>
+<pre>	┌────────────────────────┬────────────────────────┬────────────────────────┐
+	│ left                   │                  right │         center         │
+	└────────────────────────┴────────────────────────┴────────────────────────┘</pre>
 </div>
 </div>
 </div>
@@ -732,6 +738,41 @@ rend.setWidth(new WidthAbsoluteEven(76));</pre>
 	│ clita  kasd gubergren, no sea takimata sanctus est Lorem │
 	│                                    ipsum dolor sit amet. │
 	└──────────────────────────────────────────────────────────┘</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_conditional_line_breaks_crlf_cr_lf_br_and_br">Conditional Line Breaks (CRLF, CR, LF, &lt;br&gt; and &lt;br/&gt;</h3>
+<div class="listingblock">
+<div class="content">
+<pre>	┌────────────────────────────────────────────────────────────┐
+	│ Lorem ipsum dolor sit amet, consetetur sadipscing elitr,   │
+	│ sed diam nonumy eirmod tempor invidunt ut labore et dolore │
+	│ magna aliquyam erat, sed diam voluptua. At vero eos et     │
+	│ accusam et justo duo dolores et ea rebum. Stet clita kasd  │
+	│ gubergren, no sea takimata sanctus est Lorem ipsum dolor   │
+	│ sit amet.                                                  │
+	│                                                            │
+	│                                                            │
+	│ Lorem ipsum dolor sit amet, consetetur sadipscing elitr,   │
+	│ sed diam nonumy eirmod tempor invidunt ut labore et dolore │
+	│ magna aliquyam erat, sed diam voluptua. At vero eos et     │
+	│ accusam et justo duo dolores et ea rebum. Stet clita kasd  │
+	│ gubergren, no sea takimata sanctus est Lorem ipsum dolor   │
+	│ sit amet.                                                  │
+	└────────────────────────────────────────────────────────────┘</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_conditional_line_breaks_to_create_lists">Using Conditional Line Breaks to create lists</h3>
+<div class="listingblock">
+<div class="content">
+<pre>	┌─────────────────────────┬────────────────────────────────────────┐
+	│ column with a list      │ * list item one                        │
+	│ using line breaks       │ * list item two                        │
+	│                         │ * list item three                      │
+	└─────────────────────────┴────────────────────────────────────────┘</pre>
 </div>
 </div>
 </div>
@@ -902,6 +943,48 @@ rend.setWidth(new WidthAbsoluteEven(76));</pre>
 </div>
 </div>
 <div class="sect2">
+<h3 id="_width_using_longest_line_per_column">Width using longest line per column</h3>
+<div class="listingblock">
+<div class="content">
+<pre>	┌──┬───┬────┬─────┬──────┐
+	│  │ 1 │ 22 │ 333 │ 4444 │
+	└──┴───┴────┴─────┴──────┘</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>	┌────┬────┬────┬──────┬────┐
+	│    │ 1  │ 22 │ 333  │ 44 │
+	│    │    │    │      │ 44 │
+	├────┼────┼────┼──────┼────┤
+	│    │ 1  │ 22 │ 333  │ 44 │
+	│    │    │    │ 4444 │ 44 │
+	└────┴────┴────┴──────┴────┘</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_width_using_longest_line_per_column_with_minimum_column_width_column_1">Width using longest line per column with minimum column width (column 1)</h3>
+<div class="listingblock">
+<div class="content">
+<pre>	┌────┬───┬────┬─────┬──────┐
+	│    │ 1 │ 22 │ 333 │ 4444 │
+	└────┴───┴────┴─────┴──────┘</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_width_using_longest_line_per_column_with_maximum_column_width_column_5">Width using longest line per column with maximum column width (column 5)</h3>
+<div class="listingblock">
+<div class="content">
+<pre>	┌────┬────┬────┬─────┬────┐
+	│    │ 1  │ 22 │ 333 │ 44 │
+	│    │    │    │     │ 44 │
+	└────┴────┴────┴─────┴────┘</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_padding_characters">Padding Characters</h3>
 <div class="listingblock">
 <div class="content">
@@ -945,12 +1028,32 @@ rend.setWidth(new WidthAbsoluteEven(76));</pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_table_theme_with_no_borders_for_paragraph_formatting">Table Theme with no Borders for Paragraph Formatting</h3>
+<div class="listingblock">
+<div class="content">
+<pre> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+ diam nonumy eirmod tempor invidunt ut labore et dolore magna
+ aliquyam  erat, sed diam voluptua. At vero eos et accusam et
+ justo duo dolores et ea rebum. Stet clita kasd gubergren, no
+ sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+      Lorem  ipsum dolor sit amet, consetetur sadipscing
+      elitr,  sed  diam nonumy eirmod tempor invidunt ut
+      labore  et  dolore  magna  aliquyam erat, sed diam
+      voluptua.  At  vero  eos  et  accusam et justo duo
+      dolores et ea rebum. Stet clita kasd gubergren, no
+      sea  takimata  sanctus  est  Lorem ipsum dolor sit
+      amet.</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-08-19 21:58:43 IST
+Last updated 2015-09-01 20:29:50 IST
 </div>
 </div>
 </body>

@@ -20,41 +20,42 @@ import static org.junit.Assert.assertEquals;
 import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;
 
-import de.svenjacobs.loremipsum.LoremIpsum;
 import de.vandermeer.asciitable.v2.V2_AsciiTable;
-import de.vandermeer.asciitable.v2.render.WidthUtilities;
 
 /**
- * Tests for {@link WidthUtilities}.
+ * Tests for {@link WidthLongestWordMaxCol}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.2.2 build 150827 (27-Aug-15) for Java 1.7
  */
-public class Test_WidthUtilities {
+public class Test_WidthLongestWordMaxCol {
 
 	@Test
-	public void test_LongestWord(){
+	public void test_CodeForDoc(){
 		V2_AsciiTable at;
 		int[] cols;
+		V2_Width width;
+
 
 		at = new V2_AsciiTable();
-		at.addRule();
-		at.addRow("first row (col1)", "with some information (col2)");
-		at.addRule();
-		at.addRow("second row (col1)", "with some information (col2)");
-		at.addRule();
-
-		cols = WidthUtilities.longestWord(at);
+		at.addRow("first", "information");
+		at.addRow("second", "info");
+		width = new WidthLongestWordMaxCol(10);
+		cols = width.getColumnWidths(at);
 		assertEquals(2, cols.length);
-		assertEquals(8,  cols[0]);		// longest word: second (6) + padding
-		assertEquals(13, cols[1]);		// longest word: information (11) + padding
+		assertEquals(8, cols[0]);		// longest word: second (6) plus padding
+		assertEquals(10, cols[1]);		// longest word: information (11) plus padding but max col is 10
 		System.out.println(ArrayUtils.toString(cols));
 
+
 		at = new V2_AsciiTable();
-		at.addRow(new LoremIpsum().getWords());
-		cols = WidthUtilities.longestWord(at);
-		assertEquals(1, cols.length);
-		assertEquals(12,  cols[0]);		// longest word: sadipscing (10) + padding
+		at.addRow("first", "information");
+		at.addRow("second", "info");
+		width = new WidthLongestWordMaxCol(new int[]{5,-1});
+		cols = width.getColumnWidths(at);
+		assertEquals(2, cols.length);
+		assertEquals(5, cols[0]);		// longest word: second (6) plus padding but max col is 5
+		assertEquals(13, cols[1]);		// longest word: information (11) plus padding
 		System.out.println(ArrayUtils.toString(cols));
 	}
 }

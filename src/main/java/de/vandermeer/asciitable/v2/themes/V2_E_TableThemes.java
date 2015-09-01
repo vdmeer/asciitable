@@ -19,10 +19,33 @@ package de.vandermeer.asciitable.v2.themes;
  * Standard table themes.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.2.1 build 150819 (19-Aug-15) for Java 1.7
+ * @version    v0.2.2 build 150827 (27-Aug-15) for Java 1.7
  * @since      v0.0.3
  */
 public enum V2_E_TableThemes {
+
+	/**
+	 * A theme for plain ASCII-7 boxes (basically the characters '-', '|' and '+').
+	 * <pre>
+Normal           Example
+                                 
+                  h1   h2   h3   
+                                 
+                  c1   c2   c3   
+                                 
+                  c1   c2   c3   
+                                 
+                  c1   c2   c3   
+                                 
+	 * </pre>
+	 */
+	NO_BORDERS(
+			V2_E_RowThemes.ASC7_BLANK,
+			V2_E_RowThemes.ASC7_BLANK,
+			V2_E_RowThemes.ASC7_BLANK,
+			V2_E_RowThemes.ASC7_BLANK,
+			"blank ASCII-7 boxes (basically the character ' ')"
+	),
 
 	/**
 	 * A theme for plain ASCII-7 boxes (basically the characters '-', '|' and '+').

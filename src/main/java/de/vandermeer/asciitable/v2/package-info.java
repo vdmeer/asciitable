@@ -115,7 +115,7 @@
  * 
  * 
  * 
- * <br><h3>Standard Usage - create and render a simple table</h3>
+ * <br><h3>Standard usage - create and render a simple table</h3>
  * <p>
  * 		The standard usage is:
  * 		<ul>
@@ -358,15 +358,15 @@
 
 	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-	rend.setWidth(new WidthAbsoluteEven(80));
+	rend.setWidth(new WidthAbsoluteEven(76));
 	System.out.println(rend.render(at));
  * }</pre>
  * 
  * The output of this example will be:
  * <pre style="line-height:17px">
-	┌──────────────────────────┬─────────────────────────┬─────────────────────────┐
-	│ left                     │                   right │         center          │
-	└──────────────────────────┴─────────────────────────┴─────────────────────────┘
+	┌────────────────────────┬────────────────────────┬────────────────────────┐
+	│ left                   │                  right │         center         │
+	└────────────────────────┴────────────────────────┴────────────────────────┘
  * </pre>
  * 
  * The second example shows justified text.
@@ -408,6 +408,75 @@
  * <p>
  * 		The example above is using the <a href="http://search.maven.org/#artifactdetails%7Cde.sven-jacobs%7Cloremipsum%7C1.0%7Cjar">loremipsum</a> package to generate the text.
  * </p>
+ * 
+ * 
+ * 
+ * <h3>Conditional line breaks</h3>
+ * <p>
+ * 		Text in column content can contain conditional line breaks.
+ * 		When text is processed, CRLF, CR, and LF line breaks are used to calculate columns.
+ * 		In addition, the HTML entities &lt;br&gt; and &lt;br/&gt; can be used for conditional line breaks.
+ * </p>
+ * 
+ * The following example creates a table with one column.
+ * The text in the column is broken into paragraps using conditional line breaks.
+ * Three of them are used: the first will seperate the two text bloks into paragraphs while the other two will create empty lines between them:
+ * <pre>{@code
+	V2_AsciiTable at = new V2_AsciiTable();
+	at.addRule();
+	at.addRow(new LoremIpsum().getParagraphs(1) + "\r\n\n<br>" + new LoremIpsum().getParagraphs(1));
+	at.addRule();
+	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+	rend.setWidth(new WidthFixedColumns().add(60));
+	System.out.println(rend.render(at));
+ * }</pre>
+ * 
+ * The output of this example will be:
+ * <pre style="line-height:17px">
+┌────────────────────────────────────────────────────────────┐
+│ Lorem ipsum dolor sit amet, consetetur sadipscing elitr,   │
+│ sed diam nonumy eirmod tempor invidunt ut labore et dolore │
+│ magna aliquyam erat, sed diam voluptua. At vero eos et     │
+│ accusam et justo duo dolores et ea rebum. Stet clita kasd  │
+│ gubergren, no sea takimata sanctus est Lorem ipsum dolor   │
+│ sit amet.                                                  │
+│                                                            │
+│                                                            │
+│ Lorem ipsum dolor sit amet, consetetur sadipscing elitr,   │
+│ sed diam nonumy eirmod tempor invidunt ut labore et dolore │
+│ magna aliquyam erat, sed diam voluptua. At vero eos et     │
+│ accusam et justo duo dolores et ea rebum. Stet clita kasd  │
+│ gubergren, no sea takimata sanctus est Lorem ipsum dolor   │
+│ sit amet.                                                  │
+└────────────────────────────────────────────────────────────┘
+ * </pre>
+ * 
+ * 
+ * 
+ * <h3>Creating lists using conditional line breaks</h3>
+ * Conditional line breaks can also be used to create simple lists.
+ * The text formatting is not fexible (and all formatting must be done in the actual text) but the result (given that the column width is sufficient) will be a list in a column.
+ * The following example shows a table with 2 columns, the second column creating a treee-item list using conditional line break and extra formatting for lable, spacing and indentation:
+ * <pre>{@code
+	V2_AsciiTable at = new V2_AsciiTable();
+	at.addRule();
+	at.addRow("column with a list using line breaks", " * list item one\n * list item two \r\n * list item three");
+	at.addRule();
+	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+	rend.setWidth(new WidthFixedColumns().add(25).add(40));
+	System.out.println(rend.render(at));
+ * }</pre>
+ * 
+ * The output of this example will be:
+ * <pre style="line-height:17px">
+	┌─────────────────────────┬────────────────────────────────────────┐
+	│ column with a list      │ * list item one                        │
+	│ using line breaks       │ * list item two                        │
+	│                         │ * list item three                      │
+	└─────────────────────────┴────────────────────────────────────────┘
+ * </pre>
  * 
  * 
  * 
@@ -492,7 +561,7 @@
  * 
  * 
  * 
- * <h3>Padding Character</h3>
+ * <h3>Padding character</h3>
  * The table renderer can be set to use different padding characters.
  * A padding character is the character used to fill content rows (all their columns) up to the next border.
  * Using UTF-8 characters might not be result in the anticipated result.
@@ -535,7 +604,7 @@
  * 
  * 
  * 
- * <h3>Table Theme</h3>
+ * <h3>Table theme</h3>
  * The table renderer can be set to use different table themes.
  * A table theme defines all border characters for rules, strong rules and content rows.
  * The following example creates a table with 1 table rendered with the same renderer set for different table themes (using pre-defined themes):
@@ -786,7 +855,6 @@
 	rend = new V2_AsciiTableRenderer();
 	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 	rend.setWidth(new WidthLongestWord());
-	System.out.println("longest word 3");
 	System.out.println(rend.render(at));
  * }</pre>
  * 
@@ -810,6 +878,7 @@
 	│   second   │    info         │
 	└────────────┴─────────────────┘
  * </pre>
+ * 
  * 
  * 
  * <h4>Width using the longest word per column for column width with minimum column width</h4>
@@ -857,6 +926,7 @@
 	│ second │ info                                             │
 	└────────┴──────────────────────────────────────────────────┘
  * </pre>
+ * 
  * 
  * 
  * <h4>Width using the longest word per column for column width with maximum column width</h4>
@@ -907,14 +977,135 @@
 	│ ond │             │
 	└─────┴─────────────┘
  * </pre>
-
  * 
+ * 
+ * 
+ * <h4>Width using the longest line per column for column width with added minimum and maximum column width</h4>
+ * <p>
+ * 		The class {@link de.vandermeer.asciitable.v2.render.WidthLongestLine} calculates column width using the longest possible line per column with.
+ * 		Additionally, the class allows to set minimum and maximum column width per column.
+ * 		The following examples show a 5-column table rendered with different settings for longest line.
+ * </p>
+ * 
+ * The first example creates the table and uses default width, i.e. every column should be only as long as the longest line in it:
+ * <pre>{@code
+	V2_AsciiTable at = new V2_AsciiTable();
+	at.addRule();
+	at.addRow("", "1", "22", "333", "4444");
+	at.addRule();
+	WidthLongestLine width = new WidthLongestLine();
+
+	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+	System.out.println(rend.setWidth(width).render(at));
+ * }</pre>
+ * 
+ * The output of the examples are:
+ * <pre style="line-height:17px">
+	┌──┬───┬────┬─────┬──────┐
+	│  │ 1 │ 22 │ 333 │ 4444 │
+	└──┴───┴────┴─────┴──────┘
+ * </pre>
+ * 
+ * Now we change the minimum width of the first column to twice the table padding without setting a maximum:
+ * <pre>{@code
+	int padd = 2 * at.getDefaultPadding();
+	width.add(padd + 2, 0);
+	System.out.println(rend.setWidth(width).render(at));
+ * }</pre>
+ * 
+ * The output of the examples are:
+ * <pre style="line-height:17px">
+	┌────┬───┬────┬─────┬──────┐
+	│    │ 1 │ 22 │ 333 │ 4444 │
+	└────┴───┴────┴─────┴──────┘
+ * </pre>
+ * 
+ * Now add a maximum value for the last column set to the table padding plus 4.
+ * This means the maximum column size is now smaller than the longes line and line wrapping will happen:
+ * <pre>{@code
+	width.add(padd + 2, 0).add(0, 0).add(0, 0).add(0, padd + 2);
+	System.out.println(rend.setWidth(width).render(at));
+ * }</pre>
+ * 
+ * The output of the examples are:
+ * <pre style="line-height:17px">
+	┌────┬────┬────┬─────┬────┐
+	│    │ 1  │ 22 │ 333 │ 44 │
+	│    │    │    │     │ 44 │
+	└────┴────┴────┴─────┴────┘
+ * </pre>
+ * 
+ * Now we add another row in which column 4 has a longer line ("4444") then the one in the first row ("333").
+ * The example is also using conditional line break in the added row:
+ * <pre>{@code
+	at.addRow("", "1", "22", "333\n4444", "4444");
+	at.addRule();
+	System.out.println(rend.setWidth(width).render(at));
+ * }</pre>
+ * 
+ * The output of the examples are:
+ * <pre style="line-height:17px">
+	┌────┬────┬────┬──────┬────┐
+	│    │ 1  │ 22 │ 333  │ 44 │
+	│    │    │    │      │ 44 │
+	├────┼────┼────┼──────┼────┤
+	│    │ 1  │ 22 │ 333  │ 44 │
+	│    │    │    │ 4444 │ 44 │
+	└────┴────┴────┴──────┴────┘
+ * </pre>
+ * 
+ * 
+ * 
+ * <h3>Table without border to format text paragraphs</h3>
+ * <p>
+ * 		The table can be used to format paragraphs simply using the table theme {@link de.vandermeer.asciitable.v2.themes.V2_E_TableThemes#NO_BORDERS}.
+ * 		This theme will print no borders, so the only formatting visible is the padding and the paragraph alignement.
+ * </p>
+ * 
+ * The follwing example creates a table with two rows, using the no-border-theme.
+ * The first row creates a simple justified paragraph.
+ * The second row creates a paragraph with the same content plus a padding of 5.
+ * <pre>{@code
+	ContentRow row;
+	V2_AsciiTable at = new V2_AsciiTable(0);
+	at.addRule();
+	row = at.addRow(new LoremIpsum().getParagraphs(1));
+	row.setAlignment(new char[]{'j'});
+	at.addRule();
+	row = at.addRow(new LoremIpsum().getParagraphs(1));
+	row.setPadding(new int[]{5});
+	row.setAlignment(new char[]{'j'});
+	at.addRule();
+	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+	rend.setTheme(V2_E_TableThemes.NO_BORDERS.get());
+	rend.setWidth(new WidthFixedColumns().add(60));
+	System.out.println(rend.render(at));
+ * }</pre>
+ * 
+ * The output of the examples are:
+ * <pre style="line-height:17px">
+                                                              
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed 
+ diam nonumy eirmod tempor invidunt ut labore et dolore magna 
+ aliquyam  erat, sed diam voluptua. At vero eos et accusam et 
+ justo duo dolores et ea rebum. Stet clita kasd gubergren, no 
+ sea takimata sanctus est Lorem ipsum dolor sit amet.         
+                                                              
+      Lorem  ipsum dolor sit amet, consetetur sadipscing      
+      elitr,  sed  diam nonumy eirmod tempor invidunt ut      
+      labore  et  dolore  magna  aliquyam erat, sed diam      
+      voluptua.  At  vero  eos  et  accusam et justo duo      
+      dolores et ea rebum. Stet clita kasd gubergren, no      
+      sea  takimata  sanctus  est  Lorem ipsum dolor sit      
+      amet.                                                   
+                                                              
+ * </pre>
  * 
  * 
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.2.1 build 150819 (19-Aug-15) for Java 1.7
+ * @version    v0.2.2 build 150827 (27-Aug-15) for Java 1.7
  */
 package de.vandermeer.asciitable.v2;
-
 
 

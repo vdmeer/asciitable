@@ -25,7 +25,7 @@ import de.vandermeer.asciitable.v2.themes.V2_RowTheme;
  * Utilities for manipulating tables and table rows.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.2.1 build 150819 (19-Aug-15) for Java 1.7
+ * @version    v0.2.2 build 150827 (27-Aug-15) for Java 1.7
  * @since      v0.0.5
  */
 public abstract class RenderUtilities {
@@ -54,7 +54,11 @@ public abstract class RenderUtilities {
 			if(padding[i]>0){
 				length = length - padding[i]*2;
 			}
-			ret[i] = ArrayTransformations.WRAP_LINES(length, o);
+
+			//get content first (does special classes as well as many forms of line breaks)
+			String [] content = ArrayTransformations.PROCESS_CONTENT(o);
+			//now wrap lines per line in the processed content array
+			ret[i] = ArrayTransformations.WRAP_LINES(length, content);
 			length = 0;
 		}
 		//equal number of strings per column

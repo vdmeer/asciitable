@@ -205,10 +205,89 @@
  * </p>
  * 
  * 
+ * <h4>Calculate width using the longest word in a column with minimum column width</h4>
+ * <p>
+ * 		{@link de.vandermeer.asciitable.v2.render.WidthLongestWordMinCol} calculates the widths of columns taking the longest word (continuous characters between whitespaces) but with a minimum column width.
+ * 		Padding is automatically added, so the padding adds to the column width.
+ * 		The overall table width is then the sum of all calculated column width.
+ * </p>
+ * 
+ * The following example creates a table with two rows and two columns each and standard padding (1):
+ * <pre>{@code
+	V2_AsciiTable at = new V2_AsciiTable();
+	at.addRow("first", "information");
+	at.addRow("second", "info");
+ * }</pre>
+ * 
+ * Then we use this table to calculate the width using the longest word and minimum column width of 11:
+ * <pre>{@code
+	V2_Width width = new WidthLongestWordMinCol(11);
+	int[]  = width.getColumnWidths(at);
+ * }</pre>
+ * 
+ * <p>
+ * 		The calculated width for the columns are now as follows:
+ * 		11 for the first column (longest word: second plus padding of 1 twice = 8, but minimum column width is set to 11) and
+ * 		13 for the second column (longest word: information plus padding of 1 twice). 
+ * </p>
+ * 
+ * We can also define the minimum column width per column. Here, a value of -1 indicates to simply use the longest word and values above 3 (the absolute minimum colmn width) will be taken as minimum width for a particular column:
+ * <pre>{@code
+	V2_Width width = new WidthLongestWordMinCol(new int[]{-1,50});
+	int[]  = width.getColumnWidths(at);
+ * }</pre>
+ * 
+ * <p>
+ * 		The calculated width for the columns are now as follows:
+ * 		8 for the first column (longest word: second plus padding of 1 twice, no minimum width given) and
+ * 		50 for the second column (longest word: information plus padding of 1 twice but minimum width set to 50). 
+ * </p>
+ * 
+ * 
+ * <h4>Calculate width using the longest word in a column with maximum column width</h4>
+ * <p>
+ * 		{@link de.vandermeer.asciitable.v2.render.WidthLongestWordMaxCol} calculates the widths of columns taking the longest word (continuous characters between whitespaces) but with a maximum column width.
+ * 		Padding is automatically added, so the padding adds to the column width.
+ * 		The overall table width is then the sum of all calculated column width.
+ * </p>
+ * 
+ * The following example creates a table with two rows and two columns each and standard padding (1):
+ * <pre>{@code
+	V2_AsciiTable at = new V2_AsciiTable();
+	at.addRow("first", "information");
+	at.addRow("second", "info");
+ * }</pre>
+ * 
+ * Then we use this table to calculate the width using the longest word and maximum column width of 10:
+ * <pre>{@code
+	V2_Width width = new WidthLongestWordMaxCol(10)
+	int[]  = width.getColumnWidths(at);
+ * }</pre>
+ * 
+ * <p>
+ * 		The calculated width for the columns are now as follows:
+ * 		8 for the first column (longest word: second plus padding of 1 twice = 8) and
+ * 		10 for the second column (longest word: information plus padding of 1 twice = 11, but maximum width set to 10). 
+ * </p>
+ * 
+ * We can also define the maximum column width per column. Here, a value of -1 indicates to simply use the longest word and other values will be taken as maximum width for a particular column:
+ * <pre>{@code
+	V2_Width width = new WidthLongestWordMaxCol(new int[]{5,-1});
+	int[]  = width.getColumnWidths(at);
+ * }</pre>
+ * 
+ * <p>
+ * 		The calculated width for the columns are now as follows:
+ * 		5 for the first column (longest word: second plus padding of 1 twice, but maximum set to 5) and
+ * 		13 for the second column (longest word: information plus padding of 1 twice, no maximum given). 
+ * </p>
+ * 
+ * 
  * 
  * 
  * 
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.2.1 build 150819 (19-Aug-15) for Java 1.7
+ * @version    v0.2.2 build 150827 (27-Aug-15) for Java 1.7
  */
 package de.vandermeer.asciitable.v2.render;
+
