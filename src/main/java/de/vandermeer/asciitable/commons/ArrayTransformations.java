@@ -167,7 +167,7 @@ public abstract class ArrayTransformations {
 			return null;
 		}
 		if("".equals(content)){
-			return new String[]{};
+			return new String[]{""};
 		}
 
 		String lfRep = StringUtils.replacePattern(content.toString(), "\\r\\n|\\r|\\n", "<br>");
