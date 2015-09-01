@@ -32,7 +32,7 @@ import de.vandermeer.asciitable.v2.row.V2_Row;
  * 2nd generation ASCII table with flexible column number, column width, wrapping, spanning and renderer with themes.
  * 
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.2.2 build 150827 (27-Aug-15) for Java 1.7
+ * @version    v0.2.2 build 150901 (01-Sep-15) for Java 1.7
  * @since      v0.0.5
  */
 public class V2_AsciiTable {

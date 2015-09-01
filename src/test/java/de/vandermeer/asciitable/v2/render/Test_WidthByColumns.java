@@ -25,7 +25,7 @@ import de.vandermeer.asciitable.v2.render.WidthFixedColumns;
  * Tests for {@link WidthFixedColumns}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.2.2 build 150827 (27-Aug-15) for Java 1.7
+ * @version    v0.2.2 build 150901 (01-Sep-15) for Java 1.7
  */
 public class Test_WidthByColumns {
 

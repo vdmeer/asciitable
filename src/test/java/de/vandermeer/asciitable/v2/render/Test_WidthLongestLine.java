@@ -28,7 +28,7 @@ import de.vandermeer.asciitable.v2.themes.V2_E_TableThemes;
  * Tests for {@link WidthLongestLine}.
  *
  * @author     Sebastian Thomschke &lt;sebthom@sourceforge.net&gt;
- * @version    v0.2.2 build 150827 (27-Aug-15) for Java 1.7
+ * @version    v0.2.2 build 150901 (01-Sep-15) for Java 1.7
  * @since      v0.2.2
  */
 public class Test_WidthLongestLine {
