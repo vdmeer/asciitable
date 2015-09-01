@@ -1,8 +1,12 @@
-v0.2.2 - pull requests - 2015-##-##
+v0.2.2 - pull requests - 2015-09-01
 -----------------------------------
 * added fix for issue #2 - line breaks in column content - https://github.com/vdmeer/asciitable/issues/2
 * added pull request #3 - WidthLongestLine - https://github.com/vdmeer/asciitable/pull/3
 * added no-border row theme and table theme, plus examples
+* changed V2 render behavor and added methods to ArrayTransformations for it
+	** PROCESS_CONTENT(Object content) creates lines for table content
+	** WRAP_LINES(final int length, String[] ar) wraps those lines
+	** renderer now calles new PROCESS_CONTENT and then new WRAP_LINES
 
 
 v0.2.1 - refactor / docs - 2015-08-19
