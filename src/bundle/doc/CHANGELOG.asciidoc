@@ -1,7 +1,8 @@
-v0.2.2 - refactor / docs - 2015-##-##
--------------------------------------
+v0.2.2 - pull requests - 2015-##-##
+-----------------------------------
 * added fix for issue #2 - line breaks in column content - https://github.com/vdmeer/asciitable/issues/2
 * added pull request #3 - WidthLongestLine - https://github.com/vdmeer/asciitable/pull/3
+* added no-border row theme and table theme, plus examples
 
 
 v0.2.1 - refactor / docs - 2015-08-19

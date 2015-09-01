@@ -1057,8 +1057,55 @@
  * 
  * 
  * 
+ * <h3>Table without border to format text paragraphs</h3>
+ * <p>
+ * 		The table can be used to format paragraphs simply using the table theme {@link de.vandermeer.asciitable.v2.themes.V2_E_TableThemes#NO_BORDERS}.
+ * 		This theme will print no borders, so the only formatting visible is the padding and the paragraph alignement.
+ * </p>
+ * 
+ * The follwing example creates a table with two rows, using the no-border-theme.
+ * The first row creates a simple justified paragraph.
+ * The second row creates a paragraph with the same content plus a padding of 5.
+ * <pre>{@code
+	ContentRow row;
+	V2_AsciiTable at = new V2_AsciiTable(0);
+	at.addRule();
+	row = at.addRow(new LoremIpsum().getParagraphs(1));
+	row.setAlignment(new char[]{'j'});
+	at.addRule();
+	row = at.addRow(new LoremIpsum().getParagraphs(1));
+	row.setPadding(new int[]{5});
+	row.setAlignment(new char[]{'j'});
+	at.addRule();
+	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+	rend.setTheme(V2_E_TableThemes.NO_BORDERS.get());
+	rend.setWidth(new WidthFixedColumns().add(60));
+	System.out.println(rend.render(at));
+ * }</pre>
+ * 
+ * The output of the examples are:
+ * <pre style="line-height:17px">
+                                                              
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed 
+ diam nonumy eirmod tempor invidunt ut labore et dolore magna 
+ aliquyam  erat, sed diam voluptua. At vero eos et accusam et 
+ justo duo dolores et ea rebum. Stet clita kasd gubergren, no 
+ sea takimata sanctus est Lorem ipsum dolor sit amet.         
+                                                              
+      Lorem  ipsum dolor sit amet, consetetur sadipscing      
+      elitr,  sed  diam nonumy eirmod tempor invidunt ut      
+      labore  et  dolore  magna  aliquyam erat, sed diam      
+      voluptua.  At  vero  eos  et  accusam et justo duo      
+      dolores et ea rebum. Stet clita kasd gubergren, no      
+      sea  takimata  sanctus  est  Lorem ipsum dolor sit      
+      amet.                                                   
+                                                              
+ * </pre>
+ * 
+ * 
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.2.2 build 150827 (27-Aug-15) for Java 1.7
  */
 package de.vandermeer.asciitable.v2;
+
 

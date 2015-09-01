@@ -28,6 +28,29 @@ public enum V2_E_TableThemes {
 	 * A theme for plain ASCII-7 boxes (basically the characters '-', '|' and '+').
 	 * <pre>
 Normal           Example
+                                 
+                  h1   h2   h3   
+                                 
+                  c1   c2   c3   
+                                 
+                  c1   c2   c3   
+                                 
+                  c1   c2   c3   
+                                 
+	 * </pre>
+	 */
+	NO_BORDERS(
+			V2_E_RowThemes.ASC7_BLANK,
+			V2_E_RowThemes.ASC7_BLANK,
+			V2_E_RowThemes.ASC7_BLANK,
+			V2_E_RowThemes.ASC7_BLANK,
+			"blank ASCII-7 boxes (basically the character ' ')"
+	),
+
+	/**
+	 * A theme for plain ASCII-7 boxes (basically the characters '-', '|' and '+').
+	 * <pre>
+Normal           Example
 +-+-+-+-+        +----+----+----+
 | | | | |        |h1  |h2  |h3  |
 +-+-+-+-+        +----+----+----+

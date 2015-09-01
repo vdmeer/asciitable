@@ -25,6 +25,11 @@ package de.vandermeer.asciitable.v2.themes;
 public enum V2_E_RowThemes {
 
 	/**
+	 * Character ' ' for normal style, no borders.
+	 */
+	ASC7_BLANK						(' ', ' ', ' ', ' ', ' ', ' ', "character ' ' for a blank line"),
+
+	/**
 	 * Characters '+' and '-' for normal style.
 	 * <pre>
 	+-+-+-+-+

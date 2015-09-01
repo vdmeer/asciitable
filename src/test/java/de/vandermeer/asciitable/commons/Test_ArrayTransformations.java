@@ -43,19 +43,19 @@ public class Test_ArrayTransformations {
 //		System.err.println(ArrayUtils.toString(ar));
 
 		lf = "paragraph 1\nparagraph 2";
-		ar = ArrayTransformations.WRAP_LINES(100, lf);
+		ar = ArrayTransformations.WRAP_LINES(100, ArrayTransformations.PROCESS_CONTENT(lf));
 		System.err.println(ArrayUtils.toString(ar));
 
 		lf = "paragraph 1\n\nparagraph 2";
-		ar = ArrayTransformations.WRAP_LINES(100, lf);
+		ar = ArrayTransformations.WRAP_LINES(100, ArrayTransformations.PROCESS_CONTENT(lf));
 		System.err.println(ArrayUtils.toString(ar));
 
 		lf = "paragraph 1\nparagraph 2";
-		ar = ArrayTransformations.WRAP_LINES(5, lf);
+		ar = ArrayTransformations.WRAP_LINES(5, ArrayTransformations.PROCESS_CONTENT(lf));
 		System.err.println(ArrayUtils.toString(ar));
 
 		lf = "paragraph 1\n\nparagraph 2";
-		ar = ArrayTransformations.WRAP_LINES(5, lf);
+		ar = ArrayTransformations.WRAP_LINES(5, ArrayTransformations.PROCESS_CONTENT(lf));
 		System.err.println(ArrayUtils.toString(ar));
 	}
 }

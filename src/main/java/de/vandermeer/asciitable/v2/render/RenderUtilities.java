@@ -54,7 +54,11 @@ public abstract class RenderUtilities {
 			if(padding[i]>0){
 				length = length - padding[i]*2;
 			}
-			ret[i] = ArrayTransformations.WRAP_LINES(length, o);
+
+			//get content first (does special classes as well as many forms of line breaks)
+			String [] content = ArrayTransformations.PROCESS_CONTENT(o);
+			//now wrap lines per line in the processed content array
+			ret[i] = ArrayTransformations.WRAP_LINES(length, content);
 			length = 0;
 		}
 		//equal number of strings per column
