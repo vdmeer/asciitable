@@ -510,11 +510,9 @@ public class Test_CodeForDocs_V2 {
 		ItemizeList il = new ItemizeList();
 		il.addItem("il 1 item 1 some text");
 		il.addItem("il 1 item 2 some text");
-		il.addItem("il 1 item 3 some text");
 		ItemizeList il2 = new ItemizeList();
 		il2.addItem("il 2 item 1 text");
 		il2.addItem("il 2 item 2 text");
-		il2.addItem("il 2 item 3 text");
 		il.addItem(il2);
 		il.setPreLabelIndent(0);
 		il.setListStyle(NestedItemizeStyles.ALL_STAR_INCREMENTAL);
@@ -522,11 +520,9 @@ public class Test_CodeForDocs_V2 {
 		EnumerateList el = new EnumerateList();
 		el.addItem("el 1 item 1 some text");
 		el.addItem("el 1 item 2 some text");
-		el.addItem("el 1 item 3 some text");
 		EnumerateList el2 = new EnumerateList();
 		el2.addItem("el 2 item 1 text");
 		el2.addItem("el 2 item 2 text");
-		el2.addItem("el 2 item 3 text");
 		el.addItem(el2);
 		el.setPreLabelIndent(0);
 		el.setListStyle(NestedEnumerateStyles.aLL_alpha_ascii);
@@ -534,10 +530,6 @@ public class Test_CodeForDocs_V2 {
 		CheckList cl = new CheckList();
 		cl.addItem       ("cl 1 item 1 some text");
 		cl.addItemChecked("cl 1 item 2 some text");
-		CheckList cl2 = new CheckList();
-		cl2.addItem       ("cl 2 item 1 text");
-		cl2.addItemChecked("cl 2 item 2 text");
-		cl.addItem(cl2);
 		cl.setPreLabelIndent(0);
 		cl.setListStyle(NestedCheckStyles.ALL_SQUARE_BRACKET_BLANK_X);
 

@@ -2,7 +2,10 @@ v0.2.3 - #### - 2015-##-##
 -----------------------------------
 * changed ArrayTransformations.PROCESS_CONTENT behavior for "" content to return new String[]{""} rather than new String[]{}
 * changed WidthLongestLine code to make use of new ArrayTransformations.PROCESS_CONTENT method
-* added dependency to asciilist and changed V2 renderer behavor to use AsciiList render behavior
+* added dependency to AsciilList and changed V2 renderer behavor to use AsciiList render behavior
+	** added AsciiList demos to V2
+* fixed problem in rendering (now uses correct width and indentation for line wrapping)
+* added description list for single and multi line descriptions
 * edits in JavaDoc
 
 

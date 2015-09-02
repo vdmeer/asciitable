@@ -12,6 +12,7 @@ This blog post explains how to get UTF-8 support in the whole tool chain http://
 Updates will be at here https://github.com/vdmeer/skb/wiki/HowTo-UTF-8-Support-in-Java-and-Console[SKB Wiki on UTF-8].
 
 
+
 ASCII Table Versions
 --------------------
 
@@ -542,4 +543,26 @@ Table Theme with no Borders for Paragraph Formatting
 	      sea  takimata  sanctus  est  Lorem ipsum dolor sit      
 	      amet.                                                   
 	                                                              
+----------------------------------------------------------------------------------------
+
+
+
+AsciiList lists in a table with and wthout column padding
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------------------------------------------------------
+	┌─────────────────────────┬─────────────────────────┬───────────────────────────┐
+	│ * il 1 item 1 some text │ a el 1 item 1 some text │ [ ] cl 1 item 1 some text │
+	│ * il 1 item 2 some text │ b el 1 item 2 some text │ [X] cl 1 item 2 some text │
+	│   ** il 2 item 1 text   │   b.a el 2 item 1 text  │                           │
+	│   ** il 2 item 2 text   │   b.b el 2 item 2 text  │                           │
+	├─────────────────────────┼─────────────────────────┼───────────────────────────┤
+	│   * il 1 item 1 some    │   a el 1 item 1 some    │   [ ] cl 1 item 1 some    │
+	│     text                │     text                │       text                │
+	│   * il 1 item 2 some    │   b el 1 item 2 some    │   [X] cl 1 item 2 some    │
+	│     text                │     text                │       text                │
+	│     ** il 2 item 1      │     b.a el 2 item 1     │                           │
+	│        text             │         text            │                           │
+	│     ** il 2 item 2      │     b.b el 2 item 2     │                           │
+	│        text             │         text            │                           │
+	└─────────────────────────┴─────────────────────────┴───────────────────────────┘
 ----------------------------------------------------------------------------------------

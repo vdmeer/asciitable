@@ -448,6 +448,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_padding_characters">Padding Characters</a></li>
 <li><a href="#_table_theme">Table Theme</a></li>
 <li><a href="#_table_theme_with_no_borders_for_paragraph_formatting">Table Theme with no Borders for Paragraph Formatting</a></li>
+<li><a href="#_asciilist_lists_in_a_table_with_and_wthout_column_padding">AsciiList lists in a table with and wthout column padding</a></li>
 </ul>
 </li>
 </ul>
@@ -1032,19 +1033,41 @@ rend.setWidth(new WidthAbsoluteEven(76));</pre>
 <h3 id="_table_theme_with_no_borders_for_paragraph_formatting">Table Theme with no Borders for Paragraph Formatting</h3>
 <div class="listingblock">
 <div class="content">
-<pre> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
- diam nonumy eirmod tempor invidunt ut labore et dolore magna
- aliquyam  erat, sed diam voluptua. At vero eos et accusam et
- justo duo dolores et ea rebum. Stet clita kasd gubergren, no
- sea takimata sanctus est Lorem ipsum dolor sit amet.
+<pre>	 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+	 diam nonumy eirmod tempor invidunt ut labore et dolore magna
+	 aliquyam  erat, sed diam voluptua. At vero eos et accusam et
+	 justo duo dolores et ea rebum. Stet clita kasd gubergren, no
+	 sea takimata sanctus est Lorem ipsum dolor sit amet.
 
-      Lorem  ipsum dolor sit amet, consetetur sadipscing
-      elitr,  sed  diam nonumy eirmod tempor invidunt ut
-      labore  et  dolore  magna  aliquyam erat, sed diam
-      voluptua.  At  vero  eos  et  accusam et justo duo
-      dolores et ea rebum. Stet clita kasd gubergren, no
-      sea  takimata  sanctus  est  Lorem ipsum dolor sit
-      amet.</pre>
+	      Lorem  ipsum dolor sit amet, consetetur sadipscing
+	      elitr,  sed  diam nonumy eirmod tempor invidunt ut
+	      labore  et  dolore  magna  aliquyam erat, sed diam
+	      voluptua.  At  vero  eos  et  accusam et justo duo
+	      dolores et ea rebum. Stet clita kasd gubergren, no
+	      sea  takimata  sanctus  est  Lorem ipsum dolor sit
+	      amet.</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_asciilist_lists_in_a_table_with_and_wthout_column_padding">AsciiList lists in a table with and wthout column padding</h3>
+<div class="listingblock">
+<div class="content">
+<pre>	┌─────────────────────────┬─────────────────────────┬───────────────────────────┐
+	│ * il 1 item 1 some text │ a el 1 item 1 some text │ [ ] cl 1 item 1 some text │
+	│ * il 1 item 2 some text │ b el 1 item 2 some text │ [X] cl 1 item 2 some text │
+	│   ** il 2 item 1 text   │   b.a el 2 item 1 text  │                           │
+	│   ** il 2 item 2 text   │   b.b el 2 item 2 text  │                           │
+	├─────────────────────────┼─────────────────────────┼───────────────────────────┤
+	│   * il 1 item 1 some    │   a el 1 item 1 some    │   [ ] cl 1 item 1 some    │
+	│     text                │     text                │       text                │
+	│   * il 1 item 2 some    │   b el 1 item 2 some    │   [X] cl 1 item 2 some    │
+	│     text                │     text                │       text                │
+	│     ** il 2 item 1      │     b.a el 2 item 1     │                           │
+	│        text             │         text            │                           │
+	│     ** il 2 item 2      │     b.b el 2 item 2     │                           │
+	│        text             │         text            │                           │
+	└─────────────────────────┴─────────────────────────┴───────────────────────────┘</pre>
 </div>
 </div>
 </div>
@@ -1053,7 +1076,7 @@ rend.setWidth(new WidthAbsoluteEven(76));</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-09-01 20:32:11 IST
+Last updated 2015-09-02 13:19:28 IST
 </div>
 </div>
 </body>
