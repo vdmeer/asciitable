@@ -53,7 +53,7 @@ public abstract class RenderUtilities {
 				length += width[i];
 			}
 			if(padding[i]>0){
-				length = length - padding[i]*2;
+				length = length - padding[i] * 2;
 			}
 
 			if(o instanceof AsciiList){
@@ -68,6 +68,7 @@ public abstract class RenderUtilities {
 			}
 			length = 0;
 		}
+
 		//equal number of strings per column
 		ret = ArrayTransformations.NORMALISE_ARRAY(width.length, ret);
 		//flip so that each normalized array row is a table column

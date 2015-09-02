@@ -3,6 +3,7 @@ v0.2.3 - #### - 2015-##-##
 * changed ArrayTransformations.PROCESS_CONTENT behavior for "" content to return new String[]{""} rather than new String[]{}
 * changed WidthLongestLine code to make use of new ArrayTransformations.PROCESS_CONTENT method
 * added dependency to asciilist and changed V2 renderer behavor to use AsciiList render behavior
+* edits in JavaDoc
 
 
 v0.2.2 - pull requests - 2015-09-01
