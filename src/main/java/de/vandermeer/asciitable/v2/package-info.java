@@ -60,7 +60,7 @@
  * 		It also provides two implementations: {@link de.vandermeer.asciitable.v2.row.ContentRow} for content rows
  * 		and {@link de.vandermeer.asciitable.v2.row.RuleRow} for rules.
  * 		Both of those row classes are supported by the provided renderer.
- * 		Other row classes can be added if required, but then special renderers need to proivded as well.
+ * 		Other row classes can be added if required, but then special renderers need to provided as well.
  * </p>
  * 
  * 

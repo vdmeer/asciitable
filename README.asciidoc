@@ -69,7 +69,7 @@ The row package defines an interface for a row +V2_Row+.
 It also provides two implementations: +ContentRow+ for content rows
 and +RuleRow+ for rules.
 Both of those row classes are supported by the provided renderer.
-Other row classes can be added if required, but then special renderers need to proivded as well.
+Other row classes can be added if required, but then special renderers need to provided as well.
 
 
 
