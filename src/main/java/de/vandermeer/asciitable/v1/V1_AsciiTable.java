@@ -33,7 +33,7 @@ import de.vandermeer.asciitable.commons.ObjectToStringStyle;
  * Original ASCII table with flexible column number, column width, wrapping, spanning and themes.
  * 
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.2.2 build 150901 (01-Sep-15) for Java 1.7
+ * @version    v0.2.3 build 150910 (10-Sep-15) for Java 1.7
  * @since      v0.0.1
  */
 public final class V1_AsciiTable {

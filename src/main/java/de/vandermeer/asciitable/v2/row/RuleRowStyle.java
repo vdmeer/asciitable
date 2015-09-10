@@ -19,7 +19,7 @@ package de.vandermeer.asciitable.v2.row;
  * Style of a table rule: normal or strong.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.2.2 build 150901 (01-Sep-15) for Java 1.7
+ * @version    v0.2.3 build 150910 (10-Sep-15) for Java 1.7
  * @since      v0.0.3
  */
 public enum RuleRowStyle {
