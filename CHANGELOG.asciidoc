@@ -1,5 +1,5 @@
-v0.2.3 - #### - 2015-##-##
------------------------------------
+v0.2.3 - maintenance - 2015-09-10
+---------------------------------
 * changed ArrayTransformations.PROCESS_CONTENT behavior for "" content to return new String[]{""} rather than new String[]{}
 * changed WidthLongestLine code to make use of new ArrayTransformations.PROCESS_CONTENT method
 * added dependency to AsciilList and changed V2 renderer behavior to use AsciiList render behavior
