@@ -232,7 +232,7 @@
 	String[][] ret = new String[width.length][];
  * }</pre>
  * 
- * Per entry in the given content array, it then determins if lines have to be wrapped (content of {@code null} means column span):
+ * Per entry in the given content array, it then determines if lines have to be wrapped (content of {@code null} means column span):
  * <pre>{@code
 	int length = 0;
 	for(int i=0; i<columns.length; i++){

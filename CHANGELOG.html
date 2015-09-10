@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.2">
-<title>v0.2.2 - pull requests - 2015-09-01</title>
+<title>v0.2.3 - maintenance - 2015-09-10</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -414,6 +414,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
+<li><a href="#_v0_2_3_maintenance_2015_09_10">v0.2.3 - maintenance - 2015-09-10</a></li>
 <li><a href="#_v0_2_2_pull_requests_2015_09_01">v0.2.2 - pull requests - 2015-09-01</a></li>
 <li><a href="#_v0_2_1_refactor_docs_2015_08_19">v0.2.1 - refactor / docs - 2015-08-19</a></li>
 <li><a href="#_v0_2_0_feature_add_2015_08_14">v0.2.0 - feature add - 2015-08-14</a></li>
@@ -432,6 +433,40 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
+<h2 id="_v0_2_3_maintenance_2015_09_10">v0.2.3 - maintenance - 2015-09-10</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>changed ArrayTransformations.PROCESS_CONTENT behavior for "" content to return new String[]{""} rather than new String[]{}</p>
+</li>
+<li>
+<p>changed WidthLongestLine code to make use of new ArrayTransformations.PROCESS_CONTENT method</p>
+</li>
+<li>
+<p>added dependency to AsciilList and changed V2 renderer behavior to use AsciiList render behavior</p>
+<div class="ulist">
+<ul>
+<li>
+<p>added AsciiList demos to V2</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>fixed problem in rendering (now uses correct width and indentation for line wrapping)</p>
+</li>
+<li>
+<p>added description list for single and multi line descriptions</p>
+</li>
+<li>
+<p>edits in JavaDoc</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_v0_2_2_pull_requests_2015_09_01">v0.2.2 - pull requests - 2015-09-01</h2>
 <div class="sectionbody">
 <div class="ulist">
@@ -446,7 +481,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>added no-border row theme and table theme, plus examples</p>
 </li>
 <li>
-<p>changed V2 render behavor and added methods to ArrayTransformations for it</p>
+<p>changed V2 render behavior and added methods to ArrayTransformations for it</p>
 <div class="ulist">
 <ul>
 <li>
@@ -456,7 +491,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>WRAP_LINES(final int length, String[] ar) wraps those lines</p>
 </li>
 <li>
-<p>renderer now calles new PROCESS_CONTENT and then new WRAP_LINES</p>
+<p>renderer now calls new PROCESS_CONTENT and then new WRAP_LINES</p>
 </li>
 </ul>
 </div>
@@ -493,7 +528,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>smaller changes in width package, plus added more width calculation objects (longest word with several constraints)</p>
 </li>
 <li>
-<p>moved all width ojects into the render package, renamed the implementations of the interface removing V2_</p>
+<p>moved all width ojbects into the render package, renamed the implementations of the interface removing V2_</p>
 </li>
 </ul>
 </div>
@@ -515,10 +550,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>some refacotring and renaming</p>
+<p>some refactoring and renaming</p>
 </li>
 <li>
-<p>all classes for the external API are V2_*, all other (rathr internal) classes don&#8217;t have that prefix</p>
+<p>all classes for the external API are V2_*, all other (rather internal) classes don&#8217;t have that prefix</p>
 </li>
 <li>
 <p>moved standard methods into utils class</p>
@@ -533,7 +568,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>changed the width classes: now in separate package, with interface and abstract implementation</p>
 </li>
 <li>
-<p>added all documentation to the pacakages</p>
+<p>added all documentation to the packages</p>
 </li>
 <li>
 <p>created package for render, added width to it</p>
@@ -736,7 +771,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>moved flip transformer init to declaration</p>
 </li>
 <li>
-<p>moved to maven build</p>
+<p>moved to Maven build</p>
 </li>
 <li>
 <p>moved into own Github repo</p>
@@ -804,7 +839,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-09-01 20:32:11 IST
+Last updated 2015-09-10 10:46:32 IST
 </div>
 </div>
 </body>

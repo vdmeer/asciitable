@@ -15,6 +15,7 @@
 
 package de.vandermeer.asciitable.v2.render;
 
+import de.vandermeer.asciilist.AsciiList;
 import de.vandermeer.asciitable.commons.ArrayTransformations;
 import de.vandermeer.asciitable.v2.row.ContentRow;
 import de.vandermeer.asciitable.v2.row.RuleRow;
@@ -52,15 +53,22 @@ public abstract class RenderUtilities {
 				length += width[i];
 			}
 			if(padding[i]>0){
-				length = length - padding[i]*2;
+				length = length - padding[i] * 2;
 			}
 
-			//get content first (does special classes as well as many forms of line breaks)
-			String [] content = ArrayTransformations.PROCESS_CONTENT(o);
-			//now wrap lines per line in the processed content array
-			ret[i] = ArrayTransformations.WRAP_LINES(length, content);
+			if(o instanceof AsciiList){
+				//an AsciiList can render to width already, set width and render and process rendered string
+				ret[i] = ArrayTransformations.PROCESS_CONTENT(((AsciiList)o).setWidth(length).render());
+			}
+			else{
+				//get content first (does many forms of line breaks)
+				String [] content = ArrayTransformations.PROCESS_CONTENT(o);
+				//now wrap lines per line in the processed content array
+				ret[i] = ArrayTransformations.WRAP_LINES(length, content);
+			}
 			length = 0;
 		}
+
 		//equal number of strings per column
 		ret = ArrayTransformations.NORMALISE_ARRAY(width.length, ret);
 		//flip so that each normalized array row is a table column

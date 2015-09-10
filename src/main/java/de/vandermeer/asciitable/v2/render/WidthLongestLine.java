@@ -1,4 +1,4 @@
-/* Copyright 2015 Sebastian Thomschke <sebthom@sourceforge.net>
+/* Copyright 2015 Sebastian Thomschke <sebthom@sourceforge.net> & Sven van der Meer <vdmeer.sven@mykolab.com>
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,33 +15,29 @@
 
 package de.vandermeer.asciitable.v2.render;
 
-import java.util.regex.Pattern;
-
 import org.apache.commons.lang3.ArrayUtils;
 
+import de.vandermeer.asciitable.commons.ArrayTransformations;
 import de.vandermeer.asciitable.v2.V2_AsciiTable;
 import de.vandermeer.asciitable.v2.row.ContentRow;
 import de.vandermeer.asciitable.v2.row.V2_Row;
 
 /**
- * Utility to define the width of table columns automatically based on the longest line in each column.
+ * Defines the width of table columns automatically based on the longest line in each column with optional minimum/maximum column width.
  *
  * @author     Sebastian Thomschke &lt;sebthom@sourceforge.net&gt;
+ * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.2.2 build 150901 (01-Sep-15) for Java 1.7
  * @since      v0.2.2
  */
 public class WidthLongestLine implements V2_Width {
-	private static final Pattern NEW_LINE = Pattern.compile("[\\r?\\n]+");
-	private static final String[] EMPTY_CELL = new String[] { "" };
-
 	private int[] minWidths = new int[0];
 	private int[] maxWidths = new int[0];
 
 	/**
-	 * Adds a column with the the given minimum/maximum column width.
-	 *
-	 * @param minWidth minimum column width in number of characters
-	 * @param maxWidth maximum column width in number of characters
+	 * Creates a new width object.
+	 * @param minWidth minimum column width as number of characters
+	 * @param maxWidth maximum column width as number of characters
 	 * @return self to allow for chaining
 	 */
 	public WidthLongestLine add(final int minWidth, final int maxWidth) {
@@ -52,31 +48,33 @@ public class WidthLongestLine implements V2_Width {
 
 	@Override
 	public int[] getColumnWidths(final V2_AsciiTable table) {
-		final int cols = table.getColumnCount();
-		final int[] resultWidths = new int[cols];
+		int cols = table.getColumnCount();
+		int[] resultWidths = new int[cols];
 
 		// apply min width settings
 		System.arraycopy(minWidths, 0, resultWidths, 0, minWidths.length > cols ? cols : minWidths.length);
 
 		// iterate over all rows
-		for (final V2_Row row : table.getTable()) {
-			if (row instanceof ContentRow) {
-				final ContentRow crow = (ContentRow) row;
-				final Object[] cells = crow.getColumns();
+		for(V2_Row row : table.getTable()) {
+			if(row instanceof ContentRow) {
+				ContentRow crow = (ContentRow)row;
+				Object[] cells = crow.getColumns();
 
 				// iterate over all cells in the row
-				for (int i = 0; i < cells.length; i++) {
-					final String[] lines = cells[i] == null ? EMPTY_CELL : NEW_LINE.split(cells[i].toString());
-					// measuring the width of each line within a cell
-					for (final String line : lines) {
-						final int lineWidth = line.length() + 2 * crow.getPadding()[i];
-						if (lineWidth > resultWidths[i]) {
-							final int maxWidth = maxWidths.length > i ? maxWidths[i] : 0;
-							if (maxWidth < 1 || lineWidth < maxWidth) {
-								resultWidths[i] = lineWidth;
-							}
-							else {
-								resultWidths[i] = maxWidth;
+				for(int i=0; i<cells.length; i++) {
+					String[] lines = ArrayTransformations.PROCESS_CONTENT(cells[i]);
+					if(lines!=null){
+						// measuring the width of each line within a cell
+						for(String line : lines) {
+							int lineWidth = line.length() + 2 * crow.getPadding()[i];
+							if(lineWidth > resultWidths[i]) {
+								int maxWidth = (maxWidths.length>i)?maxWidths[i]:0;
+								if(maxWidth<1 || lineWidth<maxWidth){
+									resultWidths[i] = lineWidth;
+								}
+								else {
+									resultWidths[i] = maxWidth;
+								}
 							}
 						}
 					}

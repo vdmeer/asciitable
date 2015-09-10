@@ -18,7 +18,7 @@ package de.vandermeer.asciitable.v2.render;
 import de.vandermeer.asciitable.v2.V2_AsciiTable;
 
 /**
- * Utility to define the width of table columns using an absolute table width evenly distributed over all columns.
+ * Defines the width of table columns using an absolute table width evenly distributed over all columns.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.2.2 build 150901 (01-Sep-15) for Java 1.7
@@ -30,7 +30,7 @@ public class WidthAbsoluteEven implements V2_Width {
 	protected int width;
 
 	/**
-	 * Returns a new width object with an overall table width set.
+	 * Creates a new width object.
 	 * @param width absolute table width as number of characters
 	 */
 	public WidthAbsoluteEven(int width){

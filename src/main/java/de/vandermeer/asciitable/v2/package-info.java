@@ -60,7 +60,7 @@
  * 		It also provides two implementations: {@link de.vandermeer.asciitable.v2.row.ContentRow} for content rows
  * 		and {@link de.vandermeer.asciitable.v2.row.RuleRow} for rules.
  * 		Both of those row classes are supported by the provided renderer.
- * 		Other row classes can be added if required, but then special renderers need to proivded as well.
+ * 		Other row classes can be added if required, but then special renderers need to provided as well.
  * </p>
  * 
  * 
@@ -116,15 +116,14 @@
  * 
  * 
  * <br><h3>Standard usage - create and render a simple table</h3>
- * <p>
- * 		The standard usage is:
- * 		<ul>
- * 			<li>create a table</li>
- * 			<li>add rules and rows</li>
- * 			<li>create a renderer and configure it</li>
- * 			<li>render the table</li>
- * 			<li>use the finally rendered table, e.g. print it to a console or write it to a file</li>
- * 		</ul>
+ * The standard usage is:
+ * <ul>
+ * 		<li>create a table</li>
+ * 		<li>add rules and rows</li>
+ * 		<li>create a renderer and configure it</li>
+ * 		<li>render the table</li>
+ * 		<li>use the finally rendered table, e.g. print it to a console or write it to a file</li>
+ * </ul>
  * 
  * 
  * 
@@ -180,7 +179,7 @@
  * 
  * 
  * 
- * <h3>Examples for tables with 1 to 5 columns</h3>
+ * <br><h3>Examples for tables with 1 to 5 columns</h3>
  * The following examples show how to create tables with 1 to 5 columns.
  * Each of the tables uses the feature of spanning: if columns for a row are set to {@code null} (not simply empty),
  * they will be treated as columns the next non-null column should span.
@@ -347,7 +346,7 @@
  * 
  * 
  * 
- * <h3>Text alignment in columns</h3>
+ * <br><h3>Text alignment in columns</h3>
  * Text in columns can be aligned left, right, centered, justified with last line left bound, or justified with last line right bound.
  * The first example shows left, right, and centered.
  * <pre>{@code
@@ -362,7 +361,7 @@
 	System.out.println(rend.render(at));
  * }</pre>
  * 
- * The output of this example will be:
+ * The output of the example is:
  * <pre style="line-height:17px">
 	┌────────────────────────┬────────────────────────┬────────────────────────┐
 	│ left                   │                  right │         center         │
@@ -386,7 +385,7 @@
 	System.out.println(rend.render(at));
  * }</pre>
  * 
- * The output of this example will be:
+ * The output of the example is:
  * <pre style="line-height:17px">
 	┌──────────────────────────────────────────────────────────┐
 	│ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, │
@@ -411,7 +410,7 @@
  * 
  * 
  * 
- * <h3>Conditional line breaks</h3>
+ * <br><h3>Conditional line breaks</h3>
  * <p>
  * 		Text in column content can contain conditional line breaks.
  * 		When text is processed, CRLF, CR, and LF line breaks are used to calculate columns.
@@ -432,7 +431,7 @@
 	System.out.println(rend.render(at));
  * }</pre>
  * 
- * The output of this example will be:
+ * The output of the example is:
  * <pre style="line-height:17px">
 ┌────────────────────────────────────────────────────────────┐
 │ Lorem ipsum dolor sit amet, consetetur sadipscing elitr,   │
@@ -454,7 +453,7 @@
  * 
  * 
  * 
- * <h3>Creating lists using conditional line breaks</h3>
+ * <br><h3>Creating lists using conditional line breaks</h3>
  * Conditional line breaks can also be used to create simple lists.
  * The text formatting is not fexible (and all formatting must be done in the actual text) but the result (given that the column width is sufficient) will be a list in a column.
  * The following example shows a table with 2 columns, the second column creating a treee-item list using conditional line break and extra formatting for lable, spacing and indentation:
@@ -469,7 +468,7 @@
 	System.out.println(rend.render(at));
  * }</pre>
  * 
- * The output of this example will be:
+ * The output of the example is:
  * <pre style="line-height:17px">
 	┌─────────────────────────┬────────────────────────────────────────┐
 	│ column with a list      │ * list item one                        │
@@ -480,7 +479,7 @@
  * 
  * 
  * 
- * <h3>Column padding</h3>
+ * <br><h3>Column padding</h3>
  * <p>
  * 		Text in rows can be padded.
  * 		Padding means to add padding character before and after the text in the row (the same for both, so it is symetrical).
@@ -505,7 +504,7 @@
 	System.out.println(rend.render(at));
  * }</pre>
  * 
- * The output of this example will be:
+ * The output of the example is:
  * <pre style="line-height:17px">
 	┌──────────────┬──────────────┬──────────────┬──────────────┬──────────────┐
 	│padding 0     │ padding 1    │  padding 2   │   padding    │    paddin    │
@@ -515,7 +514,7 @@
  * 
  * 
  * 
- * <h3>Column spanning</h3>
+ * <br><h3>Column spanning</h3>
  * Rows can span columns.
  * This is done by adding columns of {@code null} content to a row followed by a column with content.
  * The column with content will span all previous rows with content {@code null}.
@@ -542,7 +541,7 @@
 	System.out.println(rend.render(at));
  * }</pre>
  * 
- * The output of this example will be:
+ * The output of the example is:
  * <pre style="line-height:17px">
 	┌───────────────────────────────────────────────────────────────────────────────┐
 	│ span all 5 columns                                                            │
@@ -561,7 +560,7 @@
  * 
  * 
  * 
- * <h3>Padding character</h3>
+ * <br><h3>Padding character</h3>
  * The table renderer can be set to use different padding characters.
  * A padding character is the character used to fill content rows (all their columns) up to the next border.
  * Using UTF-8 characters might not be result in the anticipated result.
@@ -583,7 +582,7 @@
 	System.out.println(rend.render(at));
  * }</pre>
  * 
- * The output of this example will be:
+ * The output of the examples is:
  * <pre style="line-height:17px">
 	+--------------------------------------------------------------------------+
 	| some text with padding                                                   |
@@ -604,7 +603,7 @@
  * 
  * 
  * 
- * <h3>Table theme</h3>
+ * <br><h3>Table theme</h3>
  * The table renderer can be set to use different table themes.
  * A table theme defines all border characters for rules, strong rules and content rows.
  * The following example creates a table with 1 table rendered with the same renderer set for different table themes (using pre-defined themes):
@@ -628,7 +627,7 @@
 	System.out.println(rend.render(at));
  * }</pre>
  * 
- * The output of this example will be:
+ * The output of the examples is:
  * <pre style="line-height:17px">
 	+--------------------------------------------------------------------------+
 	| some column text                                                         |
@@ -649,7 +648,7 @@
  * 
  * 
  * 
- * <h3>Rule styles</h3>
+ * <br><h3>Rule styles</h3>
  * <p>
  * 		Rules can come in two style: normal or strong.
  * 		To add a normal rule the the table use {@link de.vandermeer.asciitable.v2.V2_AsciiTable#addRule()}.
@@ -691,7 +690,7 @@
 	System.out.println(rend.render(at));
  * }</pre>
  * 
- * The output of the first rendered table will be:
+ * The output of the first table is:
  * <pre style="line-height:17px">
 	≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 	  col1                     col2                     col3                    
@@ -706,7 +705,7 @@
 	≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
  * </pre>
  * 
- * The output of the first second table will be:
+ * The output of the second table is:
  * <pre style="line-height:17px">
 	▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 	  col1                     col2                     col3                    
@@ -756,7 +755,7 @@
 	System.out.println(rend.render(at));
  * }</pre>
  * 
- * The output of the examples are:
+ * The output of the examples is:
  * <pre style="line-height:17px">
 	┌────────────────┬───────────────┬───────────────┐
 	│ col1           │ col2          │ col3          │
@@ -798,7 +797,7 @@
 	System.out.println(rend.render(at));
  * }</pre>
  * 
- * The output of the examples are:
+ * The output of the examples is:
  * <pre style="line-height:17px">
 	┌──────────┬────────────────────┬──────────────────────────────┐
 	│ col1     │ col2               │ col3                         │
@@ -858,7 +857,7 @@
 	System.out.println(rend.render(at));
  * }</pre>
  * 
- * The output of the examples are:
+ * The output of the examples is:
  * <pre style="line-height:17px">
 	┌──────┬───────────┐
 	│first │information│
@@ -912,7 +911,7 @@
 	System.out.println(rend.render(at));
  * }</pre>
  * 
- * The output of the examples are:
+ * The output of the examples is:
  * <pre style="line-height:17px">
 	┌───────────┬─────────────┐
 	│ first     │ information │
@@ -960,7 +959,7 @@
 	System.out.println(rend.render(at));
  * }</pre>
  * 
- * The output of the examples are:
+ * The output of the examples is:
  * <pre style="line-height:17px">
 	┌────────┬──────────┐
 	│ first  │ informat │
@@ -1000,7 +999,7 @@
 	System.out.println(rend.setWidth(width).render(at));
  * }</pre>
  * 
- * The output of the examples are:
+ * The output of the example is:
  * <pre style="line-height:17px">
 	┌──┬───┬────┬─────┬──────┐
 	│  │ 1 │ 22 │ 333 │ 4444 │
@@ -1014,7 +1013,7 @@
 	System.out.println(rend.setWidth(width).render(at));
  * }</pre>
  * 
- * The output of the examples are:
+ * The output of the example is:
  * <pre style="line-height:17px">
 	┌────┬───┬────┬─────┬──────┐
 	│    │ 1 │ 22 │ 333 │ 4444 │
@@ -1028,7 +1027,7 @@
 	System.out.println(rend.setWidth(width).render(at));
  * }</pre>
  * 
- * The output of the examples are:
+ * The output of the example is:
  * <pre style="line-height:17px">
 	┌────┬────┬────┬─────┬────┐
 	│    │ 1  │ 22 │ 333 │ 44 │
@@ -1044,7 +1043,7 @@
 	System.out.println(rend.setWidth(width).render(at));
  * }</pre>
  * 
- * The output of the examples are:
+ * The output of the example is:
  * <pre style="line-height:17px">
 	┌────┬────┬────┬──────┬────┐
 	│    │ 1  │ 22 │ 333  │ 44 │
@@ -1057,7 +1056,7 @@
  * 
  * 
  * 
- * <h3>Table without border to format text paragraphs</h3>
+ * <br><h3>Table without border to format text paragraphs</h3>
  * <p>
  * 		The table can be used to format paragraphs simply using the table theme {@link de.vandermeer.asciitable.v2.themes.V2_E_TableThemes#NO_BORDERS}.
  * 		This theme will print no borders, so the only formatting visible is the padding and the paragraph alignement.
@@ -1083,7 +1082,7 @@
 	System.out.println(rend.render(at));
  * }</pre>
  * 
- * The output of the examples are:
+ * The output of the example is:
  * <pre style="line-height:17px">
                                                               
  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed 
@@ -1103,9 +1102,104 @@
  * </pre>
  * 
  * 
+ * <br><h3>Using AsciiLists in tables</h3>
+ * AsciiLists from the asciilist project can be used in tables.
+ * The lists provide rendering for a given width already, so the table renderer can simply set the width for such a list and use the list's renderer.
+ * All AsciiLists are supported, but some settings can produce unwanted results:
+ * <ul>
+ * 		<li>
+ * 			Using UTF characters for list labels might not work inside a table.
+ * 			Reason for that is that some monospace fonts do not print all UTF characters with equal length.
+ * 			Most special label characters in the lists fall into that category.
+ * 		</li>
+ * 		<li>
+ * 			When using lists in columns of the same row some UTF characters are not printed out correctly.
+ * 			The reason for that is not yet known.
+ * 		</li>
+ * </ul>
+ * 
+ * For the example we first create a set of AsciiList lists, one per itemize, enumerate and check list.
+ * The itemize list example has two nested lists with two items each.
+ * The padding is set to 0.:
+ * <pre>{@code
+	ItemizeList il = new ItemizeList();
+	il.addItem("il 1 item 1 some text");
+	il.addItem("il 1 item 2 some text");
+	ItemizeList il2 = new ItemizeList();
+	il2.addItem("il 2 item 1 text");
+	il2.addItem("il 2 item 2 text");
+	il.addItem(il2);
+	il.setPreLabelIndent(0);
+	il.setListStyle(NestedItemizeStyles.ALL_STAR_INCREMENTAL);
+ * }</pre>
+ * 
+ * The enumerate list example has two nested lists with two items each.
+ * The padding is set to 0.:
+ * <pre>{@code
+	EnumerateList el = new EnumerateList();
+	el.addItem("el 1 item 1 some text");
+	el.addItem("el 1 item 2 some text");
+	EnumerateList el2 = new EnumerateList();
+	el2.addItem("el 2 item 1 text");
+	el2.addItem("el 2 item 2 text");
+	el.addItem(el2);
+	el.setPreLabelIndent(0);
+	el.setListStyle(NestedEnumerateStyles.aLL_alpha_ascii);
+ * }</pre>
+ * 
+ * The checklist example has two one list with two items (one checked and one not checked).
+ * The padding is set to 0:
+ * <pre>{@code
+	CheckList cl = new CheckList();
+	cl.addItem       ("cl 1 item 1 some text");
+	cl.addItemChecked("cl 1 item 2 some text");
+	cl.setPreLabelIndent(0);
+	cl.setListStyle(NestedCheckStyles.ALL_SQUARE_BRACKET_BLANK_X);
+
+ * }</pre>
+ * 
+ * Now we create a table and add the three lists into a row using the default padding of 1.
+ * Then we add all lists to a second row with specific padding of 3 for each column.
+ * This second row will show the wrapping of overlength list items:
+ * <pre>{@code
+	V2_AsciiTable at = new V2_AsciiTable(1);
+	at.addRule();
+	at.addRow(il, el, cl);
+	at.addRule();
+	at.addRow(il, el, cl).setPadding(new int[]{3, 3, 3});
+	at.addRule();
+ * }</pre>
+ * 
+ * For the renderer, we use a fixed column length set to 25 for the columns with itemize and enumerate lists.
+ * The width for the columns with the check lists is set to 27 to show one column with and one without line wrapping:
+ * <pre>{@code
+	V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+	rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+	rend.setWidth(new WidthFixedColumns().add(25).add(25).add(27));
+	System.out.println(rend.render(at));
+ * }</pre>
+ * 
+ * The output of the example is:
+ * <pre style="line-height:17px">
+	┌─────────────────────────┬─────────────────────────┬───────────────────────────┐
+	│ * il 1 item 1 some text │ a el 1 item 1 some text │ [ ] cl 1 item 1 some text │
+	│ * il 1 item 2 some text │ b el 1 item 2 some text │ [X] cl 1 item 2 some text │
+	│   ** il 2 item 1 text   │   b.a el 2 item 1 text  │                           │
+	│   ** il 2 item 2 text   │   b.b el 2 item 2 text  │                           │
+	├─────────────────────────┼─────────────────────────┼───────────────────────────┤
+	│   * il 1 item 1 some    │   a el 1 item 1 some    │   [ ] cl 1 item 1 some    │
+	│     text                │     text                │       text                │
+	│   * il 1 item 2 some    │   b el 1 item 2 some    │   [X] cl 1 item 2 some    │
+	│     text                │     text                │       text                │
+	│     ** il 2 item 1      │     b.a el 2 item 1     │                           │
+	│        text             │         text            │                           │
+	│     ** il 2 item 2      │     b.b el 2 item 2     │                           │
+	│        text             │         text            │                           │
+	└─────────────────────────┴─────────────────────────┴───────────────────────────┘
+ * </pre>
+ * 
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.2.2 build 150901 (01-Sep-15) for Java 1.7
  */
 package de.vandermeer.asciitable.v2;
-
 

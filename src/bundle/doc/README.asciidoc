@@ -5,11 +5,12 @@ Several implementations of a text table, originally using ASCII and UTF-8 charac
 
 The tables allows for various degrees of flexibility for number of columns, column width, automated line wrapping, column spanning and themes for tables and table rows.
 
-Current release is https://search.maven.org/#artifactdetails|de.vandermeer|asciitable|0.2.2|jar[0.2.2].
+Current release is https://search.maven.org/#artifactdetails|de.vandermeer|asciitable|0.2.3|jar[0.2.3].
 All releases are on https://search.maven.org/#search|gav|1|g%3A%22de.vandermeer%22%20AND%20a%3A%22asciitable%22[Maven Central].
 
 This blog post explains how to get UTF-8 support in the whole tool chain http://vdmeer-sven.blogspot.ie/2014/06/utf-8-support-w-java-and-console.html[blog on UTF-8].
 Updates will be at here https://github.com/vdmeer/skb/wiki/HowTo-UTF-8-Support-in-Java-and-Console[SKB Wiki on UTF-8].
+
 
 
 ASCII Table Versions
@@ -68,7 +69,7 @@ The row package defines an interface for a row +V2_Row+.
 It also provides two implementations: +ContentRow+ for content rows
 and +RuleRow+ for rules.
 Both of those row classes are supported by the provided renderer.
-Other row classes can be added if required, but then special renderers need to proivded as well.
+Other row classes can be added if required, but then special renderers need to provided as well.
 
 
 
@@ -527,19 +528,41 @@ Table Theme with no Borders for Paragraph Formatting
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ----------------------------------------------------------------------------------------
-                                                              
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed 
- diam nonumy eirmod tempor invidunt ut labore et dolore magna 
- aliquyam  erat, sed diam voluptua. At vero eos et accusam et 
- justo duo dolores et ea rebum. Stet clita kasd gubergren, no 
- sea takimata sanctus est Lorem ipsum dolor sit amet.         
-                                                              
-      Lorem  ipsum dolor sit amet, consetetur sadipscing      
-      elitr,  sed  diam nonumy eirmod tempor invidunt ut      
-      labore  et  dolore  magna  aliquyam erat, sed diam      
-      voluptua.  At  vero  eos  et  accusam et justo duo      
-      dolores et ea rebum. Stet clita kasd gubergren, no      
-      sea  takimata  sanctus  est  Lorem ipsum dolor sit      
-      amet.                                                   
-                                                              
+	                                                              
+	 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed 
+	 diam nonumy eirmod tempor invidunt ut labore et dolore magna 
+	 aliquyam  erat, sed diam voluptua. At vero eos et accusam et 
+	 justo duo dolores et ea rebum. Stet clita kasd gubergren, no 
+	 sea takimata sanctus est Lorem ipsum dolor sit amet.         
+	                                                              
+	      Lorem  ipsum dolor sit amet, consetetur sadipscing      
+	      elitr,  sed  diam nonumy eirmod tempor invidunt ut      
+	      labore  et  dolore  magna  aliquyam erat, sed diam      
+	      voluptua.  At  vero  eos  et  accusam et justo duo      
+	      dolores et ea rebum. Stet clita kasd gubergren, no      
+	      sea  takimata  sanctus  est  Lorem ipsum dolor sit      
+	      amet.                                                   
+	                                                              
+----------------------------------------------------------------------------------------
+
+
+
+AsciiList lists in a table with and wthout column padding
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------------------------------------------------------
+	┌─────────────────────────┬─────────────────────────┬───────────────────────────┐
+	│ * il 1 item 1 some text │ a el 1 item 1 some text │ [ ] cl 1 item 1 some text │
+	│ * il 1 item 2 some text │ b el 1 item 2 some text │ [X] cl 1 item 2 some text │
+	│   ** il 2 item 1 text   │   b.a el 2 item 1 text  │                           │
+	│   ** il 2 item 2 text   │   b.b el 2 item 2 text  │                           │
+	├─────────────────────────┼─────────────────────────┼───────────────────────────┤
+	│   * il 1 item 1 some    │   a el 1 item 1 some    │   [ ] cl 1 item 1 some    │
+	│     text                │     text                │       text                │
+	│   * il 1 item 2 some    │   b el 1 item 2 some    │   [X] cl 1 item 2 some    │
+	│     text                │     text                │       text                │
+	│     ** il 2 item 1      │     b.a el 2 item 1     │                           │
+	│        text             │         text            │                           │
+	│     ** il 2 item 2      │     b.b el 2 item 2     │                           │
+	│        text             │         text            │                           │
+	└─────────────────────────┴─────────────────────────┴───────────────────────────┘
 ----------------------------------------------------------------------------------------

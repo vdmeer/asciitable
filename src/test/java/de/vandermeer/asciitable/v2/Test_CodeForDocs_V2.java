@@ -18,6 +18,12 @@ package de.vandermeer.asciitable.v2;
 import org.junit.Test;
 
 import de.svenjacobs.loremipsum.LoremIpsum;
+import de.vandermeer.asciilist.CheckList;
+import de.vandermeer.asciilist.EnumerateList;
+import de.vandermeer.asciilist.ItemizeList;
+import de.vandermeer.asciilist.styles.NestedCheckStyles;
+import de.vandermeer.asciilist.styles.NestedEnumerateStyles;
+import de.vandermeer.asciilist.styles.NestedItemizeStyles;
 import de.vandermeer.asciitable.v2.render.V2_AsciiTableRenderer;
 import de.vandermeer.asciitable.v2.render.WidthAbsoluteEven;
 import de.vandermeer.asciitable.v2.render.WidthFixedColumns;
@@ -37,7 +43,7 @@ import de.vandermeer.asciitable.v2.themes.V2_E_TableThemes;
 public class Test_CodeForDocs_V2 {
 
 	@Test
-	public void test_Example_SimpleTable(){
+	public void test_SimpleTable(){
 		V2_AsciiTable at = new V2_AsciiTable();
 
 		at.addRule();
@@ -56,7 +62,7 @@ public class Test_CodeForDocs_V2 {
 	}
 
 	@Test
-	public void test_Example_1Column(){
+	public void test_1Column(){
 		V2_AsciiTable at = new V2_AsciiTable();
 		at.addRule();
 		at.addRow("Table Heading");
@@ -74,7 +80,7 @@ public class Test_CodeForDocs_V2 {
 	}
 
 	@Test
-	public void test_Example_2Columns(){
+	public void test_2Columns(){
 		V2_AsciiTable at = new V2_AsciiTable();
 		at.addRule();
 		at.addRow(null,"Table Heading");
@@ -92,7 +98,7 @@ public class Test_CodeForDocs_V2 {
 	}
 
 	@Test
-	public void test_Example_3Columns(){
+	public void test_3Columns(){
 		V2_AsciiTable at = new V2_AsciiTable();
 		at.addRule();
 		at.addRow(null, null, "Table Heading");
@@ -110,7 +116,7 @@ public class Test_CodeForDocs_V2 {
 	}
 
 	@Test
-	public void test_Example_4Columns(){
+	public void test_4Columns(){
 		V2_AsciiTable at = new V2_AsciiTable();
 		at.addRule();
 		at.addRow(null, null, null, "Table Heading");
@@ -128,7 +134,7 @@ public class Test_CodeForDocs_V2 {
 	}
 
 	@Test
-	public void test_Example_5Columns(){
+	public void test_5Columns(){
 		V2_AsciiTable at = new V2_AsciiTable();
 		at.addRule();
 		at.addRow(null, null, null, null, "Table Heading");
@@ -146,7 +152,7 @@ public class Test_CodeForDocs_V2 {
 	}
 
 	@Test
-	public void test_Example_ColSpanning(){
+	public void test_ColSpanning(){
 		V2_AsciiTable at = new V2_AsciiTable();
 		at.addRule();
 		at.addRow(null, null, null, null, "span all 5 columns");
@@ -170,7 +176,7 @@ public class Test_CodeForDocs_V2 {
 	}
 
 	@Test
-	public void test_Example_PaddingChar(){
+	public void test_PaddingChar(){
 		V2_AsciiTable at = new V2_AsciiTable();
 		at.addRule();
 		at.addRow("some text with padding");
@@ -192,7 +198,7 @@ public class Test_CodeForDocs_V2 {
 	}
 
 	@Test
-	public void test_Example_TableThemes(){
+	public void test_TableThemes(){
 		V2_AsciiTable at = new V2_AsciiTable();
 		at.addRule();
 		at.addRow("some column text");
@@ -216,7 +222,7 @@ public class Test_CodeForDocs_V2 {
 	}
 
 	@Test
-	public void test_Example_Alignment_Std(){
+	public void test_Alignment_Std(){
 		V2_AsciiTable at = new V2_AsciiTable();
 		at.addRule();
 		at.addRow("left", "right", "center").setAlignment(new char[]{'l', 'r', 'c'});
@@ -230,7 +236,7 @@ public class Test_CodeForDocs_V2 {
 	}
 
 	@Test
-	public void test_Example_Alignment_Justified(){
+	public void test_Alignment_Justified(){
 		V2_AsciiTable at = new V2_AsciiTable();
 		at.addRule();
 		at.addRow(new LoremIpsum().getWords()).setAlignment(new char[]{'j'});
@@ -246,7 +252,7 @@ public class Test_CodeForDocs_V2 {
 	}
 
 	@Test
-	public void test_Example_Padding(){
+	public void test_Padding(){
 		V2_AsciiTable at = new V2_AsciiTable();
 		at.addRule();
 		at.addRow("padding 0", "padding 1", "padding 2", "padding 3", "padding 4").setPadding(new int[]{0, 1, 2, 3, 4});
@@ -260,7 +266,7 @@ public class Test_CodeForDocs_V2 {
 	}
 
 	@Test
-	public void test_Example_RuleStyle(){
+	public void test_RuleStyle(){
 		V2_AsciiTable at = new V2_AsciiTable();
 		at.addStrongRule();
 		at.addRow("col1", "col2", "col3");
@@ -286,7 +292,7 @@ public class Test_CodeForDocs_V2 {
 	}
 
 	@Test
-	public void test_Example_WidthAbsoluteEven(){
+	public void test_WidthAbsoluteEven(){
 		V2_AsciiTable at = new V2_AsciiTable();
 		at.addRule();
 		at.addRow("col1", "col2", "col3");
@@ -309,7 +315,7 @@ public class Test_CodeForDocs_V2 {
 	}
 
 	@Test
-	public void test_Example_WidthFixedColumns(){
+	public void test_WidthFixedColumns(){
 		V2_AsciiTable at = new V2_AsciiTable();
 		at.addRule();
 		at.addRow("col1", "col2", "col3");
@@ -332,7 +338,7 @@ public class Test_CodeForDocs_V2 {
 	}
 
 	@Test
-	public void test_Example_WidthLongestWord(){
+	public void test_WidthLongestWord(){
 		V2_AsciiTable at = new V2_AsciiTable(0);
 		at.addRule();
 		at.addRow("first", "information");
@@ -373,7 +379,7 @@ public class Test_CodeForDocs_V2 {
 	}
 
 	@Test
-	public void test_Example_WidthLongestWordMinCol(){
+	public void test_WidthLongestWordMinCol(){
 		V2_AsciiTable at = new V2_AsciiTable();
 		at.addRule();
 		at.addRow("first", "information");
@@ -400,7 +406,7 @@ public class Test_CodeForDocs_V2 {
 	}
 
 	@Test
-	public void test_Example_WidthLongestWordMaxCol(){
+	public void test_WidthLongestWordMaxCol(){
 		V2_AsciiTable at = new V2_AsciiTable();
 		at.addRule();
 		at.addRow("first", "information");
@@ -427,7 +433,7 @@ public class Test_CodeForDocs_V2 {
 	}
 
 	@Test
-	public void test_Example_WidthLongestLine(){
+	public void test_WidthLongestLine(){
 		V2_AsciiTable at = new V2_AsciiTable();
 		at.addRule();
 		at.addRow("", "1", "22", "333", "4444");
@@ -455,7 +461,7 @@ public class Test_CodeForDocs_V2 {
 	}
 
 	@Test
-	public void test_Example_CondLineBreak(){
+	public void test_CondLineBreak(){
 		V2_AsciiTable at = new V2_AsciiTable();
 		at.addRule();
 		at.addRow(new LoremIpsum().getParagraphs(1) + "\r\n\n<br>" + new LoremIpsum().getParagraphs(1));
@@ -468,7 +474,7 @@ public class Test_CodeForDocs_V2 {
 	}
 
 	@Test
-	public void test_Example_ContentListWithLinebreak(){
+	public void test_ContentListWithLinebreak(){
 		V2_AsciiTable at = new V2_AsciiTable();
 		at.addRule();
 		at.addRow("column with a list using line breaks", " * list item one\n * list item two \r\n * list item three");
@@ -481,7 +487,7 @@ public class Test_CodeForDocs_V2 {
 	}
 
 	@Test
-	public void test_Example_NoBorder(){
+	public void test_NoBorder(){
 		ContentRow row;
 		V2_AsciiTable at = new V2_AsciiTable(0);
 		at.addRule();
@@ -496,6 +502,48 @@ public class Test_CodeForDocs_V2 {
 		rend.setTheme(V2_E_TableThemes.NO_BORDERS.get());
 		rend.setWidth(new WidthFixedColumns().add(60));
 		System.out.println("no border");
+		System.out.println(rend.render(at));
+	}
+
+	@Test
+	public void test_AsciiList(){
+		ItemizeList il = new ItemizeList();
+		il.addItem("il 1 item 1 some text");
+		il.addItem("il 1 item 2 some text");
+		ItemizeList il2 = new ItemizeList();
+		il2.addItem("il 2 item 1 text");
+		il2.addItem("il 2 item 2 text");
+		il.addItem(il2);
+		il.setPreLabelIndent(0);
+		il.setListStyle(NestedItemizeStyles.ALL_STAR_INCREMENTAL);
+
+		EnumerateList el = new EnumerateList();
+		el.addItem("el 1 item 1 some text");
+		el.addItem("el 1 item 2 some text");
+		EnumerateList el2 = new EnumerateList();
+		el2.addItem("el 2 item 1 text");
+		el2.addItem("el 2 item 2 text");
+		el.addItem(el2);
+		el.setPreLabelIndent(0);
+		el.setListStyle(NestedEnumerateStyles.aLL_alpha_ascii);
+
+		CheckList cl = new CheckList();
+		cl.addItem       ("cl 1 item 1 some text");
+		cl.addItemChecked("cl 1 item 2 some text");
+		cl.setPreLabelIndent(0);
+		cl.setListStyle(NestedCheckStyles.ALL_SQUARE_BRACKET_BLANK_X);
+
+		V2_AsciiTable at = new V2_AsciiTable(1);
+		at.addRule();
+		at.addRow(il, el, cl);
+		at.addRule();
+		at.addRow(il, el, cl).setPadding(new int[]{3, 3, 3});
+		at.addRule();
+
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new WidthFixedColumns().add(25).add(25).add(27));
+		System.out.println("ascii-list");
 		System.out.println(rend.render(at));
 	}
 }

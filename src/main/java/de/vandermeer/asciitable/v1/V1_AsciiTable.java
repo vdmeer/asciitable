@@ -153,7 +153,7 @@ public final class V1_AsciiTable {
 		}
 
 		ar = ArrayTransformations.NORMALISE_ARRAY(this.getColumnCount(), ar);
-		ar = ArrayTransformations.FLIP_ARRAY(ar);	//flip so that each normalised array row is a table column
+		ar = ArrayTransformations.FLIP_ARRAY(ar);	//flip so that each normalized array row is a table column
 		this.table.put(this.table.size()+1, ar);
 		return this.table.size();
 	}
@@ -192,7 +192,7 @@ public final class V1_AsciiTable {
 	}
 
 	/**
-	 * Initialises columns.
+	 * Initializes columns.
 	 * @param columns number of columns
 	 * @param width requested width of the table
 	 * @return true if init was ok, false otherwise (no init done)
@@ -310,12 +310,6 @@ public final class V1_AsciiTable {
 		ret.append(theme[V1_TableTheme.VERTICAL_AND_LEFT]);
 		return ret;
 	}
-
-	/**
-	 * Renders the bottom rule of the table.
-	 * @param row last content row of the table
-	 * @return rendered bottom row
-	 */
 
 	/**
 	 * Renders the bottom rule of the table.
