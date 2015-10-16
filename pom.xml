@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.vandermeer</groupId>
 	<artifactId>asciitable</artifactId>
-	<version>0.2.3</version>
+	<version>0.2.4-becompany-20151016</version>
 	<packaging>jar</packaging>
 
 	<name>Ascii Table</name>
