@@ -547,8 +547,8 @@ Table Theme with no Borders for Paragraph Formatting
 
 
 
-AsciiList lists in a table with and wthout column padding
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+AsciiList lists in a table with and without column padding
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ----------------------------------------------------------------------------------------
 	┌─────────────────────────┬─────────────────────────┬───────────────────────────┐
 	│ * il 1 item 1 some text │ a el 1 item 1 some text │ [ ] cl 1 item 1 some text │
@@ -566,3 +566,37 @@ AsciiList lists in a table with and wthout column padding
 	│        text             │         text            │                           │
 	└─────────────────────────┴─────────────────────────┴───────────────────────────┘
 ----------------------------------------------------------------------------------------
+
+
+
+URI, URL and URN content
+~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------------------------------------------------------
+	┌───────────────────────────────────┬───────────────────────────────────┐
+	│ scheme:[//[user:password@]host[:p │ scheme:[//[user:password@]host[:p │
+	│ ort]][/]path[?query][#fragment]   │ ort]][/]path[?query][#fragment]   │
+	├───────────────────────────────────┴───────────────────────────────────┤
+	│ scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]      │
+	├───────────────────────────────────┬───────────────────────────────────┤
+	│ abc://username:password@example.c │ abc://username:password@example.c │
+	│ om:123/path/data?key=value#fragid │ om:123/path/data?key=value#fragid │
+	│ 1                                 │ 1                                 │
+	├───────────────────────────────────┴───────────────────────────────────┤
+	│ abc://username:password@example.com:123/path/data?key=value#fragid1   │
+	├───────────────────────────────────┬───────────────────────────────────┤
+	│ urn:example:mammal:monotreme:echi │ urn:example:mammal:monotreme:echi │
+	│ dna                               │ dna                               │
+	├───────────────────────────────────┴───────────────────────────────────┤
+	│ urn:example:mammal:monotreme:echidna                                  │
+	├───────────────────────────────────┬───────────────────────────────────┤
+	│ http://www.example.com/test1/test │ http://www.example.com/test1/test │
+	│ 2                                 │ 2                                 │
+	├───────────────────────────────────┴───────────────────────────────────┤
+	│ http://www.example.com/test1/test2                                    │
+	├───────────────────────────────────┬───────────────────────────────────┤
+	│ mailto:user1@example.com          │ mailto:firstname.lastname@example │
+	│                                   │ .com                              │
+	├───────────────────────────────────┴───────────────────────────────────┤
+	│ mailto:firstname.lastname@example.com                                 │
+	└───────────────────────────────────────────────────────────────────────┘
+---------------------------------------------------------------------------------
