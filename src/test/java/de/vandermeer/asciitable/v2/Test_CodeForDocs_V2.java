@@ -374,7 +374,7 @@ public class Test_CodeForDocs_V2 {
 		rend = new V2_AsciiTableRenderer();
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new WidthLongestWord());
-		System.out.println("longest word 3 - w/padding");
+		System.out.println("longest word 3 - w/irregular column padding");
 		System.out.println(rend.render(at));
 	}
 
@@ -544,6 +544,37 @@ public class Test_CodeForDocs_V2 {
 		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
 		rend.setWidth(new WidthFixedColumns().add(25).add(25).add(27));
 		System.out.println("ascii-list");
+		System.out.println(rend.render(at));
+	}
+
+	@Test
+	public void test_URIs(){
+		V2_AsciiTable at = new V2_AsciiTable();
+		at.addRule();
+		at.addRow("scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]", "scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]");
+		at.addRule();
+		at.addRow(null, "scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]");
+		at.addRule();
+		at.addRow("abc://username:password@example.com:123/path/data?key=value#fragid1", "abc://username:password@example.com:123/path/data?key=value#fragid1");
+		at.addRule();
+		at.addRow(null, "abc://username:password@example.com:123/path/data?key=value#fragid1");
+		at.addRule();
+		at.addRow("urn:example:mammal:monotreme:echidna", "urn:example:mammal:monotreme:echidna");
+		at.addRule();
+		at.addRow(null, "urn:example:mammal:monotreme:echidna");
+		at.addRule();
+		at.addRow("http://www.example.com/test1/test2", "http://www.example.com/test1/test2");
+		at.addRule();
+		at.addRow(null, "http://www.example.com/test1/test2");
+		at.addRule();
+		at.addRow("mailto:user1@example.com", "mailto:firstname.lastname@example.com");
+		at.addRule();
+		at.addRow(null, "mailto:firstname.lastname@example.com");
+		at.addRule();
+		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+		rend.setWidth(new WidthFixedColumns().add(35).add(35));
+		System.out.println("URIs as content");
 		System.out.println(rend.render(at));
 	}
 }
