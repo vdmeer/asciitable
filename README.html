@@ -448,7 +448,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_padding_characters">Padding Characters</a></li>
 <li><a href="#_table_theme">Table Theme</a></li>
 <li><a href="#_table_theme_with_no_borders_for_paragraph_formatting">Table Theme with no Borders for Paragraph Formatting</a></li>
-<li><a href="#_asciilist_lists_in_a_table_with_and_wthout_column_padding">AsciiList lists in a table with and wthout column padding</a></li>
+<li><a href="#_asciilist_lists_in_a_table_with_and_without_column_padding">AsciiList lists in a table with and without column padding</a></li>
+<li><a href="#_uri_url_and_urn_content">URI, URL and URN content</a></li>
 </ul>
 </li>
 </ul>
@@ -1050,7 +1051,7 @@ rend.setWidth(new WidthAbsoluteEven(76));</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_asciilist_lists_in_a_table_with_and_wthout_column_padding">AsciiList lists in a table with and wthout column padding</h3>
+<h3 id="_asciilist_lists_in_a_table_with_and_without_column_padding">AsciiList lists in a table with and without column padding</h3>
 <div class="listingblock">
 <div class="content">
 <pre>	┌─────────────────────────┬─────────────────────────┬───────────────────────────┐
@@ -1071,12 +1072,46 @@ rend.setWidth(new WidthAbsoluteEven(76));</pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_uri_url_and_urn_content">URI, URL and URN content</h3>
+<div class="listingblock">
+<div class="content">
+<pre>	┌───────────────────────────────────┬───────────────────────────────────┐
+	│ scheme:[//[user:password@]host[:p │ scheme:[//[user:password@]host[:p │
+	│ ort]][/]path[?query][#fragment]   │ ort]][/]path[?query][#fragment]   │
+	├───────────────────────────────────┴───────────────────────────────────┤
+	│ scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]      │
+	├───────────────────────────────────┬───────────────────────────────────┤
+	│ abc://username:password@example.c │ abc://username:password@example.c │
+	│ om:123/path/data?key=value#fragid │ om:123/path/data?key=value#fragid │
+	│ 1                                 │ 1                                 │
+	├───────────────────────────────────┴───────────────────────────────────┤
+	│ abc://username:password@example.com:123/path/data?key=value#fragid1   │
+	├───────────────────────────────────┬───────────────────────────────────┤
+	│ urn:example:mammal:monotreme:echi │ urn:example:mammal:monotreme:echi │
+	│ dna                               │ dna                               │
+	├───────────────────────────────────┴───────────────────────────────────┤
+	│ urn:example:mammal:monotreme:echidna                                  │
+	├───────────────────────────────────┬───────────────────────────────────┤
+	│ http://www.example.com/test1/test │ http://www.example.com/test1/test │
+	│ 2                                 │ 2                                 │
+	├───────────────────────────────────┴───────────────────────────────────┤
+	│ http://www.example.com/test1/test2                                    │
+	├───────────────────────────────────┬───────────────────────────────────┤
+	│ mailto:user1@example.com          │ mailto:firstname.lastname@example │
+	│                                   │ .com                              │
+	├───────────────────────────────────┴───────────────────────────────────┤
+	│ mailto:firstname.lastname@example.com                                 │
+	└───────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-09-10 11:00:26 IST
+Last updated 2015-10-19 10:39:23 IST
 </div>
 </div>
 </body>
