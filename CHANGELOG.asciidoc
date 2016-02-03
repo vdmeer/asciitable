@@ -1,5 +1,5 @@
-v0.2.4 - ### - 2015-##-##
----------------------------------
+v0.2.4 - bug fixes - 2016-02-03
+-------------------------------
 * added fix for issue #4 (email addresses not printed correctly)
 
 
