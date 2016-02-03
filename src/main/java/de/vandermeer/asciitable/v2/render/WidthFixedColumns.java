@@ -23,7 +23,7 @@ import de.vandermeer.asciitable.v2.V2_AsciiTable;
  * Defines the width of table columns using a fixed width for each column.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.2.3 build 150910 (10-Sep-15) for Java 1.7
+ * @version    v0.2.3 build 160203 (03-Feb-16) for Java 1.7
  * @since      v0.0.5
  */
 public class WidthFixedColumns implements V2_Width{
