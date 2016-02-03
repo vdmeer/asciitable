@@ -213,7 +213,7 @@ public abstract class ArrayTransformations {
 		if("".equals(obj)){
 			return new String[]{};
 		}
-		return StringUtils.split(WordUtils.wrap(obj.toString(), length, "@@@@", true), "@@@@");
+		return StringUtils.split(WordUtils.wrap(obj.toString(), length, "\n", true), "\n");
 	}
 
 }

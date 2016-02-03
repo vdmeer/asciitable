@@ -1,3 +1,8 @@
+v0.2.4 - bug fixes - 2016-02-03
+-------------------------------
+* added fix for issue #4 (email addresses not printed correctly)
+
+
 v0.2.3 - maintenance - 2015-09-10
 ---------------------------------
 * changed ArrayTransformations.PROCESS_CONTENT behavior for "" content to return new String[]{""} rather than new String[]{}
@@ -29,7 +34,7 @@ v0.2.1 - refactor / docs - 2015-08-19
 	** moved the testTheme methods of the table/row theme builders into a new class ThemeValidator (fixes a tangle problem)
 	** moved content creation from Processed row to Renderer (fixes a tangle problem)
 	** smaller changes in width package, plus added more width calculation objects (longest word with several constraints)
-	** moved all width ojbects into the render package, renamed the implementations of the interface removing V2_
+	** moved all width objects into the render package, renamed the implementations of the interface removing V2_
 
 
 v0.2.0 - feature add - 2015-08-14
