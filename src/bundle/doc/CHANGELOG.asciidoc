@@ -1,3 +1,8 @@
+v0.2.5 - ### - 2016-##-##
+-------------------------
+* pushed asciidoctor plugin to 1.5.3
+
+
 v0.2.4 - bug fixes - 2016-02-03
 -------------------------------
 * added fix for issue #4 (email addresses not printed correctly)
