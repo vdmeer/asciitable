@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.vandermeer</groupId>
 	<artifactId>asciitable</artifactId>
-	<version>0.2.4</version>
+	<version>0.2.5</version>
 	<packaging>jar</packaging>
 
 	<name>Ascii Table</name>
@@ -48,7 +48,7 @@
 	<scm>
 		<developerConnection>scm:git:git@github.com:vdmeer/asciitable.git</developerConnection>
 		<connection>scm:git:git://github.com/vdmeer/asciitable.git</connection>
-		<tag>asciitable-0.2.4</tag>
+		<tag>asciitable-0.2.5</tag>
 		<url>https://github.com/vdmeer/asciitable</url>
 	</scm>
 
@@ -93,8 +93,26 @@
 		<dependency>
 			<groupId>de.vandermeer</groupId>
 			<artifactId>asciilist</artifactId>
-			<version>0.0.2</version>
+			<version>0.0.3</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>de.sven-jacobs</groupId>
+			<artifactId>loremipsum</artifactId>
+			<version>1.0</version>
+			<scope>test</scope>
+		</dependency>
+<!--
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
@@ -113,6 +131,7 @@
 			<version>1.0</version>
 			<scope>test</scope>
 		</dependency>
+-->
 	</dependencies>
 
 	<build>
@@ -263,6 +282,7 @@
 			</plugin>
 		</plugins>
 	</build>
+
 
 	<profiles>
 		<profile>

@@ -310,7 +310,7 @@ public class V2_AsciiTableRenderer implements V2_TableRenderer {
 					sb.appendFixedWidthPadRight(str, width, paddingChar);
 				}
 				else{
-					//mist be 't' now
+					//must be 't' now
 					sb.appendFixedWidthPadLeft(str, width, paddingChar);
 				}
 			}
