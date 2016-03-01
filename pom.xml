@@ -98,7 +98,7 @@
         <dependency>
             <groupId>de.vandermeer</groupId>
             <artifactId>asciilist</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <version>0.0.3</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -263,8 +263,6 @@
         </plugins>
     </build>
 
-</project>
-
     <!-- Environment Settings -->
     <issueManagement>
         <system>github</system>
@@ -291,3 +289,5 @@
 <pluginRepositories>...</pluginRepositories>
 <distributionManagement>...</distributionManagement>
 -->
+
+</project>
