@@ -1,356 +1,293 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.vandermeer</groupId>
-	<artifactId>asciitable</artifactId>
-	<version>0.2.5</version>
-	<packaging>jar</packaging>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-	<name>Ascii Table</name>
-	<url>https://github.com/vdmeer/asciitable</url>
-	<description>An ASCII table with various render options and UTF-8 support</description>
-	<inceptionYear>2010</inceptionYear>
+    <modelVersion>4.0.0</modelVersion>
 
-	<properties>
-		<maven.compiler.source>1.7</maven.compiler.source>
-		<maven.compiler.target>1.7</maven.compiler.target>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
-		<encoding>UTF-8</encoding>
-		<file.encoding>UTF-8</file.encoding>
-	</properties>
+    <!--
+      This file is automatically created
+      -->
 
-	<licenses>
-		<license>
-			<name>Apache 2</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-			<distribution>repo</distribution>
-			<comments>A business-friendly OSS license</comments>
-		</license>
-	</licenses>
+    <!--
+      Basic POM definitions
+      -->
+    <groupId>de.vandermeer</groupId>
+    <artifactId>asciitable</artifactId>
+    <version>0.2.5-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
-	<prerequisites>
-		<maven>3.0.0</maven>
-	</prerequisites>
+    <!--
+      More project information
+      -->
+    <name>Ascii Table</name>
+    <description>An ASCII table with various render options and UTF-8 support</description>
+    <url>https://github.com/vdmeer/asciitable</url>
+    <inceptionYear>2014</inceptionYear>
 
-	<distributionManagement>
-		<repository>
-			<id>sonatype-nexus-staging</id>
-			<name>SKB Repository</name>
-			<url>http://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
-		<snapshotRepository>
-			<id>sonatype-nexus-snapshots</id>
-			<name>SKB Repository</name>
-			<url>http://oss.sonatype.org/content/repositories/skb-snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>
+    <!--
+      Pre-requisites
+      -->
+    <prerequisites>
+        <maven>3.0.0</maven>
+    </prerequisites>
 
-	<scm>
-		<developerConnection>scm:git:git@github.com:vdmeer/asciitable.git</developerConnection>
-		<connection>scm:git:git://github.com/vdmeer/asciitable.git</connection>
-		<tag>asciitable-0.2.5</tag>
-		<url>https://github.com/vdmeer/asciitable</url>
-	</scm>
+    <!--
+      Licenses
+      -->
+    <licenses>
+        <license>
+        	<name>Apache 2</name>
+        	<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        	<distribution>repo</distribution>
+        	<comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
 
-	<issueManagement>
-		<url>https://github.com/vdmeer/asciitable/issues</url>
-		<system>github</system>
-	</issueManagement>
+    <!--
+      Properties
+      -->
+    <properties>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
+        <encoding>UTF-8</encoding>
+        <file.encoding>UTF-8</file.encoding>
+        </properties>
 
-	<developers>
-		<developer>
-			<id>vdmeer.sven</id>
-			<name>Sven van der Meer</name>
-			<email>vdmeer.sven@mykolab.com</email>
-				<url>http://www.vandermeer.de</url>
+    <!--
+      Developers
+      -->
+    <developers>
+        <developer>
+        	<id>vdmeer.sven</id>
+        	<name>Sven van der Meer</name>
+        	<email>vdmeer.sven@mykolab.com</email>
+        		<url>http://www.vandermeer.de</url>
+        <!--
+        		<organization>ACME</organization>
+        		<organizationUrl>http://www.example.com</organizationUrl>
+        -->
+        		<roles>
+        			<role>creator</role>
+        			<role>developer</role>
+        		</roles>
+        		<timezone>Europe/Dublin</timezone>
+        <!--
+        		<properties>
+        			<picUrl>http://www.example.com/jdoe/pic</picUrl>
+        		</properties>
+        -->
+        </developer>
+    </developers>
+
+    <!--
+      Contributors
+      -->
+    <contributors>
+        <contributor>
+        	<name>Sebastian Thomschke</name>
+        	<email>sebthom@sourceforge.net</email>
+        	<url>https://github.com/sebthom</url>
+        	<timezone>Europe/Berlin</timezone>
+        </contributor>
+    </contributors>
+
+    <dependencies>
+        <dependency>
+            <groupId>de.vandermeer</groupId>
+            <artifactId>asciilist</artifactId>
+            <version>0.0.3-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.sven-jacobs</groupId>
+            <artifactId>loremipsum</artifactId>
+            <version>1.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
 <!--
-				<organization>ACME</organization>
-				<organizationUrl>http://www.example.com</organizationUrl>
+<dependencyManagement>...</dependencyManagement>
 -->
-				<roles>
-					<role>creator</role>
-					<role>developer</role>
-				</roles>
-				<timezone>Europe/Dublin</timezone>
-<!--
-				<properties>
-					<picUrl>http://www.example.com/jdoe/pic</picUrl>
-				</properties>
--->
-		</developer>
-	</developers>
 
-	<contributors>
-		<contributor>
-			<name>Sebastian Thomschke</name>
-			<email>sebthom@sourceforge.net</email>
-			<url>https://github.com/sebthom</url>
-			<timezone>Europe/Berlin</timezone>
-		</contributor>
-	</contributors>
+    <!--
+      Build and Plugins
+      -->
+    <build>
+        <plugins>
 
-	<dependencies>
-		<dependency>
-			<groupId>de.vandermeer</groupId>
-			<artifactId>asciilist</artifactId>
-			<version>0.0.3</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.4</version>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>de.sven-jacobs</groupId>
-			<artifactId>loremipsum</artifactId>
-			<version>1.0</version>
-			<scope>test</scope>
-		</dependency>
-<!--
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.4</version>
-		</dependency>
+            <!-- Copy Changelog/Readme and then include in jar with License -->
+            <plugin>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctor-maven-plugin</artifactId>
+                <version>1.5.3</version>
+                <executions>
+                    <execution>
+                        <id>bundle-asciidoc</id>
+                        <phase>process-resources</phase>
+                        <configuration>
+                            <sourceDirectory>src/bundle/doc</sourceDirectory>
+                            <outputDirectory>./</outputDirectory>
+                            <backend>html</backend>
+                            <attributes>
+                                <toc>true</toc>
+                            </attributes>
+                        </configuration>
+                        <goals>
+                            <goal>process-asciidoc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>de.sven-jacobs</groupId>
-			<artifactId>loremipsum</artifactId>
-			<version>1.0</version>
-			<scope>test</scope>
-		</dependency>
--->
-	</dependencies>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.4.3</version>
+                <executions>
+                    <execution>
+                        <id>copy-bundle-docs</id>
+                        <phase>generate-resources</phase>
+                        <goals><goal>copy-resources</goal></goals>
+                        <configuration>
+                            <outputDirectory>./</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/bundle/doc</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-to-jar</id>
+                        <phase>prepare-package</phase>
+                        <goals><goal>copy-resources</goal></goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/classes</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}</directory>
+                                    <includes>
+                                        <include>LICENSE</include>
+                                        <include>CHANGELOG*</include>
+                                        <include>README*</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
-	<build>
-		<plugins>
-			<!-- Copy Changelog/Readme and then include in jar with License -->
-			<plugin>
-				<groupId>org.asciidoctor</groupId>
-				<artifactId>asciidoctor-maven-plugin</artifactId>
-				<version>1.5.3</version>
-				<executions>
-					<execution>
-						<id>bundle-asciidoc</id>
-						<phase>process-resources</phase>
-						<configuration>
-							<sourceDirectory>src/bundle/doc</sourceDirectory>
-							<outputDirectory>./</outputDirectory>
-							<backend>html</backend>
-							<attributes>
-								<toc>true</toc>
-							</attributes>
-						</configuration>
-						<goals>
-							<goal>process-asciidoc</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/doc-files/</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
 
-			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.4.3</version>
-				<executions>
-					<execution>
-						<id>copy-bundle-docs</id>
-						<phase>generate-resources</phase>
-						<goals><goal>copy-resources</goal></goals>
-						<configuration>
-							<outputDirectory>./</outputDirectory>
-							<resources>
-								<resource>
-									<directory>src/bundle/doc</directory>
-									<filtering>true</filtering>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-					<execution>
-						<id>copy-to-jar</id>
-						<phase>prepare-package</phase>
-						<goals><goal>copy-resources</goal></goals>
-						<configuration>
-							<outputDirectory>${basedir}/target/classes</outputDirectory>
-							<resources>
-								<resource>
-									<directory>${basedir}</directory>
-									<includes>
-										<include>LICENSE</include>
-										<include>CHANGELOG*</include>
-										<include>README*</include>
-									</includes>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-scm-publish-plugin</artifactId>
-				<version>1.1</version>
-				<configuration>
-					<checkoutDirectory>${project.build.directory}/scmpublish</checkoutDirectory>
-					<checkinComment>Publishing javadoc for ${project.artifactId}:${project.version}</checkinComment>
-					<content>${project.reporting.outputDirectory}</content>
-					<skipDeletedFiles>true</skipDeletedFiles>
-					<pubScmUrl>scm:git:git@github.com:vdmeer/asciitable.git</pubScmUrl>
-					<!-- 1.0 seems to ignore scmBranch and use master
-						<tryUpdate>true</tryUpdate>
-					-->
-					<!-- to debug, see target/scmpublish
-						<skipCheckin>true</skipCheckin>
-					-->
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.6</version>
-				<configuration>
-					<excludes>
-						<exclude>**/doc-files/</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <optimize>true</optimize>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
 
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.2</version>
-				<configuration>
-					<source>${maven.compiler.source}</source>
-					<target>${maven.compiler.target}</target>
-					<optimize>true</optimize>
-					<encoding>${project.build.sourceEncoding}</encoding>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.10.3</version>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-						<configuration>
-							<encoding>${project.resources.sourceEncoding}</encoding>
-							<docencoding>${project.resources.sourceEncoding}</docencoding>
-							<charset>${project.resources.sourceEncoding}</charset>
-							<aggregate>true</aggregate>
-							<overview>${basedir}/src/main/javadoc/overview.html</overview>
-							<nohelp>true</nohelp>
-							<header>${project.name}: ${project.version}</header>
-							<footer>${project.name}: ${project.version}</footer>
-							<doctitle>${project.name}: ${project.version}</doctitle>
-							<noqualifier>all</noqualifier>
-							<detectLinks>true</detectLinks>
-							<detectJavaApiLink>true</detectJavaApiLink>
-							<javadocDirectory>${basedir}/src/main/javadoc</javadocDirectory>
-							<docfilessubdirs>true</docfilessubdirs>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>2.4</version>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.3</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <encoding>${project.resources.sourceEncoding}</encoding>
+                            <docencoding>${project.resources.sourceEncoding}</docencoding>
+                            <charset>${project.resources.sourceEncoding}</charset>
+                            <aggregate>true</aggregate>
+                            <overview>${basedir}/src/main/javadoc/overview.html</overview>
+                            <nohelp>true</nohelp>
+                            <header>${project.name}: ${project.version}</header>
+                            <footer>${project.name}: ${project.version}</footer>
+                            <doctitle>${project.name}: ${project.version}</doctitle>
+                            <noqualifier>all</noqualifier>
+                            <detectLinks>true</detectLinks>
+                            <detectJavaApiLink>true</detectJavaApiLink>
+                            <javadocDirectory>${basedir}/src/main/javadoc</javadocDirectory>
+                            <docfilessubdirs>true</docfilessubdirs>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
-
-	<profiles>
-		<profile>
-			<id>release-sign-artifacts</id>
-			<activation>
-				<property>
-					<name>performRelease</name>
-					<value>true</value>
-				</property>
-			</activation>
-
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.5</version>
-						<executions>
-							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<inherited>true</inherited>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-source-plugin</artifactId>
-						<version>2.3</version>
-						<executions>
-							<execution>
-								<id>attach-sources</id>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<inherited>true</inherited>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>2.9.1</version>
-						<executions>
-							<execution>
-								<id>attach-javadocs</id>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<inherited>true</inherited>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-deploy-plugin</artifactId>
-						<version>2.8.2</version>
-						<configuration>
-							<updateReleaseInfo>true</updateReleaseInfo>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-	</profiles>
+        </plugins>
+    </build>
 
 </project>
+
+    <!-- Environment Settings -->
+    <issueManagement>
+        <system>github</system>
+        <url>https://github.com/vdmeer/asciitable/issues</url>
+    </issueManagement>
+
+<!--
+<ciManagement>...</ciManagement>
+<mailingLists>...</mailingLists>
+-->
+
+    <!--
+      SCM
+      -->
+    <scm>
+        <connection>scm:git:git://github.com/vdmeer/asciitable.git</connection>
+        <developerConnection>scm:git:git@github.com:vdmeer/asciitable.git</developerConnection>
+        <tag>HEAD</tag>
+        <url>https://github.com/vdmeer/asciitable</url>
+    </scm>
+
+<!--
+<repositories>...</repositories>
+<pluginRepositories>...</pluginRepositories>
+<distributionManagement>...</distributionManagement>
+-->
