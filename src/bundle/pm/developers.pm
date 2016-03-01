@@ -1,0 +1,20 @@
+<developer>
+	<id>vdmeer.sven</id>
+	<name>Sven van der Meer</name>
+	<email>vdmeer.sven@mykolab.com</email>
+		<url>http://www.vandermeer.de</url>
+<!--
+		<organization>ACME</organization>
+		<organizationUrl>http://www.example.com</organizationUrl>
+-->
+		<roles>
+			<role>creator</role>
+			<role>developer</role>
+		</roles>
+		<timezone>Europe/Dublin</timezone>
+<!--
+		<properties>
+			<picUrl>http://www.example.com/jdoe/pic</picUrl>
+		</properties>
+-->
+</developer>
