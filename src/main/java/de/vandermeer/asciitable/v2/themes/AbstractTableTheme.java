@@ -23,7 +23,7 @@ import de.vandermeer.asciitable.commons.TableException;
  * Abstract {@link V2_TableTheme} implementation.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.2.4 build 160203 (03-Feb-16) for Java 1.7
+ * @version    v0.2.5-SNAPSHOT build 160301 (01-Mar-16) for Java 1.7
  * @since      v0.0.8
  */
 public class AbstractTableTheme implements V2_TableTheme {
