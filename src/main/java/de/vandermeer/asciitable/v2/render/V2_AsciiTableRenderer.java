@@ -73,7 +73,7 @@ import de.vandermeer.asciitable.v2.themes.V2_TableTheme;
  * 
  * 
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.2.5-SNAPSHOT build 160301 (01-Mar-16) for Java 1.7
+ * @version    v0.2.5 build 160301 (01-Mar-16) for Java 1.7
  * @since      v0.0.5
  */
 public class V2_AsciiTableRenderer implements V2_TableRenderer {

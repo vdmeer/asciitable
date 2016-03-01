@@ -14,7 +14,7 @@
       -->
     <groupId>de.vandermeer</groupId>
     <artifactId>asciitable</artifactId>
-    <version>0.2.5-SNAPSHOT</version>
+    <version>0.2.5</version>
     <packaging>jar</packaging>
 
     <!--
