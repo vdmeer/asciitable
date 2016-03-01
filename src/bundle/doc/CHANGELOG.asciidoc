@@ -1,3 +1,9 @@
+v0.2.5 - maintenance - 2016-03-01
+---------------------------------
+* pushed asciidoctor plugin to 1.5.3
+* removed old module/ settings, added bundle/pm settings
+
+
 v0.2.4 - bug fixes - 2016-02-03
 -------------------------------
 * added fix for issue #4 (email addresses not printed correctly)
