@@ -14,7 +14,7 @@
       -->
     <groupId>de.vandermeer</groupId>
     <artifactId>asciitable</artifactId>
-    <version>0.2.5</version>
+    <version>0.2.6-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <!--
@@ -54,7 +54,7 @@
         <project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
         <encoding>UTF-8</encoding>
         <file.encoding>UTF-8</file.encoding>
-        </properties>
+    </properties>
 
     <!--
       Developers
@@ -98,7 +98,7 @@
         <dependency>
             <groupId>de.vandermeer</groupId>
             <artifactId>asciilist</artifactId>
-            <version>0.0.3</version>
+            <version>0.0.4-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -131,69 +131,6 @@
     <build>
         <plugins>
 
-            <!-- Copy Changelog/Readme and then include in jar with License -->
-            <plugin>
-                <groupId>org.asciidoctor</groupId>
-                <artifactId>asciidoctor-maven-plugin</artifactId>
-                <version>1.5.3</version>
-                <executions>
-                    <execution>
-                        <id>bundle-asciidoc</id>
-                        <phase>process-resources</phase>
-                        <configuration>
-                            <sourceDirectory>src/bundle/doc</sourceDirectory>
-                            <outputDirectory>./</outputDirectory>
-                            <backend>html</backend>
-                            <attributes>
-                                <toc>true</toc>
-                            </attributes>
-                        </configuration>
-                        <goals>
-                            <goal>process-asciidoc</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>2.4.3</version>
-                <executions>
-                    <execution>
-                        <id>copy-bundle-docs</id>
-                        <phase>generate-resources</phase>
-                        <goals><goal>copy-resources</goal></goals>
-                        <configuration>
-                            <outputDirectory>./</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>src/bundle/doc</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>copy-to-jar</id>
-                        <phase>prepare-package</phase>
-                        <goals><goal>copy-resources</goal></goals>
-                        <configuration>
-                            <outputDirectory>${basedir}/target/classes</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${basedir}</directory>
-                                    <includes>
-                                        <include>LICENSE</include>
-                                        <include>CHANGELOG*</include>
-                                        <include>README*</include>
-                                    </includes>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -203,20 +140,6 @@
                         <exclude>**/doc-files/</exclude>
                     </excludes>
                 </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.4</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
 
             <plugin>
@@ -230,38 +153,142 @@
                 </configuration>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.3</version>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                        <configuration>
-                            <encoding>${project.resources.sourceEncoding}</encoding>
-                            <docencoding>${project.resources.sourceEncoding}</docencoding>
-                            <charset>${project.resources.sourceEncoding}</charset>
-                            <aggregate>true</aggregate>
-                            <overview>${basedir}/src/main/javadoc/overview.html</overview>
-                            <nohelp>true</nohelp>
-                            <header>${project.name}: ${project.version}</header>
-                            <footer>${project.name}: ${project.version}</footer>
-                            <doctitle>${project.name}: ${project.version}</doctitle>
-                            <noqualifier>all</noqualifier>
-                            <detectLinks>true</detectLinks>
-                            <detectJavaApiLink>true</detectJavaApiLink>
-                            <javadocDirectory>${basedir}/src/main/javadoc</javadocDirectory>
-                            <docfilessubdirs>true</docfilessubdirs>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
         </plugins>
     </build>
+
+    <!--
+      Profiles
+      -->
+    <profiles>
+        <profile>
+        	<id>env-bundledoc</id>
+        	<build>
+        		<plugins>
+        			<!-- Create HTML versions of Changelog/Readme -->
+        			<plugin>
+        				<groupId>org.asciidoctor</groupId>
+        				<artifactId>asciidoctor-maven-plugin</artifactId>
+        				<version>1.5.3</version>
+        				<executions>
+        					<execution>
+        						<id>bundle-asciidoc</id>
+        						<phase>process-resources</phase>
+        						<configuration>
+        							<sourceDirectory>src/bundle/doc</sourceDirectory>
+        							<outputDirectory>./</outputDirectory>
+        							<backend>html</backend>
+        							<attributes>
+        								<toc>true</toc>
+        							</attributes>
+        						</configuration>
+        						<goals>
+        							<goal>process-asciidoc</goal>
+        						</goals>
+        					</execution>
+        				</executions>
+        			</plugin>
+
+        			<!-- Copy Changelog/Readme and then include in jar with License -->
+        			<plugin>
+        				<artifactId>maven-resources-plugin</artifactId>
+        				<version>2.4.3</version>
+        				<executions>
+        					<execution>
+        						<id>copy-bundle-docs</id>
+        						<phase>generate-resources</phase>
+        						<goals><goal>copy-resources</goal></goals>
+        						<configuration>
+        							<outputDirectory>./</outputDirectory>
+        							<resources>
+        								<resource>
+        									<directory>src/bundle/doc</directory>
+        									<filtering>true</filtering>
+        								</resource>
+        							</resources>
+        						</configuration>
+        					</execution>
+        					<execution>
+        						<id>copy-to-jar</id>
+        						<phase>prepare-package</phase>
+        						<goals><goal>copy-resources</goal></goals>
+        						<configuration>
+        							<outputDirectory>${basedir}/target/classes</outputDirectory>
+        							<resources>
+        								<resource>
+        									<directory>${basedir}</directory>
+        									<includes>
+        										<include>LICENSE</include>
+        										<include>CHANGELOG*</include>
+        										<include>README*</include>
+        									</includes>
+        								</resource>
+        							</resources>
+        						</configuration>
+        					</execution>
+        				</executions>
+        			</plugin>
+        		</plugins>
+        	</build>
+        </profile>
+
+        <profile>
+        	<id>env-srcjar</id>
+        	<build>
+        		<plugins>
+        			<plugin>
+        				<groupId>org.apache.maven.plugins</groupId>
+        				<artifactId>maven-source-plugin</artifactId>
+        				<version>2.4</version>
+        				<executions>
+        					<execution>
+        						<id>attach-sources</id>
+        						<goals>
+        							<goal>jar</goal>
+        						</goals>
+        					</execution>
+        				</executions>
+        			</plugin>
+        		</plugins>
+        	</build>
+        </profile>
+
+        <profile>
+        	<id>env-jdjar</id>
+        	<build>
+        		<plugins>
+        			<plugin>
+        				<groupId>org.apache.maven.plugins</groupId>
+        				<artifactId>maven-javadoc-plugin</artifactId>
+        				<version>2.10.3</version>
+        				<executions>
+        					<execution>
+        						<id>attach-javadocs</id>
+        						<goals>
+        							<goal>jar</goal>
+        						</goals>
+        						<configuration>
+        							<encoding>${project.resources.sourceEncoding}</encoding>
+        							<docencoding>${project.resources.sourceEncoding}</docencoding>
+        							<charset>${project.resources.sourceEncoding}</charset>
+        							<aggregate>true</aggregate>
+        							<overview>${basedir}/src/main/javadoc/overview.html</overview>
+        							<nohelp>true</nohelp>
+        							<header>${project.name}: ${project.version}</header>
+        							<footer>${project.name}: ${project.version}</footer>
+        							<doctitle>${project.name}: ${project.version}</doctitle>
+        							<noqualifier>all</noqualifier>
+        							<detectLinks>true</detectLinks>
+        							<detectJavaApiLink>true</detectJavaApiLink>
+        							<javadocDirectory>${basedir}/src/main/javadoc</javadocDirectory>
+        							<docfilessubdirs>true</docfilessubdirs>
+        						</configuration>
+        					</execution>
+        				</executions>
+        			</plugin>
+        		</plugins>
+        	</build>
+        </profile>
+    </profiles>
 
     <!-- Environment Settings -->
     <issueManagement>

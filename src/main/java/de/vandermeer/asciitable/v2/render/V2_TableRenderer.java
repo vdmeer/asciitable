@@ -23,7 +23,7 @@ import de.vandermeer.asciitable.v2.themes.V2_TableTheme;
  * Table renderer interface.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.2.5 build 160301 (01-Mar-16) for Java 1.7
+ * @version    v0.2.6-SNAPSHOT build 160304 (04-Mar-16) for Java 1.7
  * @since      v0.2.0
  */
 public interface V2_TableRenderer {
