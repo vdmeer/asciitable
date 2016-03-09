@@ -22,7 +22,7 @@ import org.junit.Test;
  * Tests for {@link ArrayTransformations}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.2.6-SNAPSHOT build 160304 (04-Mar-16) for Java 1.7
+ * @version    v0.2.6-SNAPSHOT build 160306 (06-Mar-16) for Java 1.7
  * @since      v0.2.2
  */
 public class Test_ArrayTransformations {

@@ -21,7 +21,7 @@ import org.apache.commons.lang3.text.StrBuilder;
  * Abstract {@link V2_RowTheme} implementation.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.2.6-SNAPSHOT build 160304 (04-Mar-16) for Java 1.7
+ * @version    v0.2.6-SNAPSHOT build 160306 (06-Mar-16) for Java 1.7
  * @since      v0.0.8
  */
 public class AbstractRowTheme implements V2_RowTheme {
