@@ -1,12 +1,12 @@
-ASCII Table
-===========
+ASCII Table (Java 7 legacy)
+===========================
 Several implementations of a text table, originally using ASCII and UTF-8 characters for borders.
 :toc:
 
 The tables allows for various degrees of flexibility for number of columns, column width, automated line wrapping, column spanning and themes for tables and table rows.
 
-Current release is https://search.maven.org/#artifactdetails|de.vandermeer|asciitable|0.2.5|jar[0.2.5].
-All releases are on https://search.maven.org/#search|gav|1|g%3A%22de.vandermeer%22%20AND%20a%3A%22asciitable%22[Maven Central].
+Current release is https://search.maven.org/#artifactdetails|de.vandermeer|asciitable-j7|1.0.0|jar[1.0.0].
+All releases are on https://search.maven.org/#search|gav|1|g%3A%22de.vandermeer%22%20AND%20a%3A%22asciitable-j7%22[Maven Central].
 
 This blog post explains how to get UTF-8 support in the whole tool chain http://vdmeer-sven.blogspot.ie/2014/06/utf-8-support-w-java-and-console.html[blog on UTF-8].
 Updates will be at here https://github.com/vdmeer/skb/wiki/HowTo-UTF-8-Support-in-Java-and-Console[SKB Wiki on UTF-8].

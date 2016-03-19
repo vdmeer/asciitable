@@ -19,7 +19,7 @@ package de.vandermeer.asciitable.v2.themes;
  * Standard table themes.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.2.5 build 160301 (01-Mar-16) for Java 1.7
+ * @version    v1.0.0 build 160319 (19-Mar-16) for Java 1.7
  * @since      v0.0.3
  */
 public enum V2_E_TableThemes {
