@@ -1,5 +1,5 @@
-ASCII Table
-===========
+ASCII Table (Java 7)
+====================
 Several implementations of a text table, originally using ASCII and UTF-8 characters for borders.
 :toc:
 
