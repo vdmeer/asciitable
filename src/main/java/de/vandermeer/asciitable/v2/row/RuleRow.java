@@ -17,7 +17,7 @@ package de.vandermeer.asciitable.v2.row;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import de.vandermeer.asciitable.commons.ObjectToStringStyle;
+import de.vandermeer.skb.interfaces.categories.has.HasToStringStyle;
 
 /**
  * A table row representing a rule.
@@ -26,7 +26,7 @@ import de.vandermeer.asciitable.commons.ObjectToStringStyle;
  * @version    v0.2.6-SNAPSHOT build 160306 (06-Mar-16) for Java 1.7
  * @since      v0.2.0
  */
-public class RuleRow implements V2_Row {
+public class RuleRow implements V2_Row, HasToStringStyle {
 
 	/** Type of a rule row, will be null for a content row. */
 	private RuleRowType ruleType;
@@ -98,7 +98,7 @@ public class RuleRow implements V2_Row {
 
 	@Override
 	public String toString(int indent){
-		ToStringBuilder ret = new ToStringBuilder(this, ObjectToStringStyle.getStyle(indent));
+		ToStringBuilder ret = new ToStringBuilder(this, this.getStyle(indent));
 		ret.append("row type       ", "rule type " + this.ruleType + " style " + this.ruleStyle);
 
 		return ret.toString();

@@ -17,8 +17,8 @@ package de.vandermeer.asciitable.v2.row;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import de.vandermeer.asciitable.commons.ObjectToStringStyle;
 import de.vandermeer.asciitable.commons.TableException;
+import de.vandermeer.skb.interfaces.categories.has.HasToStringStyle;
 
 /**
  * A table row representing a content row.
@@ -27,7 +27,7 @@ import de.vandermeer.asciitable.commons.TableException;
  * @version    v0.2.6-SNAPSHOT build 160306 (06-Mar-16) for Java 1.7
  * @since      v0.2.0
  */
-public class ContentRow implements V2_Row {
+public class ContentRow implements V2_Row, HasToStringStyle {
 
 	/** Array with content if the row is a content row, null otherwise. */
 	private Object[] columns;
@@ -138,7 +138,7 @@ public class ContentRow implements V2_Row {
 
 	@Override
 	public String toString(int indent){
-		ToStringBuilder ret = new ToStringBuilder(this, ObjectToStringStyle.getStyle(indent));
+		ToStringBuilder ret = new ToStringBuilder(this, this.getStyle(indent));
 		ret.append("row type       ", "content with " + this.columns.length + " column(s)");
 		ret.append("columns        ", this.columns, false);
 		ret.append("columns        ", this.columns);

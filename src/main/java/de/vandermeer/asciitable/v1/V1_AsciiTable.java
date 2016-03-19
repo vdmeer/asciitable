@@ -27,7 +27,7 @@ import org.apache.commons.lang3.text.StrBuilder;
 import org.apache.commons.lang3.text.WordUtils;
 
 import de.vandermeer.asciitable.commons.ArrayTransformations;
-import de.vandermeer.asciitable.commons.ObjectToStringStyle;
+import de.vandermeer.skb.interfaces.categories.has.HasToStringStyle;
 
 /**
  * Original ASCII table with flexible column number, column width, wrapping, spanning and themes.
@@ -36,7 +36,7 @@ import de.vandermeer.asciitable.commons.ObjectToStringStyle;
  * @version    v0.2.6-SNAPSHOT build 160306 (06-Mar-16) for Java 1.7
  * @since      v0.0.1
  */
-public final class V1_AsciiTable {
+public final class V1_AsciiTable implements HasToStringStyle {
 
 	/** Padding character, default is blank (␣). */
 	char padChar = ' ';
@@ -507,7 +507,7 @@ public final class V1_AsciiTable {
 	 * @return string with debug information about the table
 	 */
 	public String toString(){
-		ToStringBuilder ret = new ToStringBuilder(this, ObjectToStringStyle.getStyle())
+		ToStringBuilder ret = new ToStringBuilder(this, this.getStyle())
 			.append("columns   ", this.columns, false)
 			.append("columns   ", this.columns)
 			.append("------------------------------------")

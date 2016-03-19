@@ -20,13 +20,13 @@ import java.util.List;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import de.vandermeer.asciitable.commons.ObjectToStringStyle;
 import de.vandermeer.asciitable.commons.TableException;
 import de.vandermeer.asciitable.v2.row.ContentRow;
 import de.vandermeer.asciitable.v2.row.RuleRow;
 import de.vandermeer.asciitable.v2.row.RuleRowStyle;
 import de.vandermeer.asciitable.v2.row.RuleRowType;
 import de.vandermeer.asciitable.v2.row.V2_Row;
+import de.vandermeer.skb.interfaces.categories.has.HasToStringStyle;
 
 /**
  * 2nd generation ASCII table with flexible column number, column width, wrapping, spanning and renderer with themes.
@@ -35,7 +35,7 @@ import de.vandermeer.asciitable.v2.row.V2_Row;
  * @version    v0.2.6-SNAPSHOT build 160306 (06-Mar-16) for Java 1.7
  * @since      v0.0.5
  */
-public class V2_AsciiTable {
+public class V2_AsciiTable implements HasToStringStyle {
 
 	/** List of rows of the table. */
 	List<V2_Row> table;
@@ -146,7 +146,7 @@ public class V2_AsciiTable {
 	 * @return string with debug information about the table
 	 */
 	public String toString(){
-		ToStringBuilder ret = new ToStringBuilder(this, ObjectToStringStyle.getStyle())
+		ToStringBuilder ret = new ToStringBuilder(this, this.getStyle())
 			.append("column count   ", this.colNumber)
 			.append("table          ", this.table, false)
 			.append("")
