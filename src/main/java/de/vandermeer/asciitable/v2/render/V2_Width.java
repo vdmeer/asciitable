@@ -21,7 +21,7 @@ import de.vandermeer.asciitable.v2.V2_AsciiTable;
  * Calculator for the width of a table.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.2.6-SNAPSHOT build 160306 (06-Mar-16) for Java 1.7
+ * @version    v0.2.6-SNAPSHOT build 160319 (19-Mar-16) for Java 1.7
  * @since      v0.0.5
  */
 public interface V2_Width {

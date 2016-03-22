@@ -29,7 +29,7 @@ import de.vandermeer.asciitable.v1.V1_AsciiTable;
  * Tests for {@link V2_AsciiTable}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.2.6-SNAPSHOT build 160306 (06-Mar-16) for Java 1.7
+ * @version    v0.2.6-SNAPSHOT build 160319 (19-Mar-16) for Java 1.7
  */
 public class Test_V1_AsciiTable {
 

@@ -23,7 +23,7 @@ import org.apache.commons.lang3.text.StrBuilder;
  * A fully rendered table (list of rendered rows) ready to be printed or written to files.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.2.6-SNAPSHOT build 160306 (06-Mar-16) for Java 1.7
+ * @version    v0.2.6-SNAPSHOT build 160319 (19-Mar-16) for Java 1.7
  * @since      v0.0.5
  */
 public class RenderedTable {

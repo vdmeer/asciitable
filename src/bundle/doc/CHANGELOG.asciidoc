@@ -1,6 +1,6 @@
 v0.2.6 - ### - 2016-##-##
 -------------------------
-* added skb-interfaces dependencies and moved toStringStyle to skb-interfaces
+* moved toStringStyle to skb-interfaces (now included dependency from asciilist)
 
 
 v0.2.5 - maintenance - 2016-03-01

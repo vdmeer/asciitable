@@ -25,7 +25,7 @@ import de.vandermeer.asciitable.v2.row.V2_Row;
  * Utility methods for width calculation.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.2.6-SNAPSHOT build 160306 (06-Mar-16) for Java 1.7
+ * @version    v0.2.6-SNAPSHOT build 160319 (19-Mar-16) for Java 1.7
  * @since      v0.2.1
  */
 public abstract class WidthUtilities {
