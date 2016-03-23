@@ -19,10 +19,11 @@ import org.junit.Test;
 
 import de.vandermeer.asciitable.v2.RenderedTable;
 import de.vandermeer.asciitable.v2.V2_AsciiTable;
-import de.vandermeer.asciitable.v2.render.V2_AsciiTableRenderer;
 import de.vandermeer.asciitable.v2.render.RenderUtilities;
+import de.vandermeer.asciitable.v2.render.V2_AsciiTableRenderer;
 import de.vandermeer.asciitable.v2.render.WidthAbsoluteEven;
 import de.vandermeer.asciitable.v2.themes.V2_E_TableThemes;
+import de.vandermeer.skb.interfaces.categories.is.transformers.arrays2d.Array2D_To_String;
 
 /**
  * Tests for code used in commons JavaDoc.
@@ -55,10 +56,10 @@ public class Test_CodeForDocs {
 		//disable the flip array in V2_Utils for correct output
 		String[][] ar;
 		ar = RenderUtilities.createContentArray(new Object[]{"1-1", "1-2", "1-3"}, new int[]{5, 5, 5}, new int[]{1, 1, 1});
-		System.out.println(ArrayTransformations.ARRAY_TO_STRING(ar));
+		System.out.println(Array2D_To_String.create().transform(ar));
 
 		ar = RenderUtilities.createContentArray(new Object[]{"2-1", "2-2", "2-3"}, new int[]{5, 5, 5}, new int[]{1, 1, 1});
-		System.out.println(ArrayTransformations.ARRAY_TO_STRING(ar));
+		System.out.println(Array2D_To_String.create().transform(ar));
 	}
 
 	@Test
@@ -84,10 +85,10 @@ public class Test_CodeForDocs {
 		//disable the flip array in V2_Utils for correct output
 		String[][] ar;
 		ar = RenderUtilities.createContentArray(new Object[]{"1-1", "1-2 text", "1-3"}, new int[]{5, 5, 5}, new int[]{1, 1, 1});
-		System.out.println(ArrayTransformations.ARRAY_TO_STRING(ar));
+		System.out.println(Array2D_To_String.create().transform(ar));
 
 		ar = RenderUtilities.createContentArray(new Object[]{"2-1", "2-2", "2-3"}, new int[]{5, 5, 5}, new int[]{1, 1, 1});
-		System.out.println(ArrayTransformations.ARRAY_TO_STRING(ar));
+		System.out.println(Array2D_To_String.create().transform(ar));
 	}
 
 }

@@ -21,6 +21,8 @@ import de.vandermeer.asciitable.v2.row.ContentRow;
 import de.vandermeer.asciitable.v2.row.RuleRow;
 import de.vandermeer.asciitable.v2.row.V2_Row;
 import de.vandermeer.asciitable.v2.themes.V2_RowTheme;
+import de.vandermeer.skb.interfaces.categories.is.transformers.arrays2d.Array2D_To_FlipArray;
+import de.vandermeer.skb.interfaces.categories.is.transformers.arrays2d.Array2D_To_NormalizedArray;
 
 /**
  * Utilities for manipulating tables and table rows.
@@ -70,9 +72,9 @@ public abstract class RenderUtilities {
 		}
 
 		//equal number of strings per column
-		ret = ArrayTransformations.NORMALISE_ARRAY(width.length, ret);
+		ret = Array2D_To_NormalizedArray.create(width.length).transform(ret);
 		//flip so that each normalized array row is a table column
-		ret = ArrayTransformations.FLIP_ARRAY(ret);
+		ret = Array2D_To_FlipArray.create().transform(ret);
 		return ret;
 	}
 
