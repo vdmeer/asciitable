@@ -17,10 +17,10 @@ package de.vandermeer.asciitable.v2.render;
 
 import org.apache.commons.lang3.ArrayUtils;
 
-import de.vandermeer.asciitable.commons.ArrayTransformations;
 import de.vandermeer.asciitable.v2.V2_AsciiTable;
 import de.vandermeer.asciitable.v2.row.ContentRow;
 import de.vandermeer.asciitable.v2.row.V2_Row;
+import de.vandermeer.skb.interfaces.categories.is.transformers.stringformats.String_To_ConditionalBreak;
 
 /**
  * Defines the width of table columns automatically based on the longest line in each column with optional minimum/maximum column width.
@@ -62,7 +62,7 @@ public class WidthLongestLine implements V2_Width {
 
 				// iterate over all cells in the row
 				for(int i=0; i<cells.length; i++) {
-					String[] lines = ArrayTransformations.PROCESS_CONTENT(cells[i]);
+					String[] lines = String_To_ConditionalBreak.convert((cells[i]==null)?null:cells[i].toString());
 					if(lines!=null){
 						// measuring the width of each line within a cell
 						for(String line : lines) {
