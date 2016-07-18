@@ -15,6 +15,7 @@
 
 package de.vandermeer.asciitable.v2;
 
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -106,6 +107,19 @@ public class V2_AsciiTable {
 	 */
 	public final List<V2_Row> getTable(){
 		return this.table;
+	}
+
+	/**
+	 * Adds a content row to the table.
+	 * For the first content row added, the number of objects given here determines the number of columns in the table.
+	 * For every subsequent content row, the array must have an entry for each column,
+	 * i.e. the size of the array must be the same as the result of {@link #getColumnCount()}.
+	 * @param columns content of the columns for the row
+	 * @return the created row for further customization
+	 * @throws TableException if parameter is null or does not have the correct size (more or less entries than columns defined for the table)
+	 */
+	public final ContentRow addRow(Collection columns) throws TableException {
+		return addRow(columns.toArray());
 	}
 
 	/**
