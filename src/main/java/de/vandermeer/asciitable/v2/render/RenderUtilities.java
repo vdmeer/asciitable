@@ -19,9 +19,9 @@ import de.vandermeer.asciitable.v2.row.ContentRow;
 import de.vandermeer.asciitable.v2.row.RuleRow;
 import de.vandermeer.asciitable.v2.row.V2_Row;
 import de.vandermeer.asciitable.v2.themes.V2_RowTheme;
-import de.vandermeer.skb.interfaces.categories.is.transformers.arrays2d.Array2D_To_FlipArray;
-import de.vandermeer.skb.interfaces.categories.is.transformers.arrays2d.Array2D_To_NormalizedArray;
-import de.vandermeer.skb.interfaces.categories.is.transformers.arrays2d.Object_To_ColumnContentArray;
+import de.vandermeer.skb.interfaces.transformers.Object_To_ColumnContentArray;
+import de.vandermeer.skb.interfaces.transformers.arrays2d.Array2D_To_FlipArray;
+import de.vandermeer.skb.interfaces.transformers.arrays2d.Array2D_To_NormalizedArray;
 
 /**
  * Utilities for manipulating tables and table rows.
@@ -249,7 +249,7 @@ public abstract class RenderUtilities {
 			BorderType[] relAdj = next.getBorderTypes();
 			if(relAdj!=null){
 				for(int i=0; i<relAdj.length; i++){
-				 	switch(relAdj[i]){
+					switch(relAdj[i]){
 						case NONE:
 							ret[i] = BorderType.NONE;
 							break;

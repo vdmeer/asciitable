@@ -20,7 +20,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import de.vandermeer.asciitable.v2.V2_AsciiTable;
 import de.vandermeer.asciitable.v2.row.ContentRow;
 import de.vandermeer.asciitable.v2.row.V2_Row;
-import de.vandermeer.skb.interfaces.categories.is.transformers.stringformats.String_To_ConditionalBreak;
+import de.vandermeer.skb.interfaces.transformers.String_To_ConditionalBreak;
 
 /**
  * Defines the width of table columns automatically based on the longest line in each column with optional minimum/maximum column width.

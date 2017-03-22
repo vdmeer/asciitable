@@ -18,12 +18,12 @@ package de.vandermeer.asciitable.v2;
 import org.junit.Test;
 
 import de.svenjacobs.loremipsum.LoremIpsum;
-import de.vandermeer.asciilist.CheckList;
-import de.vandermeer.asciilist.EnumerateList;
-import de.vandermeer.asciilist.ItemizeList;
-import de.vandermeer.asciilist.styles.NestedCheckStyles;
-import de.vandermeer.asciilist.styles.NestedEnumerateStyles;
-import de.vandermeer.asciilist.styles.NestedItemizeStyles;
+import de.vandermeer.asciilist.old.CheckList;
+import de.vandermeer.asciilist.old.EnumerateList;
+import de.vandermeer.asciilist.old.ItemizeList;
+import de.vandermeer.asciilist.old.styles.NestedCheckStyles;
+import de.vandermeer.asciilist.old.styles.NestedEnumerateStyles;
+import de.vandermeer.asciilist.old.styles.NestedItemizeStyles;
 import de.vandermeer.asciitable.v2.render.V2_AsciiTableRenderer;
 import de.vandermeer.asciitable.v2.render.WidthAbsoluteEven;
 import de.vandermeer.asciitable.v2.render.WidthFixedColumns;

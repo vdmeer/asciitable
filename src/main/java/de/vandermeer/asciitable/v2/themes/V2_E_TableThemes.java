@@ -302,7 +302,12 @@ Normal           Example
 	 * @param content content theme
 	 * @param description a description
 	 */
-	V2_E_TableThemes(V2_E_RowThemes top, V2_E_RowThemes mid, V2_E_RowThemes bottom, V2_E_RowThemes content, String description){
+	V2_E_TableThemes(
+			V2_E_RowThemes top,
+			V2_E_RowThemes mid,
+			V2_E_RowThemes bottom,
+			V2_E_RowThemes content,
+			String description){
 		this.theme = new AbstractTableTheme(top.get(), mid.get(), bottom.get(), content.get(), description);
 		ThemeValidator.validateTableTheme(this.theme);
 	}
@@ -318,7 +323,14 @@ Normal           Example
 	 * @param content content theme
 	 * @param description a description
 	 */
-	V2_E_TableThemes(V2_E_RowThemes top, V2_E_RowThemes topStrong, V2_E_RowThemes mid, V2_E_RowThemes midStrong, V2_E_RowThemes bottom, V2_E_RowThemes bottomStrong, V2_E_RowThemes content, String description){
+	V2_E_TableThemes(V2_E_RowThemes top,
+			V2_E_RowThemes topStrong,
+			V2_E_RowThemes mid,
+			V2_E_RowThemes midStrong,
+			V2_E_RowThemes bottom,
+			V2_E_RowThemes bottomStrong,
+			V2_E_RowThemes content,
+			String description){
 		this.theme = new AbstractTableTheme(top.get(), topStrong.get(), mid.get(), midStrong.get(), bottom.get(), bottomStrong.get(), content.get(), description);
 		ThemeValidator.validateTableTheme(this.theme);
 	}

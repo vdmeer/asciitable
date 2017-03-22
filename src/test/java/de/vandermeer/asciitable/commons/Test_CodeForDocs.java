@@ -23,7 +23,7 @@ import de.vandermeer.asciitable.v2.render.RenderUtilities;
 import de.vandermeer.asciitable.v2.render.V2_AsciiTableRenderer;
 import de.vandermeer.asciitable.v2.render.WidthAbsoluteEven;
 import de.vandermeer.asciitable.v2.themes.V2_E_TableThemes;
-import de.vandermeer.skb.interfaces.categories.is.transformers.arrays2d.Array2D_To_String;
+import de.vandermeer.skb.interfaces.transformers.arrays2d.Array2D_To_String;
 
 /**
  * Tests for code used in commons JavaDoc.
