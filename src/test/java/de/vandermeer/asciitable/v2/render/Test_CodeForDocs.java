@@ -17,10 +17,6 @@ package de.vandermeer.asciitable.v2.render;
 
 import org.junit.Test;
 
-import de.vandermeer.asciitable.v2.RenderedTable;
-import de.vandermeer.asciitable.v2.V2_AsciiTable;
-import de.vandermeer.asciitable.v2.themes.V2_E_TableThemes;
-
 /**
  * Tests for code used in render JavaDoc.
  *
@@ -31,21 +27,21 @@ public class Test_CodeForDocs {
 
 	@Test
 	public void test_TableWithoutArrayNeed(){
-		V2_AsciiTable at = new V2_AsciiTable();
-
-		at.addRule();
-		at.addRow("1-1", "1-2", "1-3");
-		at.addRule();
-		at.addRow("2-1", "2-2", "2-3");
-		at.addRule();
-
-		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
-		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
-		rend.setWidth(new WidthAbsoluteEven(25));
-		rend.setPaddingChar('_');
-
-		RenderedTable rt = rend.render(at);
-		System.out.println(rt);
+//		V2_AsciiTable at = new V2_AsciiTable();
+//
+//		at.addRule();
+//		at.addRow("1-1", "1-2", "1-3");
+//		at.addRule();
+//		at.addRow("2-1", "2-2", "2-3");
+//		at.addRule();
+//
+//		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
+//		rend.setTheme(V2_E_TableThemes.UTF_LIGHT.get());
+//		rend.setWidth(new WidthAbsoluteEven(25));
+//		rend.setPaddingChar('_');
+//
+//		RenderedTable rt = rend.render(at);
+//		System.out.println(rt);
 	}
 
 }

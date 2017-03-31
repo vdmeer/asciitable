@@ -291,9 +291,6 @@ Normal           Example
 
 	;
 
-	/** Local theme. */
-	V2_TableTheme theme;
-
 	/**
 	 * Creates a new table theme.
 	 * @param top top rule theme (same for strong)
@@ -308,8 +305,6 @@ Normal           Example
 			V2_E_RowThemes bottom,
 			V2_E_RowThemes content,
 			String description){
-		this.theme = new AbstractTableTheme(top.get(), mid.get(), bottom.get(), content.get(), description);
-		ThemeValidator.validateTableTheme(this.theme);
 	}
 
 	/**
@@ -331,16 +326,6 @@ Normal           Example
 			V2_E_RowThemes bottomStrong,
 			V2_E_RowThemes content,
 			String description){
-		this.theme = new AbstractTableTheme(top.get(), topStrong.get(), mid.get(), midStrong.get(), bottom.get(), bottomStrong.get(), content.get(), description);
-		ThemeValidator.validateTableTheme(this.theme);
-	}
-
-	/**
-	 * Returns the actual theme.
-	 * @return the actual theme
-	 */
-	public V2_TableTheme get(){
-		return this.theme;
 	}
 
 }

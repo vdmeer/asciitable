@@ -614,9 +614,6 @@ public enum V2_E_RowThemes {
 
 	;
 
-	/** Local builder. */
-	V2_RowThemeBuilder builder = new V2_RowThemeBuilder();
-
 	/**
 	 * Returns a row theme.
 	 * @param leftBorder left border character
@@ -628,24 +625,7 @@ public enum V2_E_RowThemes {
 	 * @param description a description
 	 */
 	private V2_E_RowThemes(char leftBorder, char midBorderUp, char midBorderAll, char midBorderDown, char rightBorder, char mid, String description){
-		this.builder
-			.setDescription(description)
-			.setLeftBorder(leftBorder)
-			.setRightBorder(rightBorder)
-			.setMid(mid)
-			.setMidBorderAll(midBorderAll)
-			.setMidBorderDown(midBorderDown)
-			.setMidBorderUp(midBorderUp)
-		;
-		ThemeValidator.validateRowTheme(this.builder.build());
-	}
-
-	/**
-	 * Returns the actual theme.
-	 * @return the theme
-	 */
-	public V2_RowTheme get(){
-		return this.builder.build();
+		
 	}
 
 }
