@@ -23,7 +23,7 @@ import org.apache.commons.lang3.Validate;
  * Calculates the width of table columns using the longest word in a column with minimum column width settings.
  * 
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.3-SNAPSHOT build 160319 (19-Mar-16) for Java 1.7
+ * @version    v0.3.0-SNAPSHOT build 170331 (31-Mar-17) for Java 1.8
  * @since      v0.3.0
  */
 public class CWC_LongestWordMin implements AT_ColumnWidthCalculator {

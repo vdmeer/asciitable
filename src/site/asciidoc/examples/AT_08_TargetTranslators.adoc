@@ -1,0 +1,68 @@
+=== Translate characters for a target
+
+
+The implementation allows to set translators for characters.
+Those tanslators will be called before the cell text if formatted.
+Translators can be for characters only, for HTML entities, or for complete targets
+
+
+==== Target LaTeX
+
+The first example uses a translator for the target LaTeX.
+This means that all characters in the text that require special translation for being used in a LaTeX document will be translated into that representation (depending on the capabilities of the translator of course).
+
+The code below creates a table with two columns using the same text with special characters for translation.
+The left column in the table is rendered without translation, the right column is rendered with translation.
+ 
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_08a_TargetTranslator_Latex.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+
+The resulting output:
+----------------------------------------------------------------------------------------
+┌───────────────────────────────────────┬──────────────────────────────────────┐
+│A sentence with some normal text, not  │A sentence with some normal text, not │
+│specific to LaTeX. Now for some        │specific to LaTeX. Now for some       │
+│characters that require conversion: # %│characters that require conversion: \#│
+│&. And some more: © § ¤. And even more:│\% \&. And some more: {\copyright}    │
+│È É Ê Ë. And some arrows as well: ← ↑ →│{\S} \currency. And even more: \`{E}  │
+│↓ ↔                                    │\'{E} \^{E} \"{E}. And some arrows as │
+│                                       │well: \(\leftarrow{}\) \(\uparrow\)   │
+│                                       │\(\rightarrow{}\) \(\downarrow{}\)    │
+│                                       │\(\leftrightarrow{}\)                 │
+└───────────────────────────────────────┴──────────────────────────────────────┘
+----------------------------------------------------------------------------------------
+
+
+
+==== Target HTML
+
+The first example uses a translator for the target HTML.
+This means that all characters in the text that require special translation for being used in a HTML document will be translated into that representation (depending on the capabilities of the translator of course).
+
+The code below creates a table with two columns using the same text with special characters for translation.
+The left column in the table is rendered without translation, the right column is rendered with translation.
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_08b_TargetTranslator_HTML.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+
+The resulting output:
+----------------------------------------------------------------------------------------
+┌───────────────────────────────────────┬──────────────────────────────────────┐
+│A sentence with some normal text, not  │A sentence with some normal text, not │
+│specific to HTML. Now for some         │specific to HTML. Now for some        │
+│characters that require conversion: # %│characters that require conversion:   │
+│& < >. And some more: © § ¤. And even  │&#803; &#37; &amp; &lt; &gt;. And some│
+│more: Ē ē Ĕ ĕ Ė ė Ę ę Ě ě. And some    │more: &copy; &sect; &curren;. And even│
+│arrows as well: ← ↑ → ↓ ↔ ↕            │more: &#274; &#275; &#276; &#277;     │
+│                                       │&#278; &#279; &#280; &#281; &#282;    │
+│                                       │&#283;. And some arrows as well:      │
+│                                       │&larr; &uarr; &rarr; &darr; &harr;    │
+│                                       │&#8597;                               │
+└───────────────────────────────────────┴──────────────────────────────────────┘
+----------------------------------------------------------------------------------------

@@ -1,0 +1,4 @@
+=== Special Input
+
+The implementation can deal with special input.
+The following sections provide some examples.

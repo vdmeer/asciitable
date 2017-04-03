@@ -1,0 +1,31 @@
+=== Padding: Table
+
+Inside a cell, the padding for top and bottom (above and below cell text) as well as left and right (horizontally before and after each line of text) can be set separately.
+The character used for the padding can be set as well.
+
+The following code shows how to set the padding for the whole table.
+First, we create a table and add content (rows with cells and text).
+Then we set the padding and the padding character for the whole table.
+
+Note: settings for the whole table only effect cells that have been already added.
+
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_04a_Padding_Table.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output:
+----------------------------------------------------------------------------------------
+┌───────────────┬───────────────┐
+│vvvvvvvvvvvvvvv│vvvvvvvvvvvvvvv│
+│> row 1 col 1 <│> row 1 col 2 <│
+│^^^^^^^^^^^^^^^│^^^^^^^^^^^^^^^│
+├───────────────┼───────────────┤
+│vvvvvvvvvvvvvvv│vvvvvvvvvvvvvvv│
+│> row 2 col 1 <│> row 2 col 2 <│
+│^^^^^^^^^^^^^^^│^^^^^^^^^^^^^^^│
+└───────────────┴───────────────┘
+----------------------------------------------------------------------------------------
+
+

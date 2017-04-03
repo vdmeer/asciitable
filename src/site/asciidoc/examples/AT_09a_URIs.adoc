@@ -1,0 +1,42 @@
+=== URIs
+
+Uniform Resource Identifiers (URIs) can be used in a table.
+No special rules are applied to them for line breaks.
+The renderer tries to put as many characters of a URI into a single line as possible.
+
+
+The following example shows a table with various columns and URIs.
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_09a_URIs.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output:
+----------------------------------------------------------------------------------------
+┌───────────────────────────────────┬───────────────────────────────────┐
+│scheme:[//[user:password@]host[:por│scheme:[//[user:password@]host[:por│
+│t]][/]path[?query][#fragment]      │t]][/]path[?query][#fragment]      │
+├───────────────────────────────────┴───────────────────────────────────┤
+│scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]       │
+├───────────────────────────────────┬───────────────────────────────────┤
+│abc://username:password@example.com│abc://username:password@example.com│
+│:123/path/data?key=value#fragid1   │:123/path/data?key=value#fragid1   │
+├───────────────────────────────────┴───────────────────────────────────┤
+│abc://username:password@example.com:123/path/data?key=value#fragid1    │
+├───────────────────────────────────┬───────────────────────────────────┤
+│urn:example:mammal:monotreme:echidn│urn:example:mammal:monotreme:echidn│
+│a                                  │a                                  │
+├───────────────────────────────────┴───────────────────────────────────┤
+│urn:example:mammal:monotreme:echidna                                   │
+├───────────────────────────────────┬───────────────────────────────────┤
+│http://www.example.com/test1/test2 │http://www.example.com/test1/test2 │
+├───────────────────────────────────┴───────────────────────────────────┤
+│http://www.example.com/test1/test2                                     │
+├───────────────────────────────────┬───────────────────────────────────┤
+│mailto:user1@example.com           │mailto:firstname.lastname@example.c│
+│                                   │om                                 │
+├───────────────────────────────────┴───────────────────────────────────┤
+│mailto:firstname.lastname@example.com                                  │
+└───────────────────────────────────────────────────────────────────────┘
+----------------------------------------------------------------------------------------

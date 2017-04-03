@@ -1,0 +1,41 @@
+=== Column Span
+
+The table allows column spans, with some limitations.
+
+When adding text objects to a row, using `null` indicated a column span.
+Multiple `null` text objects signify multi-column spans.
+The final text object must be none-`null`.
+
+
+The following example creates a table with 5 columns and various column spans:
+
+- the first row contains a column spanning 5 columns
+- the second row contains 2 columns: the first one spanning 4 columns, the second one being a single column
+- the third row contains 2 columns: the first one spanning 3 columns, the second one spanning 2 columns
+- the fourth row contains 2 columns: the first one spanning 2 columns, the second one spanning 3 columns
+- the fifth row contains 2 columns: the first one being a single column, the second one spanning 4 columns
+- the last row contains 5 single columns
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_02_ColSpan.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output with the table and various column spans:
+----------------------------------------------------------------------------------------
+┌─────────────────────────────────────────────────────────────────────┐
+│span all 5 columns                                                   │
+├───────────────────────────────────────────────────────┬─────────────┤
+│span 4 columns                                         │just 1 column│
+├─────────────────────────────────────────┬─────────────┴─────────────┤
+│span 3 columns                           │span 2 columns             │
+├───────────────────────────┬─────────────┴───────────────────────────┤
+│span 2 columns             │span 3 columns                           │
+├─────────────┬─────────────┴─────────────────────────────────────────┤
+│just 1 column│span 4 columns                                         │
+├─────────────┼─────────────┬─────────────┬─────────────┬─────────────┤
+│just 1 column│just 1 column│just 1 column│just 1 column│just 1 column│
+└─────────────┴─────────────┴─────────────┴─────────────┴─────────────┘
+----------------------------------------------------------------------------------------
+
+

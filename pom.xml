@@ -14,7 +14,7 @@
       -->
     <groupId>de.vandermeer</groupId>
     <artifactId>asciitable</artifactId>
-    <version>0.2.6-SNAPSHOT</version>
+    <version>0.3.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <!--
@@ -107,9 +107,27 @@
     <dependencies>
         <dependency>
             <groupId>de.vandermeer</groupId>
+            <artifactId>ascii-utf-themes</artifactId>
+            <version>0.0.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.vandermeer</groupId>
+            <artifactId>char-translation</artifactId>
+            <version>0.0.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.antlr</groupId>
+            <artifactId>ST4</artifactId>
+            <version>4.0.8</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.vandermeer</groupId>
             <artifactId>asciilist</artifactId>
             <version>0.0.4-SNAPSHOT</version>
-            <scope>compile</scope>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -144,6 +162,47 @@
                         <exclude>**/doc-files/</exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+
+            <plugin>
+            	<groupId>org.apache.maven.plugins</groupId>
+            	<artifactId>maven-site-plugin</artifactId>
+            	<version>${pm.version.maven-site-plugin}</version>
+
+            	<configuration>
+            		<asciidoc>
+            <!--
+            			<templateDirs>
+            				<dir>src/site/asciidoc/templates</dir>
+            			</templateDirs>
+            			<requires>
+            				<require>asciidoctor-diagram</require>
+            			</requires>
+            -->
+            			<attributes>
+            				<source-highlighter>coderay</source-highlighter>
+            				<coderay-css>style</coderay-css>
+            				<release-version>${project.version}</release-version>
+            				<basedir>${project.basedir}/src</basedir>
+            			</attributes>
+            		</asciidoc>
+            		<moduleExcludes>
+            			<asciidoc>**/_*.adoc</asciidoc>
+            		</moduleExcludes>
+            	</configuration>
+
+            	<dependencies>
+            		<dependency>
+            			<groupId>org.apache.maven.doxia</groupId>
+            			<artifactId>doxia-site-renderer</artifactId>
+            			<version>${pm.version.doxia-site-renderer}</version>
+            		</dependency>
+            		<dependency>
+            			<groupId>org.asciidoctor</groupId>
+            			<artifactId>asciidoctor-maven-plugin</artifactId>
+            			<version>${pm.version.asciidoctor-maven-plugin}</version>
+            		</dependency>
+            	</dependencies>
             </plugin>
 
             <plugin>
@@ -273,11 +332,24 @@
         							<goal>jar</goal>
         						</goals>
         						<configuration>
+        							<source>${maven.compiler.target}</source>
+        							<doclet>org.asciidoctor.Asciidoclet</doclet>
+        							<docletArtifact>
+        								<groupId>org.asciidoctor</groupId>
+        								<artifactId>asciidoclet</artifactId>
+        								<version>${pm.version.asciidoctor.asciidoclet}</version>
+        							</docletArtifact>
+        							<overview>src/main/asciidoc/overview.adoc</overview>
+        							<additionalparam>
+        								--base-dir ${project.basedir}/src
+        								--attribute "name=${project.name}"
+        								--attribute "release-version=${project.version}"
+        								--attribute "title-link=${mp.project.url}/[${project.name} ${project.version}]"
+        							</additionalparam>
         							<encoding>${project.resources.sourceEncoding}</encoding>
         							<docencoding>${project.resources.sourceEncoding}</docencoding>
         							<charset>${project.resources.sourceEncoding}</charset>
         							<aggregate>true</aggregate>
-        							<overview>${basedir}/src/main/javadoc/overview.html</overview>
         							<nohelp>true</nohelp>
         							<header>${project.name}: ${project.version}</header>
         							<footer>${project.name}: ${project.version}</footer>
@@ -295,6 +367,54 @@
         	</build>
         </profile>
     </profiles>
+
+    <reporting>
+        <plugins>
+        	<plugin>
+        		<groupId>org.apache.maven.plugins</groupId>
+        		<artifactId>maven-javadoc-plugin</artifactId>
+        		<version>${pm.version.maven-javadoc-plugin}</version>
+        		<reportSets>
+        			<reportSet>
+        				<id>default</id>
+        				<reports>
+        					<report>javadoc</report>
+        				</reports>
+        			</reportSet>
+        		</reportSets>
+        		<configuration>
+        			<source>${maven.compiler.target}</source>
+        			<doclet>org.asciidoctor.Asciidoclet</doclet>
+        			<docletArtifact>
+        				<groupId>org.asciidoctor</groupId>
+        				<artifactId>asciidoclet</artifactId>
+        				<version>${pm.version.asciidoctor.asciidoclet}</version>
+        			</docletArtifact>
+        			<overview>src/main/asciidoc/overview.adoc</overview>
+        			<additionalparam>
+        				--base-dir ${project.basedir}/src
+        				--attribute "name=${project.name}"
+        				--attribute "release-version=${project.version}"
+        				--attribute "title-link=${mp.project.url}/[${project.name} ${project.version}]"
+        			</additionalparam>
+        			<encoding>${project.resources.sourceEncoding}</encoding>
+        			<docencoding>${project.resources.sourceEncoding}</docencoding>
+        			<charset>${project.resources.sourceEncoding}</charset>
+        			<aggregate>true</aggregate>
+        			<nohelp>true</nohelp>
+        			<header>${project.name}: ${project.version}</header>
+        			<footer>${project.name}: ${project.version}</footer>
+        			<doctitle>${project.name}: ${project.version}</doctitle>
+        			<noqualifier>all</noqualifier>
+        			<detectLinks>true</detectLinks>
+        			<detectJavaApiLink>true</detectJavaApiLink>
+        			<javadocDirectory>${basedir}/src/main/javadoc</javadocDirectory>
+        			<docfilessubdirs>true</docfilessubdirs>
+        		</configuration>
+        	</plugin>
+        </plugins>
+
+    </reporting>
 
     <!-- Environment Settings -->
     <issueManagement>

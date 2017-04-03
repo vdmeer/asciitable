@@ -1,0 +1,28 @@
+=== Margins
+
+The implementation allows to add margins before and after the table as well as left and right of each line (outside the grid).
+For each margin, the number and the character can be set.
+The number states the margin to be added (number of lines for top/bottom, number of characters for left/rigth).
+
+
+The following code creates a table and then adds one line top margin, 2 line bottom margin, 3 characters left margin, and 4 characters right margin.
+Each setting uses a different margin character.
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_05_MarginBehavior.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output:
+----------------------------------------------------------------------------------------
+vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+>>>┌───────────┬───────────┐<<<<
+>>>│row 1 col 1│row 1 col 2│<<<<
+>>>├───────────┼───────────┤<<<<
+>>>│row 2 col 1│row 2 col 2│<<<<
+>>>└───────────┴───────────┘<<<<
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------------------------------------------------------
+
+

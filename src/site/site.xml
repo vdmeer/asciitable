@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<project>
+
+    <body>
+        <menu name="Ascii Table">
+            <item href="features.html" name="Features" />
+            <item href="concepts.html" name="Concepts">
+                <item href="concepts/01-anatomy.html" name="Anatomy of a table" />
+                <item href="concepts/02-table.html" name="Table" />
+                <item href="concepts/03-config-features.html" name="Configurable features" />
+                <item href="concepts/04-context.html" name="Table context" />
+                <item href="concepts/05-renderer.html" name="Table renderer" />
+            </item>
+            <item href="installation.html" name="Installation" />
+            <item href="getting-started.html" name="Getting Started" />
+<!--
+            <item name="User Guide" />
+ -->
+            <item href="examples.html" name="Examples">
+                <item href="examples/AT_00_Getting_Started.html" name="Simple Table" />
+                <item href="examples/AT_00b_Width_Behavior.html" name="Table Width" />
+                <item href="examples/AT_00c_AddText_Objects.html" name="Objects as added text" />
+                <item href="examples/AT_01_Columns.html" name="Columns" />
+                <item href="examples/AT_02_ColSpan.html" name="Columns Spans" />
+                <item href="examples/AT_03_AlignmentOptions.html" name="Text Alignment" />
+                <item href="examples/AT_03a_AlignmentTable.html" name="Text Alignment: Table" />
+                <item href="examples/AT_03b_AlignmentRow.html" name="Text Alignment: Row" />
+                <item href="examples/AT_03c_AlignmentCell.html" name="Text Alignment: Cell" />
+                <item href="examples/AT_04a_Padding_Table.html" name="Padding: Table" />
+                <item href="examples/AT_04b_Padding_Row.html" name="Padding: Row" />
+                <item href="examples/AT_04c_Padding_Cell.html" name="Padding: Cell" />
+                <item href="examples/AT_05_MarginBehavior.html" name="Margins" />
+                <item href="examples/AT_06a_Grids.html" name="Grids (Frames)" />
+                <item href="examples/AT_06b_GridRuleStyle.html" name="Grids: Rule Styles" />
+                <item href="examples/AT_06c_GridThemes.html" name="Grids: Themes" />
+                <item href="examples/AT_06d_NewGrid.html" name="New Grids" />
+                <item href="examples/AT_07a_Width_AbsoluteEven.html" name="Column Width: Absolute, Even" />
+                <item href="examples/AT_07b_Width_Fixed.html" name="Column Width: Fixed" />
+                <item href="examples/AT_07c_LongestLine.html" name="Column Width: Longes Line" />
+                <item href="examples/AT_07d_LongestWord.html" name="Column Width: Longest Word" />
+                <item href="examples/AT_07e_LongestWordMax.html" name="Column Width: Longest Word (Max)" />
+                <item href="examples/AT_07f_LongestWordMin.html" name="Column Width: Longest Word (Min)" />
+                <item href="examples/AT_08_TargetTranslators.html" name="Target Translation" />
+                <item href="examples/AT_09_SpecialInput.html" name="Special Input" />
+                <item href="examples/AT_09a_URIs.html" name="URIs" />
+                <item href="examples/AT_09b_ConditionalLinebreak.html" name="Conditional Linebreaks" />
+                <item href="examples/AT_09c_ListWithLinebreaks.html" name="List with Linebreaks" />
+            </item>
+            <item href="resources.html" name="Resources" />
+            <item href="apidocs/index.html" name="JAVA API Doc" />
+            <item href="changelog.html" name="Change Log" />
+        </menu>
+        <menu ref="reports" inherit="top"/>
+        <menu ref="modules"/> 
+    </body>
+
+    <skin>
+        <groupId>org.apache.maven.skins</groupId>
+        <artifactId>maven-fluido-skin</artifactId>
+        <version>1.5</version>
+    </skin>
+
+</project>

@@ -1,0 +1,52 @@
+=== Width: Longest Line
+
+This width calculator takes the longest line in each column and sets the column width to it.
+The calculator can be configured to use a minimum and maximum length for particular columns.
+
+The following code shows a few examples for the behavior of this width calculator for a table with 5 columns and text of different length per column:
+
+- First example: the table without padding
+- Second example: calculator using a minimum length of 4 for the first column
+- Third example: calculator now also using a minimum width of 6 for the second column and a maximum width of 2 for the last column
+- Fourth example: same calculator but now with an additional row in the table using a conditional line break
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_07c_LongestLine.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output for the first example:
+----------------------------------------------------------------------------------------
+┌─┬─┬──┬───┬────┐
+│0│1│22│333│4444│
+└─┴─┴──┴───┴────┘
+----------------------------------------------------------------------------------------
+
+
+The resulting output for the second example:
+----------------------------------------------------------------------------------------
+┌────┬─┬──┬───┬────┐
+│0   │1│22│333│4444│
+└────┴─┴──┴───┴────┘
+----------------------------------------------------------------------------------------
+
+
+The resulting output for the third example:
+----------------------------------------------------------------------------------------
+┌────┬──────┬──┬───┬──┐
+│0   │1     │22│333│44│
+│    │      │  │   │44│
+└────┴──────┴──┴───┴──┘
+----------------------------------------------------------------------------------------
+
+
+The resulting output for the fourth example:
+----------------------------------------------------------------------------------------
+┌────┬──────┬──┬─────┬──┐
+│0   │1     │22│333  │44│
+│    │      │  │     │44│
+├────┼──────┼──┼─────┼──┤
+│0   │1     │22│333  │44│
+│    │      │  │55555│44│
+└────┴──────┴──┴─────┴──┘
+----------------------------------------------------------------------------------------

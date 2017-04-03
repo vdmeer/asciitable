@@ -1,0 +1,31 @@
+== Resources
+
+
+[frame=topbot, grid=rows, cols="d,d"]
+|===
+
+| Home page
+| http://www.vandermeer.de/projects/skb/java/asciitable[site]
+
+| Source repository
+| https://github.com/vdmeer/asciitable/tree/master[Github]
+
+| Maven Central current release
+| https://search.maven.org/#artifactdetails\|de.vandermeer\|asciitable\|{release-version}\|jar[current release {release-version}]
+
+| Maven Central all releases
+| https://search.maven.org/#search\|gav\|1\|g%3A%22de.vandermeer%22%20AND%20a%3A%22asciitable%22[all releases]
+
+| Java 7 legacy version source repository
+| https://github.com/vdmeer/asciitable/tree/master-j7[GitHub]
+
+| Java 7 legacy version Maven releases
+| https://search.maven.org/#search\|gav\|1\|g%3A%22de.vandermeer%22%20AND%20a%3A%22asciitable-j%22[Maven Central]
+
+| UTF-8 Howto, older blog
+| http://vdmeer-sven.blogspot.ie/2014/06/utf-8-support-w-java-and-console.html[older blog]
+
+| UTF-8 Howto, updated Wiki
+| https://github.com/vdmeer/skb/wiki/HowTo-UTF-8-Support-in-Java-and-Console[updated SKB Wiki]
+
+|===

@@ -1,0 +1,25 @@
+=== Text Alignment: Cell
+
+The alignment of text can be set for individual table cells.
+
+The following code creates a table, adds text objects, and then sets the text alignment for the last cell in second row to right leaving all other cells to the default justified alignment.
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_03c_AlignmentCell.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output:
+----------------------------------------------------------------------------------------
+┌────────────────────────┬────────────────────────┬────────────────────────┐
+│Lorem  ipsum  dolor  sit│Lorem  ipsum  dolor  sit│Lorem  ipsum  dolor  sit│
+│amet,         consetetur│amet,         consetetur│amet,         consetetur│
+│sadipscing elitr, sed   │sadipscing elitr, sed   │sadipscing elitr, sed   │
+├────────────────────────┼────────────────────────┼────────────────────────┤
+│Lorem  ipsum  dolor  sit│Lorem  ipsum  dolor  sit│   Lorem ipsum dolor sit│
+│amet,         consetetur│amet,         consetetur│        amet, consetetur│
+│sadipscing elitr, sed   │sadipscing elitr, sed   │   sadipscing elitr, sed│
+└────────────────────────┴────────────────────────┴────────────────────────┘
+----------------------------------------------------------------------------------------
+
+

@@ -1,0 +1,2 @@
+ASCII table - A simple tool to format tables with various row/column options for indentation, indentation character, alignment, padding (left, right, both), padding characters (left, right, both), and in-line whitespace characters.
+

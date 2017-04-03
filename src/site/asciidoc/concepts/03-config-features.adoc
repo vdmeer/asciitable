@@ -1,0 +1,15 @@
+
+=== Summary of configurable characteristics
+
+- text width (length of each text line)
+- text alignment (for the whole paragraph): left, right, centered, justified (with additional options for last line)
+- text format: first line, hanging, dropped capital letter
+- frame: set a frame around the paragraph
+- start / end string: define a start and/or end string for each line
+- top and bottom margins above a frame (empty lines)
+- margins on the left and right of a frame (number with character)
+- margins between the frame and the start string (left) and end string and frame (right), using different length and character
+- margins between start string and text (left), and text and end string (right), using different length and characters
+- top and bottom margins for the text (including and string margin and string)
+- character converters to convert characters before line generation, i.e. to generate text suitable for LaTeX or HTML
+

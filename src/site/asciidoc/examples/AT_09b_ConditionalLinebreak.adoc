@@ -1,0 +1,25 @@
+=== Conditional Linebreaks
+
+With all excessive white spaces being removed, conditional line breaks in a cell need to be done using a markup.
+The implementation recognizes the two HTML line break markups `<br>` and `<br />`.
+
+The example below adds text to a table cell with excessive white spaces (being removed) and conditional line breaks (being translated into line breaks).
+
+The lines 1 and 2 add a conditional line break as `<br>` and `<br />` respectively.
+They appear as individual lines.
+The third line has an excessive line break, which will be removed, resulting in a single line.
+
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_09b_ConditionalLinebreak.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output:
+----------------------------------------------------------------------------------------
+┌────────────────────────────────────────────────┐
+│line 1                                          │
+│line 2                                          │
+│line three still line three                     │
+└────────────────────────────────────────────────┘
+----------------------------------------------------------------------------------------

@@ -1,0 +1,23 @@
+
+=== Renderer
+
+The actual rendering of a paragraph is realized by special render objects (i.e. it's not done in the paragraph or its context).
+A paragraph can be rendered in two different ways:
+
+. call the provided render methods on the paragraph object itself
+. use a specialized render object
+
+No changes are made to the paragraph text or any context settings by any render operation.
+All required text being processed and calculations being made will happen inside the renderer.
+
+The render methods on the paragraph allow to render it (a) to the width set in the context or (b) to an overall required width.
+The first option is the most simple one: fill paragraph with text, set width on context, render.
+The second option can be used by other applications, for instance a table, to get a paragraph of required width.
+
+For any other render operations use the provided standard renderer or create your own render object.
+The default renderer does currently provide render methods to different width with calculations provided by the context.
+
+Note: coming soon: 
+It also provides render methods that use their own context (i.e. ignore the context set in the paragraph).
+This allows for extremely flexibility in using the paragraph in many different scenarios.
+

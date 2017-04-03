@@ -1,0 +1,36 @@
+=== Width: Longest Word (Maxnimum)
+
+This width calculator takes the longest word in each column and sets the column width to it.
+It can be further configured to a maximum column width.
+
+The following code shows a few examples for the behavior of this width calculator for a table with 2 columns:
+
+- First example: maximum width set to 8 for all columns
+- Second example: maximum width of first column set to 4, maximum width of second column removed
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_07e_LongestWordMax.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output for the first example:
+----------------------------------------------------------------------------------------
+┌──────┬────────┐
+│first │informat│
+│      │ion     │
+├──────┼────────┤
+│second│info    │
+└──────┴────────┘
+----------------------------------------------------------------------------------------
+
+
+The resulting output for the second example:
+----------------------------------------------------------------------------------------
+┌────┬───────────┐
+│firs│information│
+│t   │           │
+├────┼───────────┤
+│seco│info       │
+│nd  │           │
+└────┴───────────┘
+----------------------------------------------------------------------------------------
