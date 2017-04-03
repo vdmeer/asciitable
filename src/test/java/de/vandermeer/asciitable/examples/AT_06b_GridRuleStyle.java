@@ -19,7 +19,7 @@ import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciithemes.a8.A8_Grids;
-import de.vandermeer.skb.interfaces.StandardExample;
+import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 
 /**
  * AsciiTable example for grids with different rule styles.
@@ -28,7 +28,7 @@ import de.vandermeer.skb.interfaces.StandardExample;
  * @version    v0.3.0-SNAPSHOT build 170331 (31-Mar-17) for Java 1.8
  * @since      v0.0.3
  */
-public class AT_06b_GridRuleStyle implements StandardExample {
+public class AT_06b_GridRuleStyle implements StandardExampleAsCmd {
 
 	@Override
 	public void showOutput(){
@@ -64,5 +64,15 @@ public class AT_06b_GridRuleStyle implements StandardExample {
 				"System.out.println(at.render());",
 		};
 		return new StrBuilder().appendWithSeparators(source, "\n");
+	}
+
+	@Override
+	public String getDescription() {
+		return "different styles for table rules from a grid";
+	}
+
+	@Override
+	public String getID() {
+		return "grid-rule-style";
 	}
 }

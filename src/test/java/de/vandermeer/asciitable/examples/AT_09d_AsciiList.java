@@ -22,7 +22,7 @@ import de.vandermeer.asciilist.enumerate.EnumerateList;
 import de.vandermeer.asciilist.itemize.ItemizeList;
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciitable.CWC_FixedWidth;
-import de.vandermeer.skb.interfaces.StandardExample;
+import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
 
 /**
@@ -32,7 +32,7 @@ import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
  * @version    v0.3.0-SNAPSHOT build 170331 (31-Mar-17) for Java 1.8
  * @since      v0.0.3
  */
-public class AT_09d_AsciiList implements StandardExample {
+public class AT_09d_AsciiList implements StandardExampleAsCmd {
 
 	@Override
 	public void showOutput(){
@@ -84,5 +84,15 @@ System.err.println(cl.render(27));
 				"System.out.println(at.render());",
 		};
 		return new StrBuilder().appendWithSeparators(source, "\n");
+	}
+
+	@Override
+	public String getDescription() {
+		return "using an asciilist in a cell";
+	}
+
+	@Override
+	public String getID() {
+		return "al";
 	}
 }

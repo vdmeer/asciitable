@@ -19,7 +19,7 @@ import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciitable.CWC_AbsoluteEven;
-import de.vandermeer.skb.interfaces.StandardExample;
+import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 
 /**
  * AsciiTable example for width: absolute width with even columns.
@@ -28,7 +28,7 @@ import de.vandermeer.skb.interfaces.StandardExample;
  * @version    v0.3.0-SNAPSHOT build 170331 (31-Mar-17) for Java 1.8
  * @since      v0.0.3
  */
-public class AT_07a_Width_AbsoluteEven implements StandardExample {
+public class AT_07a_Width_AbsoluteEven implements StandardExampleAsCmd {
 
 	@Override
 	public void showOutput(){
@@ -59,5 +59,15 @@ public class AT_07a_Width_AbsoluteEven implements StandardExample {
 				"System.out.println(at.render(20));",
 		};
 		return new StrBuilder().appendWithSeparators(source, "\n");
+	}
+
+	@Override
+	public String getDescription() {
+		return "calculate column width: absolute even";
+	}
+
+	@Override
+	public String getID() {
+		return "cwc-absolute";
 	}
 }

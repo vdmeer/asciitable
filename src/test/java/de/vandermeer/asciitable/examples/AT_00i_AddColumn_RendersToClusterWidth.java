@@ -22,7 +22,7 @@ import org.stringtemplate.v4.ST;
 
 import de.svenjacobs.loremipsum.LoremIpsum;
 import de.vandermeer.asciitable.AsciiTable;
-import de.vandermeer.skb.interfaces.StandardExample;
+import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 import de.vandermeer.skb.interfaces.render.RendersToClusterWidth;
 import de.vandermeer.skb.interfaces.strategies.collections.list.ArrayListStrategy;
 import de.vandermeer.skb.interfaces.transformers.ClusterElementTransformer;
@@ -36,7 +36,7 @@ import de.vandermeer.skb.interfaces.transformers.textformat.Text_To_FormattedTex
  * @version    v0.3.0-SNAPSHOT build 170331 (31-Mar-17) for Java 1.8
  * @since      v0.0.3
  */
-public class AT_00i_AddColumn_RendersToClusterWidth implements StandardExample {
+public class AT_00i_AddColumn_RendersToClusterWidth implements StandardExampleAsCmd {
 
 	@Override
 	public void showOutput(){
@@ -81,5 +81,17 @@ public class AT_00i_AddColumn_RendersToClusterWidth implements StandardExample {
 				"System.out.println(at.render());",
 		};
 		return new StrBuilder().appendWithSeparators(source, "\n");
+	}
+
+	@Override
+	public String getDescription() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getID() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

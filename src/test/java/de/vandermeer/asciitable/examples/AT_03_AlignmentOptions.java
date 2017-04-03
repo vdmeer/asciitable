@@ -20,7 +20,7 @@ import org.apache.commons.lang3.text.StrBuilder;
 import de.svenjacobs.loremipsum.LoremIpsum;
 import de.vandermeer.asciitable.AT_Row;
 import de.vandermeer.asciitable.AsciiTable;
-import de.vandermeer.skb.interfaces.StandardExample;
+import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
 
 /**
@@ -30,7 +30,7 @@ import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
  * @version    v0.3.0-SNAPSHOT build 170331 (31-Mar-17) for Java 1.8
  * @since      v0.0.3
  */
-public class AT_03_AlignmentOptions implements StandardExample {
+public class AT_03_AlignmentOptions implements StandardExampleAsCmd {
 
 	@Override
 	public void showOutput(){
@@ -73,5 +73,15 @@ public class AT_03_AlignmentOptions implements StandardExample {
 				"System.out.println(at.render(79));",
 		};
 		return new StrBuilder().appendWithSeparators(source, "\n");
+	}
+
+	@Override
+	public String getDescription() {
+		return "different text alignment";
+	}
+
+	@Override
+	public String getID() {
+		return "alignment";
 	}
 }

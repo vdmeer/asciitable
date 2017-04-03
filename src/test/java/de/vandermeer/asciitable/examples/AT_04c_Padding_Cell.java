@@ -19,7 +19,7 @@ import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciitable.AT_Cell;
 import de.vandermeer.asciitable.AsciiTable;
-import de.vandermeer.skb.interfaces.StandardExample;
+import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
 
 /**
@@ -29,7 +29,7 @@ import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
  * @version    v0.3.0-SNAPSHOT build 170331 (31-Mar-17) for Java 1.8
  * @since      v0.0.3
  */
-public class AT_04c_Padding_Cell implements StandardExample {
+public class AT_04c_Padding_Cell implements StandardExampleAsCmd {
 
 	@Override
 	public void showOutput(){
@@ -70,5 +70,15 @@ public class AT_04c_Padding_Cell implements StandardExample {
 				"System.out.println(at.render(33));",
 		};
 		return new StrBuilder().appendWithSeparators(source, "\n");
+	}
+
+	@Override
+	public String getDescription() {
+		return "set padding for a specific cell";
+	}
+
+	@Override
+	public String getID() {
+		return "padding-cell";
 	}
 }

@@ -18,7 +18,7 @@ package de.vandermeer.asciitable.examples;
 import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciitable.AsciiTable;
-import de.vandermeer.skb.interfaces.StandardExample;
+import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 
 /**
  * AsciiTable example for a simple table as getting started example.
@@ -27,7 +27,7 @@ import de.vandermeer.skb.interfaces.StandardExample;
  * @version    v0.3.0-SNAPSHOT build 170331 (31-Mar-17) for Java 1.8
  * @since      v0.0.3
  */
-public class AT_01c_2Columns implements StandardExample {
+public class AT_01c_2Columns implements StandardExampleAsCmd {
 
 	@Override
 	public void showOutput(){
@@ -54,5 +54,15 @@ public class AT_01c_2Columns implements StandardExample {
 				"System.out.println(at.render(76));",
 		};
 		return new StrBuilder().appendWithSeparators(source, "\n");
+	}
+
+	@Override
+	public String getDescription() {
+		return "table with 2 columns";
+	}
+
+	@Override
+	public String getID() {
+		return "2cols";
 	}
 }

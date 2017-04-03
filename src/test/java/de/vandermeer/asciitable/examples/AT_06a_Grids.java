@@ -21,7 +21,7 @@ import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciithemes.a7.A7_Grids;
 import de.vandermeer.asciithemes.a8.A8_Grids;
 import de.vandermeer.asciithemes.u8.U8_Grids;
-import de.vandermeer.skb.interfaces.StandardExample;
+import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 
 /**
  * AsciiTable example for grids.
@@ -30,7 +30,7 @@ import de.vandermeer.skb.interfaces.StandardExample;
  * @version    v0.3.0-SNAPSHOT build 170331 (31-Mar-17) for Java 1.8
  * @since      v0.0.3
  */
-public class AT_06a_Grids implements StandardExample {
+public class AT_06a_Grids implements StandardExampleAsCmd {
 
 	@Override
 	public void showOutput(){
@@ -85,5 +85,15 @@ public class AT_06a_Grids implements StandardExample {
 				"System.out.println(at.render());",
 		};
 		return new StrBuilder().appendWithSeparators(source, "\n");
+	}
+
+	@Override
+	public String getDescription() {
+		return "adding a grid to a table";
+	}
+
+	@Override
+	public String getID() {
+		return "grid";
 	}
 }
