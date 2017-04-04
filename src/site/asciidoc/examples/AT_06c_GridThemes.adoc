@@ -1,0 +1,38 @@
+=== Grids: Grid Themes
+
+Grids support different themes.
+A grid theme defines which grid characters from which position should be rendered.
+All other character will be rendered using a default character, usually blank.
+
+The following example creates a table and then renders it using different grid themes:
+
+- full grid
+- no grid
+- corners only (top left, top right, bottom left, bottom right)
+- corners and connectors (all 4 corners and every grid element that connects multiple grid lines)
+- horizontal lines only (no corners, no connectors)
+- vertical lines only  (no corners, no connectors)
+- inside grid elements (lines and connectors)
+- outside grid elements (lines and connectors and corners)
+- left lines only
+- top and bottom lines only
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_06c_GridThemes.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output (5 examples next to each other):
+----------------------------------------------------------------------------------------
+┌─────┬─────┐                         ┌           ┐      ┌     ┬     ┐       ─────────── 
+│rc 11│rc 12│       rc 11 rc 12        rc 11 rc 12        rc 11 rc 12        rc 11 rc 12 
+├─────┼─────┤                                            ├     ┼     ┤       ─────────── 
+│rc 21│rc 22│       rc 21 rc 22        rc 21 rc 22        rc 21 rc 22        rc 21 rc 22 
+└─────┴─────┘                         └           ┘      └     ┴     ┘       ─────────── 
+
+                                      ┌───────────┐                          ─────────── 
+│rc 11│rc 12│       rc 11│rc 12       │rc 11 rc 12│      │rc 11 rc 12        rc 11 rc 12 
+│     │     │       ─────┼─────       │           │      │                               
+│rc 21│rc 22│       rc 21│rc 22       │rc 21 rc 22│      │rc 21 rc 22        rc 21 rc 22 
+                                      └───────────┘                          ─────────── 
+----------------------------------------------------------------------------------------

@@ -1,0 +1,19 @@
+=== A List with conditional Linebreaks
+
+Conditional line breaks can also be used for creating the impression of lists.
+
+The following example shows a list using conditional line breaks in the left columns.
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_09c_ListWithLinebreaks.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output:
+----------------------------------------------------------------------------------------
+┌────────────────────┬─────────────────────────┐
+│column with a list  │* list item one          │
+│using conditional   │* list item two          │
+│line breaks         │* list item three        │
+└────────────────────┴─────────────────────────┘
+----------------------------------------------------------------------------------------

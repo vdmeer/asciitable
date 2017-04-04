@@ -1,0 +1,49 @@
+=== Text Alignment Options
+
+Text in a table cell can be formatted using one of the four main supported text alignment options:
+
+- Left - left bound text
+- Right - right bound text, with added blanks left of the text to create the right alignment impression
+- Center - centered text, with added blanks left and right of the text to create the centered impression
+- Justified - justified text, with added blanks inside the text to create the justified impression
+
+Justified alignment has two further specialized options:
+
+- Justified left - the last line of justified text will be aligned left
+- Justified right - the last line of justified text will be aligned right, with added blanks left of the text to create the right alignment impression
+
+
+The following code creates a table with 2 rows and 3 columns each, inserts some text into the cells, and applies different text alignment options to each cell:
+
+- Cell 1-1: justified, lastl line left
+- Cell 1-2: justified
+- Cell 1-3: justified, las line right
+- Cell 2-1: left
+- Cell 2-2: centered
+- Cell 2-3: right
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_03_AlignmentOptions.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output:
+----------------------------------------------------------------------------------------
+┌─────────────────────────┬─────────────────────────┬─────────────────────────┐
+│Lorem  ipsum  dolor   sit│Lorem  ipsum  dolor   sit│Lorem  ipsum  dolor   sit│
+│amet,          consetetur│amet,          consetetur│amet,          consetetur│
+│sadipscing   elitr,   sed│sadipscing   elitr,   sed│sadipscing   elitr,   sed│
+│diam nonumy eirmod tempor│diam nonumy eirmod tempor│diam nonumy eirmod tempor│
+│invidunt  ut  labore   et│invidunt  ut  labore   et│invidunt  ut  labore   et│
+│dolore magna             │dolore              magna│             dolore magna│
+├─────────────────────────┼─────────────────────────┼─────────────────────────┤
+│Lorem ipsum dolor sit    │  Lorem ipsum dolor sit  │    Lorem ipsum dolor sit│
+│amet, consetetur         │    amet, consetetur     │         amet, consetetur│
+│sadipscing elitr, sed    │  sadipscing elitr, sed  │    sadipscing elitr, sed│
+│diam nonumy eirmod tempor│diam nonumy eirmod tempor│diam nonumy eirmod tempor│
+│invidunt ut labore et    │  invidunt ut labore et  │    invidunt ut labore et│
+│dolore magna             │      dolore magna       │             dolore magna│
+└─────────────────────────┴─────────────────────────┴─────────────────────────┘
+----------------------------------------------------------------------------------------
+
+

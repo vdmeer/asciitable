@@ -1,0 +1,15 @@
+== Features
+
+Text table with some flexibility for rules and content, alignment, format, padding, margins, and frames:
+
+* add text, as often as required in many different formats (string, text provider, render provider, ST, clusters),
+* removes all excessive white spaces (tabulators, extra blanks, combinations of carriage return and line feed),
+* 6 different text alignments: left, right, centered, justified, justified last line left, justified last line right,
+* flexible width, set for text and calculated in many different ways for rendering
+* padding characters for left and right padding (configurable separately)
+* padding characters for top and bottom padding (configurable separately)
+* several options for drawing grids
+* rules with different styles (as supported by the used grid theme: normal, light, strong, heavy)
+* top/bottom/left/right margins outside a frame
+* character conversion to generated text suitable for further process, e.g. for LaTeX and HTML
+

@@ -1,0 +1,28 @@
+=== Text Alignment: Table
+
+The alignment of text can be set for the whole table at once, after all text objects are added.
+
+The following code creates a table, adds text objects, and then sets the text alignment for the whole table to right.
+
+Note: settings for the whole table only effect cells that have been already added.
+
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_03a_AlignmentTable.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output:
+----------------------------------------------------------------------------------------
+┌────────────────────────┬────────────────────────┬────────────────────────┐
+│   Lorem ipsum dolor sit│   Lorem ipsum dolor sit│   Lorem ipsum dolor sit│
+│        amet, consetetur│        amet, consetetur│        amet, consetetur│
+│   sadipscing elitr, sed│   sadipscing elitr, sed│   sadipscing elitr, sed│
+├────────────────────────┼────────────────────────┼────────────────────────┤
+│   Lorem ipsum dolor sit│   Lorem ipsum dolor sit│   Lorem ipsum dolor sit│
+│        amet, consetetur│        amet, consetetur│        amet, consetetur│
+│   sadipscing elitr, sed│   sadipscing elitr, sed│   sadipscing elitr, sed│
+└────────────────────────┴────────────────────────┴────────────────────────┘
+----------------------------------------------------------------------------------------
+
+

@@ -1,0 +1,27 @@
+=== Grids: Rule Styles
+
+Grids can support different styles for a rule (a horizontal line in the table).
+Currently defined styles for the table are:
+
+- normal - a normal rule
+- light - a rule rendered using light characters (e.g. lighter than normal)
+- strong - a rule rendered using strong characters (e.g. stronger than normal)
+- heavy - a rule rendered using heavy characters (e.g. heavy than strong)
+
+The following example creates a table with rules of different styles and applies a grid supporting all styles to the table.
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_06b_GridRuleStyle.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output:
+----------------------------------------------------------------------------------------
+═════════════
+ rc 11 rc 12 
+─────────────
+ rc 21 rc 22 
+▓▓▓▓▓▓▓▓▓▓▓▓▓
+ rc 31 rc 32 
+▀▀▀▀▀▀▀▀▀▀▀▀▀
+----------------------------------------------------------------------------------------

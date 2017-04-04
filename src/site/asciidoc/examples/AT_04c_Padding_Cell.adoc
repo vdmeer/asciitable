@@ -1,0 +1,23 @@
+=== Padding: Row
+
+The padding of text can be set for individual table cells.
+
+The following code creates a table, adds text objects, and then changes the padding for the last cell in second row leaving all other cells to the default (no padding).
+
+
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_04c_Padding_Cell.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output:
+----------------------------------------------------------------------------------------
+┌───────────────┬───────────────┐
+│row 1 col 1    │row 1 col 2    │
+├───────────────┼───────────────┤
+│row 2 col 1    │vvvvvvvvvvvvvvv│
+│               │> row 2 col 2 <│
+│               │^^^^^^^^^^^^^^^│
+└───────────────┴───────────────┘
+----------------------------------------------------------------------------------------

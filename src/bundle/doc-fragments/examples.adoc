@@ -1,0 +1,308 @@
+== Examples
+
+The following examples are using the classic "Lorem Ipsum" text as content.
+
+
+
+=== Width
+
+Width of 50, 40, and 30 on the same table.
+----------------------------------------------------------------------------------------
+┌────────────────────────┬───────────────────────┐
+│row 1 col 1             │row 1 col 2            │
+├────────────────────────┼───────────────────────┤
+│row 2 col 1             │row 2 col 2            │
+└────────────────────────┴───────────────────────┘
+
+┌───────────────────┬──────────────────┐
+│row 1 col 1        │row 1 col 2       │
+├───────────────────┼──────────────────┤
+│row 2 col 1        │row 2 col 2       │
+└───────────────────┴──────────────────┘
+
+┌──────────────┬─────────────┐
+│row 1 col 1   │row 1 col 2  │
+├──────────────┼─────────────┤
+│row 2 col 1   │row 2 col 2  │
+└──────────────┴─────────────┘
+----------------------------------------------------------------------------------------
+
+
+
+=== Columns
+
+The number of columns a table supports is determined by the first content row added.
+Here are tables with columns ranging from 1 to 5
+----------------------------------------------------------------------------------------
+┌────────────────────────────┐
+│Table Heading               │
+├────────────────────────────┤
+│first row (col1)            │
+├────────────────────────────┤
+│second row (col1)           │
+└────────────────────────────┘
+
+┌───────────────────────────────┬───────────────────────────────┐
+│first row (col1)               │some information (col2)        │
+├───────────────────────────────┼───────────────────────────────┤
+│second row (col1)              │some information (col2)        │
+└───────────────────────────────┴───────────────────────────────┘
+
+┌──────────────────────────┬─────────────────────────┬─────────────────────────┐
+│first row (col1)          │some information (col2)  │more info (col3)         │
+├──────────────────────────┼─────────────────────────┼─────────────────────────┤
+│second row (col1)         │some information (col2)  │more info (col3)         │
+└──────────────────────────┴─────────────────────────┴─────────────────────────┘
+
+┌───────────────────┬───────────────────┬───────────────────┬──────────────────┐
+│first row (col1)   │text (col2)        │more text (col3)   │even more (col4)  │
+├───────────────────┼───────────────────┼───────────────────┼──────────────────┤
+│second row (col1)  │text (col2)        │more text (col3)   │even more (col4)  │
+└───────────────────┴───────────────────┴───────────────────┴──────────────────┘
+
+┌───────────────┬───────────────┬───────────────┬───────────────┬──────────────┐
+│row1 (col1)    │text (col2)    │text (col3)    │text (col4)    │text (col5)   │
+├───────────────┼───────────────┼───────────────┼───────────────┼──────────────┤
+│row2 (col1)    │text (col2)    │text (col3)    │text (col4)    │text (col5)   │
+└───────────────┴───────────────┴───────────────┴───────────────┴──────────────┘
+----------------------------------------------------------------------------------------
+
+
+
+=== Column Span
+
+The table supports column spans
+----------------------------------------------------------------------------------------
+┌─────────────────────────────────────────────────────────────────────┐
+│span all 5 columns                                                   │
+├───────────────────────────────────────────────────────┬─────────────┤
+│span 4 columns                                         │just 1 column│
+├─────────────────────────────────────────┬─────────────┴─────────────┤
+│span 3 columns                           │span 2 columns             │
+├───────────────────────────┬─────────────┴───────────────────────────┤
+│span 2 columns             │span 3 columns                           │
+├─────────────┬─────────────┴─────────────────────────────────────────┤
+│just 1 column│span 4 columns                                         │
+├─────────────┼─────────────┬─────────────┬─────────────┬─────────────┤
+│just 1 column│just 1 column│just 1 column│just 1 column│just 1 column│
+└─────────────┴─────────────┴─────────────┴─────────────┴─────────────┘
+----------------------------------------------------------------------------------------
+
+
+
+=== Text Alignment
+
+Text in cells can be aligned in different ways: justified left, justified, justified right, left, center right.
+The text alignment can be set on the whole table, a row, or individual cells.
+----------------------------------------------------------------------------------------
+┌─────────────────────────┬─────────────────────────┬─────────────────────────┐
+│Lorem  ipsum  dolor   sit│Lorem  ipsum  dolor   sit│Lorem  ipsum  dolor   sit│
+│amet,          consetetur│amet,          consetetur│amet,          consetetur│
+│sadipscing   elitr,   sed│sadipscing   elitr,   sed│sadipscing   elitr,   sed│
+│diam nonumy eirmod tempor│diam nonumy eirmod tempor│diam nonumy eirmod tempor│
+│invidunt  ut  labore   et│invidunt  ut  labore   et│invidunt  ut  labore   et│
+│dolore magna             │dolore              magna│             dolore magna│
+├─────────────────────────┼─────────────────────────┼─────────────────────────┤
+│Lorem ipsum dolor sit    │  Lorem ipsum dolor sit  │    Lorem ipsum dolor sit│
+│amet, consetetur         │    amet, consetetur     │         amet, consetetur│
+│sadipscing elitr, sed    │  sadipscing elitr, sed  │    sadipscing elitr, sed│
+│diam nonumy eirmod tempor│diam nonumy eirmod tempor│diam nonumy eirmod tempor│
+│invidunt ut labore et    │  invidunt ut labore et  │    invidunt ut labore et│
+│dolore magna             │      dolore magna       │             dolore magna│
+└─────────────────────────┴─────────────────────────┴─────────────────────────┘
+----------------------------------------------------------------------------------------
+
+
+
+=== Padding
+
+Padding can be added to text in cells above (top) and below (bottom) the text or in front (left) or behind (right) each line.
+The character for the padding can be set separately.
+----------------------------------------------------------------------------------------
+┌───────────────┬───────────────┐
+│vvvvvvvvvvvvvvv│vvvvvvvvvvvvvvv│
+│> row 1 col 1 <│> row 1 col 2 <│
+│^^^^^^^^^^^^^^^│^^^^^^^^^^^^^^^│
+├───────────────┼───────────────┤
+│vvvvvvvvvvvvvvv│vvvvvvvvvvvvvvv│
+│> row 2 col 1 <│> row 2 col 2 <│
+│^^^^^^^^^^^^^^^│^^^^^^^^^^^^^^^│
+└───────────────┴───────────────┘
+----------------------------------------------------------------------------------------
+
+
+
+=== Margins
+
+Margins cen be set outside the grid (top, bottom, left, right).
+Margins and the character used for rendering the margin can be set separately.
+----------------------------------------------------------------------------------------
+vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+>>>┌───────────┬───────────┐<<<<
+>>>│row 1 col 1│row 1 col 2│<<<<
+>>>├───────────┼───────────┤<<<<
+>>>│row 2 col 1│row 2 col 2│<<<<
+>>>└───────────┴───────────┘<<<<
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------------------------------------------------------
+
+
+
+=== Grids
+
+Grids are used to draw a frame around cells.
+The implementation used `TA_Grid` objects from the `ascii-utf-themes` package.
+----------------------------------------------------------------------------------------
+┌─────┬─────┐      +-----+-----+      ═════════════      ╒═════╤═════╕      ╔═════╦═════╗
+│rc 11│rc 12│      |rc 11|rc 12|       rc 11 rc 12       │rc 11│rc 12│      ║rc 11║rc 12║
+├─────┼─────┤      +-----+-----+      ═════════════      ╞═════╪═════╡      ╠═════╬═════╣
+│rc 21│rc 22│      |rc 21|rc 22|       rc 21 rc 22       │rc 21│rc 22│      ║rc 21║rc 22║
+└─────┴─────┘      +-----+-----+      ═════════════      ╘═════╧═════╛      ╚═════╩═════╝
+----------------------------------------------------------------------------------------
+
+
+
+==== Grids: Rule Styles
+
+Grids can support different rule styles, thus supporting normal, light, strong, and heavy table rules.
+----------------------------------------------------------------------------------------
+═════════════
+ rc 11 rc 12
+─────────────
+ rc 21 rc 22
+▓▓▓▓▓▓▓▓▓▓▓▓▓
+ rc 31 rc 32
+▀▀▀▀▀▀▀▀▀▀▀▀▀
+----------------------------------------------------------------------------------------
+
+
+
+==== Grids: Themes
+
+Grids support different themes.
+A grid theme defines which grid characters from which position should be rendered.
+All other character will be rendered using a default character, usually blank.
+----------------------------------------------------------------------------------------
+┌─────┬─────┐                         ┌           ┐      ┌     ┬     ┐       ───────────
+│rc 11│rc 12│       rc 11 rc 12        rc 11 rc 12        rc 11 rc 12        rc 11 rc 12
+├─────┼─────┤                                            ├     ┼     ┤       ───────────
+│rc 21│rc 22│       rc 21 rc 22        rc 21 rc 22        rc 21 rc 22        rc 21 rc 22
+└─────┴─────┘                         └           ┘      └     ┴     ┘       ───────────
+
+                                      ┌───────────┐                          ───────────
+│rc 11│rc 12│       rc 11│rc 12       │rc 11 rc 12│      │rc 11 rc 12        rc 11 rc 12
+│     │     │       ─────┼─────       │           │      │
+│rc 21│rc 22│       rc 21│rc 22       │rc 21 rc 22│      │rc 21 rc 22        rc 21 rc 22
+                                      └───────────┘                          ───────────
+----------------------------------------------------------------------------------------
+
+
+
+==== Grids: New Grids
+
+New grids can be easily defined and applied to a table.
+----------------------------------------------------------------------------------------
+#############
+&rc 11&rc 12&
++#####+#####+
+&rc 21&rc 22&
+%#####%#####%
+----------------------------------------------------------------------------------------
+
+
+
+=== Special Input
+
+==== URIs
+
+Uniform Resource Identifiers (URIs) can be used in a table. No special rules are applied to them for line breaks. The renderer tries to put as many characters of a URI into a single line as possible.
+----------------------------------------------------------------------------------------
+┌───────────────────────────────────┬───────────────────────────────────┐
+│scheme:[//[user:password@]host[:por│scheme:[//[user:password@]host[:por│
+│t]][/]path[?query][#fragment]      │t]][/]path[?query][#fragment]      │
+├───────────────────────────────────┴───────────────────────────────────┤
+│scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]       │
+├───────────────────────────────────┬───────────────────────────────────┤
+│abc://username:password@example.com│abc://username:password@example.com│
+│:123/path/data?key=value#fragid1   │:123/path/data?key=value#fragid1   │
+├───────────────────────────────────┴───────────────────────────────────┤
+│abc://username:password@example.com:123/path/data?key=value#fragid1    │
+├───────────────────────────────────┬───────────────────────────────────┤
+│urn:example:mammal:monotreme:echidn│urn:example:mammal:monotreme:echidn│
+│a                                  │a                                  │
+├───────────────────────────────────┴───────────────────────────────────┤
+│urn:example:mammal:monotreme:echidna                                   │
+├───────────────────────────────────┬───────────────────────────────────┤
+│http://www.example.com/test1/test2 │http://www.example.com/test1/test2 │
+├───────────────────────────────────┴───────────────────────────────────┤
+│http://www.example.com/test1/test2                                     │
+├───────────────────────────────────┬───────────────────────────────────┤
+│mailto:user1@example.com           │mailto:firstname.lastname@example.c│
+│                                   │om                                 │
+├───────────────────────────────────┴───────────────────────────────────┤
+│mailto:firstname.lastname@example.com                                  │
+└───────────────────────────────────────────────────────────────────────┘
+----------------------------------------------------------------------------------------
+
+
+
+==== Conditional Linebreaks
+
+With all excessive white spaces being removed, conditional line breaks in a cell need to be done using a markup. The implementation recognizes the two HTML line break markups `<br>` and `<br />`.
+----------------------------------------------------------------------------------------
+┌────────────────────────────────────────────────┐
+│line 1                                          │
+│line 2                                          │
+│line three still line three                     │
+└────────────────────────────────────────────────┘
+----------------------------------------------------------------------------------------
+
+
+
+==== Lists using Conditional Linebreaks
+----------------------------------------------------------------------------------------
+┌────────────────────┬─────────────────────────┐
+│column with a list  │* list item one          │
+│using conditional   │* list item two          │
+│line breaks         │* list item three        │
+└────────────────────┴─────────────────────────┘
+----------------------------------------------------------------------------------------
+
+
+
+=== Target translator for LaTeX character conversion
+
+Left column w/o and right column with LaTeX target converter:
+----------------------------------------------------------------------------------------
+┌───────────────────────────────────────┬──────────────────────────────────────┐
+│A sentence with some normal text, not  │A sentence with some normal text, not │
+│specific to LaTeX. Now for some        │specific to LaTeX. Now for some       │
+│characters that require conversion: # %│characters that require conversion: \#│
+│&. And some more: © § ¤. And even more:│\% \&. And some more: {\copyright}    │
+│È É Ê Ë. And some arrows as well: ← ↑ →│{\S} \currency. And even more: \`{E}  │
+│↓ ↔                                    │\'{E} \^{E} \"{E}. And some arrows as │
+│                                       │well: \(\leftarrow{}\) \(\uparrow\)   │
+│                                       │\(\rightarrow{}\) \(\downarrow{}\)    │
+│                                       │\(\leftrightarrow{}\)                 │
+└───────────────────────────────────────┴──────────────────────────────────────┘
+----------------------------------------------------------------------------------------
+
+
+=== Target translator for HTML character conversion
+
+Left column w/o and right column with HTML target converter
+----------------------------------------------------------------------------------------
+┌───────────────────────────────────────┬──────────────────────────────────────┐
+│A sentence with some normal text, not  │A sentence with some normal text, not │
+│specific to HTML. Now for some         │specific to HTML. Now for some        │
+│characters that require conversion: # %│characters that require conversion:   │
+│& < >. And some more: © § ¤. And even  │&#803; &#37; &amp; &lt; &gt;. And some│
+│more: Ē ē Ĕ ĕ Ė ė Ę ę Ě ě. And some    │more: &copy; &sect; &curren;. And even│
+│arrows as well: ← ↑ → ↓ ↔ ↕            │more: &#274; &#275; &#276; &#277;     │
+│                                       │&#278; &#279; &#280; &#281; &#282;    │
+│                                       │&#283;. And some arrows as well:      │
+│                                       │&larr; &uarr; &rarr; &darr; &harr;    │
+│                                       │&#8597;                               │
+└───────────────────────────────────────┴──────────────────────────────────────┘
+----------------------------------------------------------------------------------------

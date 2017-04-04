@@ -1,0 +1,85 @@
+
+=== Table
+
+A paragraph is a collection of text strings.
+The strings are processed as follows:
+
+* add text to the paragraph, multiple times if required
+* the paragraph will separate each added text using a space
+* for rendering a paragraph, all excessive white spaces will be removed
+  ** tabulators (converted to spaces),
+  ** more than one consecutive space,
+  ** line feed,
+  ** carriage return, and
+  ** line feed and carriage return.
+
+==== Format of a paragraph
+
+Paragraphs can be formatted using a number of special formats.
+Currently implemented are
+
+* First line - an indentation for the first line of the paragraph
+* Hanging paragraph - an indentation for everything but the first line
+* Dropped capital letter - a large capital letter for the first character of the first sentence spanning multiple lines
+
+
+==== Text alignment
+
+Text in the paragraph can be aligned in multiple different ways:
+
+* align left (open ended right site)
+* align right (open ended left site)
+* centered (all lines centered)
+* justified (all line justified)
+* justified with last line left aligned
+* justified with last line right aligned 
+
+
+==== Text padding
+
+All lines will use padding to create a paragraph with equal length of each line.
+The padding on the left and the right depends on the text alignment:
+
+- align left: no padding left (all lines bound), padding on the right
+- align right: no padding on the right (all lines bound), padding on the right
+- centered: padding on both sides of each line
+- justified: no padding at all, each line starts and finishes with a word (or single character)
+- justified last line left align: padding only for the last line, on the right site
+- justified last line right align: padding only for the last line, on the left site
+
+The characters being used for padding can be set separately, so that each site of a line gets a different padding character.
+
+
+==== In-text white spaces
+
+With all excessive white spaces removed, each line only contains single blanks.
+The exception to this rule are all justified paragraphs (here extra white spaces are added to give the impression of a justified paragraph).
+
+The implementation allows to change the character used for in-text white spaces from the default (a blank) to any other character.
+
+
+==== Start and end strings
+
+Each line of a paragraph can be started and terminated by a specific (different or identical) string.
+These strings are outside the text area, i.e. no special formatting is done on those strings.
+
+
+==== Margins
+
+A paragraph has several margins for the left and right sides as well as for top and bottom.
+Each margin can be set - the width for let/right side margins and the height for top and bottom margins.
+Additionally, a character can be set for left/right margins (the same or different characters for each side).
+
+
+==== Frame
+
+A paragraph can also be framed. A frame is
+
+* a line above the paragraph,
+* borders for each line of the paragraph (on the left and right side),
+* and a line at the bottom of of the paragraph.
+
+The frame is set as a frame theme.
+A number of those themes are provided in the `skb-interfaces` package.
+New themes can be created very easily, using ASCII and/or UTF-8 characters.
+

@@ -1,0 +1,149 @@
+=== Adding text - object
+
+
+The table's method to add content (add row with content) do understand simple strings and collections.
+Additionally, some special objects can be used to add text:
+
+- String Template version 4 objects `ST`
+- Objects implementing the `HasText` interface from `skb-interfaces`
+- Objects implementing the `HasTextCluster` interface from `skb-interfaces`
+- Objects implementing the `DoesRender` interface from `skb-interfaces`
+- Objects implementing the `DoesRenderToWidth` interface from `skb-interfaces`
+- Objects implementing the `RendersToCluster` interface from `skb-interfaces`
+- Objects implementing the `RendersToClusterWidth` interface from `skb-interfaces`
+
+The following examples show this behavior.
+
+
+==== ST
+
+We start with `ST` object.
+The following example creates a simple ST object with some text, and adds it to a table.
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_00c_AddColumn_ST.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output shows that the rendered ST is used as text for the table:
+----------------------------------------------------------------------------------------
+┌──────────────────────────────────────────────────────────────────────────────┐
+│Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam             │
+└──────────────────────────────────────────────────────────────────────────────┘
+----------------------------------------------------------------------------------------
+
+
+==== HasText
+
+Next, an object that implements `HasText`.
+The following example creates a simple HasText object with some text, and adds it to a table.
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_00d_AddColumn_HasText.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output:
+----------------------------------------------------------------------------------------
+┌──────────────────────────────────────────────────────────────────────────────┐
+│Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam             │
+└──────────────────────────────────────────────────────────────────────────────┘
+----------------------------------------------------------------------------------------
+
+
+==== HasTextCluster
+
+Next, an object that implements `HasTextCluster`.
+The following example creates a simple HasTextCluster object with some text, and adds it to a table.
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_00e_AddColumn_HasTextCluster.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output:
+----------------------------------------------------------------------------------------
+┌──────────────────────────────────────────────────────────────────────────────┐
+│Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam Lorem  ipsum│
+│dolor sit amet, consetetur sadipscing elitr, sed diam Lorem  ipsum  dolor  sit│
+│amet, consetetur sadipscing elitr, sed diam                                   │
+└──────────────────────────────────────────────────────────────────────────────┘
+----------------------------------------------------------------------------------------
+
+
+==== DoesRender
+
+Next, an object that implements `DoesRender`.
+The following example creates a simple DoesRender object with some text, and adds it to a table.
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_00f_AddColumn_DoesRender.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output:
+----------------------------------------------------------------------------------------
+┌──────────────────────────────────────────────────────────────────────────────┐
+│Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam             │
+└──────────────────────────────────────────────────────────────────────────────┘
+----------------------------------------------------------------------------------------
+
+
+==== DoesRenderToWidth
+
+Next, an object that implements `DoesRenderToWidth`.
+The following example creates a simple DoesRenderToWidth object with some text, and adds it to a table.
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_00g_AddColumn_DoesRenderToWidth.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output:
+----------------------------------------------------------------------------------------
+┌────────────────────────────┐
+│Lorem ipsum dolor sit amet, │
+│consetetur sadipscing elitr,│
+│sed diam                    │
+└────────────────────────────┘
+----------------------------------------------------------------------------------------
+
+
+==== RendersToCluster
+
+Next, an object that implements `RendersToCluster`.
+The following example creates a simple RendersToCluster object with some text, and adds it to a table.
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_00h_AddColumn_RendersToCluster.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output:
+----------------------------------------------------------------------------------------
+┌──────────────────────────────────────────────────────────────────────────────┐
+│Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam Lorem  ipsum│
+│dolor sit amet, consetetur sadipscing elitr, sed diam Lorem  ipsum  dolor  sit│
+│amet, consetetur sadipscing elitr, sed diam                                   │
+└──────────────────────────────────────────────────────────────────────────────┘
+----------------------------------------------------------------------------------------
+
+
+==== RendersToClusterWidth
+
+Next, an object that implements `RendersToClusterWidth`.
+The following example creates a simple RendersToClusterWidth object with some text, and adds it to a table.
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_00i_AddColumn_RendersToClusterWidth.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output:
+----------------------------------------------------------------------------------------
+┌──────────────────────────────────────────────────────────────────────────────┐
+│Lorem ipsum dolor sit amet,  consetetur  sadipscing  elitr,  sed  diam  nonumy│
+│eirmod tempor invidunt ut labore et  dolore  magna  aliquyam  erat,  sed  diam│
+│voluptua. At vero eos et accusam et                                           │
+└──────────────────────────────────────────────────────────────────────────────┘
+----------------------------------------------------------------------------------------

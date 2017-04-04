@@ -1,0 +1,59 @@
+== Getting Started
+
+The standard usage is:
+
+* create a table
+* add content (rows and cells) to the table
+* change the table context (to change its properties)
+* render the table
+* use the created string, e.g. print it to a console or write it to a file
+
+
+First, create a table.
+
+[source, java]
+----------------------------------------------------------------------------------------
+AsciiTable at = new AsciiTable();
+----------------------------------------------------------------------------------------
+
+
+Next, add content (rows and cells).
+Any text can be added, the renderer will process the text (for instance remove excessive white spaces).
+
+[source, java]
+----------------------------------------------------------------------------------------
+at.addRule();
+at.addRow("row 1 col 1", "row 1 col 2");
+at.addRule();
+at.addRow("row 2 col 1", "row 2 col 2");
+at.addRule();
+----------------------------------------------------------------------------------------
+
+
+Next, render the table.
+This will provide the text output using the default settings from the table's context.
+
+[source, java]
+----------------------------------------------------------------------------------------
+String rend = at.render()
+----------------------------------------------------------------------------------------
+
+
+Finally, print the table to standard out.
+
+[source, java]
+----------------------------------------------------------------------------------------
+System.out.println(rend);
+----------------------------------------------------------------------------------------
+
+The output will be:
+
+----------------------------------------------------------------------------------------
+┌───────────────────────────────────────┬──────────────────────────────────────┐
+│row 1 col 1                            │row 1 col 2                           │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│row 2 col 1                            │row 2 col 2                           │
+└───────────────────────────────────────┴──────────────────────────────────────┘
+
+----------------------------------------------------------------------------------------
+

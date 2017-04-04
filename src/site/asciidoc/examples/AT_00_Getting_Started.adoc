@@ -1,0 +1,22 @@
+=== A simple paragraph
+
+
+This example shows how to create a table, add content (rows and cells), and render the table.
+It also demonstrates that all excessive white spaces (extra blanks, tabulators, new lines) will be removed automatically.
+Furthermore, the table will break lines automatically to the set width (in the example the default width of 80 characters).
+This automatic line break uses words (not characters).
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_00_Getting_Started.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+
+The resulting output:
+----------------------------------------------------------------------------------------
+┌───────────────────────────────────────┬──────────────────────────────────────┐
+│row 1 col 1                            │row 1 col 2                           │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│row 2 col 1                            │row 2 col 2                           │
+└───────────────────────────────────────┴──────────────────────────────────────┘
+----------------------------------------------------------------------------------------

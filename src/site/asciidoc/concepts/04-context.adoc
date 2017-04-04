@@ -1,0 +1,28 @@
+
+=== Context
+
+While the paragraph only maintains the text, the paragraph context maintains all configurable characteristics of the paragraph (see above).
+The current implementation directly has
+
+* paragraph alignment (default being justified, last line left)
+* paragraph format (default being none)
+* paragraph width (default being 80)
+* an optional library for dropped capital letters (default being not set)
+* an optional theme for a frame (default being not set)
+
+The following characteristics are handled by special objects (one for each), which the context provides access to:
+
+* indentations (for first line and hanging paragraph)
+* all margins
+* all characters
+* all strings
+* all character (and target) translators
+
+Additionally, the context provides a number of helper methods for rendering
+
+* different calculations for width, starting with simple text width and finishing with an all inclusive width
+* convenience methods to jointly set margins and characters, for the same left/right or top/bottom pairs
+
+The paragraph can be initialized with a given context or plain, in which case it will create its own context object.
+Any future characteristics will be added to the paragraph context
+

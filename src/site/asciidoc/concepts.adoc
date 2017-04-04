@@ -1,0 +1,4 @@
+== Concepts
+
+The main concepts are: table, table context, and table renderer.
+

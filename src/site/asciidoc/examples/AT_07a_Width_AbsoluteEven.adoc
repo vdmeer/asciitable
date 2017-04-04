@@ -1,0 +1,29 @@
+=== Width: Absolute Width and Even Column Width
+
+The default width calculator for a table uses the set table width and distributed all columns equally in it (including the required characters for the grid).
+For instance, a table with 3 columns and a width of 34 will result in a column width of 10 for each of the 3 columns:
+
+- 1 character for the left grid
+- 1 character for the right grid
+- 2 characters forthe grid between the 3 columns
+- 3 columns and 30 characters remaining = 10 characters per column
+
+The following example creates a table and then renders the table with a width of 50, 30, and 20.
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_06a_Grids.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output:
+----------------------------------------------------------------------------------------
+┌────────────────┬───────────────┬───────────────┐
+│col1            │col2           │col3           │
+└────────────────┴───────────────┴───────────────┘
+┌─────────┬─────────┬────────┐
+│col1     │col2     │col3    │
+└─────────┴─────────┴────────┘
+┌──────┬─────┬─────┐
+│col1  │col2 │col3 │
+└──────┴─────┴─────┘
+----------------------------------------------------------------------------------------

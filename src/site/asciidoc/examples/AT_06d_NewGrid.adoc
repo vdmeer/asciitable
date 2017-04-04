@@ -1,0 +1,20 @@
+=== Grids: New Grids
+
+New grids can be defined as needed.
+The `TA_Grid` interface already provides a number of methods to create new grids.
+
+The following example shows how a new gird is created and then added to a table.
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_06d_NewGrid.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output:
+----------------------------------------------------------------------------------------
+#############
+&rc 11&rc 12&
++#####+#####+
+&rc 21&rc 22&
+%#####%#####%
+----------------------------------------------------------------------------------------

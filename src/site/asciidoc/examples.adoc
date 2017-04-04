@@ -1,0 +1,7 @@
+== Examples
+
+This section shows a few examples.
+Each example has a description.
+For each example, the code is shown plus the output of the code.
+Most examples use the classic "Lorem Ipsum" as text.
+

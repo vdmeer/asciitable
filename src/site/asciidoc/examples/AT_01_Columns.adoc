@@ -1,0 +1,105 @@
+=== Columns
+
+The number of columns of a table is automatically set by the first content row added to the table.
+If the first row has 1 text object, then the table has 1 column.
+If the first row has 2 text objects, then the table has 2 columns, and so forth.
+
+The following examples show this behavior for 1 to 5 columns.
+
+
+==== 1 Column
+
+We start with 1 column be adding 1 text object to a table.
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_01b_1Column.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output shows that a table with 1 column:
+----------------------------------------------------------------------------------------
+┌────────────────────────────┐
+│Table Heading               │
+├────────────────────────────┤
+│first row (col1)            │
+├────────────────────────────┤
+│second row (col1)           │
+└────────────────────────────┘
+----------------------------------------------------------------------------------------
+
+
+==== 2 Columns
+
+Next, we create a new table and add 2 columns.
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_01c_2Columns.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output shows that a table with 2 columns:
+----------------------------------------------------------------------------------------
+┌───────────────────────────────┬───────────────────────────────┐
+│first row (col1)               │some information (col2)        │
+├───────────────────────────────┼───────────────────────────────┤
+│second row (col1)              │some information (col2)        │
+└───────────────────────────────┴───────────────────────────────┘
+----------------------------------------------------------------------------------------
+
+
+==== 3 Columns
+
+Next, we create a new table and add 3 columns.
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_01d_3Columns.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output shows that a table with 4 columns:
+----------------------------------------------------------------------------------------
+┌──────────────────────────┬─────────────────────────┬─────────────────────────┐
+│first row (col1)          │some information (col2)  │more info (col3)         │
+├──────────────────────────┼─────────────────────────┼─────────────────────────┤
+│second row (col1)         │some information (col2)  │more info (col3)         │
+└──────────────────────────┴─────────────────────────┴─────────────────────────┘
+----------------------------------------------------------------------------------------
+
+
+==== 4 Columns
+
+Next, we create a new table and add 4 columns.
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_01e_4Columns.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output shows that a table with 4 columns:
+----------------------------------------------------------------------------------------
+┌───────────────────┬───────────────────┬───────────────────┬──────────────────┐
+│first row (col1)   │text (col2)        │more text (col3)   │even more (col4)  │
+├───────────────────┼───────────────────┼───────────────────┼──────────────────┤
+│second row (col1)  │text (col2)        │more text (col3)   │even more (col4)  │
+└───────────────────┴───────────────────┴───────────────────┴──────────────────┘
+----------------------------------------------------------------------------------------
+
+
+==== 5 Columns
+
+Next, we create a new table and add 5 columns.
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_01f_5Columns.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output shows that a table with 5 columns:
+----------------------------------------------------------------------------------------
+┌───────────────┬───────────────┬───────────────┬───────────────┬──────────────┐
+│row1 (col1)    │text (col2)    │text (col3)    │text (col4)    │text (col5)   │
+├───────────────┼───────────────┼───────────────┼───────────────┼──────────────┤
+│row2 (col1)    │text (col2)    │text (col3)    │text (col4)    │text (col5)   │
+└───────────────┴───────────────┴───────────────┴───────────────┴──────────────┘
+----------------------------------------------------------------------------------------
+

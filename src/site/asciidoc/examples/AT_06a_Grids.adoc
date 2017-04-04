@@ -1,0 +1,23 @@
+=== Grids
+
+The frame of a table is called grid in the implementation.
+The grid is based on the `TA_Grid` implementation in the package `ascii-utf-themes`.
+The package also provides a number of predefined grids using standard 7-Bit ASCII characters, standard 8-Bit ASCII characters, and UTF characters.
+
+
+The following example creates a table and renders it (then using the default grid).
+The we change the grid 4 times and render the table, resulting in different grids being used.
+
+[source, java, linenums]
+----------------------------------------------------------------------------------------
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_06a_Grids.java[tags=example,indent=0]
+----------------------------------------------------------------------------------------
+
+The resulting output (all 5 rendered tables next to each other):
+----------------------------------------------------------------------------------------
+┌─────┬─────┐      +-----+-----+      ═════════════      ╒═════╤═════╕      ╔═════╦═════╗
+│rc 11│rc 12│      |rc 11|rc 12|       rc 11 rc 12       │rc 11│rc 12│      ║rc 11║rc 12║
+├─────┼─────┤      +-----+-----+      ═════════════      ╞═════╪═════╡      ╠═════╬═════╣
+│rc 21│rc 22│      |rc 21|rc 22|       rc 21 rc 22       │rc 21│rc 22│      ║rc 21║rc 22║
+└─────┴─────┘      +-----+-----+      ═════════════      ╘═════╧═════╛      ╚═════╩═════╝
+----------------------------------------------------------------------------------------

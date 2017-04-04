@@ -1,0 +1,26 @@
+== Installation
+
+=== Maven
+
+For Maven declare a dependency in the `<dependencies>` section of your POM file.
+
+[source,xml,subs=attributes+]
+.Dependency declaration in pom.xml
+----
+<dependency>
+    <groupId>de.vandermeer</groupId>
+    <artifactId>asciitable</artifactId>
+    <version>{release-version}</version>
+</dependency>
+----
+
+
+=== Gradle / Grails
+
+----
+compile 'de.vandermeer:asciitable:{release-version}'
+----
+
+
+For other build systems see https://search.maven.org/#artifactdetails\|de.vandermeer\|asciitable\|{release-version}\|jar[Maven Central]
+
