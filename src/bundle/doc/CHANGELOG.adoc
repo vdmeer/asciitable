@@ -1,3 +1,8 @@
+v0.3.1 - feature add - 2017-04-04
+---------------------------------
+* added addRow(Collection<?> columns) as per pull request c01e520
+* added throws statement to addRow methods
+
 v0.3.0 - rewrite - 2017-04-04
 -----------------------------
 * complete rewrite using skb-interfaces

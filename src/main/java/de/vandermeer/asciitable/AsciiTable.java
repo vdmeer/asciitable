@@ -80,10 +80,25 @@ public class AsciiTable implements IsTable {
 	 * i.e. the size of the array must be the same as the result of {@link #getColNumber()}.
 	 * @param columns content of the columns for the row, must not be null
 	 * @return the created row for further customization
-	 * @throws {@link NullPointerException} if content was null
+	 * @throws {@link NullPointerException} if columns was null
 	 * @throws {@link AsciiTableException} if columns does not have the correct size (more or less entries than columns defined for the table)
 	 */
-	public final AT_Row addRow(Object ...columns){
+	public final AT_Row addRow(Collection<?> columns) throws NullPointerException, AsciiTableException {
+		Validate.notNull(columns);
+		return this.addRow(columns.toArray());
+	}
+
+	/**
+	 * Adds a content row to the table.
+	 * For the first content row added, the number of objects given here determines the number of columns in the table.
+	 * For every subsequent content row, the array must have an entry for each column,
+	 * i.e. the size of the array must be the same as the result of {@link #getColNumber()}.
+	 * @param columns content of the columns for the row, must not be null
+	 * @return the created row for further customization
+	 * @throws {@link NullPointerException} if columns was null
+	 * @throws {@link AsciiTableException} if columns does not have the correct size (more or less entries than columns defined for the table)
+	 */
+	public final AT_Row addRow(Object ...columns) throws NullPointerException, AsciiTableException {
 		AT_Row ret = AT_Row.createContentRow(columns, TableRowStyle.NORMAL);
 
 		if(this.colNumber==0){
