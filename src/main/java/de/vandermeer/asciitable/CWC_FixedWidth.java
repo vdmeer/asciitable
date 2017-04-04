@@ -24,7 +24,7 @@ import org.apache.commons.lang3.Validate;
  * Calculates the width of table columns using a fixed width for each column.
  * 
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.3.0 build 170404 (04-Apr-17) for Java 1.8
+ * @version    v0.3.1 build 170404 (04-Apr-17) for Java 1.8
  * @since      v0.3.0
  */
 public class CWC_FixedWidth implements AT_ColumnWidthCalculator {
