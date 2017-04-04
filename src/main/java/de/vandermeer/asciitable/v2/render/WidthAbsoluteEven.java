@@ -21,7 +21,7 @@ import de.vandermeer.asciitable.v2.V2_AsciiTable;
  * Defines the width of table columns using an absolute table width evenly distributed over all columns.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v1.0.0 build 170404 (04-Apr-17) for Java 1.7
+ * @version    v1.0.1 build 170404 (04-Apr-17) for Java 1.7
  * @since      v0.0.5
  */
 public class WidthAbsoluteEven implements V2_Width {

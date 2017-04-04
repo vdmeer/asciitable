@@ -38,7 +38,7 @@ import de.vandermeer.asciitable.v2.themes.V2_E_TableThemes;
  * Tests for ASCII table V2 for code used in documentation.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v1.0.0 build 170404 (04-Apr-17) for Java 1.7
+ * @version    v1.0.1 build 170404 (04-Apr-17) for Java 1.7
  */
 public class Test_CodeForDocs_V2 {
 

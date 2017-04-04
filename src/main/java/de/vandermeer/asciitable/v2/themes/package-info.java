@@ -18,6 +18,6 @@
  *
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v1.0.0 build 170404 (04-Apr-17) for Java 1.7
+ * @version    v1.0.1 build 170404 (04-Apr-17) for Java 1.7
  */
 package de.vandermeer.asciitable.v2.themes;
