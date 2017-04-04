@@ -24,7 +24,7 @@ import de.vandermeer.asciitable.v1.V1_StandardTableThemes;
  * Tests for ASCII table V1 for code used in documentation.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v1.0.0 build 170331 (31-Mar-17) for Java 1.7
+ * @version    v1.0.0 build 170404 (04-Apr-17) for Java 1.7
  */
 public class Test_CodeForDocs_V1 {
 

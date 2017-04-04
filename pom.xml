@@ -14,13 +14,13 @@
       -->
     <groupId>de.vandermeer</groupId>
     <artifactId>asciitable-j7</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <!--
       More project information
       -->
-    <name>Ascii Table (Java 7 legacy)</name>
+    <name>ASCII Table (Java 7 legacy)</name>
     <description>An ASCII table with various render options and UTF-8 support, for Java 7.</description>
     <url>https://github.com/vdmeer/asciitable</url>
     <inceptionYear>2014</inceptionYear>
