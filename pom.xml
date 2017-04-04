@@ -63,6 +63,7 @@
 		<pm.version.maven-javadoc-plugin>2.10.3</pm.version.maven-javadoc-plugin>
 		<pm.version.doxia-site-renderer>1.7</pm.version.doxia-site-renderer>
 		<pm.version.maven-resources-plugin>2.4.3</pm.version.maven-resources-plugin>
+		<mp.project.url>https://github.com/vdmeer/asciitable</mp.project.url>
     </properties>
 
     <!--
@@ -170,7 +171,7 @@
       -->
     <profiles>
         <profile>
-        	<id>env-bundledoc</id>
+        	<id>env-bdoc</id>
         	<build>
         		<plugins>
         			<!-- Create HTML versions of Changelog/Readme -->
