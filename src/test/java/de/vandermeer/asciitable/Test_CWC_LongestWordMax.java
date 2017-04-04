@@ -24,7 +24,7 @@ import org.junit.Test;
  * Tests for {@link CWC_LongestWordMax}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.3.0-SNAPSHOT build 170331 (31-Mar-17) for Java 1.8
+ * @version    v0.3.0-SNAPSHOT build 170404 (04-Apr-17) for Java 1.8
  * @since      v0.0.3
  */
 public class Test_CWC_LongestWordMax {

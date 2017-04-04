@@ -14,7 +14,7 @@
       -->
     <groupId>de.vandermeer</groupId>
     <artifactId>asciitable</artifactId>
-    <version>0.3.0-SNAPSHOT</version>
+    <version>0.3.0</version>
     <packaging>jar</packaging>
 
     <!--
@@ -114,7 +114,7 @@
         <dependency>
             <groupId>de.vandermeer</groupId>
             <artifactId>char-translation</artifactId>
-            <version>0.0.1</version>
+            <version>0.0.2</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -126,7 +126,7 @@
         <dependency>
             <groupId>de.vandermeer</groupId>
             <artifactId>asciilist</artifactId>
-            <version>0.0.4-SNAPSHOT</version>
+            <version>0.0.4</version>
             <scope>test</scope>
         </dependency>
         <dependency>
