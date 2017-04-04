@@ -1,3 +1,8 @@
+v1.0.1 - feature add - 2017-04-04
+---------------------------------
+* added addRow(Collection<?> columns) as per pull request c01e520
+* added throws statement to addRow methods
+
 v1.0.0 - java 7 release - 2016-03-19
 ------------------------------------
 * created branch for Java 7 legacy version

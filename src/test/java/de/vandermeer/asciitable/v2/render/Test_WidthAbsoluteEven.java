@@ -27,7 +27,7 @@ import de.vandermeer.asciitable.v2.render.WidthAbsoluteEven;
  * Tests for {@link WidthAbsoluteEven}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v1.0.0 build 160319 (19-Mar-16) for Java 1.7
+ * @version    v1.0.0 build 170404 (04-Apr-17) for Java 1.7
  */
 public class Test_WidthAbsoluteEven {
 
