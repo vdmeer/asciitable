@@ -29,7 +29,7 @@ import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
  * AsciiTable example for a list using conditional line breaks.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.3.0-SNAPSHOT build 170404 (04-Apr-17) for Java 1.8
+ * @version    v0.3.0 build 170404 (04-Apr-17) for Java 1.8
  * @since      v0.0.3
  */
 public class AT_09d_AsciiList implements StandardExampleAsCmd {
