@@ -20,7 +20,6 @@ import de.vandermeer.translation.targets.Text2Latex;
 
 /**
  * Collection of themes for an {@link AsciiTable}.
- * Simply use the {@link AsciiTable#applyTheme(AsciiTableTheme)} method of a paragraph and render it.
  * 
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.3.0 build 170404 (04-Apr-17) for Java 1.8

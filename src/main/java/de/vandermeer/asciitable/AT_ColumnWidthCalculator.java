@@ -31,7 +31,7 @@ public interface AT_ColumnWidthCalculator {
 	 * @param rows the table rows with rules and content
 	 * @param colNumbers number of columns in the table
 	 * @param ctx the original table context, the required width is taken from this context
-	 * @return
+	 * @returnan array with the width for each column
 	 */
 	default int[] calculateColumnWidths(LinkedList<AT_Row> rows, int colNumbers, AT_Context ctx){
 		return this.calculateColumnWidths(rows, colNumbers, ctx.getTextWidth());
