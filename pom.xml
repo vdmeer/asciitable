@@ -54,15 +54,17 @@
         <project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
         <encoding>UTF-8</encoding>
         <file.encoding>UTF-8</file.encoding>
-		<pm.version.maven-jar-plugin>2.6</pm.version.maven-jar-plugin>
-		<pm.version.maven-site-plugin>3.5</pm.version.maven-site-plugin>
-		<pm.version.maven-source-plugin>2.4</pm.version.maven-source-plugin>
+		<pm.version.maven-jar-plugin>3.0.2</pm.version.maven-jar-plugin>
+		<pm.version.maven-site-plugin>3.6</pm.version.maven-site-plugin>
 		<pm.version.asciidoctor.asciidoclet>1.5.4</pm.version.asciidoctor.asciidoclet>
-		<pm.version.maven-compiler-plugin>3.2</pm.version.maven-compiler-plugin>
-		<pm.version.asciidoctor-maven-plugin>1.5.3</pm.version.asciidoctor-maven-plugin>
-		<pm.version.maven-javadoc-plugin>2.10.3</pm.version.maven-javadoc-plugin>
+		<pm.version.maven-source-plugin>3.0.1</pm.version.maven-source-plugin>
+		<pm.version.maven-assembly-plugin>3.0.0</pm.version.maven-assembly-plugin>
+		<pm.version.maven-compiler-plugin>3.6.1</pm.version.maven-compiler-plugin>
+		<pm.version.asciidoctor-maven-plugin>1.5.5</pm.version.asciidoctor-maven-plugin>
+		<pm.version.maven-javadoc-plugin>2.10.4</pm.version.maven-javadoc-plugin>
 		<pm.version.doxia-site-renderer>1.7</pm.version.doxia-site-renderer>
-		<pm.version.maven-resources-plugin>2.4.3</pm.version.maven-resources-plugin>
+		<pm.version.maven-resources-plugin>3.0.2</pm.version.maven-resources-plugin>
+		<pm.version.maven-antrun-plugin>1.8</pm.version.maven-antrun-plugin>
 		<mp.project.url>https://github.com/vdmeer/asciitable</mp.project.url>
     </properties>
 
