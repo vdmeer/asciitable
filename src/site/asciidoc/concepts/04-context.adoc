@@ -7,6 +7,7 @@ The current implementation directly has
 * paragraph alignment (default being justified, last line left)
 * paragraph format (default being none)
 * paragraph width (default being 80)
+* line separator (default being `\n`)
 * an optional library for dropped capital letters (default being not set)
 * an optional theme for a frame (default being not set)
 

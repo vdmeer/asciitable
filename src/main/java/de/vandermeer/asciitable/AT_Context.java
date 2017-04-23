@@ -57,6 +57,9 @@ public class AT_Context implements IsTableContext {
 	/** The width of the table, actual width depends on padding settings, default is `80`. */
 	protected int width = 80;
 
+	/** Line separator to separate table rows, defaults to `\n`. */
+	protected String lineSeparator = "\n";
+
 	/** The grid (actual frame) for the table. */
 	protected TA_Grid grid = U8_Grids.borderLight();
 
@@ -139,6 +142,15 @@ public class AT_Context implements IsTableContext {
 	@Override
 	public int getWidth() {
 		return this.width;
+	}
+
+	/**
+	 * Returns the line separator to separate table rows,
+	 * defaults to `\n`.
+	 * @return line separator
+	 */
+	public String getLineSeparator() {
+		return lineSeparator;
 	}
 
 	/**
@@ -325,6 +337,18 @@ public class AT_Context implements IsTableContext {
 	 */
 	public AT_Context setWidth(int width) {
 		this.width = width;
+		return this;
+	}
+
+	/**
+	 * Sets the line separator for table rows.
+	 * @param lineSeparator new line separator
+	 * @return this to allow chaining
+	 */
+	public AT_Context setLineSeparator(String lineSeparator) {
+		if (lineSeparator!=null) {
+			this.lineSeparator = lineSeparator;
+		}
 		return this;
 	}
 
