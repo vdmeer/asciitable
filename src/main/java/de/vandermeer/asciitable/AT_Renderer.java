@@ -142,7 +142,7 @@ public interface AT_Renderer extends IsTableRenderer {
 						}
 						if(content instanceof DoesRenderToWidth){
 							cAr[i] = new StrTokenizer(((DoesRenderToWidth)content).render(length))
-									.setDelimiterChar('\n')
+									.setDelimiterString(ctx.getLineSeparator())
 									.setIgnoreEmptyTokens(false)
 									.getTokenArray()
 							;
