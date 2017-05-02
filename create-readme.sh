@@ -17,7 +17,7 @@ files="
 	src/bundle/doc-fragments/examples.adoc
 "
 
-output_file=src/bundle/doc/README.adoc
+output_file=./README.adoc
 
 echo > ${output_file}
 echo ":release-version: ${version}" >> ${output_file}

@@ -3,4 +3,5 @@
 .settings/
 target
 _entry-point
+.pmd
 

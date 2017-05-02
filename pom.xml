@@ -14,7 +14,7 @@
       -->
     <groupId>de.vandermeer</groupId>
     <artifactId>asciitable</artifactId>
-    <version>0.3.1</version>
+    <version>0.3.2</version>
     <packaging>jar</packaging>
 
     <!--
@@ -55,7 +55,7 @@
         <encoding>UTF-8</encoding>
         <file.encoding>UTF-8</file.encoding>
 		<pm.version.maven-jar-plugin>3.0.2</pm.version.maven-jar-plugin>
-		<pm.version.maven-site-plugin>3.6</pm.version.maven-site-plugin>
+		<pm.version.maven-site-plugin>3.5</pm.version.maven-site-plugin>
 		<pm.version.asciidoctor.asciidoclet>1.5.4</pm.version.asciidoctor.asciidoclet>
 		<pm.version.maven-source-plugin>3.0.1</pm.version.maven-source-plugin>
 		<pm.version.maven-assembly-plugin>3.0.0</pm.version.maven-assembly-plugin>
@@ -128,7 +128,7 @@
         <dependency>
             <groupId>de.vandermeer</groupId>
             <artifactId>asciilist</artifactId>
-            <version>0.0.4</version>
+            <version>0.0.5</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -239,13 +239,13 @@
         						<id>bundle-asciidoc</id>
         						<phase>process-resources</phase>
         						<configuration>
-        							<sourceDirectory>src/bundle/doc</sourceDirectory>
-        							<outputDirectory>./</outputDirectory>
+        							<sourceDirectory>${project.basedir}/target/bundle/doc</sourceDirectory>
+        							<outputDirectory>${project.basedir}</outputDirectory>
         							<sourceHighlighter>coderay</sourceHighlighter>
         							<backend>html</backend>
         							<attributes>
         								<toc>true</toc>
-        								<baseDir>${project.basedir}/src</baseDir>
+        								<baseDir>${project.basedir}/target/bundle/doc</baseDir>
         							</attributes>
         						</configuration>
         						<goals>
@@ -265,15 +265,20 @@
         						<phase>generate-resources</phase>
         						<goals><goal>copy-resources</goal></goals>
         						<configuration>
-        							<outputDirectory>./</outputDirectory>
+        							<outputDirectory>${project.basedir}/target/bundle/doc</outputDirectory>
         							<resources>
         								<resource>
-        									<directory>src/bundle/doc</directory>
+        									<directory>${project.basedir}</directory>
         									<filtering>true</filtering>
+        									<includes>
+        										<include>*.adoc</include>
+        										<include>*.asciidoc</include>
+        									</includes>
         								</resource>
         							</resources>
         						</configuration>
         					</execution>
+        <!--
         					<execution>
         						<id>copy-to-jar</id>
         						<phase>prepare-package</phase>
@@ -285,13 +290,14 @@
         									<directory>${basedir}</directory>
         									<includes>
         										<include>LICENSE</include>
-        										<include>CHANGELOG*</include>
-        										<include>README*</include>
+        										<include>CHANGELOG.*</include>
+        										<include>README.*</include>
         									</includes>
         								</resource>
         							</resources>
         						</configuration>
         					</execution>
+        -->
         				</executions>
         			</plugin>
         		</plugins>
