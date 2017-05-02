@@ -183,13 +183,11 @@ public class AsciiTable implements IsTable {
 	@Override
 	public String render(){
 		return this.renderer.render(this.getRawContent(), this.getColNumber(), this.ctx);
-//		return new StrBuilder().appendWithSeparators(this.renderer.render(this.getRawContent(), this.getColNumber(), this.ctx), "\n").toString();
 	}
 
 	@Override
 	public String render(int width){
 		return this.renderer.render(this.getRawContent(), this.getColNumber(), this.ctx, width);
-//		return new StrBuilder().appendWithSeparators(this.renderer.render(this.getRawContent(), this.getColNumber(), this.ctx, this.ctx.getTextWidth(width)), "\n").toString();
 	}
 
 	@Override
