@@ -36,52 +36,11 @@ import de.vandermeer.skb.interfaces.translators.TargetTranslator;
  */
 public class AT_Row implements IsTableRow {
 
-	/** The row context. */
-	protected AT_RowContext ctx = new AT_RowContext();
-
-	@Override
-	public AT_RowContext getContext() {
-		return this.ctx;
-	}
-
-	@Override
-	public LinkedList<AT_Cell> getCells(){
-		return null;
-	}
-
-	/**
-	 * Creates a new row representing a rule.
-	 * @param type the type for the rule row, must not be null nor {@link TableRowType#CONTENT} nor {@link TableRowType#UNKNOWN}
-	 * @param style the style for the rule row, must not be null nor {@link TableRowStyle#UNKNOWN}
-	 * @return a new row representing a rule
-	 * @throws {@link NullPointerException} if type or style where null
-	 * @throws {@link IllegalStateException} if type or style where unknown or if type was {@link TableRowType#CONTENT}
-	 */
-	public static AT_Row createRule(TableRowType type, TableRowStyle style){
-		Validate.notNull(type);
-		Validate.validState(type!=TableRowType.UNKNOWN);
-		Validate.validState(type!=TableRowType.CONTENT);
-		Validate.notNull(style);
-		Validate.validState(style!=TableRowStyle.UNKNOWN);
-
-		return new AT_Row(){
-			@Override
-			public TableRowType getType(){
-				return type;
-			}
-
-			@Override
-			public TableRowStyle getStyle(){
-				return style;
-			}
-		};
-	}
-
 	/**
 	 * Creates a new row with content with default cell context and a normal row style.
 	 * @param content the content for the row, each member of the array represents the content for a cell in the row, must not be null but can contain null members
 	 * @return a new row with content
-	 * @throws {@link NullPointerException} if content was null
+	 * @throws NullPointerException if content was null
 	 */
 	public static AT_Row createContentRow(Object[] content){
 		return AT_Row.createContentRow(content, TableRowStyle.NORMAL);
@@ -90,8 +49,9 @@ public class AT_Row implements IsTableRow {
 	/**
 	 * Creates a new row with content with given cell context and a normal row style.
 	 * @param content the content for the row, each member of the array represents the content for a cell in the row, must not be null but can contain null members
+	 * @param style the table row style, must not be null
 	 * @return a new row with content
-	 * @throws {@link NullPointerException} if content was null
+	 * @throws NullPointerException if content was null
 	 */
 	public static AT_Row createContentRow(Object[] content, TableRowStyle style){
 		Validate.notNull(content);
@@ -105,8 +65,8 @@ public class AT_Row implements IsTableRow {
 
 		return new AT_Row(){
 			@Override
-			public TableRowType getType(){
-				return TableRowType.CONTENT;
+			public LinkedList<AT_Cell> getCells(){
+				return cells;
 			}
 
 			@Override
@@ -115,10 +75,83 @@ public class AT_Row implements IsTableRow {
 			}
 
 			@Override
-			public LinkedList<AT_Cell> getCells(){
-				return cells;
+			public TableRowType getType(){
+				return TableRowType.CONTENT;
 			}
 		};
+	}
+
+	/**
+	 * Creates a new row representing a rule.
+	 * @param type the type for the rule row, must not be null nor {@link TableRowType#CONTENT} nor {@link TableRowType#UNKNOWN}
+	 * @param style the style for the rule row, must not be null nor {@link TableRowStyle#UNKNOWN}
+	 * @return a new row representing a rule
+	 * @throws NullPointerException if type or style where null
+	 * @throws IllegalStateException if type or style where unknown or if type was {@link TableRowType#CONTENT}
+	 */
+	public static AT_Row createRule(TableRowType type, TableRowStyle style){
+		Validate.notNull(type);
+		Validate.validState(type!=TableRowType.UNKNOWN);
+		Validate.validState(type!=TableRowType.CONTENT);
+		Validate.notNull(style);
+		Validate.validState(style!=TableRowStyle.UNKNOWN);
+
+		return new AT_Row(){
+			@Override
+			public TableRowStyle getStyle(){
+				return style;
+			}
+
+			@Override
+			public TableRowType getType(){
+				return type;
+			}
+		};
+	}
+
+	/** The row context. */
+	protected AT_RowContext ctx = new AT_RowContext();
+
+	@Override
+	public LinkedList<AT_Cell> getCells(){
+		return null;
+	}
+
+	@Override
+	public AT_RowContext getContext() {
+		return this.ctx;
+	}
+
+	/**
+	 * Sets the character translator for all cells in the row.
+	 * It will also remove any other translator set.
+	 * Nothing will happen if the argument is null.
+	 * @param charTranslator translator
+	 * @return this to allow chaining
+	 */
+	public AT_Row setCharTranslator(CharacterTranslator charTranslator) {
+		if(this.hasCells()){
+			for(AT_Cell cell : this.getCells()){
+				cell.getContext().setCharTranslator(charTranslator);
+			}
+		}
+		return this;
+	}
+
+	/**
+	 * Sets the HTML entity translator for all cells in the row.
+	 * It will also remove any other translator set.
+	 * Nothing will happen if the argument is null.
+	 * @param htmlElementTranslator translator
+	 * @return this to allow chaining
+	 */
+	public AT_Row setHtmlElementTranslator(HtmlElementTranslator htmlElementTranslator) {
+		if(this.hasCells()){
+			for(AT_Cell cell : this.getCells()){
+				cell.getContext().setHtmlElementTranslator(htmlElementTranslator);
+			}
+		}
+		return this;
 	}
 
 	/**
@@ -306,22 +339,6 @@ public class AT_Row implements IsTableRow {
 	}
 
 	/**
-	 * Sets the text alignment for all cells in the row.
-	 * @param textAlignment new text alignment
-	 * @throws NullPointerException if the argument was null
-	 * @return this to allow chaining
-	 * @throws {@link NullPointerException} if the argument was null
-	 */
-	public AT_Row setTextAlignment(TextAlignment textAlignment){
-		if(this.hasCells()){
-			for(AT_Cell cell : this.getCells()){
-				cell.getContext().setTextAlignment(textAlignment);
-			}
-		}
-		return this;
-	}
-
-	/**
 	 * Sets the target translator for all cells in the row.
 	 * It will also remove any other translator set.
 	 * Nothing will happen if the argument is null.
@@ -338,32 +355,15 @@ public class AT_Row implements IsTableRow {
 	}
 
 	/**
-	 * Sets the HTML entity translator for all cells in the row.
-	 * It will also remove any other translator set.
-	 * Nothing will happen if the argument is null.
-	 * @param htmlElementTranslator translator
+	 * Sets the text alignment for all cells in the row.
+	 * @param textAlignment new text alignment
 	 * @return this to allow chaining
+	 * @throws NullPointerException if the argument was null
 	 */
-	public AT_Row setHtmlElementTranslator(HtmlElementTranslator htmlElementTranslator) {
+	public AT_Row setTextAlignment(TextAlignment textAlignment){
 		if(this.hasCells()){
 			for(AT_Cell cell : this.getCells()){
-				cell.getContext().setHtmlElementTranslator(htmlElementTranslator);
-			}
-		}
-		return this;
-	}
-
-	/**
-	 * Sets the character translator for all cells in the row.
-	 * It will also remove any other translator set.
-	 * Nothing will happen if the argument is null.
-	 * @param charTranslator translator
-	 * @return this to allow chaining
-	 */
-	public AT_Row setCharTranslator(CharacterTranslator charTranslator) {
-		if(this.hasCells()){
-			for(AT_Cell cell : this.getCells()){
-				cell.getContext().setCharTranslator(charTranslator);
+				cell.getContext().setTextAlignment(textAlignment);
 			}
 		}
 		return this;

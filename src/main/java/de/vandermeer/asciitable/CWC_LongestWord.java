@@ -32,12 +32,6 @@ import de.vandermeer.skb.interfaces.transformers.Object_To_StrBuilder;
  */
 public class CWC_LongestWord implements AT_ColumnWidthCalculator {
 
-	@Override
-	public int[] calculateColumnWidths(LinkedList<AT_Row> rows, int colNumbers, int tableWidth) {
-		Validate.notNull(rows);
-		return CWC_LongestWord.longestWord(rows, colNumbers);
-	}
-
 	/**
 	 * Returns an array with the width of the longest word per column calculated from the given table.
 	 * Default padding will be added per column.
@@ -76,5 +70,11 @@ public class CWC_LongestWord implements AT_ColumnWidthCalculator {
 		}
 
 		return ret;
+	}
+
+	@Override
+	public int[] calculateColumnWidths(LinkedList<AT_Row> rows, int colNumbers, int tableWidth) {
+		Validate.notNull(rows);
+		return CWC_LongestWord.longestWord(rows, colNumbers);
 	}
 }

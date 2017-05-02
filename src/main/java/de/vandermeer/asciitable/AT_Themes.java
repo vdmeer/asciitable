@@ -28,19 +28,6 @@ import de.vandermeer.translation.targets.Text2Latex;
 public interface AT_Themes {
 
 	/**
-	 * A theme for LaTeX target, setting the translator.
-	 * @return the theme
-	 */
-	static AsciiTableTheme latex(){
-		return new AsciiTableTheme() {
-			@Override
-			public void apply(AsciiTable table) {
-				table.setTargetTranslator(new Text2Latex());
-			}
-		};
-	}
-
-	/**
 	 * A theme for HTML target, setting the translator.
 	 * @return the theme
 	 */
@@ -49,6 +36,19 @@ public interface AT_Themes {
 			@Override
 			public void apply(AsciiTable table) {
 				table.setTargetTranslator(new Text2Html());
+			}
+		};
+	}
+
+	/**
+	 * A theme for LaTeX target, setting the translator.
+	 * @return the theme
+	 */
+	static AsciiTableTheme latex(){
+		return new AsciiTableTheme() {
+			@Override
+			public void apply(AsciiTable table) {
+				table.setTargetTranslator(new Text2Latex());
 			}
 		};
 	}

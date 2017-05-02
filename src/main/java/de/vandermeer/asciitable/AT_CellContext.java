@@ -376,7 +376,7 @@ public class AT_CellContext implements IsTableCellContext {
 	 * @param textAlignment new text alignment
 	 * @throws NullPointerException if the argument was null
 	 * @return this to allow chaining
-	 * @throws {@link NullPointerException} if the argument was null
+	 * @throws NullPointerException if the argument was null
 	 */
 	public AT_CellContext setTextAlignment(TextAlignment textAlignment){
 		Validate.notNull(textAlignment);

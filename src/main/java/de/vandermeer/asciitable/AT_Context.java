@@ -135,6 +135,39 @@ public class AT_Context implements IsTableContext {
 		return this.frameTopMargin;
 	}
 
+	/**
+	 * Returns the grid.
+	 * @return table grid
+	 */
+	public TA_Grid getGrid(){
+		return this.grid;
+	}
+
+	/**
+	 * Returns the grid theme.
+	 * @return grid theme
+	 */
+	public int getGridTheme() {
+		return this.gridTheme;
+	}
+
+	/**
+	 * Returns the grid theme options.
+	 * @return grid theme options
+	 */
+	
+	public int getGridThemeOptions() {
+		return this.gridThemeOptions;
+	}
+
+	/**
+	 * Returns the current set line separator.
+	 * @return the line separator, null if none set
+	 */
+	public String getLineSeparator(){
+		return this.lineSeparator;
+	}
+
 	@Override
 	public int getTextWidth(int width) {
 		int ret = width - this.getFrameLeftMargin() - this.getFrameRightMargin();
@@ -324,16 +357,6 @@ public class AT_Context implements IsTableContext {
 	}
 
 	/**
-	 * Sets the table width.
-	 * @param width new width
-	 * @return this to allow chaining
-	 */
-	public AT_Context setWidth(int width) {
-		this.width = width;
-		return this;
-	}
-
-	/**
 	 * Sets the grid used to render the table.
 	 * @param grid new grid, ignored if null
 	 * @return self to allow for chaining
@@ -341,26 +364,6 @@ public class AT_Context implements IsTableContext {
 	public AT_Context setGrid(TA_Grid grid){
 		if(grid!=null){
 			this.grid = grid;
-		}
-		return this;
-	}
-
-	/**
-	 * Returns the grid.
-	 * @return table grid
-	 */
-	public TA_Grid getGrid(){
-		return this.grid;
-	}
-
-	/**
-	 * Sets the grid theme.
-	 * @param theme new grid theme, ignored if null
-	 * @return self to allow for chaining
-	 */
-	public AT_Context setGridTheme(TA_GridThemes theme){
-		if(theme!=null){
-			this.setGridTheme(theme.get());
 		}
 		return this;
 	}
@@ -378,13 +381,13 @@ public class AT_Context implements IsTableContext {
 	}
 
 	/**
-	 * Sets options for the grid theme.
-	 * @param options new grid theme options, ignored if null
+	 * Sets the grid theme.
+	 * @param theme new grid theme, ignored if null
 	 * @return self to allow for chaining
 	 */
-	public AT_Context setGridThemeOptions(TA_GridThemeOptions options){
-		if(options!=null){
-			this.setGridThemeOptions(options.get());
+	public AT_Context setGridTheme(TA_GridThemes theme){
+		if(theme!=null){
+			this.setGridTheme(theme.get());
 		}
 		return this;
 	}
@@ -402,20 +405,15 @@ public class AT_Context implements IsTableContext {
 	}
 
 	/**
-	 * Returns the grid theme.
-	 * @return grid theme
+	 * Sets options for the grid theme.
+	 * @param options new grid theme options, ignored if null
+	 * @return self to allow for chaining
 	 */
-	public int getGridTheme() {
-		return this.gridTheme;
-	}
-
-	/**
-	 * Returns the grid theme options.
-	 * @return grid theme options
-	 */
-	
-	public int getGridThemeOptions() {
-		return this.gridThemeOptions;
+	public AT_Context setGridThemeOptions(TA_GridThemeOptions options){
+		if(options!=null){
+			this.setGridThemeOptions(options.get());
+		}
+		return this;
 	}
 
 	/**
@@ -431,10 +429,12 @@ public class AT_Context implements IsTableContext {
 	}
 
 	/**
-	 * Returns the current set line separator.
-	 * @return the line separator, null if none set
+	 * Sets the table width.
+	 * @param width new width
+	 * @return this to allow chaining
 	 */
-	public String getLineSeparator(){
-		return this.lineSeparator;
+	public AT_Context setWidth(int width) {
+		this.width = width;
+		return this;
 	}
 }

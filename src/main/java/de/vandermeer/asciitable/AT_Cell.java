@@ -18,7 +18,7 @@ package de.vandermeer.asciitable;
 import de.vandermeer.skb.interfaces.document.IsTableCell;
 
 /**
- * Cell of an {@link AT_RuleRow}.
+ * Cell of an {@link AT_Row}.
  * 
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.3.2 build 170502 (02-May-17) for Java 1.8

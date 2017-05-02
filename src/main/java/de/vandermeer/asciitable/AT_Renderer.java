@@ -104,7 +104,7 @@ public interface AT_Renderer extends IsTableRenderer {
 	 * @param colNumbers number of columns in the table
 	 * @param ctx context of the original table with relevant settings, cannot be null
 	 * @return a single string with the rendered table
-	 * @throws {@link NullPointerException} if rows or context where null
+	 * @throws NullPointerException if rows or context where null
 	 */
 	default String render(LinkedList<AT_Row> rows, int colNumbers, AT_Context ctx){
 		Validate.notNull(rows);
@@ -119,7 +119,7 @@ public interface AT_Renderer extends IsTableRenderer {
 	 * @param ctx context of the original table with relevant settings, cannot be null
 	 * @param width maximum line width, excluding any extra padding
 	 * @return a single string with the rendered table
-	 * @throws {@link NullPointerException} if rows or context where null
+	 * @throws NullPointerException if rows or context where null
 	 */
 	default String render(LinkedList<AT_Row> rows, int colNumbers, AT_Context ctx, int width){
 		Validate.notNull(rows);
@@ -142,7 +142,7 @@ public interface AT_Renderer extends IsTableRenderer {
 	 * @param colNumbers number of columns in the table
 	 * @param ctx context of the original table with relevant settings, cannot be null
 	 * @return collection of lines, each as a {@link StrBuilder}
-	 * @throws {@link NullPointerException} if rows or context where null
+	 * @throws NullPointerException if rows or context where null
 	 */
 	default Collection<StrBuilder> renderAsCollection(LinkedList<AT_Row> rows, int colNumbers, AT_Context ctx){
 		Validate.notNull(rows);
@@ -157,7 +157,7 @@ public interface AT_Renderer extends IsTableRenderer {
 	 * @param ctx context of the original table with relevant settings, cannot be null
 	 * @param width maximum line width, excluding any extra padding
 	 * @return collection of lines, each as a {@link StrBuilder}
-	 * @throws {@link NullPointerException} if rows or context where null
+	 * @throws NullPointerException if rows or context where null
 	 */
 	default Collection<StrBuilder> renderAsCollection(LinkedList<AT_Row> rows, int colNumbers, AT_Context ctx, int width){
 		Validate.notNull(rows);

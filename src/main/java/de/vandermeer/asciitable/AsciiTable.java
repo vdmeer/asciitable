@@ -44,7 +44,7 @@ public class AsciiTable implements IsTable {
 	/** The table context with optional settings for the table. */
 	protected AT_Context ctx;
 
-	/** The renderer for the paragraph, default is {@link AP_Renderer}. */
+	/** The renderer for the paragraph, default is {@link AT_Renderer}. */
 	protected AT_Renderer renderer = AT_Renderer.create();
 
 	/** Rows of the table. */
@@ -74,14 +74,28 @@ public class AsciiTable implements IsTable {
 	}
 
 	/**
+	 * Adds a rule with heavy (super emphasized) style row to the table.
+	 */
+	public final void addHeavyRule(){
+		this.rows.add(AT_Row.createRule(TableRowType.RULE, TableRowStyle.HEAVY));
+	}
+
+	/**
+	 * Adds a rule with light (less emphasized) style row to the table.
+	 */
+	public final void addLightRule(){
+		this.rows.add(AT_Row.createRule(TableRowType.RULE, TableRowStyle.LIGHT));
+	}
+
+	/**
 	 * Adds a content row to the table.
 	 * For the first content row added, the number of objects given here determines the number of columns in the table.
 	 * For every subsequent content row, the array must have an entry for each column,
 	 * i.e. the size of the array must be the same as the result of {@link #getColNumber()}.
 	 * @param columns content of the columns for the row, must not be null
 	 * @return the created row for further customization
-	 * @throws {@link NullPointerException} if columns was null
-	 * @throws {@link AsciiTableException} if columns does not have the correct size (more or less entries than columns defined for the table)
+	 * @throws NullPointerException if columns was null
+	 * @throws AsciiTableException if columns does not have the correct size (more or less entries than columns defined for the table)
 	 */
 	public final AT_Row addRow(Collection<?> columns) throws NullPointerException, AsciiTableException {
 		Validate.notNull(columns);
@@ -95,8 +109,8 @@ public class AsciiTable implements IsTable {
 	 * i.e. the size of the array must be the same as the result of {@link #getColNumber()}.
 	 * @param columns content of the columns for the row, must not be null
 	 * @return the created row for further customization
-	 * @throws {@link NullPointerException} if columns was null
-	 * @throws {@link AsciiTableException} if columns does not have the correct size (more or less entries than columns defined for the table)
+	 * @throws NullPointerException if columns was null
+	 * @throws AsciiTableException if columns does not have the correct size (more or less entries than columns defined for the table)
 	 */
 	public final AT_Row addRow(Object ...columns) throws NullPointerException, AsciiTableException {
 		AT_Row ret = AT_Row.createContentRow(columns, TableRowStyle.NORMAL);
@@ -124,8 +138,8 @@ public class AsciiTable implements IsTable {
 	/**
 	 * Adds a rule row to the table with a given style.
 	 * @param style the rule style, must not be null nor {@link TableRowStyle#UNKNOWN}
-	 * @throws {@link NullPointerException} if style was null
-	 * @throws {@link IllegalArgumentException} if style was {@link TableRowStyle#UNKNOWN}
+	 * @throws NullPointerException if style was null
+	 * @throws IllegalArgumentException if style was {@link TableRowStyle#UNKNOWN}
 	 */
 	public final void addRule(TableRowStyle style){
 		Validate.notNull(style);
@@ -138,20 +152,6 @@ public class AsciiTable implements IsTable {
 	 */
 	public final void addStrongRule(){
 		this.rows.add(AT_Row.createRule(TableRowType.RULE, TableRowStyle.STRONG));
-	}
-
-	/**
-	 * Adds a rule with heavy (super emphasized) style row to the table.
-	 */
-	public final void addHeavyRule(){
-		this.rows.add(AT_Row.createRule(TableRowType.RULE, TableRowStyle.HEAVY));
-	}
-
-	/**
-	 * Adds a rule with light (less emphasized) style row to the table.
-	 */
-	public final void addLightRule(){
-		this.rows.add(AT_Row.createRule(TableRowType.RULE, TableRowStyle.LIGHT));
 	}
 
 	/**
@@ -211,29 +211,35 @@ public class AsciiTable implements IsTable {
 	}
 
 	/**
-	 * Sets the table renderer.
-	 * @param renderer new renderer, ignored if null
+	 * Sets the character translator for all cells in the table.
+	 * It will also remove any other translator set.
+	 * Nothing will happen if the argument is null.
+	 * @param charTranslator translator
 	 * @return this to allow chaining
 	 */
-	public AsciiTable setRenderer(AT_Renderer renderer){
-		if(renderer!=null){
-			this.renderer = renderer;
+	public AsciiTable setCharTranslator(CharacterTranslator charTranslator) {
+		for(AT_Row row : this.rows){
+			if(row.getType()==TableRowType.CONTENT){
+				row.setCharTranslator(charTranslator);
+			}
 		}
 		return this;
 	}
 
-	@Override
-	public StrBuilder toLog(){
-		StrBuilder ret = new StrBuilder();
-		ret
-			.append("AsciiTable: ")
-			.append("#rows=").append(this.rows.size())
-			.append(", #columns=").append(this.getColNumber())
-			.append(", w=").append(this.ctx.getWidth())
-			.append(", tw=").append(this.ctx.getTextWidth())
-			.appendNewLine()
-		;
-		return ret;
+	/**
+	 * Sets the HTML entity translator for all cells in the table.
+	 * It will also remove any other translator set.
+	 * Nothing will happen if the argument is null.
+	 * @param htmlElementTranslator translator
+	 * @return this to allow chaining
+	 */
+	public AsciiTable setHtmlElementTranslator(HtmlElementTranslator htmlElementTranslator) {
+		for(AT_Row row : this.rows){
+			if(row.getType()==TableRowType.CONTENT){
+				row.setHtmlElementTranslator(htmlElementTranslator);
+			}
+		}
+		return this;
 	}
 
 	/**
@@ -421,17 +427,13 @@ public class AsciiTable implements IsTable {
 	}
 
 	/**
-	 * Sets the text alignment for all cells in the table.
-	 * @param textAlignment new text alignment
-	 * @throws NullPointerException if the argument was null
+	 * Sets the table renderer.
+	 * @param renderer new renderer, ignored if null
 	 * @return this to allow chaining
-	 * @throws {@link NullPointerException} if the argument was null
 	 */
-	public AsciiTable setTextAlignment(TextAlignment textAlignment){
-		for(AT_Row row : this.rows){
-			if(row.getType()==TableRowType.CONTENT){
-				row.setTextAlignment(textAlignment);
-			}
+	public AsciiTable setRenderer(AT_Renderer renderer){
+		if(renderer!=null){
+			this.renderer = renderer;
 		}
 		return this;
 	}
@@ -453,34 +455,32 @@ public class AsciiTable implements IsTable {
 	}
 
 	/**
-	 * Sets the HTML entity translator for all cells in the table.
-	 * It will also remove any other translator set.
-	 * Nothing will happen if the argument is null.
-	 * @param htmlElementTranslator translator
+	 * Sets the text alignment for all cells in the table.
+	 * @param textAlignment new text alignment
+	 * @throws NullPointerException if the argument was null
 	 * @return this to allow chaining
+	 * @throws NullPointerException if the argument was null
 	 */
-	public AsciiTable setHtmlElementTranslator(HtmlElementTranslator htmlElementTranslator) {
+	public AsciiTable setTextAlignment(TextAlignment textAlignment){
 		for(AT_Row row : this.rows){
 			if(row.getType()==TableRowType.CONTENT){
-				row.setHtmlElementTranslator(htmlElementTranslator);
+				row.setTextAlignment(textAlignment);
 			}
 		}
 		return this;
 	}
 
-	/**
-	 * Sets the character translator for all cells in the table.
-	 * It will also remove any other translator set.
-	 * Nothing will happen if the argument is null.
-	 * @param charTranslator translator
-	 * @return this to allow chaining
-	 */
-	public AsciiTable setCharTranslator(CharacterTranslator charTranslator) {
-		for(AT_Row row : this.rows){
-			if(row.getType()==TableRowType.CONTENT){
-				row.setCharTranslator(charTranslator);
-			}
-		}
-		return this;
+	@Override
+	public StrBuilder toLog(){
+		StrBuilder ret = new StrBuilder();
+		ret
+			.append("AsciiTable: ")
+			.append("#rows=").append(this.rows.size())
+			.append(", #columns=").append(this.getColNumber())
+			.append(", w=").append(this.ctx.getWidth())
+			.append(", tw=").append(this.ctx.getTextWidth())
+			.appendNewLine()
+		;
+		return ret;
 	}
 }
