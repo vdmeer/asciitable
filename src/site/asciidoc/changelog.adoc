@@ -1,2 +1,2 @@
-include::{basedir}/bundle/doc/CHANGELOG.adoc[]
+include::{basedir}/../CHANGELOG.adoc[]
 

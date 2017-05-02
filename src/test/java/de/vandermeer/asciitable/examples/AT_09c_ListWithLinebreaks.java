@@ -33,6 +33,7 @@ public class AT_09c_ListWithLinebreaks implements StandardExampleAsCmd {
 
 	@Override
 	public void showOutput(){
+		// tag::example[]
 		AsciiTable at = new AsciiTable();
 		at.addRule();
 		at.addRow("column with a list using conditional line breaks", " * list item one<br> * list item two<br> * list item three");

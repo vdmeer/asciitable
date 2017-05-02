@@ -6,7 +6,7 @@ The following code creates a table, adds text objects, and then sets the text al
 
 [source, java, linenums]
 ----------------------------------------------------------------------------------------
-include::{basedir}/test/java/de/vandermeer/asciitable/examples/test_03b_AlignmentRow.java[tags=example,indent=0]
+include::{basedir}/test/java/de/vandermeer/asciitable/examples/AT_03b_AlignmentRow.java[tags=example,indent=0]
 ----------------------------------------------------------------------------------------
 
 The resulting output:
