@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.text.StrBuilder;
 import org.apache.commons.lang3.text.StrTokenizer;
@@ -47,11 +48,41 @@ import de.vandermeer.skb.interfaces.transformers.textformat.Text_To_FormattedTex
 public interface AT_Renderer extends IsTableRenderer {
 
 	/**
-	 * Sets the column width calculator for the rendered.
-	 * @param cwc new calculator, ignored if null
-	 * @return self to allow for chaining
+	 * Creates a new renderer.
+	 * @return new renderer
 	 */
-	AT_Renderer setCWC(AT_ColumnWidthCalculator cwc);
+	static AT_Renderer create(){
+		return new AT_Renderer(){
+			AT_ColumnWidthCalculator cwc = new CWC_AbsoluteEven();
+			String lineSeparator = null;
+
+			@Override
+			public AT_ColumnWidthCalculator getCWC(){
+				return this.cwc;
+			}
+
+			@Override
+			public String getLineSeparator() {
+				return this.lineSeparator;
+			}
+
+			@Override
+			public AT_Renderer setCWC(AT_ColumnWidthCalculator cwc) {
+				if(cwc!=null){
+					this.cwc = cwc;
+				}
+				return this;
+			}
+
+			@Override
+			public AT_Renderer setLineSeparator(String separator) {
+				if(!StringUtils.isBlank(separator)){
+					this.lineSeparator = separator;
+				}
+				return this;
+			}
+		};
+	}
 
 	/**
 	 * Returns the column width calculator for the rendered.
@@ -62,14 +93,20 @@ public interface AT_Renderer extends IsTableRenderer {
 	}
 
 	/**
+	 * Returns the current set line separator.
+	 * @return the line separator, null if none set
+	 */
+	String getLineSeparator();
+
+	/**
 	 * Renders an {@link AsciiTable}.
 	 * @param rows table rows to render, cannot be null
 	 * @param colNumbers number of columns in the table
 	 * @param ctx context of the original table with relevant settings, cannot be null
-	 * @return collection of lines, each as a {@link StrBuilder}
+	 * @return a single string with the rendered table
 	 * @throws {@link NullPointerException} if rows or context where null
 	 */
-	default Collection<StrBuilder> render(LinkedList<AT_Row> rows, int colNumbers, AT_Context ctx){
+	default String render(LinkedList<AT_Row> rows, int colNumbers, AT_Context ctx){
 		Validate.notNull(rows);
 		Validate.notNull(ctx);
 		return this.render(rows, colNumbers, ctx, ctx.getWidth());
@@ -81,10 +118,48 @@ public interface AT_Renderer extends IsTableRenderer {
 	 * @param colNumbers number of columns in the table
 	 * @param ctx context of the original table with relevant settings, cannot be null
 	 * @param width maximum line width, excluding any extra padding
+	 * @return a single string with the rendered table
+	 * @throws {@link NullPointerException} if rows or context where null
+	 */
+	default String render(LinkedList<AT_Row> rows, int colNumbers, AT_Context ctx, int width){
+		Validate.notNull(rows);
+		Validate.notNull(ctx);
+
+		Collection<StrBuilder> coll = this.renderAsCollection(rows, colNumbers, ctx, width);
+		String fileSeparator = this.getLineSeparator();
+		if(fileSeparator==null){
+			fileSeparator = ctx.getLineSeparator();
+		}
+		if(fileSeparator==null){
+			fileSeparator = System.lineSeparator();
+		}
+		return new StrBuilder().appendWithSeparators(coll, fileSeparator).build();
+	}
+
+	/**
+	 * Renders an {@link AsciiTable}.
+	 * @param rows table rows to render, cannot be null
+	 * @param colNumbers number of columns in the table
+	 * @param ctx context of the original table with relevant settings, cannot be null
 	 * @return collection of lines, each as a {@link StrBuilder}
 	 * @throws {@link NullPointerException} if rows or context where null
 	 */
-	default Collection<StrBuilder> render(LinkedList<AT_Row> rows, int colNumbers, AT_Context ctx, int width){
+	default Collection<StrBuilder> renderAsCollection(LinkedList<AT_Row> rows, int colNumbers, AT_Context ctx){
+		Validate.notNull(rows);
+		Validate.notNull(ctx);
+		return this.renderAsCollection(rows, colNumbers, ctx, ctx.getWidth());
+	}
+
+	/**
+	 * Renders an {@link AsciiTable}.
+	 * @param rows table rows to render, cannot be null
+	 * @param colNumbers number of columns in the table
+	 * @param ctx context of the original table with relevant settings, cannot be null
+	 * @param width maximum line width, excluding any extra padding
+	 * @return collection of lines, each as a {@link StrBuilder}
+	 * @throws {@link NullPointerException} if rows or context where null
+	 */
+	default Collection<StrBuilder> renderAsCollection(LinkedList<AT_Row> rows, int colNumbers, AT_Context ctx, int width){
 		Validate.notNull(rows);
 		Validate.notNull(ctx);
 
@@ -221,25 +296,16 @@ public interface AT_Renderer extends IsTableRenderer {
 	}
 
 	/**
-	 * Creates a new renderer.
-	 * @return new renderer
+	 * Sets the column width calculator for the rendered.
+	 * @param cwc new calculator, ignored if null
+	 * @return self to allow for chaining
 	 */
-	static AT_Renderer create(){
-		return new AT_Renderer(){
-			AT_ColumnWidthCalculator cwc = new CWC_AbsoluteEven();
+	AT_Renderer setCWC(AT_ColumnWidthCalculator cwc);
 
-			@Override
-			public AT_Renderer setCWC(AT_ColumnWidthCalculator cwc) {
-				if(cwc!=null){
-					this.cwc = cwc;
-				}
-				return this;
-			}
-
-			@Override
-			public AT_ColumnWidthCalculator getCWC(){
-				return this.cwc;
-			}
-		};
-	}
+	/**
+	 * Sets a new line separator for the renderer, overwriting any separator a table defines.
+	 * @param separator the new separator, ignored if blank
+	 * @return self to allow chaining
+	 */
+	AT_Renderer setLineSeparator(String separator);
 }

@@ -17,6 +17,7 @@ For Maven declare a dependency in the `<dependencies>` section of your POM file.
 
 === Gradle / Grails
 
+[source,sh,subs=attributes+]
 ----
 compile 'de.vandermeer:asciitable:{release-version}'
 ----

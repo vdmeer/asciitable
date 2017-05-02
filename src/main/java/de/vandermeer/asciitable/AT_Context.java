@@ -15,6 +15,8 @@
 
 package de.vandermeer.asciitable;
 
+import org.apache.commons.lang3.StringUtils;
+
 import de.vandermeer.asciithemes.TA_Grid;
 import de.vandermeer.asciithemes.TA_GridThemeOptions;
 import de.vandermeer.asciithemes.TA_GridThemes;
@@ -29,6 +31,9 @@ import de.vandermeer.skb.interfaces.document.IsTableContext;
  * @since      v0.3.0
  */
 public class AT_Context implements IsTableContext {
+
+	/** A line separator for generating text output. */
+	protected String lineSeparator;
 
 	/** The character outside bottom frame. */
 	protected Character frameBottomMarginChar = ' ';
@@ -411,5 +416,25 @@ public class AT_Context implements IsTableContext {
 	
 	public int getGridThemeOptions() {
 		return this.gridThemeOptions;
+	}
+
+	/**
+	 * Sets a new line separator for the renderer.
+	 * @param separator the new separator, ignored if blank
+	 * @return self to allow chaining
+	 */
+	public AT_Context setLineSeparator(String separator){
+		if(!StringUtils.isBlank(separator)){
+			this.lineSeparator = separator;
+		}
+		return this;
+	}
+
+	/**
+	 * Returns the current set line separator.
+	 * @return the line separator, null if none set
+	 */
+	public String getLineSeparator(){
+		return this.lineSeparator;
 	}
 }

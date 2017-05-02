@@ -182,18 +182,20 @@ public class AsciiTable implements IsTable {
 
 	@Override
 	public String render(){
-		return new StrBuilder().appendWithSeparators(this.renderer.render(this.getRawContent(), this.getColNumber(), this.ctx), "\n").toString();
+		return this.renderer.render(this.getRawContent(), this.getColNumber(), this.ctx);
+//		return new StrBuilder().appendWithSeparators(this.renderer.render(this.getRawContent(), this.getColNumber(), this.ctx), "\n").toString();
 	}
 
 	@Override
 	public String render(int width){
-		return new StrBuilder().appendWithSeparators(this.renderer.render(this.getRawContent(), this.getColNumber(), this.ctx, this.ctx.getTextWidth(width)), "\n").toString();
+		return this.renderer.render(this.getRawContent(), this.getColNumber(), this.ctx, width);
+//		return new StrBuilder().appendWithSeparators(this.renderer.render(this.getRawContent(), this.getColNumber(), this.ctx, this.ctx.getTextWidth(width)), "\n").toString();
 	}
 
 	@Override
 	public Collection<String> renderAsCollection(){
 		return ClusterElementTransformer.create().transform(
-				this.renderer.render(this.getRawContent(), this.getColNumber(), this.ctx),
+				this.renderer.renderAsCollection(this.getRawContent(), this.getColNumber(), this.ctx),
 				StrBuilder_To_String.create(),
 				ArrayListStrategy.create()
 		);
@@ -202,7 +204,7 @@ public class AsciiTable implements IsTable {
 	@Override
 	public Collection<String> renderAsCollection(int width){
 		return ClusterElementTransformer.create().transform(
-				this.renderer.render(this.getRawContent(), this.getColNumber(), this.ctx, this.ctx.getTextWidth(width)),
+				this.renderer.renderAsCollection(this.getRawContent(), this.getColNumber(), this.ctx, this.ctx.getTextWidth(width)),
 				StrBuilder_To_String.create(),
 				ArrayListStrategy.create()
 		);

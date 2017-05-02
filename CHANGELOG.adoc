@@ -1,26 +1,29 @@
-v0.3.1 - feature add - 2017-04-04
----------------------------------
+=== v0.3.2 - feature add - 2017-05-02
+* added file separator setting for table context
+  ** moved render functions to renderer
+  ** harmonized render method names in table and renderer
+* changed build to single doc souces (changelog/readme)
+
+
+=== v0.3.1 - feature add - 2017-04-04
 * added addRow(Collection<?> columns) as per pull request c01e520
 * added throws statement to addRow methods
 
-v0.3.0 - rewrite - 2017-04-04
------------------------------
+
+=== v0.3.0 - rewrite - 2017-04-04
 * complete rewrite using skb-interfaces
 
 
-v0.2.5 - maintenance - 2016-03-01
----------------------------------
+=== v0.2.5 - maintenance - 2016-03-01
 * pushed asciidoctor plugin to 1.5.3
 * removed old module/ settings, added bundle/pm settings
 
 
-v0.2.4 - bug fixes - 2016-02-03
--------------------------------
+=== v0.2.4 - bug fixes - 2016-02-03
 * added fix for issue #4 (email addresses not printed correctly)
 
 
-v0.2.3 - maintenance - 2015-09-10
----------------------------------
+=== v0.2.3 - maintenance - 2015-09-10
 * changed ArrayTransformations.PROCESS_CONTENT behavior for "" content to return new String[]{""} rather than new String[]{}
 * changed WidthLongestLine code to make use of new ArrayTransformations.PROCESS_CONTENT method
 * added dependency to AsciilList and changed V2 renderer behavior to use AsciiList render behavior
@@ -30,8 +33,7 @@ v0.2.3 - maintenance - 2015-09-10
 * edits in JavaDoc
 
 
-v0.2.2 - pull requests - 2015-09-01
------------------------------------
+=== v0.2.2 - pull requests - 2015-09-01
 * added fix for issue #2 - line breaks in column content - https://github.com/vdmeer/asciitable/issues/2
 * added pull request #3 - WidthLongestLine - https://github.com/vdmeer/asciitable/pull/3
 * added no-border row theme and table theme, plus examples
@@ -41,8 +43,7 @@ v0.2.2 - pull requests - 2015-09-01
 	** renderer now calls new PROCESS_CONTENT and then new WRAP_LINES
 
 
-v0.2.1 - refactor / docs - 2015-08-19
--------------------------------------
+=== v0.2.1 - refactor / docs - 2015-08-19
 * added a lot of JavaDoc to packages and overview
 * added test cases for JavaDoc examples
 * V2 changes
@@ -53,8 +54,7 @@ v0.2.1 - refactor / docs - 2015-08-19
 	** moved all width objects into the render package, renamed the implementations of the interface removing V2_
 
 
-v0.2.0 - feature add - 2015-08-14
----------------------------------
+=== v0.2.0 - feature add - 2015-08-14
 * minor version change due to many changes, added features and refactoring
 * overhaul of V2
 	** some refactoring and renaming
@@ -69,13 +69,11 @@ v0.2.0 - feature add - 2015-08-14
 	** added loremipsum package for testing justified columns
 
 
-v0.1.2 - maintenance - 2015-08-13
----------------------------------
+=== v0.1.2 - maintenance - 2015-08-13
 * maintenance of java files
 
 
-v0.1.1 - feature add - 2015-08-13 (not released)
-------------------------------------------------
+=== v0.1.1 - feature add - 2015-08-13 (not released)
 * V2 changes
 	** added LaTeX-style table theme (ASC7_LATEX_STYLE_STRONG)
 	** added tests and edited javadoc
@@ -85,8 +83,7 @@ v0.1.1 - feature add - 2015-08-13 (not released)
 	** removed kv methods
 
 
-v0.1.0 - minor version change - 2015-08-12
-------------------------------------------
+=== v0.1.0 - minor version change - 2015-08-12
 * bug fix in WidthByColumn
 * edit of documentation (javadoc and readme)
 * minor changes in v2 theme handling
@@ -103,18 +100,15 @@ v0.1.0 - minor version change - 2015-08-12
 * fixed wrap lines bug in V2_ProcessedRow (did not consider span for line wrapping)
 
 
-v0.0.7 - maintenance - 2015-08-11
----------------------------------
+=== v0.0.7 - maintenance - 2015-08-11
 * fixed a bug in v2 renderer (used [i] instead of [k])
 
 
-v0.0.6 - maintenance - 2015-07-21
----------------------------------
+=== v0.0.6 - maintenance - 2015-07-21
 * added more row themes
 
 
-v0.0.5 - feature add - 2015-05-25
----------------------------------
+=== v0.0.5 - feature add - 2015-05-25
 * complete re-write of v2
 * moved back to Java 7 on request
 * added Factory and Validator to move create/validate methods out of interfaces
@@ -122,13 +116,11 @@ v0.0.5 - feature add - 2015-05-25
 * separated out v2 into multiple packages leaving only the table on the top level
 
 
-v0.0.4 - maintenance - 2015-06-19
----------------------------------
+=== v0.0.4 - maintenance - 2015-06-19
 * clean up, test file rename
 
 
-v0.0.3 - feature add - 2015-06-18
----------------------------------
+=== v0.0.3 - feature add - 2015-06-18
 * changed all private to protected final
 * moved flip transformer init to declaration
 * moved to Maven build
@@ -139,8 +131,7 @@ v0.0.3 - feature add - 2015-06-18
 * added an experimental V2
 
 
-v0.0.2 - feature add - 2014-06-25
----------------------------------
+=== v0.0.2 - feature add - 2014-06-25
 * changed theme and option handling
 	** options now provided by +TableOptions+
 	** all standard themes are enumerated in +StandardTableThemes+
@@ -150,5 +141,5 @@ v0.0.2 - feature add - 2014-06-25
 * added LaTeX style table themes for 7-Bit, light, heavy, double, and some mutli-dash characters
 
 
-v0.0.1 - initial release - 2014-06-10
--------------------------------------
+=== v0.0.1 - initial release - 2014-06-10
+

@@ -26,7 +26,7 @@ public class AsciiTableException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 
 	/** Standard message */
-	private static String msg="unmanageable problem in AsciiTable";
+	private static String msg = "unmanageable problem in AsciiTable";
 
 	/** Returns a new exception */
 	public AsciiTableException(){
