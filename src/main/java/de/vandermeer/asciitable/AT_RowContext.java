@@ -21,7 +21,7 @@ import de.vandermeer.skb.interfaces.document.IsTableRowContext;
  * Context for an {@link AT_Row}.
  * 
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.3.1 build 170404 (04-Apr-17) for Java 1.8
+ * @version    v0.3.2 build 170502 (02-May-17) for Java 1.8
  * @since      v0.3.0
  */
 public class AT_RowContext implements IsTableRowContext {

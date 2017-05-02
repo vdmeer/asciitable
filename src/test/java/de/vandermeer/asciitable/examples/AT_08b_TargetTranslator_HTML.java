@@ -26,7 +26,7 @@ import de.vandermeer.translation.targets.Text2Html;
  * AsciiTable example for target translation (HTML).
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.3.1 build 170404 (04-Apr-17) for Java 1.8
+ * @version    v0.3.2 build 170502 (02-May-17) for Java 1.8
  * @since      v0.0.3
  */
 public class AT_08b_TargetTranslator_HTML implements StandardExampleAsCmd {
