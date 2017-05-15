@@ -21,7 +21,7 @@ import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciithemes.a7.A7_Grids;
 import de.vandermeer.asciithemes.a8.A8_Grids;
 import de.vandermeer.asciithemes.u8.U8_Grids;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
 /**
  * AsciiTable example for grids.
@@ -33,30 +33,13 @@ import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 public class AT_06a_Grids implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		AsciiTable at = new AsciiTable();
-		at.addRule();
-		at.addRow("rc 11", "rc 12");
-		at.addRule();
-		at.addRow("rc 21", "rc 22");
-		at.addRule();
-		at.getContext().setWidth(13);
+	public String getDescription() {
+		return "adding a grid to a table";
+	}
 
-		System.out.println(at.render());
-
-		at.getContext().setGrid(A7_Grids.minusBarPlusEquals());
-		System.out.println(at.render());
-
-		at.getContext().setGrid(A8_Grids.lineDoubleBlocks());
-		System.out.println(at.render());
-
-		at.getContext().setGrid(U8_Grids.borderDoubleLight());
-		System.out.println(at.render());
-
-		at.getContext().setGrid(U8_Grids.borderDouble());
-		System.out.println(at.render());
-		// end::example[]
+	@Override
+	public String getName() {
+		return "grid";
 	}
 
 	@Override
@@ -88,12 +71,29 @@ public class AT_06a_Grids implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getDescription() {
-		return "adding a grid to a table";
-	}
+	public void showOutput(){
+		// tag::example[]
+		AsciiTable at = new AsciiTable();
+		at.addRule();
+		at.addRow("rc 11", "rc 12");
+		at.addRule();
+		at.addRow("rc 21", "rc 22");
+		at.addRule();
+		at.getContext().setWidth(13);
 
-	@Override
-	public String getID() {
-		return "grid";
+		System.out.println(at.render());
+
+		at.getContext().setGrid(A7_Grids.minusBarPlusEquals());
+		System.out.println(at.render());
+
+		at.getContext().setGrid(A8_Grids.lineDoubleBlocks());
+		System.out.println(at.render());
+
+		at.getContext().setGrid(U8_Grids.borderDoubleLight());
+		System.out.println(at.render());
+
+		at.getContext().setGrid(U8_Grids.borderDouble());
+		System.out.println(at.render());
+		// end::example[]
 	}
 }

@@ -18,7 +18,7 @@ package de.vandermeer.asciitable.examples;
 import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciitable.AsciiTable;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
 /**
  * AsciiTable example: width behavior.
@@ -30,25 +30,13 @@ import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 public class AT_00b_WidthBehavior implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		AsciiTable at = new AsciiTable();
-		at.addRule();
-		at.addRow("row 1 col 1", "row 1 col 2");
-		at.addRule();
-		at.addRow("row 2 col 1", "row 2 col 2");
-		at.addRule();
+	public String getDescription() {
+		return "shows the behavior for table width settings";
+	}
 
-		at.getContext().setWidth(50);
-		System.out.println(at.render());
-
-		at.getContext().setWidth(40);
-		System.out.println(at.render());
-
-		at.getContext().setWidth(30);
-		System.out.println(at.render());
-
-		// end::example[]
+	@Override
+	public String getName() {
+		return "width";
 	}
 
 	@Override
@@ -74,12 +62,24 @@ public class AT_00b_WidthBehavior implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getDescription() {
-		return "shows the behavior for table width settings";
-	}
+	public void showOutput(){
+		// tag::example[]
+		AsciiTable at = new AsciiTable();
+		at.addRule();
+		at.addRow("row 1 col 1", "row 1 col 2");
+		at.addRule();
+		at.addRow("row 2 col 1", "row 2 col 2");
+		at.addRule();
 
-	@Override
-	public String getID() {
-		return "width";
+		at.getContext().setWidth(50);
+		System.out.println(at.render());
+
+		at.getContext().setWidth(40);
+		System.out.println(at.render());
+
+		at.getContext().setWidth(30);
+		System.out.println(at.render());
+
+		// end::example[]
 	}
 }

@@ -19,7 +19,7 @@ import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciitable.CWC_AbsoluteEven;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
 /**
  * AsciiTable example for width: absolute width with even columns.
@@ -31,18 +31,13 @@ import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 public class AT_07a_Width_AbsoluteEven implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		AsciiTable at = new AsciiTable();
-		at.addRule();
-		at.addRow("col1", "col2", "col3");
-		at.addRule();
+	public String getDescription() {
+		return "calculate column width: absolute even";
+	}
 
-		at.getRenderer().setCWC(new CWC_AbsoluteEven());
-		System.out.println(at.render(50));
-		System.out.println(at.render(30));
-		System.out.println(at.render(20));
-		// end::example[]
+	@Override
+	public String getName() {
+		return "cwc-absolute";
 	}
 
 	@Override
@@ -62,12 +57,17 @@ public class AT_07a_Width_AbsoluteEven implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getDescription() {
-		return "calculate column width: absolute even";
-	}
+	public void showOutput(){
+		// tag::example[]
+		AsciiTable at = new AsciiTable();
+		at.addRule();
+		at.addRow("col1", "col2", "col3");
+		at.addRule();
 
-	@Override
-	public String getID() {
-		return "cwc-absolute";
+		at.getRenderer().setCWC(new CWC_AbsoluteEven());
+		System.out.println(at.render(50));
+		System.out.println(at.render(30));
+		System.out.println(at.render(20));
+		// end::example[]
 	}
 }

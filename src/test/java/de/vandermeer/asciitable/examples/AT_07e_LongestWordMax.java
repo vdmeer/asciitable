@@ -19,7 +19,7 @@ import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciitable.CWC_LongestWordMax;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
 /**
  * AsciiTable example for width: longest word with maximum column width settings.
@@ -31,21 +31,13 @@ import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 public class AT_07e_LongestWordMax implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		AsciiTable at = new AsciiTable();
-		at.addRule();
-		at.addRow("first", "information");
-		at.addRule();
-		at.addRow("second", "info");
-		at.addRule();
+	public String getDescription() {
+		return "calculate column width: longest word, maximum width";
+	}
 
-		at.getRenderer().setCWC(new CWC_LongestWordMax(8));
-		System.out.println(at.render());
-
-		at.getRenderer().setCWC(new CWC_LongestWordMax(new int[]{4,-1}));
-		System.out.println(at.render());
-		// end::example[]
+	@Override
+	public String getName() {
+		return "cwc-word-max";
 	}
 
 	@Override
@@ -68,12 +60,20 @@ public class AT_07e_LongestWordMax implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getDescription() {
-		return "calculate column width: longest word, maximum width";
-	}
+	public void showOutput(){
+		// tag::example[]
+		AsciiTable at = new AsciiTable();
+		at.addRule();
+		at.addRow("first", "information");
+		at.addRule();
+		at.addRow("second", "info");
+		at.addRule();
 
-	@Override
-	public String getID() {
-		return "cwc-word-max";
+		at.getRenderer().setCWC(new CWC_LongestWordMax(8));
+		System.out.println(at.render());
+
+		at.getRenderer().setCWC(new CWC_LongestWordMax(new int[]{4,-1}));
+		System.out.println(at.render());
+		// end::example[]
 	}
 }

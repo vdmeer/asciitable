@@ -20,7 +20,7 @@ import org.apache.commons.lang3.text.StrBuilder;
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciithemes.TA_Grid;
 import de.vandermeer.asciithemes.TA_GridConfig;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
 /**
  * AsciiTable example for grids.
@@ -32,23 +32,13 @@ import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 public class AT_06d_NewGrid implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		TA_Grid myGrid = TA_Grid.create("grid using UTF-8 light border characters")
-				.addCharacterMap(TA_GridConfig.RULESET_NORMAL, ' ', '#', '&', '#', '#', '%', '%', '+', '+', '+', '#', '%')
-		;
+	public String getDescription() {
+		return "creating a new grid and adding it to a table";
+	}
 
-		AsciiTable at = new AsciiTable();
-		at.addRule();
-		at.addRow("rc 11", "rc 12");
-		at.addRule();
-		at.addRow("rc 21", "rc 22");
-		at.addRule();
-		at.getContext().setWidth(13);
-
-		at.getContext().setGrid(myGrid);
-		System.out.println(at.render());
-		// end::example[]
+	@Override
+	public String getName() {
+		return "grid-new";
 	}
 
 	@Override
@@ -73,12 +63,22 @@ public class AT_06d_NewGrid implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getDescription() {
-		return "creating a new grid and adding it to a table";
-	}
+	public void showOutput(){
+		// tag::example[]
+		TA_Grid myGrid = TA_Grid.create("grid using UTF-8 light border characters")
+				.addCharacterMap(TA_GridConfig.RULESET_NORMAL, ' ', '#', '&', '#', '#', '%', '%', '+', '+', '+', '#', '%')
+		;
 
-	@Override
-	public String getID() {
-		return "grid-new";
+		AsciiTable at = new AsciiTable();
+		at.addRule();
+		at.addRow("rc 11", "rc 12");
+		at.addRule();
+		at.addRow("rc 21", "rc 22");
+		at.addRule();
+		at.getContext().setWidth(13);
+
+		at.getContext().setGrid(myGrid);
+		System.out.println(at.render());
+		// end::example[]
 	}
 }

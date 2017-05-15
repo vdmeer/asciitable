@@ -22,7 +22,7 @@ import org.apache.commons.lang3.text.StrBuilder;
 
 import de.svenjacobs.loremipsum.LoremIpsum;
 import de.vandermeer.asciitable.AsciiTable;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 import de.vandermeer.skb.interfaces.render.HasTextCluster;
 
 /**
@@ -35,25 +35,13 @@ import de.vandermeer.skb.interfaces.render.HasTextCluster;
 public class AT_00e_AddColumn_HasTextCluster implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		AsciiTable at = new AsciiTable();
-		class ObjectHasTextCluster implements HasTextCluster{
-			@Override
-			public Collection<String> getTextAsCollection() {
-				ArrayList<String> text = new ArrayList<>();
-				text.add(new LoremIpsum().getWords(10));
-				text.add(new LoremIpsum().getWords(10));
-				text.add(new LoremIpsum().getWords(10));
-				return text;
-			}
-		}
+	public String getDescription() {
+		return "add column from has text cluster";
+	}
 
-		at.addRule();
-		at.addRow(new ObjectHasTextCluster());
-		at.addRule();
-		System.out.println(at.render());
-		// end::example[]
+	@Override
+	public String getName() {
+		return "col-hastext-cluster";
 	}
 
 	@Override
@@ -80,14 +68,24 @@ public class AT_00e_AddColumn_HasTextCluster implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public void showOutput(){
+		// tag::example[]
+		AsciiTable at = new AsciiTable();
+		class ObjectHasTextCluster implements HasTextCluster{
+			@Override
+			public Collection<String> getTextAsCollection() {
+				ArrayList<String> text = new ArrayList<>();
+				text.add(new LoremIpsum().getWords(10));
+				text.add(new LoremIpsum().getWords(10));
+				text.add(new LoremIpsum().getWords(10));
+				return text;
+			}
+		}
 
-	@Override
-	public String getID() {
-		// TODO Auto-generated method stub
-		return null;
+		at.addRule();
+		at.addRow(new ObjectHasTextCluster());
+		at.addRule();
+		System.out.println(at.render());
+		// end::example[]
 	}
 }

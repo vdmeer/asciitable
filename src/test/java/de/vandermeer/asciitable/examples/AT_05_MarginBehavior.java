@@ -18,7 +18,7 @@ package de.vandermeer.asciitable.examples;
 import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciitable.AsciiTable;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
 /**
  * AsciiTable example for margins (outside the frame).
@@ -30,27 +30,13 @@ import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 public class AT_05_MarginBehavior implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		AsciiTable at = new AsciiTable();
-		at.addRule();
-		at.addRow("row 1 col 1", "row 1 col 2");
-		at.addRule();
-		at.addRow("row 2 col 1", "row 2 col 2");
-		at.addRule();
+	public String getDescription() {
+		return "example for margins";
+	}
 
-		at.getContext().setFrameTopChar('v');
-		at.getContext().setFrameBottomChar('^');
-		at.getContext().setFrameLeftChar('>');
-		at.getContext().setFrameRightChar('<');
-
-		at.getContext().setFrameTopMargin(1);
-		at.getContext().setFrameBottomMargin(2);
-		at.getContext().setFrameLeftMargin(3);
-		at.getContext().setFrameRightMargin(4);
-
-		System.out.println(at.render(39));
-		// end::example[]
+	@Override
+	public String getName() {
+		return "margin";
 	}
 
 	@Override
@@ -79,12 +65,26 @@ public class AT_05_MarginBehavior implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getDescription() {
-		return "example for margins";
-	}
+	public void showOutput(){
+		// tag::example[]
+		AsciiTable at = new AsciiTable();
+		at.addRule();
+		at.addRow("row 1 col 1", "row 1 col 2");
+		at.addRule();
+		at.addRow("row 2 col 1", "row 2 col 2");
+		at.addRule();
 
-	@Override
-	public String getID() {
-		return "margin";
+		at.getContext().setFrameTopChar('v');
+		at.getContext().setFrameBottomChar('^');
+		at.getContext().setFrameLeftChar('>');
+		at.getContext().setFrameRightChar('<');
+
+		at.getContext().setFrameTopMargin(1);
+		at.getContext().setFrameBottomMargin(2);
+		at.getContext().setFrameLeftMargin(3);
+		at.getContext().setFrameRightMargin(4);
+
+		System.out.println(at.render(39));
+		// end::example[]
 	}
 }

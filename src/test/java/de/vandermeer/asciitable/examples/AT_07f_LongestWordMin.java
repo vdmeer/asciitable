@@ -19,7 +19,7 @@ import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciitable.CWC_LongestWordMin;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
 /**
  * AsciiTable example for width: longest word with minimum column width settings.
@@ -31,21 +31,13 @@ import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 public class AT_07f_LongestWordMin implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		AsciiTable at = new AsciiTable();
-		at.addRule();
-		at.addRow("first", "information");
-		at.addRule();
-		at.addRow("second", "info");
-		at.addRule();
+	public String getDescription() {
+		return "calculate column width: longes word, minimum width";
+	}
 
-		at.getRenderer().setCWC(new CWC_LongestWordMin(9));
-		System.out.println(at.render());
-
-		at.getRenderer().setCWC(new CWC_LongestWordMin(new int[]{-1,30}));
-		System.out.println(at.render());
-		// end::example[]
+	@Override
+	public String getName() {
+		return "cwc-word-min";
 	}
 
 	@Override
@@ -68,12 +60,20 @@ public class AT_07f_LongestWordMin implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getDescription() {
-		return "calculate column width: longes word, minimum width";
-	}
+	public void showOutput(){
+		// tag::example[]
+		AsciiTable at = new AsciiTable();
+		at.addRule();
+		at.addRow("first", "information");
+		at.addRule();
+		at.addRow("second", "info");
+		at.addRule();
 
-	@Override
-	public String getID() {
-		return "cwc-word-min";
+		at.getRenderer().setCWC(new CWC_LongestWordMin(9));
+		System.out.println(at.render());
+
+		at.getRenderer().setCWC(new CWC_LongestWordMin(new int[]{-1,30}));
+		System.out.println(at.render());
+		// end::example[]
 	}
 }

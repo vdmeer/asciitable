@@ -22,7 +22,7 @@ import de.vandermeer.asciilist.enumerate.EnumerateList;
 import de.vandermeer.asciilist.itemize.ItemizeList;
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciitable.CWC_FixedWidth;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
 
 /**
@@ -33,6 +33,26 @@ import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
  * @since      v0.0.3
  */
 public class AT_09d_AsciiList implements StandardExampleAsCmd {
+
+	@Override
+	public String getDescription() {
+		return "using an asciilist in a cell";
+	}
+
+	@Override
+	public String getName() {
+		return "al";
+	}
+
+	@Override
+	public StrBuilder getSource(){
+		String[] source = new String[]{
+				"AsciiTable at = new AsciiTable();",
+				//TODO
+				"System.out.println(at.render());",
+		};
+		return new StrBuilder().appendWithSeparators(source, "\n");
+	}
 
 	@Override
 	public void showOutput(){
@@ -74,25 +94,5 @@ System.err.println(cl.render(27));
 		at.getRenderer().setCWC(new CWC_FixedWidth().add(25).add(25).add(27));
 //		System.out.println(at.render());
 		// end::example[]
-	}
-
-	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"AsciiTable at = new AsciiTable();",
-				//TODO
-				"System.out.println(at.render());",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
-	}
-
-	@Override
-	public String getDescription() {
-		return "using an asciilist in a cell";
-	}
-
-	@Override
-	public String getID() {
-		return "al";
 	}
 }

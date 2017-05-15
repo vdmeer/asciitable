@@ -19,7 +19,7 @@ import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciitable.CWC_FixedWidth;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
 /**
  * AsciiTable example for width: fixed set column widths.
@@ -31,22 +31,13 @@ import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 public class AT_07b_Width_Fixed implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		AsciiTable at = new AsciiTable();
-		at.addRule();
-		at.addRow("col1", "col2", "col3");
-		at.addRule();
+	public String getDescription() {
+		return "calculate column width: fixed column width";
+	}
 
-		at.getRenderer().setCWC(new CWC_FixedWidth().add(10).add(20).add(30));
-		System.out.println(at.render());
-
-		at.getRenderer().setCWC(new CWC_FixedWidth().add(5).add(10).add(15));
-		System.out.println(at.render());
-
-		at.getRenderer().setCWC(new CWC_FixedWidth().add(3).add(5).add(7));
-		System.out.println(at.render());
-		// end::example[]
+	@Override
+	public String getName() {
+		return "cwc-fixed";
 	}
 
 	@Override
@@ -70,12 +61,21 @@ public class AT_07b_Width_Fixed implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getDescription() {
-		return "calculate column width: fixed column width";
-	}
+	public void showOutput(){
+		// tag::example[]
+		AsciiTable at = new AsciiTable();
+		at.addRule();
+		at.addRow("col1", "col2", "col3");
+		at.addRule();
 
-	@Override
-	public String getID() {
-		return "cwc-fixed";
+		at.getRenderer().setCWC(new CWC_FixedWidth().add(10).add(20).add(30));
+		System.out.println(at.render());
+
+		at.getRenderer().setCWC(new CWC_FixedWidth().add(5).add(10).add(15));
+		System.out.println(at.render());
+
+		at.getRenderer().setCWC(new CWC_FixedWidth().add(3).add(5).add(7));
+		System.out.println(at.render());
+		// end::example[]
 	}
 }

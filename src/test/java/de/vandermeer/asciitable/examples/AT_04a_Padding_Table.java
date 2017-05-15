@@ -18,7 +18,7 @@ package de.vandermeer.asciitable.examples;
 import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciitable.AsciiTable;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
 
 /**
@@ -31,23 +31,13 @@ import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
 public class AT_04a_Padding_Table implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		AsciiTable at = new AsciiTable();
-		at.addRule();
-		at.addRow("row 1 col 1", "row 1 col 2");
-		at.addRule();
-		at.addRow("row 2 col 1", "row 2 col 2");
-		at.addRule();
+	public String getDescription() {
+		return "set padding for a whole table";
+	}
 
-		at.setPaddingTopChar('v');
-		at.setPaddingBottomChar('^');
-		at.setPaddingLeftChar('>');
-		at.setPaddingRightChar('<');
-		at.setTextAlignment(TextAlignment.CENTER);
-		at.setPadding(1);
-		System.out.println(at.render(33));
-		// end::example[]
+	@Override
+	public String getName() {
+		return "padding-table";
 	}
 
 	@Override
@@ -72,12 +62,22 @@ public class AT_04a_Padding_Table implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getDescription() {
-		return "set padding for a whole table";
-	}
+	public void showOutput(){
+		// tag::example[]
+		AsciiTable at = new AsciiTable();
+		at.addRule();
+		at.addRow("row 1 col 1", "row 1 col 2");
+		at.addRule();
+		at.addRow("row 2 col 1", "row 2 col 2");
+		at.addRule();
 
-	@Override
-	public String getID() {
-		return "padding-table";
+		at.setPaddingTopChar('v');
+		at.setPaddingBottomChar('^');
+		at.setPaddingLeftChar('>');
+		at.setPaddingRightChar('<');
+		at.setTextAlignment(TextAlignment.CENTER);
+		at.setPadding(1);
+		System.out.println(at.render(33));
+		// end::example[]
 	}
 }

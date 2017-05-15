@@ -1,3 +1,7 @@
+=== v0.3.3 - minor edits - 2017-##-##
+* changed examples to new API definitions for example runner
+
+
 === v0.3.2 - feature add - 2017-05-02
 * added file separator setting for table context
   ** moved render functions to renderer

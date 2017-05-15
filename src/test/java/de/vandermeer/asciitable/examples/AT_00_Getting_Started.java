@@ -18,7 +18,7 @@ package de.vandermeer.asciitable.examples;
 import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciitable.AsciiTable;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
 /**
  * AsciiTable example for a simple table as getting started example.
@@ -30,16 +30,13 @@ import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 public class AT_00_Getting_Started implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		AsciiTable at = new AsciiTable();
-		at.addRule();
-		at.addRow("row 1 col 1", "row 1 col 2");
-		at.addRule();
-		at.addRow("row 2 col 1", "row 2 col 2");
-		at.addRule();
-		System.out.println(at.render());
-		// end::example[]
+	public String getDescription() {
+		return "a simple table with 2 rows and 3 columns";
+	}
+
+	@Override
+	public String getName() {
+		return "simple";
 	}
 
 	@Override
@@ -57,12 +54,15 @@ public class AT_00_Getting_Started implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getDescription() {
-		return "a simple table with 2 rows and 3 columns";
-	}
-
-	@Override
-	public String getID() {
-		return "simple";
+	public void showOutput(){
+		// tag::example[]
+		AsciiTable at = new AsciiTable();
+		at.addRule();
+		at.addRow("row 1 col 1", "row 1 col 2");
+		at.addRule();
+		at.addRow("row 2 col 1", "row 2 col 2");
+		at.addRule();
+		System.out.println(at.render());
+		// end::example[]
 	}
 }

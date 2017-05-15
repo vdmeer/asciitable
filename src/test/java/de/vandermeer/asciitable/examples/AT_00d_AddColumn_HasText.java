@@ -19,7 +19,7 @@ import org.apache.commons.lang3.text.StrBuilder;
 
 import de.svenjacobs.loremipsum.LoremIpsum;
 import de.vandermeer.asciitable.AsciiTable;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 import de.vandermeer.skb.interfaces.render.HasText;
 
 /**
@@ -32,21 +32,13 @@ import de.vandermeer.skb.interfaces.render.HasText;
 public class AT_00d_AddColumn_HasText implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		AsciiTable at = new AsciiTable();
-		class ObjectHasText implements HasText{
-			@Override
-			public String getText() {
-				return new LoremIpsum().getWords(10);
-			}
-		}
+	public String getDescription() {
+		return "add column from hasText";
+	}
 
-		at.addRule();
-		at.addRow(new ObjectHasText());
-		at.addRule();
-		System.out.println(at.render());
-		// end::example[]
+	@Override
+	public String getName() {
+		return "col-hastext";
 	}
 
 	@Override
@@ -69,14 +61,20 @@ public class AT_00d_AddColumn_HasText implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public void showOutput(){
+		// tag::example[]
+		AsciiTable at = new AsciiTable();
+		class ObjectHasText implements HasText{
+			@Override
+			public String getText() {
+				return new LoremIpsum().getWords(10);
+			}
+		}
 
-	@Override
-	public String getID() {
-		// TODO Auto-generated method stub
-		return null;
+		at.addRule();
+		at.addRow(new ObjectHasText());
+		at.addRule();
+		System.out.println(at.render());
+		// end::example[]
 	}
 }

@@ -22,7 +22,7 @@ import org.stringtemplate.v4.ST;
 
 import de.svenjacobs.loremipsum.LoremIpsum;
 import de.vandermeer.asciitable.AsciiTable;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 import de.vandermeer.skb.interfaces.render.RendersToClusterWidth;
 import de.vandermeer.skb.interfaces.strategies.collections.list.ArrayListStrategy;
 import de.vandermeer.skb.interfaces.transformers.ClusterElementTransformer;
@@ -39,25 +39,13 @@ import de.vandermeer.skb.interfaces.transformers.textformat.Text_To_FormattedTex
 public class AT_00i_AddColumn_RendersToClusterWidth implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		AsciiTable at = new AsciiTable();
-		class ObjectRendersToClusterWidth implements RendersToClusterWidth{
-			@Override
-			public Collection<String> renderAsCollection(int width) {
-				return ClusterElementTransformer.create().transform(
-						Text_To_FormattedText.justified(new LoremIpsum().getWords(30), width),
-						StrBuilder_To_String.create(),
-						ArrayListStrategy.create()
-				);
-			}
-		}
+	public String getDescription() {
+		return "add column from renders to cluster with width";
+	}
 
-		at.addRule();
-		at.addRow(new ObjectRendersToClusterWidth());
-		at.addRule();
-		System.out.println(at.render());
-		// end::example[]
+	@Override
+	public String getName() {
+		return "col-render-cluster-width";
 	}
 
 	@Override
@@ -84,14 +72,24 @@ public class AT_00i_AddColumn_RendersToClusterWidth implements StandardExampleAs
 	}
 
 	@Override
-	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public void showOutput(){
+		// tag::example[]
+		AsciiTable at = new AsciiTable();
+		class ObjectRendersToClusterWidth implements RendersToClusterWidth{
+			@Override
+			public Collection<String> renderAsCollection(int width) {
+				return ClusterElementTransformer.create().transform(
+						Text_To_FormattedText.justified(new LoremIpsum().getWords(30), width),
+						StrBuilder_To_String.create(),
+						ArrayListStrategy.create()
+				);
+			}
+		}
 
-	@Override
-	public String getID() {
-		// TODO Auto-generated method stub
-		return null;
+		at.addRule();
+		at.addRow(new ObjectRendersToClusterWidth());
+		at.addRule();
+		System.out.println(at.render());
+		// end::example[]
 	}
 }

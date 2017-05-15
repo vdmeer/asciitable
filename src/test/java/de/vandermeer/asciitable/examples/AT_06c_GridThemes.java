@@ -19,7 +19,7 @@ import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciithemes.TA_GridThemes;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
 /**
  * AsciiTable example for grid themes.
@@ -31,45 +31,13 @@ import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 public class AT_06c_GridThemes implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		AsciiTable at = new AsciiTable();
-		at.addRule();
-		at.addRow("rc 11", "rc 12");
-		at.addRule();
-		at.addRow("rc 21", "rc 22");
-		at.addRule();
-		at.getContext().setWidth(13);
+	public String getDescription() {
+		return "different themes for a grid";
+	}
 
-		System.out.println(at.render());
-
-		at.getContext().setGridTheme(TA_GridThemes.NONE);
-		System.out.println(at.render());
-
-		at.getContext().setGridTheme(TA_GridThemes.CORNERS);
-		System.out.println(at.render());
-
-		at.getContext().setGridTheme(TA_GridThemes.CC);
-		System.out.println(at.render());
-
-		at.getContext().setGridTheme(TA_GridThemes.HORIZONTAL);
-		System.out.println(at.render());
-
-		at.getContext().setGridTheme(TA_GridThemes.VERTICAL);
-		System.out.println(at.render());
-
-		at.getContext().setGridTheme(TA_GridThemes.INSIDE);
-		System.out.println(at.render());
-
-		at.getContext().setGridTheme(TA_GridThemes.OUTSIDE);
-		System.out.println(at.render());
-
-		at.getContext().setGridTheme(TA_GridThemes.LEFT);
-		System.out.println(at.render());
-
-		at.getContext().setGridTheme(TA_GridThemes.TOPBOTTOM);
-		System.out.println(at.render());
-		// end::example[]
+	@Override
+	public String getName() {
+		return "grid-themes";
 	}
 
 	@Override
@@ -116,12 +84,44 @@ public class AT_06c_GridThemes implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getDescription() {
-		return "different themes for a grid";
-	}
+	public void showOutput(){
+		// tag::example[]
+		AsciiTable at = new AsciiTable();
+		at.addRule();
+		at.addRow("rc 11", "rc 12");
+		at.addRule();
+		at.addRow("rc 21", "rc 22");
+		at.addRule();
+		at.getContext().setWidth(13);
 
-	@Override
-	public String getID() {
-		return "grid-themes";
+		System.out.println(at.render());
+
+		at.getContext().setGridTheme(TA_GridThemes.NONE);
+		System.out.println(at.render());
+
+		at.getContext().setGridTheme(TA_GridThemes.CORNERS);
+		System.out.println(at.render());
+
+		at.getContext().setGridTheme(TA_GridThemes.CC);
+		System.out.println(at.render());
+
+		at.getContext().setGridTheme(TA_GridThemes.HORIZONTAL);
+		System.out.println(at.render());
+
+		at.getContext().setGridTheme(TA_GridThemes.VERTICAL);
+		System.out.println(at.render());
+
+		at.getContext().setGridTheme(TA_GridThemes.INSIDE);
+		System.out.println(at.render());
+
+		at.getContext().setGridTheme(TA_GridThemes.OUTSIDE);
+		System.out.println(at.render());
+
+		at.getContext().setGridTheme(TA_GridThemes.LEFT);
+		System.out.println(at.render());
+
+		at.getContext().setGridTheme(TA_GridThemes.TOPBOTTOM);
+		System.out.println(at.render());
+		// end::example[]
 	}
 }

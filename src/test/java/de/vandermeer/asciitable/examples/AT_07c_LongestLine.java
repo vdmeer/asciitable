@@ -19,7 +19,7 @@ import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciitable.CWC_LongestLine;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
 /**
  * AsciiTable example for width: longest line.
@@ -31,27 +31,13 @@ import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 public class AT_07c_LongestLine implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		AsciiTable at = new AsciiTable();
-		at.addRule();
-		at.addRow("0", "1", "22", "333", "4444");
-		at.addRule();
-		CWC_LongestLine cwc = new CWC_LongestLine();
+	public String getDescription() {
+		return "calculate column width: longes line";
+	}
 
-		at.getRenderer().setCWC(cwc);
-		System.out.println(at.render());
-
-		cwc.add(4, 0);
-		System.out.println(at.render());
-
-		cwc.add(6, 0).add(0, 0).add(0, 0).add(0, 2);
-		System.out.println(at.render());
-
-		at.addRow("0", "1", "22", "333<br>55555", "4444");
-		at.addRule();
-		System.out.println(at.render());
-		// end::example[]
+	@Override
+	public String getName() {
+		return "cwc-line";
 	}
 
 	@Override
@@ -80,12 +66,26 @@ public class AT_07c_LongestLine implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getDescription() {
-		return "calculate column width: longes line";
-	}
+	public void showOutput(){
+		// tag::example[]
+		AsciiTable at = new AsciiTable();
+		at.addRule();
+		at.addRow("0", "1", "22", "333", "4444");
+		at.addRule();
+		CWC_LongestLine cwc = new CWC_LongestLine();
 
-	@Override
-	public String getID() {
-		return "cwc-line";
+		at.getRenderer().setCWC(cwc);
+		System.out.println(at.render());
+
+		cwc.add(4, 0);
+		System.out.println(at.render());
+
+		cwc.add(6, 0).add(0, 0).add(0, 0).add(0, 2);
+		System.out.println(at.render());
+
+		at.addRow("0", "1", "22", "333<br>55555", "4444");
+		at.addRule();
+		System.out.println(at.render());
+		// end::example[]
 	}
 }

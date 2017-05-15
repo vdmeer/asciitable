@@ -19,7 +19,7 @@ import org.apache.commons.lang3.text.StrBuilder;
 
 import de.svenjacobs.loremipsum.LoremIpsum;
 import de.vandermeer.asciitable.AsciiTable;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
 
 /**
@@ -32,18 +32,13 @@ import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
 public class AT_03a_AlignmentTable implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		AsciiTable at = new AsciiTable();
-		String text = new LoremIpsum().getWords(9);
-		at.addRule();
-		at.addRow(text, text, text);
-		at.addRule();
-		at.addRow(text, text, text);
-		at.addRule();
-		at.setTextAlignment(TextAlignment.RIGHT);
-		System.out.println(at.render(76));
-		// end::example[]
+	public String getDescription() {
+		return "set text alignment for a whole table";
+	}
+
+	@Override
+	public String getName() {
+		return "alignment-table";
 	}
 
 	@Override
@@ -63,12 +58,17 @@ public class AT_03a_AlignmentTable implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getDescription() {
-		return "set text alignment for a whole table";
-	}
-
-	@Override
-	public String getID() {
-		return "alignment-table";
+	public void showOutput(){
+		// tag::example[]
+		AsciiTable at = new AsciiTable();
+		String text = new LoremIpsum().getWords(9);
+		at.addRule();
+		at.addRow(text, text, text);
+		at.addRule();
+		at.addRow(text, text, text);
+		at.addRule();
+		at.setTextAlignment(TextAlignment.RIGHT);
+		System.out.println(at.render(76));
+		// end::example[]
 	}
 }

@@ -18,7 +18,7 @@ package de.vandermeer.asciitable.examples;
 import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciitable.AsciiTable;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
 
 /**
@@ -31,21 +31,13 @@ import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
 public class AT_09b_ConditionalLinebreak implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		String text = "line 1<br>" +
-			"line 2<br/>" +
-			"line three \n still line three"
-		;
-//		String text = new LoremIpsum().getParagraphs(1) + "\r\n\n<br><br><br>" + new LoremIpsum().getParagraphs(1);
+	public String getDescription() {
+		return "conditional linebreaks";
+	}
 
-		AsciiTable at = new AsciiTable();
-		at.addRule();
-		at.addRow(text);
-		at.addRule();
-		at.setTextAlignment(TextAlignment.LEFT);
-		System.out.println(at.render(50));
-		// end::example[]
+	@Override
+	public String getName() {
+		return "cond-linebreak";
 	}
 
 	@Override
@@ -66,12 +58,20 @@ public class AT_09b_ConditionalLinebreak implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getDescription() {
-		return "conditional linebreaks";
-	}
+	public void showOutput(){
+		// tag::example[]
+		String text = "line 1<br>" +
+			"line 2<br/>" +
+			"line three \n still line three"
+		;
+//		String text = new LoremIpsum().getParagraphs(1) + "\r\n\n<br><br><br>" + new LoremIpsum().getParagraphs(1);
 
-	@Override
-	public String getID() {
-		return "cond-linebreak";
+		AsciiTable at = new AsciiTable();
+		at.addRule();
+		at.addRow(text);
+		at.addRule();
+		at.setTextAlignment(TextAlignment.LEFT);
+		System.out.println(at.render(50));
+		// end::example[]
 	}
 }

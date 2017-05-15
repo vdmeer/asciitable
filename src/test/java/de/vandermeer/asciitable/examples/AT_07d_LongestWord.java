@@ -20,7 +20,7 @@ import org.apache.commons.lang3.text.StrBuilder;
 import de.vandermeer.asciitable.AT_Row;
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciitable.CWC_LongestWord;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
 /**
  * AsciiTable example for width: longest word.
@@ -32,28 +32,13 @@ import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 public class AT_07d_LongestWord implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		AsciiTable at = new AsciiTable();
-		at.addRule();
-		AT_Row row1 = at.addRow("first", "information");
-		at.addRule();
-		AT_Row row2 = at.addRow("second", "info");
-		at.addRule();
+	public String getDescription() {
+		return "calculate column width: longest word";
+	}
 
-		at.getRenderer().setCWC(new CWC_LongestWord());
-		System.out.println(at.render());
-
-		at.setPaddingLeftRight(1);
-		System.out.println(at.render());
-
-		at.setPaddingLeftRight(0);
-		row1.getCells().get(0).getContext().setPaddingLeftRight(2);
-		row1.getCells().get(1).getContext().setPaddingLeftRight(3);
-		row2.getCells().get(0).getContext().setPaddingLeftRight(3);
-		row2.getCells().get(1).getContext().setPaddingLeftRight(4);
-		System.out.println(at.render());
-		// end::example[]
+	@Override
+	public String getName() {
+		return "cwc-word";
 	}
 
 	@Override
@@ -83,12 +68,27 @@ public class AT_07d_LongestWord implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getDescription() {
-		return "calculate column width: longest word";
-	}
+	public void showOutput(){
+		// tag::example[]
+		AsciiTable at = new AsciiTable();
+		at.addRule();
+		AT_Row row1 = at.addRow("first", "information");
+		at.addRule();
+		AT_Row row2 = at.addRow("second", "info");
+		at.addRule();
 
-	@Override
-	public String getID() {
-		return "cwc-word";
+		at.getRenderer().setCWC(new CWC_LongestWord());
+		System.out.println(at.render());
+
+		at.setPaddingLeftRight(1);
+		System.out.println(at.render());
+
+		at.setPaddingLeftRight(0);
+		row1.getCells().get(0).getContext().setPaddingLeftRight(2);
+		row1.getCells().get(1).getContext().setPaddingLeftRight(3);
+		row2.getCells().get(0).getContext().setPaddingLeftRight(3);
+		row2.getCells().get(1).getContext().setPaddingLeftRight(4);
+		System.out.println(at.render());
+		// end::example[]
 	}
 }

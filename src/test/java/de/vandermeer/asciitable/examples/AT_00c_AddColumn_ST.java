@@ -20,7 +20,7 @@ import org.stringtemplate.v4.ST;
 
 import de.svenjacobs.loremipsum.LoremIpsum;
 import de.vandermeer.asciitable.AsciiTable;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
 /**
  * AsciiTable example demonstrating that {@link ST} objects are automatically added as text.
@@ -32,15 +32,13 @@ import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 public class AT_00c_AddColumn_ST implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		ST st = new ST(new LoremIpsum().getWords(10));
-		AsciiTable at = new AsciiTable();
-		at.addRule();
-		at.addRow(st);
-		at.addRule();
-		System.out.println(at.render());
-		// end::example[]
+	public String getDescription() {
+		return "add column from StringTemplate";
+	}
+
+	@Override
+	public String getName() {
+		return "col-st";
 	}
 
 	@Override
@@ -57,14 +55,14 @@ public class AT_00c_AddColumn_ST implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getID() {
-		// TODO Auto-generated method stub
-		return null;
+	public void showOutput(){
+		// tag::example[]
+		ST st = new ST(new LoremIpsum().getWords(10));
+		AsciiTable at = new AsciiTable();
+		at.addRule();
+		at.addRow(st);
+		at.addRule();
+		System.out.println(at.render());
+		// end::example[]
 	}
 }

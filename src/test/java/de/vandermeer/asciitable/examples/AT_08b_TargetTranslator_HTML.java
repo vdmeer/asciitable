@@ -18,7 +18,7 @@ package de.vandermeer.asciitable.examples;
 import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciitable.AsciiTable;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
 import de.vandermeer.translation.targets.Text2Html;
 
@@ -32,23 +32,13 @@ import de.vandermeer.translation.targets.Text2Html;
 public class AT_08b_TargetTranslator_HTML implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		String text = "A sentence with some normal text, not specific to HTML. " +
-				"Now for some characters that require conversion: # % & < >. " +
-				"And some more: © § ¤. " +
-				"And even more: Ē ē Ĕ ĕ Ė ė Ę ę Ě ě. " +
-				"And some arrows as well: ← ↑ → ↓ ↔ ↕"
-		;
+	public String getDescription() {
+		return "translate cell content for HTML";
+	}
 
-		AsciiTable at = new AsciiTable();
-		at.addRule();
-		at.addRow(text, text).getCells().get(1).getContext().setTargetTranslator(new Text2Html());
-		at.addRule();
-		at.setTextAlignment(TextAlignment.LEFT);
-
-		System.out.println(at.render());
-		// end::example[]
+	@Override
+	public String getName() {
+		return "target-html";
 	}
 
 	@Override
@@ -73,12 +63,22 @@ public class AT_08b_TargetTranslator_HTML implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getDescription() {
-		return "translate cell content for HTML";
-	}
+	public void showOutput(){
+		// tag::example[]
+		String text = "A sentence with some normal text, not specific to HTML. " +
+				"Now for some characters that require conversion: # % & < >. " +
+				"And some more: © § ¤. " +
+				"And even more: Ē ē Ĕ ĕ Ė ė Ę ę Ě ě. " +
+				"And some arrows as well: ← ↑ → ↓ ↔ ↕"
+		;
 
-	@Override
-	public String getID() {
-		return "target-html";
+		AsciiTable at = new AsciiTable();
+		at.addRule();
+		at.addRow(text, text).getCells().get(1).getContext().setTargetTranslator(new Text2Html());
+		at.addRule();
+		at.setTextAlignment(TextAlignment.LEFT);
+
+		System.out.println(at.render());
+		// end::example[]
 	}
 }

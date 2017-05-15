@@ -19,7 +19,7 @@ import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciitable.CWC_FixedWidth;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
 
 /**
@@ -32,16 +32,13 @@ import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
 public class AT_09c_ListWithLinebreaks implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		AsciiTable at = new AsciiTable();
-		at.addRule();
-		at.addRow("column with a list using conditional line breaks", " * list item one<br> * list item two<br> * list item three");
-		at.addRule();
-		at.setTextAlignment(TextAlignment.LEFT);
-		at.getRenderer().setCWC(new CWC_FixedWidth().add(20).add(25));
-		System.out.println(at.render(50));
-		// end::example[]
+	public String getDescription() {
+		return "a list using conditional linebreaks";
+	}
+
+	@Override
+	public String getName() {
+		return "list-clb";
 	}
 
 	@Override
@@ -55,12 +52,15 @@ public class AT_09c_ListWithLinebreaks implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getDescription() {
-		return "a list using conditional linebreaks";
-	}
-
-	@Override
-	public String getID() {
-		return "list-clb";
+	public void showOutput(){
+		// tag::example[]
+		AsciiTable at = new AsciiTable();
+		at.addRule();
+		at.addRow("column with a list using conditional line breaks", " * list item one<br> * list item two<br> * list item three");
+		at.addRule();
+		at.setTextAlignment(TextAlignment.LEFT);
+		at.getRenderer().setCWC(new CWC_FixedWidth().add(20).add(25));
+		System.out.println(at.render(50));
+		// end::example[]
 	}
 }

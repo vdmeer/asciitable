@@ -17,7 +17,7 @@ package de.vandermeer.asciitable.examples;
 
 import org.junit.Test;
 
-import de.vandermeer.skb.interfaces.StandardExampleRunner;
+import de.vandermeer.skb.interfaces.examples.StandardExampleRunner;
 
 /**
  * Tests for ASCII Table for code used in documentation.

@@ -18,7 +18,7 @@ package de.vandermeer.asciitable.examples;
 import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciitable.AsciiTable;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
 /**
  * AsciiTable example for URIs as content.
@@ -30,33 +30,13 @@ import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 public class AT_09a_URIs implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		AsciiTable at = new AsciiTable();
-		at.addRule();
-		at.addRow("scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]", "scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]");
-		at.addRule();
-		at.addRow(null, "scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]");
-		at.addRule();
-		at.addRow("abc://username:password@example.com:123/path/data?key=value#fragid1", "abc://username:password@example.com:123/path/data?key=value#fragid1");
-		at.addRule();
-		at.addRow(null, "abc://username:password@example.com:123/path/data?key=value#fragid1");
-		at.addRule();
-		at.addRow("urn:example:mammal:monotreme:echidna", "urn:example:mammal:monotreme:echidna");
-		at.addRule();
-		at.addRow(null, "urn:example:mammal:monotreme:echidna");
-		at.addRule();
-		at.addRow("http://www.example.com/test1/test2", "http://www.example.com/test1/test2");
-		at.addRule();
-		at.addRow(null, "http://www.example.com/test1/test2");
-		at.addRule();
-		at.addRow("mailto:user1@example.com", "mailto:firstname.lastname@example.com");
-		at.addRule();
-		at.addRow(null, "mailto:firstname.lastname@example.com");
-		at.addRule();
+	public String getDescription() {
+		return "URIs as cell content";
+	}
 
-		System.out.println(at.render(73));
-		// end::example[]
+	@Override
+	public String getName() {
+		return "uri";
 	}
 
 	@Override
@@ -91,12 +71,32 @@ public class AT_09a_URIs implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getDescription() {
-		return "URIs as cell content";
-	}
+	public void showOutput(){
+		// tag::example[]
+		AsciiTable at = new AsciiTable();
+		at.addRule();
+		at.addRow("scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]", "scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]");
+		at.addRule();
+		at.addRow(null, "scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]");
+		at.addRule();
+		at.addRow("abc://username:password@example.com:123/path/data?key=value#fragid1", "abc://username:password@example.com:123/path/data?key=value#fragid1");
+		at.addRule();
+		at.addRow(null, "abc://username:password@example.com:123/path/data?key=value#fragid1");
+		at.addRule();
+		at.addRow("urn:example:mammal:monotreme:echidna", "urn:example:mammal:monotreme:echidna");
+		at.addRule();
+		at.addRow(null, "urn:example:mammal:monotreme:echidna");
+		at.addRule();
+		at.addRow("http://www.example.com/test1/test2", "http://www.example.com/test1/test2");
+		at.addRule();
+		at.addRow(null, "http://www.example.com/test1/test2");
+		at.addRule();
+		at.addRow("mailto:user1@example.com", "mailto:firstname.lastname@example.com");
+		at.addRule();
+		at.addRow(null, "mailto:firstname.lastname@example.com");
+		at.addRule();
 
-	@Override
-	public String getID() {
-		return "uri";
+		System.out.println(at.render(73));
+		// end::example[]
 	}
 }

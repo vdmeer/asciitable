@@ -19,7 +19,7 @@ import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciithemes.a8.A8_Grids;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
 /**
  * AsciiTable example for grids with different rule styles.
@@ -31,21 +31,13 @@ import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 public class AT_06b_GridRuleStyle implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		AsciiTable at = new AsciiTable();
-		at.addRule();
-		at.addRow("rc 11", "rc 12");
-		at.addLightRule();
-		at.addRow("rc 21", "rc 22");
-		at.addStrongRule();
-		at.addRow("rc 31", "rc 32");
-		at.addHeavyRule();
-		at.getContext().setWidth(13);
+	public String getDescription() {
+		return "different styles for table rules from a grid";
+	}
 
-		at.getContext().setGrid(A8_Grids.lineDoubleBlocks());
-		System.out.println(at.render());
-		// end::example[]
+	@Override
+	public String getName() {
+		return "grid-rule-style";
 	}
 
 	@Override
@@ -67,12 +59,20 @@ public class AT_06b_GridRuleStyle implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getDescription() {
-		return "different styles for table rules from a grid";
-	}
+	public void showOutput(){
+		// tag::example[]
+		AsciiTable at = new AsciiTable();
+		at.addRule();
+		at.addRow("rc 11", "rc 12");
+		at.addLightRule();
+		at.addRow("rc 21", "rc 22");
+		at.addStrongRule();
+		at.addRow("rc 31", "rc 32");
+		at.addHeavyRule();
+		at.getContext().setWidth(13);
 
-	@Override
-	public String getID() {
-		return "grid-rule-style";
+		at.getContext().setGrid(A8_Grids.lineDoubleBlocks());
+		System.out.println(at.render());
+		// end::example[]
 	}
 }

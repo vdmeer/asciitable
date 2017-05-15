@@ -18,7 +18,7 @@ package de.vandermeer.asciitable.examples;
 import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciitable.AsciiTable;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
 import de.vandermeer.translation.targets.Text2Latex;
 
@@ -32,23 +32,13 @@ import de.vandermeer.translation.targets.Text2Latex;
 public class AT_08a_TargetTranslator_Latex implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		String text = "A sentence with some normal text, not specific to LaTeX. " +
-			"Now for some characters that require conversion: # % &. " +
-			"And some more: © § ¤. " +
-			"And even more: È É Ê Ë. " +
-			"And some arrows as well: ← ↑ → ↓ ↔"
-		;
+	public String getDescription() {
+		return "translate cell content for LaTeX";
+	}
 
-		AsciiTable at = new AsciiTable();
-		at.addRule();
-		at.addRow(text, text).getCells().get(1).getContext().setTargetTranslator(new Text2Latex());
-		at.addRule();
-		at.setTextAlignment(TextAlignment.LEFT);
-
-		System.out.println(at.render());
-		// end::example[]
+	@Override
+	public String getName() {
+		return "target-latex";
 	}
 
 	@Override
@@ -73,12 +63,22 @@ public class AT_08a_TargetTranslator_Latex implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getDescription() {
-		return "translate cell content for LaTeX";
-	}
+	public void showOutput(){
+		// tag::example[]
+		String text = "A sentence with some normal text, not specific to LaTeX. " +
+			"Now for some characters that require conversion: # % &. " +
+			"And some more: © § ¤. " +
+			"And even more: È É Ê Ë. " +
+			"And some arrows as well: ← ↑ → ↓ ↔"
+		;
 
-	@Override
-	public String getID() {
-		return "target-latex";
+		AsciiTable at = new AsciiTable();
+		at.addRule();
+		at.addRow(text, text).getCells().get(1).getContext().setTargetTranslator(new Text2Latex());
+		at.addRule();
+		at.setTextAlignment(TextAlignment.LEFT);
+
+		System.out.println(at.render());
+		// end::example[]
 	}
 }

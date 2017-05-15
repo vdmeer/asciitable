@@ -19,7 +19,7 @@ import org.apache.commons.lang3.text.StrBuilder;
 
 import de.svenjacobs.loremipsum.LoremIpsum;
 import de.vandermeer.asciitable.AsciiTable;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 import de.vandermeer.skb.interfaces.render.DoesRenderToWidth;
 import de.vandermeer.skb.interfaces.transformers.textformat.Text_To_FormattedText;
 
@@ -33,21 +33,13 @@ import de.vandermeer.skb.interfaces.transformers.textformat.Text_To_FormattedTex
 public class AT_00g_AddColumn_DoesRenderToWidth implements StandardExampleAsCmd {
 
 	@Override
-	public void showOutput(){
-		// tag::example[]
-		AsciiTable at = new AsciiTable();
-		class ObjectDoesRenderToWidth implements DoesRenderToWidth{
-			@Override
-			public String render(int width) {
-				return new StrBuilder().appendWithSeparators(Text_To_FormattedText.left(new LoremIpsum().getWords(10), width), "\n").toString();
-			}
-		}
+	public String getDescription() {
+		return "add column from does render to width";
+	}
 
-		at.addRule();
-		at.addRow(new ObjectDoesRenderToWidth());
-		at.addRule();
-		System.out.println(at.render(30));
-		// end::example[]
+	@Override
+	public String getName() {
+		return "col-does-render-width";
 	}
 
 	@Override
@@ -70,14 +62,20 @@ public class AT_00g_AddColumn_DoesRenderToWidth implements StandardExampleAsCmd 
 	}
 
 	@Override
-	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public void showOutput(){
+		// tag::example[]
+		AsciiTable at = new AsciiTable();
+		class ObjectDoesRenderToWidth implements DoesRenderToWidth{
+			@Override
+			public String render(int width) {
+				return new StrBuilder().appendWithSeparators(Text_To_FormattedText.left(new LoremIpsum().getWords(10), width), "\n").toString();
+			}
+		}
 
-	@Override
-	public String getID() {
-		// TODO Auto-generated method stub
-		return null;
+		at.addRule();
+		at.addRow(new ObjectDoesRenderToWidth());
+		at.addRule();
+		System.out.println(at.render(30));
+		// end::example[]
 	}
 }
