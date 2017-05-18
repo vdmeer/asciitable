@@ -57,7 +57,7 @@ public class CWC_FixedWidth implements AT_ColumnWidthCalculator {
 		Validate.notNull(rows);
 
 		if(colNumbers != (this.ar.length)){
-			throw new AsciiTableException(this.getClass().getSimpleName() + ": wrong length of columns array", "columns array length must be the same as the columns used to initialize the table, expeced <" + colNumbers + "> found <" + this.ar.length + ">");
+			throw new AsciiTableException(this.getClass().getSimpleName() + ": wrong length of columns array: columns array length must be the same as the columns used to initialize the table, expeced <" + colNumbers + "> found <" + this.ar.length + ">");
 		}
 		int[] ret = ArrayUtils.addAll(new int[0], this.ar);
 		return ret;

@@ -182,9 +182,9 @@ public interface AT_Renderer extends IsTableRenderer {
 					ruleset = TA_GridConfig.RULESET_HEAVY;
 					break;
 				case UNKNOWN:
-					throw new AsciiTableException("AT_Renderer: cannot render unknown row style", "table row style set to 'unknown'");
+					throw new AsciiTableException("AT_Renderer: cannot render 'unknown' row style");
 				default:
-					throw new AsciiTableException("AT_Renderer: cannot render unknown row style", "table row style not specified or type not processed");
+					throw new AsciiTableException("AT_Renderer: cannot render: table row style not specified or type not processed");
 			}
 
 			switch(row.getType()){
@@ -195,7 +195,7 @@ public interface AT_Renderer extends IsTableRenderer {
 					String[][] cAr = new String[colNumbers][];
 					LinkedList<AT_Cell> cells = row.getCells();
 					if(cells==null){
-						throw new AsciiTableException("cannot render table", "row content (cells) was null");
+						throw new AsciiTableException("cannot render table: row content (cells) was null");
 					}
 
 					int length = 0;
@@ -273,9 +273,9 @@ public interface AT_Renderer extends IsTableRenderer {
 					table.add(Pair.of(ruleset, cAr));
 					break;
 				case UNKNOWN:
-					throw new AsciiTableException("AT_Renderer: cannot render unknown row type", "table row type set to 'unknown'");
+					throw new AsciiTableException("AT_Renderer: cannot render 'unknown' row type");
 				default:
-					throw new AsciiTableException("AT_Renderer: cannot render unknown row type", "table row type not specified or type not processed");
+					throw new AsciiTableException("AT_Renderer: cannot render: table row type not specified or type not processed");
 			}
 		}
 

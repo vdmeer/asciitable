@@ -120,7 +120,7 @@ public class AsciiTable implements IsTable {
 		}
 		else{
 			if(columns.length!=this.colNumber){
-				throw new AsciiTableException("wrong columns argument", "wrong number of columns, expected " + this.colNumber + " received " + columns.length);
+				throw new AsciiTableException("wrong number of columns, expected " + this.colNumber + " received " + columns.length);
 			}
 		}
 

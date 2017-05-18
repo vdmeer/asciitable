@@ -36,10 +36,9 @@ public class AsciiTableException extends RuntimeException {
 	/**
 	 * Returns a new exception with given cause and message
 	 * @param msg exception message
-	 * @param cause exception cause
 	 */
-	public AsciiTableException(String msg, String cause){
-		super(msg, new Error(cause));
+	public AsciiTableException(String msg){
+		super(msg);
 	}
 
 	/**
