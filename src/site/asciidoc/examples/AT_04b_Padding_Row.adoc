@@ -2,8 +2,7 @@
 
 The padding of text can be set for individual table rows.
 
-The following code creates a table, adds text objects, and then changes the padding for the second row leaving the first row to the default (no padding).
-
+This example creates a table, adds text objects, and then changes the padding for the second row leaving the first row to the default (no padding).
 
 
 [source, java, linenums]

@@ -2,8 +2,7 @@
 
 The padding of text can be set for individual table cells.
 
-The following code creates a table, adds text objects, and then changes the padding for the last cell in second row leaving all other cells to the default (no padding).
-
+This example creates a table, adds text objects, and then changes the padding for the last cell in second row leaving all other cells to the default (no padding).
 
 
 [source, java, linenums]

@@ -3,7 +3,7 @@
 This width calculator takes the longest word in each column and sets the column width to it.
 It can be further configured to a maximum column width.
 
-The following code shows a few examples for the behavior of this width calculator for a table with 2 columns:
+This example shows a few examples for the behavior of this width calculator for a table with 2 columns:
 
 - First example: maximum width set to 8 for all columns
 - Second example: maximum width of first column set to 4, maximum width of second column removed

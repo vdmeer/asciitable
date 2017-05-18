@@ -18,7 +18,7 @@ The following examples show this behavior.
 ==== ST
 
 We start with `ST` object.
-The following example creates a simple ST object with some text, and adds it to a table.
+This example creates a simple ST object with some text, and adds it to a table.
 
 [source, java, linenums]
 ----------------------------------------------------------------------------------------
@@ -36,7 +36,7 @@ The resulting output shows that the rendered ST is used as text for the table:
 ==== HasText
 
 Next, an object that implements `HasText`.
-The following example creates a simple HasText object with some text, and adds it to a table.
+This example creates a simple HasText object with some text, and adds it to a table.
 
 [source, java, linenums]
 ----------------------------------------------------------------------------------------
@@ -54,7 +54,7 @@ The resulting output:
 ==== HasTextCluster
 
 Next, an object that implements `HasTextCluster`.
-The following example creates a simple HasTextCluster object with some text, and adds it to a table.
+This example creates a simple HasTextCluster object with some text, and adds it to a table.
 
 [source, java, linenums]
 ----------------------------------------------------------------------------------------
@@ -74,7 +74,7 @@ The resulting output:
 ==== DoesRender
 
 Next, an object that implements `DoesRender`.
-The following example creates a simple DoesRender object with some text, and adds it to a table.
+This example creates a simple DoesRender object with some text, and adds it to a table.
 
 [source, java, linenums]
 ----------------------------------------------------------------------------------------
@@ -92,7 +92,7 @@ The resulting output:
 ==== DoesRenderToWidth
 
 Next, an object that implements `DoesRenderToWidth`.
-The following example creates a simple DoesRenderToWidth object with some text, and adds it to a table.
+This example creates a simple DoesRenderToWidth object with some text, and adds it to a table.
 
 [source, java, linenums]
 ----------------------------------------------------------------------------------------
@@ -112,7 +112,7 @@ The resulting output:
 ==== RendersToCluster
 
 Next, an object that implements `RendersToCluster`.
-The following example creates a simple RendersToCluster object with some text, and adds it to a table.
+This example creates a simple RendersToCluster object with some text, and adds it to a table.
 
 [source, java, linenums]
 ----------------------------------------------------------------------------------------
@@ -132,7 +132,7 @@ The resulting output:
 ==== RendersToClusterWidth
 
 Next, an object that implements `RendersToClusterWidth`.
-The following example creates a simple RendersToClusterWidth object with some text, and adds it to a table.
+This example creates a simple RendersToClusterWidth object with some text, and adds it to a table.
 
 [source, java, linenums]
 ----------------------------------------------------------------------------------------

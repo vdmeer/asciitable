@@ -4,8 +4,7 @@ Uniform Resource Identifiers (URIs) can be used in a table.
 No special rules are applied to them for line breaks.
 The renderer tries to put as many characters of a URI into a single line as possible.
 
-
-The following example shows a table with various columns and URIs.
+This example shows a table with various columns and URIs.
 
 [source, java, linenums]
 ----------------------------------------------------------------------------------------

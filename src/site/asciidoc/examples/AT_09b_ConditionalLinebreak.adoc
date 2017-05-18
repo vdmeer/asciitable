@@ -3,7 +3,7 @@
 With all excessive white spaces being removed, conditional line breaks in a cell need to be done using a markup.
 The implementation recognizes the two HTML line break markups `<br>` and `<br />`.
 
-The example below adds text to a table cell with excessive white spaces (being removed) and conditional line breaks (being translated into line breaks).
+This example adds text to a table cell with excessive white spaces (being removed) and conditional line breaks (being translated into line breaks).
 
 The lines 1 and 2 add a conditional line break as `<br>` and `<br />` respectively.
 They appear as individual lines.

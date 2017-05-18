@@ -3,7 +3,7 @@
 This width calculator takes the longest line in each column and sets the column width to it.
 The calculator can be configured to use a minimum and maximum length for particular columns.
 
-The following code shows a few examples for the behavior of this width calculator for a table with 5 columns and text of different length per column:
+This example shows a few examples for the behavior of this width calculator for a table with 5 columns and text of different length per column:
 
 - First example: the table without padding
 - Second example: calculator using a minimum length of 4 for the first column

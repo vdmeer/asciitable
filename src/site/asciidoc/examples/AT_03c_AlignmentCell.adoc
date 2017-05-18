@@ -2,7 +2,7 @@
 
 The alignment of text can be set for individual table cells.
 
-The following code creates a table, adds text objects, and then sets the text alignment for the last cell in second row to right leaving all other cells to the default justified alignment.
+This example creates a table, adds text objects, and then sets the text alignment for the last cell in second row to right leaving all other cells to the default justified alignment.
 
 [source, java, linenums]
 ----------------------------------------------------------------------------------------

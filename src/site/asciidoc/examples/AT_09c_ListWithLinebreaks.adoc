@@ -2,7 +2,7 @@
 
 Conditional line breaks can also be used for creating the impression of lists.
 
-The following example shows a list using conditional line breaks in the left columns.
+This example shows a list using conditional line breaks in the left columns.
 
 [source, java, linenums]
 ----------------------------------------------------------------------------------------

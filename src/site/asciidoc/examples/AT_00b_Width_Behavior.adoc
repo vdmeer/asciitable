@@ -2,7 +2,7 @@
 
 
 The width of a table can be set via its context.
-The following example creates a table and then sets the width and shows the output.
+This example creates a table and then sets the width and shows the output.
 The first width is 50 (line 8), the second 40 (line 11), and the third 30 characters (line 14).
 
 [source, java, linenums]

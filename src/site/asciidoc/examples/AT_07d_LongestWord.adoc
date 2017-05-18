@@ -2,11 +2,11 @@
 
 This width calculator takes the longest word in each column and sets the column width to it.
 
-The following code shows a few examples for the behavior of this width calculator for a table with 2 columns:
+This example shows a few examples for the behavior of this width calculator for a table with 2 columns:
 
-- First example: no padding, longes line determines the column width
+- First example: no padding, longest line determines the column width
 - Second example: table with a left/right padding of 1
-- Third example: cells with individual padding, chaning the longest word
+- Third example: cells with individual padding, changing the longest word
 
 [source, java, linenums]
 ----------------------------------------------------------------------------------------

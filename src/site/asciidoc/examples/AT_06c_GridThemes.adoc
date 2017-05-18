@@ -4,7 +4,7 @@ Grids support different themes.
 A grid theme defines which grid characters from which position should be rendered.
 All other character will be rendered using a default character, usually blank.
 
-The following example creates a table and then renders it using different grid themes:
+This example creates a table and then renders it using different grid themes:
 
 - full grid
 - no grid

@@ -5,10 +5,10 @@ For instance, a table with 3 columns and a width of 34 will result in a column w
 
 - 1 character for the left grid
 - 1 character for the right grid
-- 2 characters forthe grid between the 3 columns
+- 2 characters for the grid between the 3 columns
 - 3 columns and 30 characters remaining = 10 characters per column
 
-The following example creates a table and then renders the table with a width of 50, 30, and 20.
+This example creates a table and then renders the table with a width of 50, 30, and 20.
 
 [source, java, linenums]
 ----------------------------------------------------------------------------------------

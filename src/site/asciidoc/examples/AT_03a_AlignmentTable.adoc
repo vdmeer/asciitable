@@ -2,7 +2,7 @@
 
 The alignment of text can be set for the whole table at once, after all text objects are added.
 
-The following code creates a table, adds text objects, and then sets the text alignment for the whole table to right.
+This example creates a table, adds text objects, and then sets the text alignment for the whole table to right.
 
 Note: settings for the whole table only effect cells that have been already added.
 

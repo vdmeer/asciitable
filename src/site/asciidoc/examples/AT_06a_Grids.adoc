@@ -5,8 +5,8 @@ The grid is based on the `TA_Grid` implementation in the package `ascii-utf-them
 The package also provides a number of predefined grids using standard 7-Bit ASCII characters, standard 8-Bit ASCII characters, and UTF characters.
 
 
-The following example creates a table and renders it (then using the default grid).
-The we change the grid 4 times and render the table, resulting in different grids being used.
+This example creates a table and renders it (then using the default grid).
+Then we change the grid 4 times and render the table, resulting in different grids being used.
 
 [source, java, linenums]
 ----------------------------------------------------------------------------------------

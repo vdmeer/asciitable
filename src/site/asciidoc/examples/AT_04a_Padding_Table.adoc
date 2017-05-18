@@ -3,7 +3,7 @@
 Inside a cell, the padding for top and bottom (above and below cell text) as well as left and right (horizontally before and after each line of text) can be set separately.
 The character used for the padding can be set as well.
 
-The following code shows how to set the padding for the whole table.
+This example shows how to set the padding for the whole table.
 First, we create a table and add content (rows with cells and text).
 Then we set the padding and the padding character for the whole table.
 

@@ -3,7 +3,7 @@
 This width calculator takes a fixed width per column.
 The width per column can be added to the calculator.
 
-The following example creates a table and then renders the table with 3 different examples for fixed column width:
+This example creates a table and then renders the table with 3 different examples for fixed column width:
 
 - First example: column 1 width 10, column 2 width 20, column 3 width 30
 - Second example: column 1 width 5, column 2 width 10, column 3 width 15

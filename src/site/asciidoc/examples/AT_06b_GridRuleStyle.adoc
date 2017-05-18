@@ -8,7 +8,7 @@ Currently defined styles for the table are:
 - strong - a rule rendered using strong characters (e.g. stronger than normal)
 - heavy - a rule rendered using heavy characters (e.g. heavy than strong)
 
-The following example creates a table with rules of different styles and applies a grid supporting all styles to the table.
+This example creates a table with rules of different styles and applies a grid supporting all styles to the table.
 
 [source, java, linenums]
 ----------------------------------------------------------------------------------------
