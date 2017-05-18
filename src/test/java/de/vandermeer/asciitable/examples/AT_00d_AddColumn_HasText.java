@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.examples;
 
-import org.apache.commons.lang3.text.StrBuilder;
-
 import de.svenjacobs.loremipsum.LoremIpsum;
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
@@ -37,27 +35,33 @@ public class AT_00d_AddColumn_HasText implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"This example creates a simple HasText object with some text, and adds it to a table."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "col-hastext";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"AsciiTable at = new AsciiTable();",
-				"class ObjectHasText implements HasText{",
-				"	@Override",
-				"	public String getText() {",
-				"		return new LoremIpsum().getWords(10);",
-				"	}",
-				"}",
-				"",
-				"at.addRule();",
-				"at.addRow(new ObjectHasText());",
-				"at.addRule();",
-				"System.out.println(at.render());",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"class ObjectHasText implements HasText{\r\n" + 
+				"	@Override\r\n" + 
+				"	public String getText() {\r\n" + 
+				"		return new LoremIpsum().getWords(10);\r\n" + 
+				"	}\r\n" + 
+				"}\r\n" + 
+				"\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(new ObjectHasText());\r\n" + 
+				"at.addRule();\r\n" + 
+				"System.out.println(at.render());"
+		;
 	}
 
 	@Override

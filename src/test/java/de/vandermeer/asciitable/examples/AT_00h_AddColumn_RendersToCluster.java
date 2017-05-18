@@ -18,8 +18,6 @@ package de.vandermeer.asciitable.examples;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.apache.commons.lang3.text.StrBuilder;
-
 import de.svenjacobs.loremipsum.LoremIpsum;
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
@@ -40,31 +38,37 @@ public class AT_00h_AddColumn_RendersToCluster implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"This example creates a simple RendersToCluster object with some text, and adds it to a table."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "col-render-cluster";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"AsciiTable at = new AsciiTable();",
-				"class ObjectRendersToCluster implements RendersToCluster{",
-				"	@Override",
-				"	public Collection<String> renderAsCollection() {",
-				"		ArrayList<String> text = new ArrayList<>();",
-				"		text.add(new LoremIpsum().getWords(10));",
-				"		text.add(new LoremIpsum().getWords(10));",
-				"		text.add(new LoremIpsum().getWords(10));",
-				"		return text;",
-				"	}",
-				"}",
-				"",
-				"at.addRule();",
-				"at.addRow(new ObjectRendersToCluster());",
-				"at.addRule();",
-				"System.out.println(at.render());",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"class ObjectRendersToCluster implements RendersToCluster{\r\n" + 
+				"	@Override\r\n" + 
+				"	public Collection<String> renderAsCollection() {\r\n" + 
+				"		ArrayList<String> text = new ArrayList<>();\r\n" + 
+				"		text.add(new LoremIpsum().getWords(10));\r\n" + 
+				"		text.add(new LoremIpsum().getWords(10));\r\n" + 
+				"		text.add(new LoremIpsum().getWords(10));\r\n" + 
+				"		return text;\r\n" + 
+				"	}\r\n" + 
+				"}\r\n" + 
+				"\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(new ObjectRendersToCluster());\r\n" + 
+				"at.addRule();\r\n" + 
+				"System.out.println(at.render());"
+		;
 	}
 
 	@Override

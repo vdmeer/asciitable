@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.examples;
 
-import org.apache.commons.lang3.text.StrBuilder;
-
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciithemes.a8.A8_Grids;
 import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
@@ -36,26 +34,39 @@ public class AT_06b_GridRuleStyle implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"Grids can support different styles for a rule (a horizontal line in the table).\r\n" + 
+				"Currently defined styles for the table are:\r\n" + 
+				"normal (a normal rule)\r\n" + 
+				"light (a rule rendered using light characters (e.g. lighter than normal))\r\n" + 
+				"strong (a rule rendered using strong characters (e.g. stronger than normal)), and \r\n" + 
+				"heavy (a rule rendered using heavy characters (e.g. heavy than strong))\r\n" + 
+				"This example creates a table with rules of different styles and applies a grid supporting all styles to the table."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "grid-rule-style";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"AsciiTable at = new AsciiTable();",
-				"at.addRule();",
-				"at.addRow(\"rc 11\", \"rc 12\");",
-				"at.addLightRule();",
-				"at.addRow(\"rc 21\", \"rc 22\");",
-				"at.addStrongRule();",
-				"at.addRow(\"rc 31\", \"rc 32\");",
-				"at.addHeavyRule();",
-				"",
-				"at.getContext().setGrid(A8_Grids.lineDobuleBlocks());",
-				"System.out.println(at.render());",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"rc 11\", \"rc 12\");\r\n" + 
+				"at.addLightRule();\r\n" + 
+				"at.addRow(\"rc 21\", \"rc 22\");\r\n" + 
+				"at.addStrongRule();\r\n" + 
+				"at.addRow(\"rc 31\", \"rc 32\");\r\n" + 
+				"at.addHeavyRule();\r\n" + 
+				"at.getContext().setWidth(13);\r\n" + 
+				"\r\n" + 
+				"at.getContext().setGrid(A8_Grids.lineDoubleBlocks());\r\n" + 
+				"System.out.println(at.render());"
+		;
 	}
 
 	@Override

@@ -15,7 +15,6 @@
 
 package de.vandermeer.asciitable.examples;
 
-import org.apache.commons.lang3.text.StrBuilder;
 import org.stringtemplate.v4.ST;
 
 import de.svenjacobs.loremipsum.LoremIpsum;
@@ -37,21 +36,27 @@ public class AT_00c_AddColumn_ST implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"This example creates a simple ST object with some text, and adds it to a table."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "col-st";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"ST st = new ST(new LoremIpsum().getWords(10));",
-				"AsciiTable at = new AsciiTable();",
-				"at.addRule();",
-				"at.addRow(st);",
-				"at.addRule();",
-				"System.out.println(at.render());",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"ST st = new ST(new LoremIpsum().getWords(10));\r\n" + 
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(st);\r\n" + 
+				"at.addRule();\r\n" + 
+				"System.out.println(at.render());"
+		;
 	}
 
 	@Override

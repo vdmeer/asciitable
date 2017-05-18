@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.examples;
 
-import org.apache.commons.lang3.text.StrBuilder;
-
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciitable.CWC_FixedWidth;
 import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
@@ -36,28 +34,39 @@ public class AT_07b_Width_Fixed implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"This width calculator takes a fixed width per column.\r\n" + 
+				"The width per column can be added to the calculator.\r\n" + 
+				"This example creates a table and then renders the table with 3 different examples for fixed column width:\r\n" + 
+				"first example: column 1 width 10, column 2 width 20, column 3 width 30;\r\n" + 
+				"second example: column 1 width 5, column 2 width 10, column 3 width 15; and\r\n" + 
+				"third example: column 1 width 3, column 2 width 5, column 3 width 7"
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "cwc-fixed";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"AsciiTable at = new AsciiTable();",
-				"at.addRule();",
-				"at.addRow(\"col1\", \"col2\", \"col3\");",
-				"at.addRule();",
-				"",
-				"at.getRenderer().setCWC(new CWC_FixedWidth().add(10).add(20).add(30));",
-				"System.out.println(at.render());",
-				"",
-				"at.getRenderer().setCWC(new CWC_FixedWidth().add(5).add(10).add(15));",
-				"System.out.println(at.render());",
-				"",
-				"at.getRenderer().setCWC(new CWC_FixedWidth().add(3).add(5).add(7));",
-				"System.out.println(at.render());",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"col1\", \"col2\", \"col3\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"\r\n" + 
+				"at.getRenderer().setCWC(new CWC_FixedWidth().add(10).add(20).add(30));\r\n" + 
+				"System.out.println(at.render());\r\n" + 
+				"\r\n" + 
+				"at.getRenderer().setCWC(new CWC_FixedWidth().add(5).add(10).add(15));\r\n" + 
+				"System.out.println(at.render());\r\n" + 
+				"\r\n" + 
+				"at.getRenderer().setCWC(new CWC_FixedWidth().add(3).add(5).add(7));\r\n" + 
+				"System.out.println(at.render());"
+		;
 	}
 
 	@Override

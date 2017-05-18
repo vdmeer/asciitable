@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.examples;
 
-import org.apache.commons.lang3.text.StrBuilder;
-
 import de.svenjacobs.loremipsum.LoremIpsum;
 import de.vandermeer.asciitable.AT_Row;
 import de.vandermeer.asciitable.AsciiTable;
@@ -38,30 +36,36 @@ public class AT_03_AlignmentOptions implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"This example creates a table with 2 rows and 3 columns each, inserts some text into the cells, and applies different text alignment options to each cell: justified last line left, justified, justified last line right, left, centered, right."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "alignment";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"AsciiTable at = new AsciiTable();",
-				"String text = new LoremIpsum().getWords(19);",
-				"AT_Row row;",
-				"at.addRule();",
-				"row = at.addRow(text, text, text);",
-				"row.getCells().get(0).getContext().setTextAlignment(TextAlignment.JUSTIFIED_LEFT);",
-				"row.getCells().get(1).getContext().setTextAlignment(TextAlignment.JUSTIFIED);",
-				"row.getCells().get(2).getContext().setTextAlignment(TextAlignment.JUSTIFIED_RIGHT);",
-				"at.addRule();",
-				"row = at.addRow(text, text, text);",
-				"row.getCells().get(0).getContext().setTextAlignment(TextAlignment.LEFT);",
-				"row.getCells().get(1).getContext().setTextAlignment(TextAlignment.CENTER);",
-				"row.getCells().get(2).getContext().setTextAlignment(TextAlignment.RIGHT);",
-				"at.addRule();",
-				"System.out.println(at.render(79));",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"String text = new LoremIpsum().getWords(19);\r\n" + 
+				"AT_Row row;\r\n" + 
+				"at.addRule();\r\n" + 
+				"row = at.addRow(text, text, text);\r\n" + 
+				"row.getCells().get(0).getContext().setTextAlignment(TextAlignment.JUSTIFIED_LEFT);\r\n" + 
+				"row.getCells().get(1).getContext().setTextAlignment(TextAlignment.JUSTIFIED);\r\n" + 
+				"row.getCells().get(2).getContext().setTextAlignment(TextAlignment.JUSTIFIED_RIGHT);\r\n" + 
+				"at.addRule();\r\n" + 
+				"row = at.addRow(text, text, text);\r\n" + 
+				"row.getCells().get(0).getContext().setTextAlignment(TextAlignment.LEFT);\r\n" + 
+				"row.getCells().get(1).getContext().setTextAlignment(TextAlignment.CENTER);\r\n" + 
+				"row.getCells().get(2).getContext().setTextAlignment(TextAlignment.RIGHT);\r\n" + 
+				"at.addRule();\r\n" + 
+				"System.out.println(at.render(79));"
+		;
 	}
 
 	@Override

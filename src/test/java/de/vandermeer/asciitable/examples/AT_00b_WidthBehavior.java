@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.examples;
 
-import org.apache.commons.lang3.text.StrBuilder;
-
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
@@ -35,30 +33,38 @@ public class AT_00b_WidthBehavior implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"The width of a table can be set via its context.\r\n" + 
+				"This example creates a table and then sets the width and shows the output.\r\n" + 
+				"The first width is 50 (line 8), the second 40 (line 11), and the third 30 characters (line 14)."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "width";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"AsciiTable at = new AsciiTable();",
-				"at.addRule();",
-				"at.addRow(\"row 1 col 1\", \"row 1 col 2\");",
-				"at.addRule();",
-				"at.addRow(\"row 2 col 1\", \"row 2 col 2\");",
-				"at.addRule();",
-				"",
-				"at.getContext().setWidth(50);",
-				"System.out.println(at.render());",
-				"",
-				"at.getContext().setWidth(40);",
-				"System.out.println(at.render());",
-				"",
-				"at.getContext().setWidth(30);",
-				"System.out.println(at.render());",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"row 1 col 1\", \"row 1 col 2\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"row 2 col 1\", \"row 2 col 2\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"\r\n" + 
+				"at.getContext().setWidth(50);\r\n" + 
+				"System.out.println(at.render());\r\n" + 
+				"\r\n" + 
+				"at.getContext().setWidth(40);\r\n" + 
+				"System.out.println(at.render());\r\n" + 
+				"\r\n" + 
+				"at.getContext().setWidth(30);\r\n" + 
+				"System.out.println(at.render());"
+		;
 	}
 
 	@Override

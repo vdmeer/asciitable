@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.examples;
 
-import org.apache.commons.lang3.text.StrBuilder;
-
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciithemes.a7.A7_Grids;
 import de.vandermeer.asciithemes.a8.A8_Grids;
@@ -38,36 +36,47 @@ public class AT_06a_Grids implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"The frame of a table is called grid in the implementation.\r\n" + 
+				"The grid is based on the `TA_Grid` implementation in the package `ascii-utf-themes`.\r\n" + 
+				"The package also provides a number of predefined grids using standard 7-Bit ASCII characters, standard 8-Bit ASCII characters, and UTF characters.\r\n" + 
+				"<br /><br />" + 
+				"This example creates a table and renders it (then using the default grid).\r\n" + 
+				"Then we change the grid 4 times and render the table, resulting in different grids being used."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "grid";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"AsciiTable at = new AsciiTable();",
-				"at.addRule();",
-				"at.addRow(\"rc 11\", \"rc 12\");",
-				"at.addRule();",
-				"at.addRow(\"rc 21\", \"rc 22\");",
-				"at.addRule();",
-				"at.getContext().setWidth(13);",
-				"",
-				"System.out.println(at.render());",
-				"",
-				"at.getContext().setGrid(A7_Grids.minusBarPlusEquals());",
-				"System.out.println(at.render());",
-				"",
-				"at.getContext().setGrid(A8_Grids.lineDobuleBlocks());",
-				"System.out.println(at.render());",
-				"",
-				"at.getContext().setGrid(U8_Grids.borderDoubleLight());",
-				"System.out.println(at.render());",
-				"",
-				"at.getContext().setGrid(U8_Grids.borderLight());",
-				"System.out.println(at.render());",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"rc 11\", \"rc 12\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"rc 21\", \"rc 22\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.getContext().setWidth(13);\r\n" + 
+				"\r\n" + 
+				"System.out.println(at.render());\r\n" + 
+				"\r\n" + 
+				"at.getContext().setGrid(A7_Grids.minusBarPlusEquals());\r\n" + 
+				"System.out.println(at.render());\r\n" + 
+				"\r\n" + 
+				"at.getContext().setGrid(A8_Grids.lineDoubleBlocks());\r\n" + 
+				"System.out.println(at.render());\r\n" + 
+				"\r\n" + 
+				"at.getContext().setGrid(U8_Grids.borderDoubleLight());\r\n" + 
+				"System.out.println(at.render());\r\n" + 
+				"\r\n" + 
+				"at.getContext().setGrid(U8_Grids.borderDouble());\r\n" + 
+				"System.out.println(at.render());"
+		;
 	}
 
 	@Override

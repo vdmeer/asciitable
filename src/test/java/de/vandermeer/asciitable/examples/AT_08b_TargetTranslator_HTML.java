@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.examples;
 
-import org.apache.commons.lang3.text.StrBuilder;
-
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
@@ -37,29 +35,39 @@ public class AT_08b_TargetTranslator_HTML implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"This example uses a translator for the target HTML.\r\n" + 
+				"This means that all characters in the text that require special translation for being used in a HTML document will be translated into that representation (depending on the capabilities of the translator of course).\r\n" + 
+				"\r\n" + 
+				"The code below creates a table with two columns using the same text with special characters for translation.\r\n" + 
+				"The left column in the table is rendered without translation, the right column is rendered with translation."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "target-html";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"String text = \"A sentence with some normal text, not specific to HTML. \" +",
-				"		\"Now for some characters that require conversion: # % & < >. \" +",
-				"		\"And some more: © § ¤. \" +",
-				"		\"And even more: Ē ē Ĕ ĕ Ė ė Ę ę Ě ě. \" +",
-				"		\"And some arrows as well: ← ↑ → ↓ ↔ ↕\"",
-				";",
-				"",
-				"AsciiTable at = new AsciiTable();",
-				"at.addRule();",
-				"at.addRow(text, text).getCells().get(1).getContext().setTargetTranslator(new Text2Html());",
-				"at.addRule();",
-				"at.setTextAlignment(TextAlignment.LEFT);",
-				"",
-				"System.out.println(at.render());",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"String text = \"A sentence with some normal text, not specific to HTML. \" +\r\n" + 
+				"		\"Now for some characters that require conversion: # % & < >. \" +\r\n" + 
+				"		\"And some more: © § ¤. \" +\r\n" + 
+				"		\"And even more: Ē ē Ĕ ĕ Ė ė Ę ę Ě ě. \" +\r\n" + 
+				"		\"And some arrows as well: ← ↑ → ↓ ↔ ↕\"\r\n" + 
+				";\r\n" + 
+				"\r\n" + 
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(text, text).getCells().get(1).getContext().setTargetTranslator(new Text2Html());\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.setTextAlignment(TextAlignment.LEFT);\r\n" + 
+				"\r\n" + 
+				"System.out.println(at.render());"
+		;
 	}
 
 	@Override

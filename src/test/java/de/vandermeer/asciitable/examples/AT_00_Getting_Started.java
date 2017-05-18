@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.examples;
 
-import org.apache.commons.lang3.text.StrBuilder;
-
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
@@ -35,22 +33,31 @@ public class AT_00_Getting_Started implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"This example shows how to create a table, add content (rows and cells), and render the table.\r\n" + 
+				"It also demonstrates that all excessive white spaces (extra blanks, tabulators, new lines) will be removed automatically.\r\n" + 
+				"Furthermore, the table will break lines automatically to the set width (in the example the default width of 80 characters).\r\n" + 
+				"This automatic line break uses words (not characters)."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "simple";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"AsciiTable at = new AsciiTable();",
-				"at.addRule();",
-				"at.addRow(\"row 1 col 1\", \"row 1 col 2\");",
-				"at.addRule();",
-				"at.addRow(\"row 2 col 1\", \"row 2 col 2\");",
-				"at.addRule();",
-				"System.out.println(at.render());",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"row 1 col 1\", \"row 1 col 2\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"row 2 col 1\", \"row 2 col 2\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"System.out.println(at.render());"
+		;
 	}
 
 	@Override

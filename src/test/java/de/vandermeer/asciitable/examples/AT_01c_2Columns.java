@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.examples;
 
-import org.apache.commons.lang3.text.StrBuilder;
-
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
@@ -35,22 +33,32 @@ public class AT_01c_2Columns implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"The number of columns of a table is automatically set by the first content row added to the table.\r\n" + 
+				"If the first row has 1 text object, then the table has 1 column.\r\n" + 
+				"If the first row has 2 text objects, then the table has 2 columns, and so forth.\r\n" + 
+				"<br /><br />" +
+				"This example show this behavior for 2 columns."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "2cols";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"AsciiTable at = new AsciiTable();",
-				"at.addRule();",
-				"at.addRow(\"first row (col1)\", \"some information (col2)\");",
-				"at.addRule();",
-				"at.addRow(\"second row (col1)\", \"some information (col2)\");",
-				"at.addRule();",
-				"System.out.println(at.render(76));",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"first row (col1)\", \"some information (col2)\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"second row (col1)\", \"some information (col2)\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"System.out.println(at.render(65));"
+		;
 	}
 
 	@Override

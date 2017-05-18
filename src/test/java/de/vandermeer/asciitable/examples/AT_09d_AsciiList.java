@@ -40,18 +40,22 @@ public class AT_09d_AsciiList implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				""
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "al";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"AsciiTable at = new AsciiTable();",
-				//TODO
-				"System.out.println(at.render());",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				""
+		;
 	}
 
 	@Override

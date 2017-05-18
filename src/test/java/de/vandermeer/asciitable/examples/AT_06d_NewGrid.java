@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.examples;
 
-import org.apache.commons.lang3.text.StrBuilder;
-
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciithemes.TA_Grid;
 import de.vandermeer.asciithemes.TA_GridConfig;
@@ -37,29 +35,37 @@ public class AT_06d_NewGrid implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"New grids can be defined as needed.\r\n" + 
+				"The `TA_Grid` interface already provides a number of methods to create new grids.\r\n" + 
+				"This example shows how a new gird is created and then added to a table."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "grid-new";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"TA_Grid myGrid = TA_Grid.create(\"grid using UTF-8 light border characters\")",
-				"		.addCharacterMap(TA_GridConfig.RULESET_NORMAL, ' ', '#', '&', '#', '#', '%', '%', '+', '+', '+', '#', '%')",
-				";",
-				"",
-				"AsciiTable at = new AsciiTable();",
-				"at.addRule();",
-				"at.addRow(\"rc 11\", \"rc 12\");",
-				"at.addRule();",
-				"at.addRow(\"rc 21\", \"rc 22\");",
-				"at.addRule();",
-				"at.getContext().setWidth(13);",
-				"",
-				"at.getContext().setGrid(myGrid);",
-				"System.out.println(at.render());",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"TA_Grid myGrid = TA_Grid.create(\"grid using UTF-8 light border characters\")\r\n" + 
+				"		.addCharacterMap(TA_GridConfig.RULESET_NORMAL, ' ', '#', '&', '#', '#', '%', '%', '+', '+', '+', '#', '%')\r\n" + 
+				";\r\n" + 
+				"\r\n" + 
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"rc 11\", \"rc 12\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"rc 21\", \"rc 22\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.getContext().setWidth(13);\r\n" + 
+				"\r\n" + 
+				"at.getContext().setGrid(myGrid);\r\n" + 
+				"System.out.println(at.render());"
+		;
 	}
 
 	@Override

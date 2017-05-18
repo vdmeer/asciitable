@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.examples;
 
-import org.apache.commons.lang3.text.StrBuilder;
-
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciitable.CWC_AbsoluteEven;
 import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
@@ -36,24 +34,36 @@ public class AT_07a_Width_AbsoluteEven implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"The default width calculator for a table uses the set table width and distributed all columns equally in it (including the required characters for the grid).\r\n" + 
+				"For instance, a table with 3 columns and a width of 34 will result in a column width of 10 for each of the 3 columns:\r\n" + 
+				"1 character for the left grid, \r\n" + 
+				"1 character for the right grid, \r\n" + 
+				"2 characters for the grid between the 3 columns, and\r\n" + 
+				"3 columns and 30 characters remaining = 10 characters per column.\r\n" + 
+				"This example creates a table and then renders the table with a width of 50, 30, and 20."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "cwc-absolute";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"AsciiTable at = new AsciiTable();",
-				"at.addRule();",
-				"at.addRow(\"col1\", \"col2\", \"col3\");",
-				"at.addRule();",
-				"",
-				"at.getRenderer().setCWC(new CWC_AbsoluteEven());",
-				"System.out.println(at.render(50));",
-				"System.out.println(at.render(30));",
-				"System.out.println(at.render(20));",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"col1\", \"col2\", \"col3\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"\r\n" + 
+				"at.getRenderer().setCWC(new CWC_AbsoluteEven());\r\n" + 
+				"System.out.println(at.render(50));\r\n" + 
+				"System.out.println(at.render(30));\r\n" + 
+				"System.out.println(at.render(20));"
+		;
 	}
 
 	@Override

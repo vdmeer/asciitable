@@ -38,27 +38,33 @@ public class AT_00g_AddColumn_DoesRenderToWidth implements StandardExampleAsCmd 
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"This example creates a simple DoesRenderToWidth object with some text, and adds it to a table."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "col-does-render-width";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"AsciiTable at = new AsciiTable();",
-				"class ObjectDoesRenderToWidth implements DoesRenderToWidth{",
-				"	@Override",
-				"	public String render(int width) {",
-				"		return new StrBuilder().appendWithSeparators(Text_To_FormattedText.left(new LoremIpsum().getWords(10), width), \"\n\").toString();",
-				"	}",
-				"}",
-				"",
-				"at.addRule();",
-				"at.addRow(new ObjectDoesRenderToWidth());",
-				"at.addRule();",
-				"System.out.println(at.render(30));",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"class ObjectDoesRenderToWidth implements DoesRenderToWidth{\r\n" + 
+				"	@Override\r\n" + 
+				"	public String render(int width) {\r\n" + 
+				"		return new StrBuilder().appendWithSeparators(Text_To_FormattedText.left(new LoremIpsum().getWords(10), width), \"\\n\").toString();\r\n" + 
+				"	}\r\n" + 
+				"}\r\n" + 
+				"\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(new ObjectDoesRenderToWidth());\r\n" + 
+				"at.addRule();\r\n" + 
+				"System.out.println(at.render(30));"
+		;
 	}
 
 	@Override

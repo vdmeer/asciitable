@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.examples;
 
-import org.apache.commons.lang3.text.StrBuilder;
-
 import de.svenjacobs.loremipsum.LoremIpsum;
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
@@ -37,24 +35,34 @@ public class AT_03a_AlignmentTable implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"The alignment of text can be set for the whole table at once, after all text objects are added.\r\n" + 
+				"<br /><br />" + 
+				"This example creates a table, adds text objects, and then sets the text alignment for the whole table to right.\r\n" + 
+				"<br /><br />" +
+				"Note: settings for the whole table only effect cells that have been already added."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "alignment-table";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"AsciiTable at = new AsciiTable();",
-				"String text = new LoremIpsum().getWords(9);",
-				"at.addRule();",
-				"at.addRow(text, text, text);",
-				"at.addRule();",
-				"at.addRow(text, text, text);",
-				"at.addRule();",
-				"at.setTextAlignment(TextAlignment.RIGHT);",
-				"System.out.println(at.render(76));",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"String text = new LoremIpsum().getWords(9);\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(text, text, text);\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(text, text, text);\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.setTextAlignment(TextAlignment.RIGHT);\r\n" + 
+				"System.out.println(at.render(76));"
+		;
 	}
 
 	@Override

@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.examples;
 
-import org.apache.commons.lang3.text.StrBuilder;
-
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciitable.CWC_LongestLine;
 import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
@@ -36,33 +34,45 @@ public class AT_07c_LongestLine implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"This width calculator takes the longest line in each column and sets the column width to it.\r\n" + 
+				"The calculator can be configured to use a minimum and maximum length for particular columns.\r\n" + 
+				"This example shows a few examples for the behavior of this width calculator for a table with 5 columns and text of different length per column:\r\n" + 
+				"first: the table without padding, \r\n" + 
+				"second: calculator using a minimum length of 4 for the first column, \r\n" + 
+				"third: calculator now also using a minimum width of 6 for the second column and a maximum width of 2 for the last column, and\r\n" + 
+				"fourth: same calculator but now with an additional row in the table using a conditional line break."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "cwc-line";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"AsciiTable at = new AsciiTable();",
-				"at.addRule();",
-				"at.addRow(\"0\", \"1\", \"22\", \"333\", \"4444\");",
-				"at.addRule();",
-				"CWC_LongestLine cwc = new CWC_LongestLine();",
-				"",
-				"at.getRenderer().setCWC(cwc);",
-				"System.out.println(at.render());",
-				"",
-				"cwc.add(4, 0);",
-				"System.out.println(at.render());",
-				"",
-				"cwc.add(6, 0).add(0, 0).add(0, 0).add(0, 2);",
-				"System.out.println(at.render());",
-				"",
-				"at.addRow(\"0\", \"1\", \"22\", \"333<br>55555\", \"4444\");",
-				"at.addRule();",
-				"System.out.println(at.render());",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"0\", \"1\", \"22\", \"333\", \"4444\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"CWC_LongestLine cwc = new CWC_LongestLine();\r\n" + 
+				"\r\n" + 
+				"at.getRenderer().setCWC(cwc);\r\n" + 
+				"System.out.println(at.render());\r\n" + 
+				"\r\n" + 
+				"cwc.add(4, 0);\r\n" + 
+				"System.out.println(at.render());\r\n" + 
+				"\r\n" + 
+				"cwc.add(6, 0).add(0, 0).add(0, 0).add(0, 2);\r\n" + 
+				"System.out.println(at.render());\r\n" + 
+				"\r\n" + 
+				"at.addRow(\"0\", \"1\", \"22\", \"333<br>55555\", \"4444\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"System.out.println(at.render());"
+		;
 	}
 
 	@Override

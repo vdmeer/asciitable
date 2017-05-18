@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.examples;
 
-import org.apache.commons.lang3.text.StrBuilder;
-
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
@@ -35,30 +33,42 @@ public class AT_02_ColSpan implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"The table allows column spans, with some limitations.\r\n" + 
+				"<br /><br />" + 
+				"When adding text objects to a row, using `null` indicated a column span.\r\n" + 
+				"Multiple `null` text objects signify multi-column spans.\r\n" + 
+				"The final text object must be none-`null`.\r\n" + 
+				"<br /><br />" +
+				"This example shows a table with 5 columns and various column spans."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "colspan";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"AsciiTable at = new AsciiTable();",
-				"at.addRule();",
-				"at.addRow(null, null, null, null, \"span all 5 columns\");",
-				"at.addRule();",
-				"at.addRow(null, null, null, \"span 4 columns\", \"just 1 column\");",
-				"at.addRule();",
-				"at.addRow(null, null, \"span 3 columns\", null, \"span 2 columns\");",
-				"at.addRule();",
-				"at.addRow(null, \"span 2 columns\", null, null, \"span 3 columns\");",
-				"at.addRule();",
-				"at.addRow(\"just 1 column\", null, null, null, \"span 4 columns\");",
-				"at.addRule();",
-				"at.addRow(\"just 1 column\", \"just 1 column\", \"just 1 column\", \"just 1 column\", \"just 1 column\");",
-				"at.addRule();",
-				"System.out.println(at.render(71));",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(null, null, null, null, \"span all 5 columns\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(null, null, null, \"span 4 columns\", \"just 1 column\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(null, null, \"span 3 columns\", null, \"span 2 columns\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(null, \"span 2 columns\", null, null, \"span 3 columns\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"just 1 column\", null, null, null, \"span 4 columns\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"just 1 column\", \"just 1 column\", \"just 1 column\", \"just 1 column\", \"just 1 column\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"System.out.println(at.render(71));"
+		;
 	}
 
 	@Override

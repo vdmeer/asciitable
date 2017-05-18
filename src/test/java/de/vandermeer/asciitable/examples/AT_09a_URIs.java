@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.examples;
 
-import org.apache.commons.lang3.text.StrBuilder;
-
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
@@ -35,39 +33,48 @@ public class AT_09a_URIs implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"Uniform Resource Identifiers (URIs) can be used in a table.\r\n" + 
+				"No special rules are applied to them for line breaks.\r\n" + 
+				"The renderer tries to put as many characters of a URI into a single line as possible.\r\n" + 
+				"This example shows a table with various columns and URIs."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "uri";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"AsciiTable at = new AsciiTable();",
-				"at.addRule();",
-				"at.addRow(\"scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]\", \"scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]\");",
-				"at.addRule();",
-				"at.addRow(null, \"scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]\");",
-				"at.addRule();",
-				"at.addRow(\"abc://username:password@example.com:123/path/data?key=value#fragid1\", \"abc://username:password@example.com:123/path/data?key=value#fragid1\");",
-				"at.addRule();",
-				"at.addRow(null, \"abc://username:password@example.com:123/path/data?key=value#fragid1\");",
-				"at.addRule();",
-				"at.addRow(\"urn:example:mammal:monotreme:echidna\", \"urn:example:mammal:monotreme:echidna\");",
-				"at.addRule();",
-				"at.addRow(null, \"urn:example:mammal:monotreme:echidna\");",
-				"at.addRule();",
-				"at.addRow(\"http://www.example.com/test1/test2\", \"http://www.example.com/test1/test2\");",
-				"at.addRule();",
-				"at.addRow(null, \"http://www.example.com/test1/test2\");",
-				"at.addRule();",
-				"at.addRow(\"mailto:user1@example.com\", \"mailto:firstname.lastname@example.com\");",
-				"at.addRule();",
-				"at.addRow(null, \"mailto:firstname.lastname@example.com\");",
-				"at.addRule();",
-				"",
-				"System.out.println(at.render(73));",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]\", \"scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(null, \"scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"abc://username:password@example.com:123/path/data?key=value#fragid1\", \"abc://username:password@example.com:123/path/data?key=value#fragid1\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(null, \"abc://username:password@example.com:123/path/data?key=value#fragid1\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"urn:example:mammal:monotreme:echidna\", \"urn:example:mammal:monotreme:echidna\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(null, \"urn:example:mammal:monotreme:echidna\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"http://www.example.com/test1/test2\", \"http://www.example.com/test1/test2\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(null, \"http://www.example.com/test1/test2\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"mailto:user1@example.com\", \"mailto:firstname.lastname@example.com\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(null, \"mailto:firstname.lastname@example.com\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"\r\n" + 
+				"System.out.println(at.render(73));"
+		;
 	}
 
 	@Override

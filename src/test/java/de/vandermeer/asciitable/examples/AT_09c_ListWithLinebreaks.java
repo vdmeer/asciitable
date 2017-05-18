@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.examples;
 
-import org.apache.commons.lang3.text.StrBuilder;
-
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciitable.CWC_FixedWidth;
 import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
@@ -37,18 +35,29 @@ public class AT_09c_ListWithLinebreaks implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"Conditional line breaks can also be used for creating the impression of lists.\r\n" + 
+				"This example shows a list using conditional line breaks in the left columns."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "list-clb";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"AsciiTable at = new AsciiTable();",
-				//TODO
-				"System.out.println(at.render(50));",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"column with a list using conditional line breaks\", \" * list item one<br> * list item two<br> * list item three\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.setTextAlignment(TextAlignment.LEFT);\r\n" + 
+				"at.getRenderer().setCWC(new CWC_FixedWidth().add(20).add(25));\r\n" + 
+				"System.out.println(at.render(50));"
+		;
 	}
 
 	@Override

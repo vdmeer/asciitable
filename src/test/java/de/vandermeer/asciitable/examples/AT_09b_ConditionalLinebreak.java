@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.examples;
 
-import org.apache.commons.lang3.text.StrBuilder;
-
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
@@ -36,25 +34,32 @@ public class AT_09b_ConditionalLinebreak implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"This example adds text to a table cell with excessive white spaces (being removed) and conditional line breaks (being translated into line breaks)."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "cond-linebreak";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"String text = \"line 1<br>\" +",
-				"	\"line 2<br/>\" +",
-				"	\"line three \\n still line three\"",
-				";",
-				"",
-				"AsciiTable at = new AsciiTable();",
-				"at.addRule();",
-				"at.addRow(text);",
-				"at.addRule();",
-				"System.out.println(at.render(50));",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"String text = \"line 1<br>\" +\r\n" + 
+				"	\"line 2<br/>\" +\r\n" + 
+				"	\"line three \\n still line three\"\r\n" + 
+				";\r\n" + 
+				"\r\n" + 
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(text);\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.setTextAlignment(TextAlignment.LEFT);\r\n" + 
+				"System.out.println(at.render(50));"
+		;
 	}
 
 	@Override

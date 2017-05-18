@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.examples;
 
-import org.apache.commons.lang3.text.StrBuilder;
-
 import de.svenjacobs.loremipsum.LoremIpsum;
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
@@ -37,27 +35,33 @@ public class AT_00f_AddColumn_DoesRender implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"This example creates a simple DoesRender object with some text, and adds it to a table."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "col-does-render";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"AsciiTable at = new AsciiTable();",
-				"class ObjectDoesRender implements DoesRender{",
-				"	@Override",
-				"	public String render() {",
-				"		return new LoremIpsum().getWords(10);",
-				"	}",
-				"}",
-				"",
-				"at.addRule();",
-				"at.addRow(new ObjectDoesRender());",
-				"at.addRule();",
-				"System.out.println(at.render());",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"class ObjectDoesRender implements DoesRender{\r\n" + 
+				"	@Override\r\n" + 
+				"	public String render() {\r\n" + 
+				"		return new LoremIpsum().getWords(10);\r\n" + 
+				"	}\r\n" + 
+				"}\r\n" + 
+				"\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(new ObjectDoesRender());\r\n" + 
+				"at.addRule();\r\n" + 
+				"System.out.println(at.render());"
+		;
 	}
 
 	@Override

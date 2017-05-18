@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.examples;
 
-import org.apache.commons.lang3.text.StrBuilder;
-
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciitable.CWC_LongestWordMin;
 import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
@@ -36,27 +34,37 @@ public class AT_07f_LongestWordMin implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"This width calculator takes the longest word in each column and sets the column width to it.\r\n" + 
+				"It can be further configured to a minimum column width.\r\n" + 
+				"This example shows a few examples for the behavior of this width calculator for a table with 2 columns:\r\n" + 
+				"first: minimum width set to 9 for all columns and\r\n" + 
+				"second: minimum width of first column removed, minimum width of second column set to 30."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "cwc-word-min";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"AsciiTable at = new AsciiTable();",
-				"at.addRule();",
-				"at.addRow(\"first\", \"information\");",
-				"at.addRule();",
-				"at.addRow(\"second\", \"info\");",
-				"at.addRule();",
-				"",
-				"at.getRenderer().setCWC(new CWC_LongestWordMax(8));",
-				"System.out.println(at.render());",
-				"",
-				"at.getRenderer().setCWC(new CWC_LongestWordMax(new int[]{4,-1}));",
-				"System.out.println(at.render());",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"first\", \"information\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"second\", \"info\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"\r\n" + 
+				"at.getRenderer().setCWC(new CWC_LongestWordMin(9));\r\n" + 
+				"System.out.println(at.render());\r\n" + 
+				"\r\n" + 
+				"at.getRenderer().setCWC(new CWC_LongestWordMin(new int[]{-1,30}));\r\n" + 
+				"System.out.println(at.render());"
+		;
 	}
 
 	@Override

@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.examples;
 
-import org.apache.commons.lang3.text.StrBuilder;
-
 import de.vandermeer.asciitable.AT_Cell;
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
@@ -37,29 +35,36 @@ public class AT_04c_Padding_Cell implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"The padding of text can be set for individual table cells.\r\n" + 
+				"This example creates a table, adds text objects, and then changes the padding for the last cell in second row leaving all other cells to the default (no padding)."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "padding-cell";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"AsciiTable at = new AsciiTable();",
-				"at.addRule();",
-				"at.addRow(\"row 1 col 1\", \"row 1 col 2\");",
-				"at.addRule();",
-				"AT_Cell cell = at.addRow(\"row 2 col 1\", \"row 2 col 2\").getCells().get(1);",
-				"at.addRule();",
-				"",
-				"at.setPaddingTopChar('v');",
-				"at.setPaddingBottomChar('^');",
-				"at.setPaddingLeftChar('>');",
-				"at.setPaddingRightChar('<');",
-				"at.setTextAlignment(TextAlignment.CENTER);",
-				"at.setPadding(1);",
-				"System.out.println(at.render(33));",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"row 1 col 1\", \"row 1 col 2\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"AT_Cell cell = at.addRow(\"row 2 col 1\", \"row 2 col 2\").getCells().get(1);\r\n" + 
+				"at.addRule();\r\n" + 
+				"\r\n" + 
+				"cell.getContext().setPaddingTopChar('v');\r\n" + 
+				"cell.getContext().setPaddingBottomChar('^');\r\n" + 
+				"cell.getContext().setPaddingLeftChar('>');\r\n" + 
+				"cell.getContext().setPaddingRightChar('<');\r\n" + 
+				"cell.getContext().setTextAlignment(TextAlignment.CENTER);\r\n" + 
+				"cell.getContext().setPadding(1);\r\n" + 
+				"System.out.println(at.render(33));"
+		;
 	}
 
 	@Override

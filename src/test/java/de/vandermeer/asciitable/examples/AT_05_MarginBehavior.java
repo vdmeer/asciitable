@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable.examples;
 
-import org.apache.commons.lang3.text.StrBuilder;
-
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
@@ -35,33 +33,44 @@ public class AT_05_MarginBehavior implements StandardExampleAsCmd {
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"The implementation allows to add margins before and after the table as well as left and right of each line (outside the grid).\r\n" + 
+				"For each margin, the number and the character can be set.\r\n" + 
+				"The number states the margin to be added (number of lines for top/bottom, number of characters for left/rigth).\r\n" + 
+				"<br /><br />" + 
+				"The following code creates a table and then adds one line top margin, 2 line bottom margin, 3 characters left margin, and 4 characters right margin.\r\n" + 
+				"Each setting uses a different margin character."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "margin";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"AsciiTable at = new AsciiTable();",
-				"at.addRule();",
-				"at.addRow(\"row 1 col 1\", \"row 1 col 2\");",
-				"at.addRule();",
-				"at.addRow(\"row 2 col 1\", \"row 2 col 2\");",
-				"at.addRule();",
-				"",
-				"at.getContext().setFrameTopChar('v');",
-				"at.getContext().setFrameBottomChar('^');",
-				"at.getContext().setFrameLeftChar('>');",
-				"at.getContext().setFrameRightChar('<');",
-				"",
-				"at.getContext().setFrameTopMargin(1);",
-				"at.getContext().setFrameBottomMargin(2);",
-				"at.getContext().setFrameLeftMargin(3);",
-				"at.getContext().setFrameRightMargin(4);",
-				"",
-				"System.out.println(at.render());",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"row 1 col 1\", \"row 1 col 2\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(\"row 2 col 1\", \"row 2 col 2\");\r\n" + 
+				"at.addRule();\r\n" + 
+				"\r\n" + 
+				"at.getContext().setFrameTopChar('v');\r\n" + 
+				"at.getContext().setFrameBottomChar('^');\r\n" + 
+				"at.getContext().setFrameLeftChar('>');\r\n" + 
+				"at.getContext().setFrameRightChar('<');\r\n" + 
+				"\r\n" + 
+				"at.getContext().setFrameTopMargin(1);\r\n" + 
+				"at.getContext().setFrameBottomMargin(2);\r\n" + 
+				"at.getContext().setFrameLeftMargin(3);\r\n" + 
+				"at.getContext().setFrameRightMargin(4);\r\n" + 
+				"\r\n" + 
+				"System.out.println(at.render(39));"
+		;
 	}
 
 	@Override

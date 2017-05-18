@@ -17,7 +17,6 @@ package de.vandermeer.asciitable.examples;
 
 import java.util.Collection;
 
-import org.apache.commons.lang3.text.StrBuilder;
 import org.stringtemplate.v4.ST;
 
 import de.svenjacobs.loremipsum.LoremIpsum;
@@ -44,31 +43,37 @@ public class AT_00i_AddColumn_RendersToClusterWidth implements StandardExampleAs
 	}
 
 	@Override
+	public Object getLongDescription() {
+		return
+				"This example creates a simple RendersToClusterWidth object with some text, and adds it to a table."
+		;
+	}
+
+	@Override
 	public String getName() {
 		return "col-render-cluster-width";
 	}
 
 	@Override
-	public StrBuilder getSource(){
-		String[] source = new String[]{
-				"AsciiTable at = new AsciiTable();",
-				"class ObjectRendersToClusterWidth implements RendersToClusterWidth{",
-				"	@Override",
-				"	public Collection<String> renderAsCollection(int width) {",
-				"		return ClusterElementTransformer.create().transform(",
-				"				Text_To_FormattedText.left(new LoremIpsum().getWords(30), width),",
-				"				StrBuilder_To_String.create(),",
-				"				ArrayListStrategy.create()",
-				"		);",
-				"	}",
-				"}",
-				"",
-				"at.addRule();",
-				"at.addRow(new ObjectRendersToClusterWidth());",
-				"at.addRule();",
-				"System.out.println(at.render());",
-		};
-		return new StrBuilder().appendWithSeparators(source, "\n");
+	public String getSource(){
+		return
+				"AsciiTable at = new AsciiTable();\r\n" + 
+				"class ObjectRendersToClusterWidth implements RendersToClusterWidth{\r\n" + 
+				"	@Override\r\n" + 
+				"	public Collection<String> renderAsCollection(int width) {\r\n" + 
+				"		return ClusterElementTransformer.create().transform(\r\n" + 
+				"				Text_To_FormattedText.justified(new LoremIpsum().getWords(30), width),\r\n" + 
+				"				StrBuilder_To_String.create(),\r\n" + 
+				"				ArrayListStrategy.create()\r\n" + 
+				"		);\r\n" + 
+				"	}\r\n" + 
+				"}\r\n" + 
+				"\r\n" + 
+				"at.addRule();\r\n" + 
+				"at.addRow(new ObjectRendersToClusterWidth());\r\n" + 
+				"at.addRule();\r\n" + 
+				"System.out.println(at.render());"
+		;
 	}
 
 	@Override
