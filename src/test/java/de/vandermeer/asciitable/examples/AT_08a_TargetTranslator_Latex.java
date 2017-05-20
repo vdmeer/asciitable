@@ -18,7 +18,7 @@ package de.vandermeer.asciitable.examples;
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
-import de.vandermeer.translation.targets.Text2Latex;
+import de.vandermeer.skb.interfaces.translators.target.Text2Latex;
 
 /**
  * AsciiTable example for target translation (LaTeX).
@@ -62,7 +62,7 @@ public class AT_08a_TargetTranslator_Latex implements StandardExampleAsCmd {
 				"\r\n" + 
 				"AsciiTable at = new AsciiTable();\r\n" + 
 				"at.addRule();\r\n" + 
-				"at.addRow(text, text).getCells().get(1).getContext().setTargetTranslator(new Text2Latex());\r\n" + 
+				"at.addRow(text, text).getCells().get(1).getContext().setTargetTranslator(Text2Latex.create());\r\n" + 
 				"at.addRule();\r\n" + 
 				"at.setTextAlignment(TextAlignment.LEFT);\r\n" + 
 				"\r\n" + 
@@ -82,7 +82,7 @@ public class AT_08a_TargetTranslator_Latex implements StandardExampleAsCmd {
 
 		AsciiTable at = new AsciiTable();
 		at.addRule();
-		at.addRow(text, text).getCells().get(1).getContext().setTargetTranslator(new Text2Latex());
+		at.addRow(text, text).getCells().get(1).getContext().setTargetTranslator(Text2Latex.create());
 		at.addRule();
 		at.setTextAlignment(TextAlignment.LEFT);
 
