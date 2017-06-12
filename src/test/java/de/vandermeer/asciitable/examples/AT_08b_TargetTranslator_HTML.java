@@ -18,7 +18,7 @@ package de.vandermeer.asciitable.examples;
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
-import de.vandermeer.skb.interfaces.translators.target.Text2Html;
+import de.vandermeer.skb.interfaces.translators.Text2Html_Target;
 
 /**
  * AsciiTable example for target translation (HTML).
@@ -82,7 +82,7 @@ public class AT_08b_TargetTranslator_HTML implements StandardExampleAsCmd {
 
 		AsciiTable at = new AsciiTable();
 		at.addRule();
-		at.addRow(text, text).getCells().get(1).getContext().setTargetTranslator(Text2Html.create());
+		at.addRow(text, text).getCells().get(1).getContext().setTargetTranslator(Text2Html_Target.create());
 		at.addRule();
 		at.setTextAlignment(TextAlignment.LEFT);
 

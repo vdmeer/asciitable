@@ -15,8 +15,8 @@
 
 package de.vandermeer.asciitable;
 
-import de.vandermeer.skb.interfaces.translators.target.Text2Html;
-import de.vandermeer.skb.interfaces.translators.target.Text2Latex;
+import de.vandermeer.skb.interfaces.translators.Text2Html_Target;
+import de.vandermeer.skb.interfaces.translators.Text2Latex_Target;
 
 /**
  * Collection of themes for an {@link AsciiTable}.
@@ -35,7 +35,7 @@ public interface AT_Themes {
 		return new AsciiTableTheme() {
 			@Override
 			public void apply(AsciiTable table) {
-				table.setTargetTranslator(Text2Html.create());
+				table.setTargetTranslator(Text2Html_Target.create());
 			}
 		};
 	}
@@ -48,7 +48,7 @@ public interface AT_Themes {
 		return new AsciiTableTheme() {
 			@Override
 			public void apply(AsciiTable table) {
-				table.setTargetTranslator(Text2Latex.create());
+				table.setTargetTranslator(Text2Latex_Target.create());
 			}
 		};
 	}
