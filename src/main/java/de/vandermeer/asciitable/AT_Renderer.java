@@ -204,8 +204,7 @@ public interface AT_Renderer extends IsTableRenderer {
 
 						Object content = cells.get(i).getContent();
 						if(content==null){
-							length++;
-							continue;
+							content = ctx.getNullValuePlaceholder();
 						}
 
 						int realWidth = length;

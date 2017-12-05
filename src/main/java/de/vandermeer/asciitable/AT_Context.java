@@ -71,6 +71,9 @@ public class AT_Context implements IsTableContext {
 	/** Options for the grid, for instance show empty lines. */
 	protected int gridThemeOptions = TA_GridThemeOptions.SHOW_EMPTY_ALL.get();
 
+  /** Value which will be used to render null values in rows */
+	protected String nullValuePlaceholder = "";
+
 	/**
 	 * Returns the bottom frame margin character.
 	 * @return bottom frame margin character
@@ -436,5 +439,16 @@ public class AT_Context implements IsTableContext {
 	 */
 	public String getLineSeparator(){
 		return this.lineSeparator;
+	}
+
+	public String getNullValuePlaceholder(){
+		return nullValuePlaceholder;
+	}
+
+	public AT_Context setNullValuePlaceholder(final String nullValuePlaceholder){
+		if(nullValuePlaceholder != null){
+			this.nullValuePlaceholder = nullValuePlaceholder;
+		}
+		return this;
 	}
 }
