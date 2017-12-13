@@ -197,7 +197,6 @@ public interface AT_Renderer extends IsTableRenderer {
 					if(cells==null){
 						throw new AsciiTableException("cannot render table: row content (cells) was null");
 					}
-
 					int length = 0;
 					for(int i=0; i<cells.size(); i++){
 						length += colWidth[i];
@@ -206,6 +205,17 @@ public interface AT_Renderer extends IsTableRenderer {
 						if(content==null){
 							length++;
 							continue;
+						}
+						
+						boolean rightAllNull = true;
+						int rightLength = 0;
+						for(int j=i+1; j<cells.size(); j++){
+							rightAllNull = rightAllNull & (cells.get(j).getContent() == null);
+							rightLength += colWidth[j];
+							rightLength++;
+						}
+						if(rightAllNull){
+							length += rightLength;
 						}
 
 						int realWidth = length;
