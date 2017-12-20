@@ -164,6 +164,7 @@ public interface AT_Renderer extends IsTableRenderer {
 		Validate.notNull(ctx);
 
 		ArrayList<Object> table = new ArrayList<>();
+		ArrayList<ArrayList<Pair<String, String>>> colorConfig = new ArrayList<>();
 		int[] colWidth = this.getCWC().calculateColumnWidths(rows, colNumbers, ctx.getTextWidth(width));
 
 		for(AT_Row row : rows){
@@ -192,6 +193,9 @@ public interface AT_Renderer extends IsTableRenderer {
 					table.add(ruleset);
 					break;
 				case CONTENT:
+					ArrayList<Pair<String, String>> colorRow = new ArrayList<Pair<String, String>>();
+					colorConfig.add(colorRow);
+					
 					String[][] cAr = new String[colNumbers][];
 					LinkedList<AT_Cell> cells = row.getCells();
 					if(cells==null){
@@ -207,7 +211,8 @@ public interface AT_Renderer extends IsTableRenderer {
 							length++;
 							continue;
 						}
-
+						colorRow.add(Pair.of(cells.get(i).getContext().getAnsiPrefix(), cells.get(i).getContext().getAnsiSuffix()));
+						
 						int realWidth = length;
 						length -= cells.get(i).getContext().getPaddingLeft();
 						length -= cells.get(i).getContext().getPaddingRight();
@@ -279,7 +284,7 @@ public interface AT_Renderer extends IsTableRenderer {
 			}
 		}
 
-		ArrayList<StrBuilder> ret = ctx.getGrid().addGrid(table, ctx.getGridTheme() | ctx.getGridThemeOptions());
+		ArrayList<StrBuilder> ret = ctx.getGrid().addGrid(table, ctx.getGridTheme() | ctx.getGridThemeOptions(),colorConfig);
 		int max = ret.get(0).length() + ctx.getFrameLeftMargin() + ctx.getFrameRightMargin();
 		for (StrBuilder sb : ret){
 			sb.insert(0, new StrBuilder().appendPadding(ctx.getFrameLeftMargin(), ctx.getFrameLeftChar()));

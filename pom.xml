@@ -14,7 +14,7 @@
       -->
     <groupId>de.vandermeer</groupId>
     <artifactId>asciitable</artifactId>
-    <version>0.3.2</version>
+    <version>0.3.3-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <!--
@@ -110,7 +110,7 @@
         <dependency>
             <groupId>de.vandermeer</groupId>
             <artifactId>ascii-utf-themes</artifactId>
-            <version>0.0.1</version>
+            <version>0.0.2-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -136,6 +136,11 @@
             <artifactId>loremipsum</artifactId>
             <version>1.0</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.vandermeer</groupId>
+    		<artifactId>skb-interfaces</artifactId>
+    		<version>0.0.4-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
