@@ -418,8 +418,11 @@ public class AT_CellContext implements IsTableCellContext {
 		if (!frontGroundColor.equals(FgColor.NONE) ||
 				!backGroundColor.equals(BgColor.NONE) || 
 				!attribute.equals( attribute.NONE) ){
-			return ANSI_PREFFIX + attribute.getCode() + ANSI_SEPERATOR + 
-					frontGroundColor.getCode() + ANSI_SEPERATOR + backGroundColor.getCode() + ANSI_SEPERATOR + "m";
+			return ANSI_PREFFIX +
+					(attribute.getCode() == "" ? "": attribute.getCode() + ANSI_SEPERATOR ) + 
+					(frontGroundColor.getCode() == "" ? "": frontGroundColor.getCode() + ANSI_SEPERATOR) +  
+					(backGroundColor.getCode() == "" ? "": backGroundColor.getCode() + ANSI_SEPERATOR ) +
+					"m";
 		}else{
 			return "";
 		}
