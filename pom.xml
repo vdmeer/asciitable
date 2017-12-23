@@ -140,7 +140,7 @@
         <dependency>
             <groupId>de.vandermeer</groupId>
     		<artifactId>skb-interfaces</artifactId>
-    		<version>0.0.4-SNAPSHOT</version>
+    		<version>0.0.3-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
