@@ -18,6 +18,9 @@ package de.vandermeer.asciitable;
 import org.apache.commons.lang3.Validate;
 
 import de.vandermeer.skb.interfaces.document.IsTableCellContext;
+import de.vandermeer.skb.interfaces.transformers.textformat.Attribute;
+import de.vandermeer.skb.interfaces.transformers.textformat.BgColor;
+import de.vandermeer.skb.interfaces.transformers.textformat.FgColor;
 import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
 import de.vandermeer.skb.interfaces.translators.CharacterTranslator;
 import de.vandermeer.skb.interfaces.translators.HtmlElementTranslator;
@@ -68,6 +71,20 @@ public class AT_CellContext implements IsTableCellContext {
 	/** Text alignment, default is {@link TextAlignment#JUSTIFIED_LEFT}. */
 	protected TextAlignment textAlignment = TextAlignment.JUSTIFIED_LEFT;
 
+	
+	protected final static String ANSI_PREFFIX	 = "\033["; 
+	
+	protected final static String ANSI_SUFFIX = "\033[0m"; 
+	
+	protected final static String ANSI_SEPERATOR = ";"; 
+	
+	protected FgColor frontGroundColor = FgColor.NONE;
+	
+	protected BgColor backGroundColor = BgColor.NONE;
+	
+	protected Attribute attribute = Attribute.NONE;
+	
+	
 	/**
 	 * Returns the character translator
 	 * @return character translator
@@ -384,4 +401,38 @@ public class AT_CellContext implements IsTableCellContext {
 		return this;
 	}
 
+	
+	
+	
+	public void setTextFgColor(FgColor color){
+		this.frontGroundColor = color;
+	}
+	public void setTextBgColor(BgColor color){
+		this.backGroundColor = color;
+	}
+	public void setTextAttribute (Attribute attribute){
+		this.attribute = attribute;
+	}
+	
+	public String getAnsiPrefix(){
+		if (!frontGroundColor.equals(FgColor.NONE) ||
+				!backGroundColor.equals(BgColor.NONE) || 
+				!attribute.equals( attribute.NONE) ){
+			return ANSI_PREFFIX +
+					(attribute.getCode() == "" ? "": attribute.getCode() + ANSI_SEPERATOR ) + 
+					(frontGroundColor.getCode() == "" ? "": frontGroundColor.getCode() + ANSI_SEPERATOR) +  
+					(backGroundColor.getCode() == "" ? "": backGroundColor.getCode() + ANSI_SEPERATOR ) +
+					"m";
+		}else{
+			return "";
+		}
+	}
+	
+	public String getAnsiSuffix(){
+		if (getAnsiPrefix().equals("")){
+			return "";
+		}else{
+			return ANSI_SUFFIX;
+		}	
+	}
 }
