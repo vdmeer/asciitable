@@ -15,8 +15,6 @@
 
 package de.vandermeer.asciitable;
 
-import org.apache.commons.lang3.StringUtils;
-
 import de.vandermeer.asciithemes.TA_Grid;
 import de.vandermeer.asciithemes.TA_GridThemeOptions;
 import de.vandermeer.asciithemes.TA_GridThemes;
@@ -424,16 +422,13 @@ public class AT_Context implements IsTableContext {
 	 * @return self to allow chaining
 	 */
 	public AT_Context setLineSeparator(String separator){
-	    if(isNotNullAndDoesNotContainSpacesOnly(separator)){
+	    if(StringArgumentHelper.isNotNullAndDoesNotContainSpacesOnly(separator)){
             this.lineSeparator = separator;
         }
         return this;
 	}
     
-    private boolean isNotNullAndDoesNotContainSpacesOnly(String rawSeparator) {
-        String separator = rawSeparator == null ? "" : rawSeparator;
-        return StringUtils.countMatches(separator, " ") != separator.length();
-    }
+    
 	/**
 	 * Returns the current set line separator.
 	 * @return the line separator, null if none set

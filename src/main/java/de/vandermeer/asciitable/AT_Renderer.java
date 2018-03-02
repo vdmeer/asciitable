@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.text.StrBuilder;
 import org.apache.commons.lang3.text.StrTokenizer;
@@ -76,15 +75,10 @@ public interface AT_Renderer extends IsTableRenderer {
 
 			@Override
 			public AT_Renderer setLineSeparator(String separator) {
-			    if(isNotNullAndDoesNotContainSpacesOnly(separator)){
+			    if(StringArgumentHelper.isNotNullAndDoesNotContainSpacesOnly(separator)){
 					this.lineSeparator = separator;
 				}
 				return this;
-			}
-			
-			private boolean isNotNullAndDoesNotContainSpacesOnly(String rawSeparator) {
-			    String separator = rawSeparator == null ? "" : rawSeparator;
-                return StringUtils.countMatches(separator, " ") != separator.length();
 			}
 		};
 	}
