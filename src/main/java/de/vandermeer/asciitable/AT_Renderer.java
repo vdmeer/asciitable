@@ -76,10 +76,15 @@ public interface AT_Renderer extends IsTableRenderer {
 
 			@Override
 			public AT_Renderer setLineSeparator(String separator) {
-				if(!StringUtils.isBlank(separator)){
+			    if(isNotNullAndDoesNotContainSpacesOnly(separator)){
 					this.lineSeparator = separator;
 				}
 				return this;
+			}
+			
+			private boolean isNotNullAndDoesNotContainSpacesOnly(String rawSeparator) {
+			    String separator = rawSeparator == null ? "" : rawSeparator;
+                return StringUtils.countMatches(separator, " ") != separator.length();
 			}
 		};
 	}
@@ -304,7 +309,7 @@ public interface AT_Renderer extends IsTableRenderer {
 
 	/**
 	 * Sets a new line separator for the renderer, overwriting any separator a table defines.
-	 * @param separator the new separator, ignored if blank
+	 * @param separator the new separator, ignored if it is {@code null} or contains spaces only.
 	 * @return self to allow chaining
 	 */
 	AT_Renderer setLineSeparator(String separator);
