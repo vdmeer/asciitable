@@ -420,16 +420,20 @@ public class AT_Context implements IsTableContext {
 
 	/**
 	 * Sets a new line separator for the renderer.
-	 * @param separator the new separator, ignored if blank
+	 * @param separator the new separator, ignored if it is {@code null} or contains spaces only.
 	 * @return self to allow chaining
 	 */
 	public AT_Context setLineSeparator(String separator){
-		if(!StringUtils.isBlank(separator)){
-			this.lineSeparator = separator;
-		}
-		return this;
+	    if(isNotNullAndDoesNotContainSpacesOnly(separator)){
+            this.lineSeparator = separator;
+        }
+        return this;
 	}
-
+    
+    private boolean isNotNullAndDoesNotContainSpacesOnly(String rawSeparator) {
+        String separator = rawSeparator == null ? "" : rawSeparator;
+        return StringUtils.countMatches(separator, " ") != separator.length();
+    }
 	/**
 	 * Returns the current set line separator.
 	 * @return the line separator, null if none set
