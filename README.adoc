@@ -318,7 +318,7 @@ This will provide the text output using the default settings from the table's co
 
 [source, java]
 ----------------------------------------------------------------------------------------
-String rend = at.render()
+String rend = at.render();
 ----------------------------------------------------------------------------------------
 
 
