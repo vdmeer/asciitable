@@ -64,7 +64,7 @@ compile 'de.vandermeer:asciitable:{release-version}'
 ----
 
 
-For other build systems see https://search.maven.org/#artifactdetails\|de.vandermeer\|asciitable\|{release-version}\|jar[Maven Central]
+For other build systems see https://central.sonatype.com/artifact/de.vandermeer/asciitable/{release-version}[Maven Central]
 
 == Features
 
